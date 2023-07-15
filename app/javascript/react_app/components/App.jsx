@@ -1,0 +1,39 @@
+// Libraries
+import React, { Component } from "react";
+
+/////////////////
+//  Begin App  //
+/////////////////
+
+// Routes
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import components from "."
+
+// Header/Footers
+import Navbar from'./nav/Nav'
+
+// Other Components
+// import AlertMain from './views/main/alert/AlertMain';
+
+// Root component & App Layout
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <div className="min-h-full">
+          <Router>
+            <Navbar />
+            <div className="AppContent">
+              <Routes>
+                <Route path="/" element={<components.Home/>} />
+                <Route path="/maker" element={<components.MdmMaker/>} />
+              </Routes>
+            </div>
+          </Router>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
