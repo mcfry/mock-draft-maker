@@ -2,8 +2,7 @@ import React from 'react';
 import {useSortable} from '@dnd-kit/sortable';
 import {CSS} from '@dnd-kit/utilities';
 
-const SortableTeam = (props) => {
-    const {id, team, pick, isSelected} = props
+const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
     const {
         attributes,
         listeners,
@@ -21,8 +20,6 @@ const SortableTeam = (props) => {
         return classes.filter(Boolean).join(' ')
     }
 
-    console.log(isSelected)
-
     return (
         <div
             id={id}
@@ -31,7 +28,7 @@ const SortableTeam = (props) => {
             {...attributes} 
             {...listeners} 
             className={classNames((isSelected === true ? "border-primary " : "") + "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
-            onClick={props.onClick}
+            onClick={(e) => handleClick(e, 'teamClick')}
         >
             <span className="text-xs">{pick+1}: {team.city} {team.name}</span>
         </div>
