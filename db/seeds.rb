@@ -7,7 +7,7 @@ teams_csv_path = File.expand_path("teams.csv", File.dirname(__FILE__))
 teams_data = CSV.read(teams_csv_path)
 teams_data.each do |td|
     city, name = td[1].split(" ")
-    if city == "Las" or city == "Los" or city == "New" or city == "San"
+    if city == "Las" or city == "Los" or city == "New" or city == "San" or city == "Green" or city == "Kansas" or city == "Tampa"
         citysplit = td[1].split(" ")
         city = citysplit[0,2].join(" ")
         name = citysplit[2]
