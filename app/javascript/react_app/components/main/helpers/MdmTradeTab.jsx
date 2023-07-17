@@ -1,48 +1,46 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import pickValueData from './pick_value_rich_hill.json'
-
-const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
-    // Prefilter
-    const selectedTeams = teams.filter(team => team.id in selected)
-    const localTeams = teams.filter(team => !(team.id in selected))
-
-    for (let i=17; i < 257; i++) {
-        let diff = 0
-        if (i<=20) {
-            diff = 9
-        } else if (i <= 24) {
-            diff = 8
-        } else if (i <= 32) {
-            diff = 7
-        } else if (i <= 35) {
-            diff = 5
-        } else if (i <= 47) {
-            diff = 4
-        } else if (i <= 56) {
-            diff = 3
-        } else if (i <= 68) {
-            diff = 2
-        } else {
-            diff = 1
-        }
-
-        pickValueDataVal = pickValueData[i-1] - diff > 0 ? pickValueData[i-1] - diff : 1
-        pickValueData[i] = pickValueDataVal
+// Extrapolate so don't have to manually enter everything
+for (let i=17; i < 257; i++) {
+    let diff = 0
+    if (i<=20) {
+        diff = 9
+    } else if (i <= 24) {
+        diff = 8
+    } else if (i <= 32) {
+        diff = 7
+    } else if (i <= 35) {
+        diff = 5
+    } else if (i <= 47) {
+        diff = 4
+    } else if (i <= 56) {
+        diff = 3
+    } else if (i <= 68) {
+        diff = 2
+    } else {
+        diff = 1
     }
 
+    pickValueDataVal = pickValueData[i-1] - diff > 0 ? pickValueData[i-1] - diff : 1
+    pickValueData[i] = pickValueDataVal
+}
+
+const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
     // useState
+    const [selectedTeams, setSelectedTeams] = useState(teams.filter(team => team.id in selected))
+    const [localTeams, setLocalTeams] = useState(teams.filter(team => !(team.id in selected)))
     const [tradePartner, setTradePartner] = useState(teams[0].city + " " + teams[0].name)
     const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].city + " " + selectedTeams[0].name)
     const [activeTrades, setActiveTrades] = useState({})
     const [tradeValue, setTradeValue] = useState(0)
 
-    const findAndSetTradeValue = () => {
+    const findAndSetTradeValue = (tp, ct) => {
         let pvd = 0
-        if (tradePartner in activeTrades) 
-            activeTrades[tradePartner].forEach(value => pvd += pickValueData[value])
-        if (currentTeam in activeTrades) 
-            activeTrades[currentTeam].forEach(value => pvd -= pickValueData[value])
+        if (tp in activeTrades) 
+            activeTrades[tp].forEach(value => pvd += pickValueData[value])
+        if (ct in activeTrades) 
+            activeTrades[ct].forEach(value => pvd -= pickValueData[value])
 
         setTradeValue(_ => pvd)
     }
@@ -50,6 +48,11 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
     function classNames(...classes) {
         return classes.join(" ")
     }
+
+    useEffect(() => {
+        setSelectedTeams(teams.filter(team => team.id in selected))
+        setLocalTeams(teams.filter(team => !(team.id in selected)))
+    }, [selected])
 
     return (<>
         <div className="flex flex-col items-center border-r-2 w-[27rem]">
@@ -123,11 +126,11 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
 
         if (type === "tradePartner") {
             setTradePartner(e.currentTarget.value)
+            findAndSetTradeValue(e.currentTarget.value, currentTeam)
         } else if (type === "currentTeam") {
             setCurrentTeam(e.currentTarget.value)
+            findAndSetTradeValue(tradePartner, e.currentTarget.value)
         }
-
-        findAndSetTradeValue()
     }
 
     function handleTradeClick(e, type) {
@@ -147,7 +150,7 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
             }
         }
 
-        findAndSetTradeValue()
+        findAndSetTradeValue(tradePartner, currentTeam)
         setActiveTrades(_ => ({
             ...activeTrades
         }))

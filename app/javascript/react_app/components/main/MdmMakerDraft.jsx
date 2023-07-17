@@ -12,6 +12,7 @@ const MdmMakerDraft = ({ teams, selected }) => {
     const [players, setPlayers] = useState([])
     const [tab, setTab] = useState('trade')
     const [pickData, setPickData] = useState(data)
+    const [draftState, setDraftState] = useState({})
 
     let orderedPicks = new Array(256).fill("")
     for (let [k, v] of Object.entries(pickData)) {
