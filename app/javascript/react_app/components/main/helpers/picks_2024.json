@@ -9,7 +9,7 @@
     "Cleveland Browns": [51,83,177,197],
     "Dallas Cowboys": [24,56,87,124,208,212,244],
     "Denver Broncos": [15,79,115,121,151,229,235],
-    "Detroit Lions": [26,58,82,89,126,162,201],
+    "Detroit Lions": [26,58,82,89,126,162,201,246],
     "Green Bay Packers": [6,25,37,71,106,141,169,182,217,219,226],
     "Houston Texans": [19,34,92,102,119,138,222,240],
     "Indianapolis Colts": [4,36,68,104,140,179,224],
@@ -28,7 +28,7 @@
     "San Francisco 49ers": [30,62,93,99,100,130,174,205,209,216,250],
     "Seattle Seahawks": [16,48,80,84,116,152,191,236],
     "Los Angeles Rams": [9,41,73,109,145,190,214,218,253,255],
-    "Tampa Bay Buccaneers": [3, 35, 67, 103, 178, 223],
+    "Tampa Bay Buccaneers": [3,35,67,103,178,223],
     "Tennessee Titans": [8,40,108,144,183,228],
     "Washington Commanders": [5,39,70,105,143,181,225]
 }

@@ -16,6 +16,15 @@ import SortableTeam from "./helpers/SortableTeam"
 
 const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) => {
  
+    findIndex = (id, arr) => {
+        for (let [index, val] of arr.entries()) {
+            if (val.id === id) {
+                return index
+            }
+        }
+        return -1
+    }
+
     // Activation constraint needed to fire onClick and other events
     const sensors = useSensors(
       useSensor(PointerSensor, {
@@ -27,42 +36,6 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
         coordinateGetter: sortableKeyboardCoordinates,
       })
     );
-
-    findIndex = (id, arr) => {
-        for (let [index, val] of arr.entries()) {
-            if (val.id === id) {
-                return index
-            }
-        }
-    
-        return -1
-    }
-
-    function handleDragEnd(event) {
-        const {active, over} = event
-        if (active.id !== over.id) {
-            setTeams((teams) => {
-                const oldIdx = findIndex(active.id, teams)
-                const newIdx = findIndex(over.id, teams)
-
-                return arrayMove(teams, oldIdx, newIdx)
-            })
-        }
-    }
-
-    function handleClick(event, type) {
-        if (type === 'teamClick') {
-            let idx = parseInt(event.currentTarget.id)
-            if (idx !== -1) {
-                setSelected(prev => ({
-                    ...prev,
-                    [idx]: true
-                }))
-            }
-        } else if (type === 'stageClick') {
-            setStage(2)
-        }
-    }
   
     return (<>
         {/* Team Area */}
@@ -125,10 +98,41 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
             </div>
 
             <div className="mt-auto pb-28">
-                <button onClick={(e) => handleClick(e, 'stageClick')} className="btn">Start</button>
+                <button onClick={(e) => handleClick(e, 'stageClick')} className="btn rounded-none">Start</button>
             </div>
         </div>
     </>)
+
+    // Handlers
+    function handleDragEnd(event) {
+        const {active, over} = event
+        if (over && active && active.id !== over.id) {
+            setTeams((teams) => {
+                const oldIdx = findIndex(active.id, teams)
+                const newIdx = findIndex(over.id, teams)
+
+                return arrayMove(teams, oldIdx, newIdx)
+            })
+        }
+    }
+
+    function handleClick(event, type) {
+        if (type === 'teamClick') {
+            let idx = parseInt(event.currentTarget.id)
+            if (idx !== -1) {
+                setSelected(prev => ({
+                    ...prev,
+                    [idx]: true
+                }))
+            }
+        } else if (type === 'stageClick') {
+            if (Object.keys(selected).length > 0) {
+                setStage(2)
+            } else {
+                console.log('pick a team')
+            }
+        }
+    }
 }
   
   export default MdmMakerSettings
