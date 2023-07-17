@@ -1,13 +1,51 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
+
+import pickValueData from './pick_value_rich_hill.json'
 
 const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
+    // Prefilter
     const selectedTeams = teams.filter(team => team.id in selected)
     const localTeams = teams.filter(team => !(team.id in selected))
 
+    for (let i=17; i < 257; i++) {
+        let diff = 0
+        if (i<=20) {
+            diff = 9
+        } else if (i <= 24) {
+            diff = 8
+        } else if (i <= 32) {
+            diff = 7
+        } else if (i <= 35) {
+            diff = 5
+        } else if (i <= 47) {
+            diff = 4
+        } else if (i <= 56) {
+            diff = 3
+        } else if (i <= 68) {
+            diff = 2
+        } else {
+            diff = 1
+        }
+
+        pickValueDataVal = pickValueData[i-1] - diff > 0 ? pickValueData[i-1] - diff : 1
+        pickValueData[i] = pickValueDataVal
+    }
+
+    // useState
     const [tradePartner, setTradePartner] = useState(teams[0].city + " " + teams[0].name)
     const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].city + " " + selectedTeams[0].name)
-
     const [activeTrades, setActiveTrades] = useState({})
+    const [tradeValue, setTradeValue] = useState(0)
+
+    const findAndSetTradeValue = () => {
+        let pvd = 0
+        if (tradePartner in activeTrades) 
+            activeTrades[tradePartner].forEach(value => pvd += pickValueData[value])
+        if (currentTeam in activeTrades) 
+            activeTrades[currentTeam].forEach(value => pvd -= pickValueData[value])
+
+        setTradeValue(_ => pvd)
+    }
 
     function classNames(...classes) {
         return classes.join(" ")
@@ -23,7 +61,10 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
                 </select>
             </div>
 
-            <div className="flex justify-center border-b-2 pt-6">2024</div>
+            <div className="pt-4"></div>
+            {tradeValue > 0 && <div className="text-success">Trade Value: {tradeValue}</div>}
+            {tradeValue < 0 && <div className="text-error">Trade Value: {tradeValue}</div>}
+            <div className="flex justify-center border-b-2 pt-2">2024</div>
             <div className="flex justify-center pt-2 w-[24rem]">
                 <div className="grid grid-cols-7 gap-2">
                     {pickData[tradePartner].map(pick => {
@@ -46,7 +87,10 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
                 </select>
             </div>
 
-            <div className="flex justify-center border-b-2 pt-6">2024</div>
+            <div className="pt-4"></div>
+            {tradeValue < 0 && <div className="text-success">Trade Value: {-tradeValue}</div>}
+            {tradeValue > 0 && <div className="text-error">Trade Value: {-tradeValue}</div>}
+            <div className="flex justify-center border-b-2 pt-2">2024</div>
             <div className="flex justify-center pt-2 w-[24rem]">
                 <div className="grid grid-cols-7 gap-2">
                     {pickData[currentTeam].map(pick => {
@@ -60,8 +104,15 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
                 </div>
             </div>
 
-            <div className="mt-auto pb-28">
-                <button onClick={handleTradeSubmitClick} className="btn rounded-none">Make Trade</button>
+            <div className="flex flex-col justify-center items-center mt-auto pb-28">
+                {tradeValue !== 0 && 
+                    <div 
+                        className={tradeValue <= 10 && tradeValue >= -10 ? "text-success" : "text-error"}
+                    >
+                        {tradeValue <= 10 && tradeValue >= -10 ? "Accepted" : "Difference Too Big"}
+                    </div>
+                }
+                <button onClick={handleTradeSubmitClick} className="btn rounded-none">{tradeValue <= 10 && tradeValue >= -10 ? "Make Trade" : "Force Trade Anyway"}</button>
             </div>
         </div>
     </>)
@@ -75,22 +126,28 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
         } else if (type === "currentTeam") {
             setCurrentTeam(e.currentTarget.value)
         }
+
+        findAndSetTradeValue()
     }
 
     function handleTradeClick(e, type) {
         let k = null
-        if (type === 'tradePartner') {
-            k = tradePartner
-        } else if (type === 'currentTeam') {
-            k = currentTeam
-        }
+        let pickInt = parseInt(e.currentTarget.innerText)
 
-        if (k in activeTrades) {
-            activeTrades[k].push(parseInt(e.currentTarget.innerText))
+        if (type === 'tradePartner') k = tradePartner
+        if (type === 'currentTeam') k = currentTeam
+
+        if (k in activeTrades && activeTrades[k].includes(pickInt)) {
+            activeTrades[k] = activeTrades[k].filter(x => x !== pickInt)
         } else {
-            activeTrades[k] = [parseInt(e.currentTarget.innerText)]
+            if (k in activeTrades) {
+                activeTrades[k].push(pickInt)
+            } else {
+                activeTrades[k] = [pickInt]
+            }
         }
 
+        findAndSetTradeValue()
         setActiveTrades(_ => ({
             ...activeTrades
         }))
@@ -100,8 +157,11 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
         newTp = pickData[tradePartner]
         newCt = pickData[currentTeam]
 
-        newTp = newTp.filter(x => !activeTrades[tradePartner].includes(x)).concat(activeTrades[currentTeam]).sort((a,b) => a-b)
-        newCt = newCt.filter(x => !activeTrades[currentTeam].includes(x)).concat(activeTrades[tradePartner]).sort((a,b) => a-b)
+        activeTp = tradePartner in activeTrades ? activeTrades[tradePartner] : []
+        activeCt = currentTeam in activeTrades ? activeTrades[currentTeam] : []
+
+        newTp = newTp.filter(x => !activeTp.includes(x)).concat(activeCt).sort((a,b) => a-b)
+        newCt = newCt.filter(x => !activeCt.includes(x)).concat(activeTp).sort((a,b) => a-b)
 
         setPickData(prev => ({
             ...prev,

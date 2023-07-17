@@ -12,8 +12,6 @@ const MdmDraftTab = ({ players }) => {
         ]
     })
 
-    console.log(localPlayers)
-
     useEffect(() => {
         if (search !== "") {
             setLocalPlayers(fuse.search(search).map(searchItem => searchItem.item))
