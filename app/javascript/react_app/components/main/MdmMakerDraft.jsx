@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
 import MdmTradeTab from "./helpers/MdmTradeTab"
@@ -6,18 +6,91 @@ import MdmDraftTab from "./helpers/MdmDraftTab"
 import MdmAnalysisTab from "./helpers/MdmAnalysisTab"
 
 import data from './helpers/picks_2024.json'
+import needsData from './helpers/needs_2024.json'
+import positionalData from './helpers/positional_value.json'
 
 const MdmMakerDraft = ({ teams, selected }) => {
     const navigate = useNavigate();
     const [players, setPlayers] = useState([])
     const [tab, setTab] = useState('trade')
     const [pickData, setPickData] = useState(data)
+    const [speed, setSpeed] = useState(80)
+    const [needsVsValue, setNeedsVsValue] = useState(50)
+    const [randomness, setRandomness] = useState(10)
+    const [draftRunning, setDraftRunning] = useState(false)
+    const draftInterval = useRef(undefined)
     const [draftState, setDraftState] = useState({})
 
     let orderedPicks = new Array(256).fill("")
     for (let [k, v] of Object.entries(pickData)) {
         for (let pick of v) {
             orderedPicks[pick-1] = k
+        }
+    }
+
+    const startOrPauseDraft = () => {
+        if (draftRunning === true) {
+            clearInterval(draftInterval)
+            setDraftRunning(prev => !prev)
+        } else {
+            setDraftRunning(prev => !prev)
+
+            draftInterval = setInterval(() => {
+                let total = Object.keys(draftState).length
+                let teamPicking = orderedPicks[total]
+                let needs = needsData[teamPicking]
+                let needsHash = {}
+                for (let need of needs) {
+                    needsHash[need] = true
+                }
+
+                let possibleNeeds = []
+                if (needs.length > 0) {
+                    let i = 0
+                    for (let player of players) {
+                        if (player.position in needsHash) possibleNeeds.push(player)
+                        if (possibleNeeds.length >= 5) break
+
+                        i += 1
+                        if (i >= 15) break
+                    }
+                }
+
+                let possiblePositional = []
+                let i = 0
+                for (let player of players) {
+                    if (!(player.position in positionalData)) console.log(player)
+
+                    possiblePositional.push([player, positionalData[player.position]])
+
+                    i += 1
+                    if (i >= 20) break
+                }
+                possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
+
+                let roll = parseInt(Math.random() * 10)
+                if (possibleNeeds.length > 0 && roll*10 < needsVsValue) {
+                    let curPick = parseInt(Math.random() * possibleNeeds.length)
+
+                    setDraftState(prev => ({
+                        ...prev,
+                        [total+1]: possibleNeeds[curPick]
+                    }))
+
+                    let idx = players.indexOf(possibleNeeds[curPick])
+                    setPlayers(_ => players.splice(idx, 1))
+                } else {
+                    let curPick = parseInt(Math.random() * possiblePositional.length)
+
+                    setDraftState(prev => ({
+                        ...prev,
+                        [total+1]: possiblePositional[curPick]
+                    }))
+
+                    let idx = players.indexOf(possiblePositional[curPick])
+                    setPlayers(_ => players.splice(idx, 1))
+                }
+            }, 10000 / (speed * 4))
         }
     }
 

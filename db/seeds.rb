@@ -37,7 +37,8 @@ draft_data.each do |td|
         last: last.join(" "),
         number: td[5],
         position: td[4],
-        college: td[27]
+        college: td[27],
+        projected: td[1]
     }
 
     begin
