@@ -14,85 +14,87 @@ const MdmMakerDraft = ({ teams, selected }) => {
     const [players, setPlayers] = useState([])
     const [tab, setTab] = useState('trade')
     const [pickData, setPickData] = useState(data)
+    const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
     const [speed, setSpeed] = useState(80)
     const [needsVsValue, setNeedsVsValue] = useState(50)
     const [randomness, setRandomness] = useState(10)
     const [draftRunning, setDraftRunning] = useState(false)
-    const draftInterval = useRef(undefined)
     const [draftState, setDraftState] = useState({})
+    let draftInterval = useRef(undefined)
 
-    let orderedPicks = new Array(256).fill("")
-    for (let [k, v] of Object.entries(pickData)) {
-        for (let pick of v) {
-            orderedPicks[pick-1] = k
-        }
+    const createDraftInterval = () => {
+        return setInterval(() => {
+            let total = Object.keys(draftState).length
+            let teamPicking = orderedPicks[total]
+            let needs = needsData[teamPicking]
+            let needsHash = {}
+            for (let need of needs) {
+                needsHash[need] = true
+            }
+
+            let possibleNeeds = []
+            if (needs.length > 0) {
+                let i = 0
+                for (let player of players) {
+                    if (player.position in needsHash) possibleNeeds.push(player)
+                    if (possibleNeeds.length >= 5) break
+
+                    i += 1
+                    if (i >= 15) break
+                }
+            }
+
+            let possiblePositional = []
+            let i = 0
+            for (let player of players) {
+                if (!(player.position in positionalData)) console.log(player)
+
+                possiblePositional.push([player, positionalData[player.position]])
+
+                i += 1
+                if (i >= total*3 || i >= 15) break
+            }
+            possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
+
+            let roll = parseInt(Math.random() * 10)
+            if (possibleNeeds.length > 0 && roll*10 < needsVsValue) {
+                let curPick = parseInt(Math.random() * possibleNeeds.length)
+
+                setDraftState(prev => ({
+                    ...prev,
+                    [total+1]: possibleNeeds[curPick]
+                }))
+
+                console.log("WAZAUP")
+
+                let idx = players.indexOf(possibleNeeds[curPick])
+                setPlayers(_ => players.slice(0, idx).concat(players.slice(idx+1)))
+            } else {
+                let curPick = parseInt(Math.random() * possiblePositional.length * ((100-needsVsValue)*.01))
+
+                setDraftState(prev => ({
+                    ...prev,
+                    [total+1]: possiblePositional[curPick][0]
+                }))
+
+                let idx = players.indexOf(possiblePositional[curPick][0])
+                console.log(idx, players, players.slice(0, idx).concat(players.slice(idx+1)))
+                setPlayers(_ => players.slice(0, idx).concat(players.slice(idx+1)))
+            }
+        }, 1000)
     }
 
     const startOrPauseDraft = () => {
         if (draftRunning === true) {
-            clearInterval(draftInterval)
+            clearInterval(draftInterval.current)
             setDraftRunning(prev => !prev)
         } else {
             setDraftRunning(prev => !prev)
-
-            draftInterval = setInterval(() => {
-                let total = Object.keys(draftState).length
-                let teamPicking = orderedPicks[total]
-                let needs = needsData[teamPicking]
-                let needsHash = {}
-                for (let need of needs) {
-                    needsHash[need] = true
-                }
-
-                let possibleNeeds = []
-                if (needs.length > 0) {
-                    let i = 0
-                    for (let player of players) {
-                        if (player.position in needsHash) possibleNeeds.push(player)
-                        if (possibleNeeds.length >= 5) break
-
-                        i += 1
-                        if (i >= 15) break
-                    }
-                }
-
-                let possiblePositional = []
-                let i = 0
-                for (let player of players) {
-                    if (!(player.position in positionalData)) console.log(player)
-
-                    possiblePositional.push([player, positionalData[player.position]])
-
-                    i += 1
-                    if (i >= 20) break
-                }
-                possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
-
-                let roll = parseInt(Math.random() * 10)
-                if (possibleNeeds.length > 0 && roll*10 < needsVsValue) {
-                    let curPick = parseInt(Math.random() * possibleNeeds.length)
-
-                    setDraftState(prev => ({
-                        ...prev,
-                        [total+1]: possibleNeeds[curPick]
-                    }))
-
-                    let idx = players.indexOf(possibleNeeds[curPick])
-                    setPlayers(_ => players.splice(idx, 1))
-                } else {
-                    let curPick = parseInt(Math.random() * possiblePositional.length)
-
-                    setDraftState(prev => ({
-                        ...prev,
-                        [total+1]: possiblePositional[curPick]
-                    }))
-
-                    let idx = players.indexOf(possiblePositional[curPick])
-                    setPlayers(_ => players.splice(idx, 1))
-                }
-            }, 10000 / (speed * 4))
+            draftInterval.current = createDraftInterval()
         }
     }
+
+    console.log(draftState)
 
     function classNames(...classes) {
         return classes.join(" ")
@@ -111,6 +113,21 @@ const MdmMakerDraft = ({ teams, selected }) => {
         .then((res) => setPlayers(res))
         .catch(() => navigate("/"))
     }, []);
+
+    useEffect(() => {
+        for (let [k, v] of Object.entries(pickData)) {
+            for (let pick of v) {
+                orderedPicks[pick-1] = k
+            }
+        }
+    }, [pickData])
+
+    useEffect(() => {
+        if (draftRunning === true)
+            draftInterval.current = createDraftInterval()
+
+        return () => clearInterval(draftInterval.current)
+    }, [draftState])
 
     return (<>
         {/* PMenu */}
@@ -135,7 +152,7 @@ const MdmMakerDraft = ({ teams, selected }) => {
             </div>
             <div className="flex justify-evenly w-[54rem] h-full">
                 {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} pickData={pickData} setPickData={setPickData} />}
-                {tab === 'draft' && <MdmDraftTab players={players} />}
+                {tab === 'draft' && <MdmDraftTab players={players} startOrPauseDraft={startOrPauseDraft} draftRunning={draftRunning} />}
                 {tab === 'analysis' && <MdmAnalysisTab/>}
             </div>
         </div>

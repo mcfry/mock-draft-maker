@@ -28,11 +28,12 @@ ActiveRecord::Schema[7.0].define(version: 202307152000522) do
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "first"
-    t.string "last"
+    t.string "first", null: false
+    t.string "last", null: false
     t.integer "number"
-    t.string "position"
+    t.string "position", null: false
     t.string "college"
+    t.integer "projected", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require_relative '../../app/middleware/sourcemap_redirect_middleware'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -60,6 +61,9 @@ Rails.application.configure do
   config.assets.quiet = true
   #config.assets.debug = true
   #config.assets.prefix = "/dev-assets"
+
+  config.middleware.use SourcemapRedirectMiddleware
+  config.assets.debug = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

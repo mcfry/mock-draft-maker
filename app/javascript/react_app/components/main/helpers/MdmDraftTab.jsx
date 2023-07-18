@@ -1,26 +1,41 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 
 import Fuse from "fuse.js";
 
-const MdmDraftTab = ({ players }) => {
+const MdmDraftTab = ({ players, startOrPauseDraft, draftRunning }) => {
     const [search, setSearch] = useState("")
     const [localPlayers, setLocalPlayers] = useState(players)
-    const fuse = new Fuse(players, {
+    const fuse = useRef(new Fuse(players, {
         keys: [
             "last",
             "first"
         ]
-    })
+    }))
 
     useEffect(() => {
         if (search !== "") {
-            setLocalPlayers(fuse.search(search).map(searchItem => searchItem.item))
+            setLocalPlayers(fuse.current.search(search).map(searchItem => searchItem.item))
+        } else {
+            setLocalPlayers(players)
         }
     }, [search]);
+
+    useEffect(() => {
+        console.log(players)
+        fuse.current.setCollection(players)
+
+        if (search !== "") {
+            setLocalPlayers(fuse.current.search(search).map(searchItem => searchItem.item))
+        } else {
+            setLocalPlayers(players)
+        }
+    }, [players])
 
     return (<>
         <div className="flex flex-col">
             <div className="navbar bg-base-300">
+                <button onClick={startOrPauseDraft} className="btn rounded-none">{draftRunning ? "Pause" : "Start"}</button>
+
                 <div className="flex justify-end w-full">
                     <div className="flex-none gap-2">
                         <div className="form-control pr-4">

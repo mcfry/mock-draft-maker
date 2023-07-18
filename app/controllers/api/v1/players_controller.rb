@@ -1,6 +1,6 @@
 class Api::V1::PlayersController < ApplicationController
   def index
-    players = Player.all.order(:last, :first, :college)
+    players = Player.all.order(:projected, :last, :first)
     render json: players
   end
 

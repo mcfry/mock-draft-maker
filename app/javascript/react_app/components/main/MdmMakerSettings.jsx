@@ -117,6 +117,8 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
     }
 
     function handleClick(event, type) {
+        event.preventDefault()
+        
         if (type === 'teamClick') {
             let idx = parseInt(event.currentTarget.id)
             if (idx !== -1) {

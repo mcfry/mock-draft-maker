@@ -13,6 +13,7 @@ teams_data.each do |td|
         name = citysplit[2]
     end
 
+    print(td)
     team_hash = {
         name: name,
         city: city,

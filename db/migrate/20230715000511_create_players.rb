@@ -6,7 +6,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.integer :number
       t.string :position, null: false
       t.string :college
-      t.int :projected, null: false
+      t.integer :projected, null: false
 
       t.timestamps
     end
