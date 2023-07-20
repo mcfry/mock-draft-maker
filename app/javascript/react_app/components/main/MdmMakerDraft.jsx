@@ -46,6 +46,13 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
 
         // Remove from possible picks
         removePlayer(playerToAdd)
+
+        // Remove pick data (trades)
+        oldPd = pickData[orderedPicks[total].full_name]
+        setPickData(prev => ({
+            ...prev,
+            [orderedPicks[total].full_name]: oldPd.slice(1)
+        }))
     }
 
     const removePlayer = (playerToRemove) => {
@@ -109,22 +116,14 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             playerIsPicking = selectedTeams.includes(picking)
             if (draftRunning === true && playerIsPicking) {
                 setDraftRunning(_ => false)
-                setUserPicking(true)
+                setUserPicking(_ => true)
                 setTab('draft')
             } else {
                 setDraftRunning(_ => true)
+                setUserPicking(_ => false)
+                setTab('draft')
                 draftInterval.current = createDraftInterval()
             }
-
-            // if (!selectedTeams.includes(picking)) {
-            //     setUserPicking(false)
-            //     setDraftRunning(prev => !prev)
-            //     draftInterval.current = createDraftInterval()
-            // } else {
-            //     setUserPicking(true)
-            //     setTab('draft')
-            //     console.log('Must pick')
-            // }
         }
     }
 
@@ -149,12 +148,14 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
     }, [])
 
     useEffect(() => {
-        // probably better to just do ID
-        picking = orderedPicks[Object.keys(draftState).length] // stop on team
-        if (draftRunning === true && !selectedTeams.includes(picking))
+        picking = orderedPicks[Object.keys(draftState).length]
+        // stop on selected team
+        if (draftRunning === true && !selectedTeams.includes(picking)) {
             draftInterval.current = createDraftInterval()
-        else if (draftRunning === true) {
-            setUserPicking(true)
+            // setDraftRunning(_ => false) // only can do 2 picks with this
+            setUserPicking(_ => false)
+        } else if (draftRunning === true) {
+            setUserPicking(_ => true)
             setTab('draft')
         }
 
@@ -192,15 +193,15 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                     index = roundStart + index
 
                     return currentPick >= index+1 ? 
-                        <li key={team.full_name + "_" + index.toString()}>
+                        <li key={team.name + "_" + index.toString()}>
                             <div className="flex justify-center items-center">
-                                <a className="text-sm">{team.full_name}: {draftState[index+1].first + " " + draftState[index+1].last}</a>
+                                <a className="text-sm">{team.name}: {draftState[index+1].full_name} ({draftState[index+1].position})</a>
                             </div>
                         </li>
                     :
-                        <li key={team.full_name + "_" + index.toString()}>
+                        <li key={team.name + "_" + index.toString()}>
                             <div className="flex justify-center items-center">
-                                <a className="text-lg">{team.full_name}: {index+1}</a>
+                                <a className="text-lg">{team.name}: {index+1}</a>
                             </div>
                         </li>
                 })}
@@ -210,7 +211,11 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         {/* Trade Stuff + PInfo */}
         <div className="flex flex-col">
             <div className="navbar bg-base-300">
-                <button onClick={startOrPauseDraft} className="btn rounded-none">{draftRunning ? "Pause" : "Start"}</button>
+                {!userPicking && 
+                    <button onClick={startOrPauseDraft} className="btn rounded-none">
+                        {draftRunning ? "Pause" : "Start"}
+                    </button>
+                }
 
                 <div>&nbsp;&nbsp;&nbsp;</div>
 
@@ -258,12 +263,12 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 <a onClick={(e) => handleClick(e, 'draft')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'draft' ? "tab-active" : "")}>Draft a Player</a> 
                 <a onClick={(e) => handleClick(e, 'analysis')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'analysis' ? "tab-active" : "")}>Analysis</a>
                 {userPicking && <div className="flex justify-end items-center h-full pl-48">
-                    <div className="text-lg font-bold text-info whitespace-nowrap">You are picking</div>
+                    <div className="text-xl font-bold text-error whitespace-nowrap">You are picking</div>
                 </div>}
             </div>
 
             <div className="flex justify-evenly w-[54rem] h-full">
-                {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} selectedTeams={selectedTeams} setSelectedTeams={setSelectedTeams} pickData={pickData} setPickData={setPickData} />}
+                {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} selectedTeams={selectedTeams} setSelectedTeams={setSelectedTeams} pickData={pickData} setPickData={setPickData} draftRunning={draftRunning} userPicking={userPicking} />}
                 {tab === 'draft' && <MdmDraftTab localPlayers={localPlayers}   preselectedPick={preselectedPick} setPreselectedPick={setPreselectedPick} userPicking={userPicking} pickModal={pickModal} pickPlayer={pickPlayer} />}
                 {tab === 'analysis' && <MdmAnalysisTab />}
             </div>

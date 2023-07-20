@@ -8,6 +8,13 @@ DONE - fix: can't deselect team
 DONE - add - can select players on selected turn
 add: draft logic for each selected team
 add: 1 year future trade picks with value
-fix: trade options should dissappear once drafted
-add: pause draft to trade
-fix: can select players for unselected teams, and while running
+DONE: fix: trade options should disappear once drafted
+DONE: add: pause draft to trade
+DONE: fix: can select players for unselected teams, and while running
+add: number of rounds selector
+add: way to see previous rounds
+fix: start/stop button shows 'pause' during players pick even though round is paused
+DONE: add: allow trading when draft is paused for picking
+    - error when making 2nd trade between same teams?
+add: more confirmation UI for successfull trade
+add: alert bar

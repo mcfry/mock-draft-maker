@@ -26,11 +26,11 @@ for (let i=17; i < 257; i++) {
     pickValueData[i] = pickValueDataVal
 }
 
-const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, setSelectedTeams }) => {
+const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, setSelectedTeams, draftRunning, userPicking }) => {
     // useState
     const [localTeams, setLocalTeams] = useState(teams.filter(team => !(team.id in selected)))
-    const [tradePartner, setTradePartner] = useState(teams[0].city + " " + teams[0].name)
-    const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].city + " " + selectedTeams[0].name)
+    const [tradePartner, setTradePartner] = useState(teams[0].full_name)
+    const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].full_name)
     const [activeTrades, setActiveTrades] = useState({})
     const [tradeValue, setTradeValue] = useState(0)
 
@@ -54,69 +54,75 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
     }, [selected])
 
     return (<>
-        <div className="flex flex-col items-center border-r-2 w-[27rem]">
-            <div className="pt-6">
-                <select onChange={(e) => handleChange(e, 'tradePartner')} className="select select-bordered rounded-none w-[20rem]">
-                    {localTeams.map((team) => {
-                        return <option key={team.name + team.id.toString()}>{team.city + " " + team.name}</option>
-                    })}
-                </select>
+        {draftRunning && !userPicking ? (
+            <div className="flex justify-center items-center w-[54rem]">
+                <span className="text-info text-5xl whitespace-nowrap">Can't trade while draft is running.</span>
             </div>
-
-            <div className="pt-4"></div>
-            {tradeValue > 0 && <div className="text-success">Trade Value: {tradeValue}</div>}
-            {tradeValue < 0 && <div className="text-error">Trade Value: {tradeValue}</div>}
-            <div className="flex justify-center border-b-2 pt-2">2024</div>
-            <div className="flex justify-center pt-2 w-[24rem]">
-                <div className="grid grid-cols-7 gap-2">
-                    {pickData[tradePartner].map(pick => {
-                        let active = false
-                        if (tradePartner in activeTrades && activeTrades[tradePartner].includes(pick)) {
-                            active = true
-                        }
-
-                        return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
-                    })}
+        ) : (<>
+            <div className="flex flex-col items-center border-r-2 w-[27rem]">
+                <div className="pt-6">
+                    <select onChange={(e) => handleChange(e, 'tradePartner')} className="select select-bordered rounded-none w-[20rem]">
+                        {localTeams.map((team) => {
+                            return <option key={team.name + team.id.toString()}>{team.full_name}</option>
+                        })}
+                    </select>
                 </div>
-            </div>
-        </div>
-        <div className="flex flex-col items-center w-[27rem]">
-            <div className="pt-6">
-                <select onChange={(e) => handleChange(e, 'currentTeam')}className="select select-bordered rounded-none w-[20rem]">
-                    {selectedTeams.map(team => {
-                        return <option key={team.name + team.id.toString()}>{team.city + " " + team.name}</option>
-                    })}
-                </select>
-            </div>
 
-            <div className="pt-4"></div>
-            {tradeValue < 0 && <div className="text-success">Trade Value: {-tradeValue}</div>}
-            {tradeValue > 0 && <div className="text-error">Trade Value: {-tradeValue}</div>}
-            <div className="flex justify-center border-b-2 pt-2">2024</div>
-            <div className="flex justify-center pt-2 w-[24rem]">
-                <div className="grid grid-cols-7 gap-2">
-                    {pickData[currentTeam].map(pick => {
-                        let active = false
-                        if (currentTeam in activeTrades && activeTrades[currentTeam].includes(pick)) {
-                            active = true
-                        }
+                <div className="pt-4"></div>
+                {tradeValue > 0 && <div className="text-success">Trade Value: {tradeValue}</div>}
+                {tradeValue < 0 && <div className="text-error">Trade Value: {tradeValue}</div>}
+                <div className="flex justify-center border-b-2 pt-2">2024</div>
+                <div className="flex justify-center pt-2 w-[24rem]">
+                    <div className="grid grid-cols-7 gap-2">
+                        {pickData[tradePartner].map(pick => {
+                            let active = false
+                            if (tradePartner in activeTrades && activeTrades[tradePartner].includes(pick)) {
+                                active = true
+                            }
 
-                        return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
-                    })}
-                </div>
-            </div>
-
-            <div className="flex flex-col justify-center items-center mt-auto pb-28">
-                {tradeValue !== 0 && 
-                    <div 
-                        className={tradeValue <= 10 && tradeValue >= -10 ? "text-success" : "text-error"}
-                    >
-                        {tradeValue <= 10 && tradeValue >= -10 ? "Accepted" : "Difference Too Big"}
+                            return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
+                        })}
                     </div>
-                }
-                <button onClick={handleTradeSubmitClick} className="btn rounded-none">{tradeValue <= 10 && tradeValue >= -10 ? "Make Trade" : "Force Trade Anyway"}</button>
+                </div>
             </div>
-        </div>
+            <div className="flex flex-col items-center w-[27rem]">
+                <div className="pt-6">
+                    <select onChange={(e) => handleChange(e, 'currentTeam')}className="select select-bordered rounded-none w-[20rem]">
+                        {selectedTeams.map(team => {
+                            return <option key={team.name + team.id.toString()}>{team.full_name}</option>
+                        })}
+                    </select>
+                </div>
+
+                <div className="pt-4"></div>
+                {tradeValue < 0 && <div className="text-success">Trade Value: {-tradeValue}</div>}
+                {tradeValue > 0 && <div className="text-error">Trade Value: {-tradeValue}</div>}
+                <div className="flex justify-center border-b-2 pt-2">2024</div>
+                <div className="flex justify-center pt-2 w-[24rem]">
+                    <div className="grid grid-cols-7 gap-2">
+                        {pickData[currentTeam].map(pick => {
+                            let active = false
+                            if (currentTeam in activeTrades && activeTrades[currentTeam].includes(pick)) {
+                                active = true
+                            }
+
+                            return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
+                        })}
+                    </div>
+                </div>
+
+                <div className="flex flex-col justify-center items-center mt-auto pb-28">
+                    {tradeValue !== 0 && 
+                        <div 
+                            className={tradeValue <= 10 && tradeValue >= -10 ? "text-success" : "text-error"}
+                        >
+                            {tradeValue <= 10 && tradeValue >= -10 ? "Accepted" : "Difference Too Big"}
+                        </div>
+                    }
+                    <button onClick={handleTradeSubmitClick} className="btn rounded-none">{tradeValue <= 10 && tradeValue >= -10 ? "Make Trade" : "Force Trade Anyway"}</button>
+                </div>
+            </div>
+        </>)}
     </>)
 
     // Handlers
@@ -170,6 +176,9 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
             [tradePartner]: newTp,
             [currentTeam]: newCt
         }))
+
+        setActiveTrades(_ => ({}))
+        setTradeValue(_ => 0)
     }
 }
 
