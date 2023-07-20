@@ -121,11 +121,19 @@ const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams
         
         if (type === 'teamClick') {
             let idx = parseInt(event.currentTarget.id)
+
             if (idx !== -1) {
-                setSelected(prev => ({
-                    ...prev,
-                    [idx]: true
-                }))
+                if (idx in selected) {
+                    delete selected[idx]
+                    setSelected(_ => ({
+                        ...selected
+                    }))
+                } else {
+                    setSelected(prev => ({
+                        ...prev,
+                        [idx]: true
+                    }))
+                }
             }
         } else if (type === 'stageClick') {
             if (Object.keys(selected).length > 0) {

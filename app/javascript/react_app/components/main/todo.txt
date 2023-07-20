@@ -1,5 +1,10 @@
 DONE - fix: teams positioning in settings doesn't match d order (orderedPicks)
-fix: d doesnt stop for selected teams
+DONE - fix: d doesnt stop for selected teams
+fix: prevent start/pause button from continuing until selection made
 fix: speed + randomness not incorporated to d logic
-fix: d rounds dont flip to next 32
+DONE - fix: d rounds dont flip to next 32
 fix: maybe remove setSelectedTeams from trade tab
+DONE - fix: can't deselect team
+add: draft logic for each selected team
+add: 1 year future trade picks with value
+fix: trade options should dissappear once drafted

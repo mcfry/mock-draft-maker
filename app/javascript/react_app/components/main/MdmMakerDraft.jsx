@@ -97,6 +97,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             setDraftRunning(prev => !prev)
         } else {
             picking = orderedPicks[Object.keys(draftState).length].full_name
+            console.log(picking, selectedTeams)
             if (!selectedTeams.includes(picking)) {
                 setDraftRunning(prev => !prev)
                 draftInterval.current = createDraftInterval()
@@ -126,10 +127,9 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         .catch(() => navigate("/"))
     }, [])
 
-    // stop on team
     useEffect(() => {
-        picking = orderedPicks[Object.keys(draftState).length].full_name
-        console.log(picking, selectedTeams.includes(picking))
+        // probably better to just do ID
+        picking = orderedPicks[Object.keys(draftState).length] // stop on team
         if (draftRunning === true && !selectedTeams.includes(picking))
             draftInterval.current = createDraftInterval()
 
@@ -154,22 +154,24 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         }
     }, [players])
 
-
     let currentPick = Object.keys(draftState).length
     let currentRound = parseInt(currentPick / 32)
     let roundStart = currentRound * 32
     let roundEnd = Math.min(roundStart + 32, 256)
 
-    // console.log(currentPick)
-    // console.log(currentRound)
-    // console.log(roundStart)
-    // console.log(roundEnd)
+    // <div className="text-xl pl-2 whitespace-nowrap">
+    //                 <span className="font-bold">Round {currentRound+1}&nbsp;&nbsp;-&nbsp;&nbsp;</span>
+    //                 <span className="font-medium">Pick {currentPick}</span>
+    //             </div>
+
     return (<>
         {/* PMenu */}
         <div className="overflow-x-hidden overflow-y-auto border-r-2">
             <ul className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y">
-                {orderedPicks.slice(roundStart, roundEnd).map((team, index) => (
-                    currentPick >= index+1 ? 
+                {orderedPicks.slice(roundStart, roundEnd).map((team, index) => {
+                    index = roundStart + index
+
+                    return currentPick >= index+1 ? 
                         <li key={team.full_name + "_" + index.toString()}>
                             <div className="flex justify-center items-center">
                                 <a className="text-sm">{team.full_name}: {draftState[index+1].first + " " + draftState[index+1].last}</a>
@@ -181,7 +183,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                                 <a className="text-lg">{team.full_name}: {index+1}</a>
                             </div>
                         </li>
-                ))}
+                })}
             </ul>
         </div>
 
@@ -189,6 +191,26 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         <div className="flex flex-col">
             <div className="navbar bg-base-300">
                 <button onClick={startOrPauseDraft} className="btn rounded-none">{draftRunning ? "Pause" : "Start"}</button>
+
+                <div>&nbsp;&nbsp;&nbsp;</div>
+
+                <div className="flex flex-col p-2 bg-neutral rounded text-neutral-content">
+                    <span className="countdown font-mono text-xl">
+                    <span style={{"--value":currentRound+1}}></span>
+                    </span>
+                    <span className="text-xs">Round</span>
+                </div>
+
+                <div>&nbsp;&nbsp;</div>
+
+                <div className="flex flex-col p-2 bg-neutral rounded text-neutral-content">
+                    <span className="countdown font-mono text-xl">
+                    <span style={{"--value":currentPick}}></span>
+                    </span>
+                    <span className="text-xs">Pick</span>
+                </div>
+
+                <div>&nbsp;&nbsp;&nbsp;</div>
 
                 <div className="flex justify-end w-full">
                     <div className="flex-none gap-2">
