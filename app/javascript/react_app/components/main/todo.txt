@@ -1,0 +1,5 @@
+DONE - fix: teams positioning in settings doesn't match d order (orderedPicks)
+fix: d doesnt stop for selected teams
+fix: speed + randomness not incorporated to d logic
+fix: d rounds dont flip to next 32
+fix: maybe remove setSelectedTeams from trade tab

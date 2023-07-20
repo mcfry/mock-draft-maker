@@ -5,4 +5,10 @@ class Team < ApplicationRecord
 
     has_many :picks
     has_many :players, through: :picks
+
+    attr_accessor :full_name
+
+    def full_name
+        [city, name].join(" ")
+    end
 end

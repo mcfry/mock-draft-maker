@@ -30,7 +30,7 @@ const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
             className={classNames((isSelected === true ? "border-primary " : "") + "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
             onClick={(e) => handleClick(e, 'teamClick')}
         >
-            <span className="text-xs">{pick+1}: {team.city} {team.name}</span>
+            <span className="text-xs">{pick}: {team.city} {team.name}</span>
         </div>
     );
 }

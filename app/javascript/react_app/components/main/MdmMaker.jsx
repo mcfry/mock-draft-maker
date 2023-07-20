@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom"
 import MdmMakerSettings from "./MdmMakerSettings.jsx"
 import MdmMakerDraft from "./MdmMakerDraft.jsx"
 
+import data from './helpers/picks_2024.json'
+
 const MdmMaker = () => {
   const navigate = useNavigate();
   const [teams, setTeams] = useState([])
+  const [teamsMapping, setTeamsMapping] = useState([])
+  const [teamsLoaded, setTeamsLoaded] = useState(false)
   const [selected, setSelected] = useState({})
   const [stage, setStage] = useState(1)
+  const [pickData, setPickData] = useState(data)
+  const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
 
   useEffect(() => {
     const url = "/api/v1/teams/index"
@@ -19,9 +25,47 @@ const MdmMaker = () => {
         }
         throw new Error("Network response was not ok.")
       })
-      .then((res) => setTeams(res))
+      .then((res) => {
+        setTeams(res)
+        setTeamsLoaded(true)
+      })
       .catch(() => navigate("/"))
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    if (teamsLoaded === true) {
+      let teamsHash = {}
+      for (let team of teams) {
+        teamsHash[team.full_name] = team
+      }
+
+      for (let [k, v] of Object.entries(pickData)) {
+        for (let pick of v) {
+          orderedPicks[pick-1] = teamsHash[k]
+        }
+      }
+
+      let teamsMap = []
+      let newTeams = []
+      let seen = new Set()
+      for (let [i, op] of Object.entries(orderedPicks)) {
+        if (seen.size < 32) {
+          if (!(seen.has(op.full_name))) {
+            seen.add(op.full_name)
+            op.first_pick = parseInt(i)+1
+            newTeams.push(op)
+            teamsMap.push(op.first_pick)
+          }
+        } else {
+          break
+        }
+      }
+
+      setTeams(_ => newTeams)
+      setTeamsMapping(_ => teamsMap)
+      setOrderedPicks(_ => orderedPicks)
+    }
+  }, [pickData, teamsLoaded])
 
   return (<>
     <header className="bg-white shadow">
@@ -37,10 +81,13 @@ const MdmMaker = () => {
           <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
             <MdmMakerSettings 
               teams={teams}
+              teamsMapping={teamsMapping}
               selected={selected}
               setSelected={setSelected}
               setTeams={setTeams}
               setStage={setStage}
+              pickData={pickData}
+              setPickData={setPickData}
             />
           </div>
         </>}
@@ -51,6 +98,9 @@ const MdmMaker = () => {
             <MdmMakerDraft
               teams={teams}
               selected={selected}
+              pickData={pickData}
+              setPickData={setPickData}
+              orderedPicks={orderedPicks}
             />
           </div>
         </>}

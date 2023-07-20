@@ -14,7 +14,7 @@ import {
 } from '@dnd-kit/sortable'
 import SortableTeam from "./helpers/SortableTeam"
 
-const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) => {
+const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams, setStage, pickData, setPickData }) => {
  
     findIndex = (id, arr) => {
         for (let [index, val] of arr.entries()) {
@@ -49,10 +49,10 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
                 <SortableContext items={teams}>
                     {teams.map((team, index) => {
                         return <SortableTeam 
-                            key={team.id} 
+                            key={`${team.id}_${index}`} 
                             id={team.id} 
                             team={team} 
-                            pick={index}
+                            pick={team.first_pick || index+1}
                             isSelected={team.id in selected}
                             handleClick={handleClick}
                         />
@@ -129,7 +129,14 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
             }
         } else if (type === 'stageClick') {
             if (Object.keys(selected).length > 0) {
+                for (let [i,team] of Object.entries(teams)) {
+                    pickData[team.full_name][0] = teamsMapping[i]
+                }
+
                 setStage(2)
+                setPickData(_ => ({
+                    ...pickData
+                }))
             } else {
                 console.log('pick a team')
             }
@@ -137,4 +144,4 @@ const MdmMakerSettings = ({ teams, selected, setSelected, setTeams, setStage }) 
     }
 }
   
-  export default MdmMakerSettings
+export default MdmMakerSettings

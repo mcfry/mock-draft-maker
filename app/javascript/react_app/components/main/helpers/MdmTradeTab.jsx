@@ -26,9 +26,8 @@ for (let i=17; i < 257; i++) {
     pickValueData[i] = pickValueDataVal
 }
 
-const MdmTradeTab = ({ teams, selected, pickData, setPickData }) => {
+const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, setSelectedTeams }) => {
     // useState
-    const [selectedTeams, setSelectedTeams] = useState(teams.filter(team => team.id in selected))
     const [localTeams, setLocalTeams] = useState(teams.filter(team => !(team.id in selected)))
     const [tradePartner, setTradePartner] = useState(teams[0].city + " " + teams[0].name)
     const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].city + " " + selectedTeams[0].name)

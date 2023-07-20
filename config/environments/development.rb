@@ -59,7 +59,6 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  #config.assets.debug = true
   #config.assets.prefix = "/dev-assets"
 
   config.middleware.use SourcemapRedirectMiddleware
