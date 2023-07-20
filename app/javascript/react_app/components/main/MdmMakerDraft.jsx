@@ -20,9 +20,12 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
     const [randomness, setRandomness] = useState(10)
     const [draftRunning, setDraftRunning] = useState(false)
     const [draftState, setDraftState] = useState({})
+    const [userPicking, setUserPicking] = useState(false)
     const [search, setSearch] = useState("")
     const [localPlayers, setLocalPlayers] = useState(players)
+    const [preselectedPick, setPreselectedPick] = useState(null)
 
+    const pickModal = useRef(null)
     let draftInterval = useRef(undefined)
     const fuse = useRef(new Fuse(players, {
         keys: [
@@ -30,6 +33,25 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             "first"
         ]
     }))
+
+    const pickPlayer = (playerToAdd, total) => {
+        if (!total) {
+            total = Object.keys(draftState).length
+        }
+
+        setDraftState(prev => ({
+            ...prev,
+            [total+1]: playerToAdd
+        }))
+
+        // Remove from possible picks
+        removePlayer(playerToAdd)
+    }
+
+    const removePlayer = (playerToRemove) => {
+        let idx = players.indexOf(playerToRemove)
+        setPlayers(_ => players.slice(0, idx).concat(players.slice(idx+1)))
+    }
 
     const createDraftInterval = () => {
         return setInterval(() => {
@@ -69,24 +91,11 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             if (possibleNeeds.length > 0 && roll*10 < needsVsValue) {
                 let curPick = parseInt(Math.random() * possibleNeeds.length)
 
-                setDraftState(prev => ({
-                    ...prev,
-                    [total+1]: possibleNeeds[curPick]
-                }))
-
-                let idx = players.indexOf(possibleNeeds[curPick])
-                setPlayers(_ => players.slice(0, idx).concat(players.slice(idx+1)))
+                pickPlayer(possibleNeeds[curPick], total)
             } else {
                 let curPick = parseInt(Math.random() * possiblePositional.length * ((100-needsVsValue)*.01))
 
-                setDraftState(prev => ({
-                    ...prev,
-                    [total+1]: possiblePositional[curPick][0]
-                }))
-
-                let idx = players.indexOf(possiblePositional[curPick][0])
-                console.log(idx, players, players.slice(0, idx).concat(players.slice(idx+1)))
-                setPlayers(_ => players.slice(0, idx).concat(players.slice(idx+1)))
+                pickPlayer(possiblePositional[curPick][0], total)
             }
         }, 1000)
     }
@@ -96,14 +105,26 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             clearInterval(draftInterval.current)
             setDraftRunning(prev => !prev)
         } else {
-            picking = orderedPicks[Object.keys(draftState).length].full_name
-            console.log(picking, selectedTeams)
-            if (!selectedTeams.includes(picking)) {
-                setDraftRunning(prev => !prev)
-                draftInterval.current = createDraftInterval()
+            picking = orderedPicks[Object.keys(draftState).length]
+            playerIsPicking = selectedTeams.includes(picking)
+            if (draftRunning === true && playerIsPicking) {
+                setDraftRunning(_ => false)
+                setUserPicking(true)
+                setTab('draft')
             } else {
-                console.log('Must pick')
+                setDraftRunning(_ => true)
+                draftInterval.current = createDraftInterval()
             }
+
+            // if (!selectedTeams.includes(picking)) {
+            //     setUserPicking(false)
+            //     setDraftRunning(prev => !prev)
+            //     draftInterval.current = createDraftInterval()
+            // } else {
+            //     setUserPicking(true)
+            //     setTab('draft')
+            //     console.log('Must pick')
+            // }
         }
     }
 
@@ -132,6 +153,10 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         picking = orderedPicks[Object.keys(draftState).length] // stop on team
         if (draftRunning === true && !selectedTeams.includes(picking))
             draftInterval.current = createDraftInterval()
+        else if (draftRunning === true) {
+            setUserPicking(true)
+            setTab('draft')
+        }
 
         return () => clearInterval(draftInterval.current)
     }, [draftState])
@@ -158,11 +183,6 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
     let currentRound = parseInt(currentPick / 32)
     let roundStart = currentRound * 32
     let roundEnd = Math.min(roundStart + 32, 256)
-
-    // <div className="text-xl pl-2 whitespace-nowrap">
-    //                 <span className="font-bold">Round {currentRound+1}&nbsp;&nbsp;-&nbsp;&nbsp;</span>
-    //                 <span className="font-medium">Pick {currentPick}</span>
-    //             </div>
 
     return (<>
         {/* PMenu */}
@@ -213,8 +233,20 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 <div>&nbsp;&nbsp;&nbsp;</div>
 
                 <div className="flex justify-end w-full">
+                    {(tab === 'draft' && userPicking && preselectedPick) && 
+                    <button 
+                        className="btn bg-primary hover:bg-secondary text-base-100 rounded-none pr-4"
+                        onClick={() => {
+                            if (pickModal.current) {
+                                return pickModal.current.showModal()
+                            }
+                        }}
+                    >
+                        Draft Player
+                    </button>}
+
                     <div className="flex-none gap-2">
-                        <div className="form-control pr-4">
+                        <div className="form-control pl-2 pr-4">
                             <input value={search} onChange={(e) => setSearch(e.target.value)} name="search" type="text" placeholder="Search" className="input input-bordered rounded-none w-24 md:w-auto" />
                         </div>
                     </div>
@@ -225,11 +257,14 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 <a onClick={(e) => handleClick(e, 'trade')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'trade' ? "tab-active" : "")}>Trade</a> 
                 <a onClick={(e) => handleClick(e, 'draft')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'draft' ? "tab-active" : "")}>Draft a Player</a> 
                 <a onClick={(e) => handleClick(e, 'analysis')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'analysis' ? "tab-active" : "")}>Analysis</a>
+                {userPicking && <div className="flex justify-end items-center h-full pl-48">
+                    <div className="text-lg font-bold text-info whitespace-nowrap">You are picking</div>
+                </div>}
             </div>
 
             <div className="flex justify-evenly w-[54rem] h-full">
                 {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} selectedTeams={selectedTeams} setSelectedTeams={setSelectedTeams} pickData={pickData} setPickData={setPickData} />}
-                {tab === 'draft' && <MdmDraftTab localPlayers={localPlayers} atPick={currentPick + 1} />}
+                {tab === 'draft' && <MdmDraftTab localPlayers={localPlayers}   preselectedPick={preselectedPick} setPreselectedPick={setPreselectedPick} userPicking={userPicking} pickModal={pickModal} pickPlayer={pickPlayer} />}
                 {tab === 'analysis' && <MdmAnalysisTab />}
             </div>
         </div>
