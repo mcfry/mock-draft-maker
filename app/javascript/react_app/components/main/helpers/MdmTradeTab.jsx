@@ -26,7 +26,7 @@ for (let i=17; i < 257; i++) {
     pickValueData[i] = pickValueDataVal
 }
 
-const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, setSelectedTeams, draftRunning, userPicking }) => {
+const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, setSelectedTeams, draftRunning, userPicking, forceNewIntervalAndContinue }) => {
     // useState
     const [localTeams, setLocalTeams] = useState(teams.filter(team => !(team.id in selected)))
     const [tradePartner, setTradePartner] = useState(teams[0].full_name)
@@ -80,7 +80,7 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
                                 active = true
                             }
 
-                            return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
+                            return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", active ? "border-primary" : "")}>{pick}</div>
                         })}
                     </div>
                 </div>
@@ -106,12 +106,12 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
                                 active = true
                             }
 
-                            return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center bg-base-100 border-neutral border-solid p-2 border-2", active ? "border-primary" : "")}>{pick}</div>
+                            return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center hover cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", active ? "border-primary" : "")}>{pick}</div>
                         })}
                     </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center mt-auto pb-28">
+                <div className="flex flex-col justify-center items-center mt-auto pb-12">
                     {tradeValue !== 0 && 
                         <div 
                             className={tradeValue <= 10 && tradeValue >= -10 ? "text-success" : "text-error"}
@@ -162,20 +162,24 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
     }
 
     function handleTradeSubmitClick(e) {
-        newTp = pickData[tradePartner]
-        newCt = pickData[currentTeam]
+        let oldTp = pickData[tradePartner]
+        let oldCt = pickData[currentTeam]
 
         activeTp = tradePartner in activeTrades ? activeTrades[tradePartner] : []
         activeCt = currentTeam in activeTrades ? activeTrades[currentTeam] : []
 
-        newTp = newTp.filter(x => !activeTp.includes(x)).concat(activeCt).sort((a,b) => a-b)
-        newCt = newCt.filter(x => !activeCt.includes(x)).concat(activeTp).sort((a,b) => a-b)
+        newTp = oldTp.filter(x => !activeTp.includes(x)).concat(activeCt).sort((a,b) => a-b)
+        newCt = oldCt.filter(x => !activeCt.includes(x)).concat(activeTp).sort((a,b) => a-b)
 
         setPickData(prev => ({
             ...prev,
             [tradePartner]: newTp,
             [currentTeam]: newCt
         }))
+
+        if (userPicking && oldCt[0] !== newCt[0]) {
+            forceNewIntervalAndContinue()
+        }
 
         setActiveTrades(_ => ({}))
         setTradeValue(_ => 0)

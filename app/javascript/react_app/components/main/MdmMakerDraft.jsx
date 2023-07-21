@@ -4,26 +4,26 @@ import { useNavigate } from "react-router-dom"
 import MdmTradeTab from "./helpers/MdmTradeTab"
 import MdmDraftTab from "./helpers/MdmDraftTab"
 import MdmAnalysisTab from "./helpers/MdmAnalysisTab"
+import MdmYourPicksTab from "./helpers/MdmYourPicksTab"
 
 import needsData from './helpers/needs_2024.json'
 import positionalData from './helpers/positional_value.json'
 
 import Fuse from "fuse.js";
 
-const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks }) => {
+const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, speed, needsVsValue, randomness, draftRounds }) => {
     const navigate = useNavigate();
     const [selectedTeams, setSelectedTeams] = useState(teams.filter(team => team.id in selected))
     const [players, setPlayers] = useState([])
     const [tab, setTab] = useState('trade')
-    const [speed, setSpeed] = useState(80)
-    const [needsVsValue, setNeedsVsValue] = useState(50)
-    const [randomness, setRandomness] = useState(10)
     const [draftRunning, setDraftRunning] = useState(false)
     const [draftState, setDraftState] = useState({})
     const [userPicking, setUserPicking] = useState(false)
     const [search, setSearch] = useState("")
     const [localPlayers, setLocalPlayers] = useState(players)
     const [preselectedPick, setPreselectedPick] = useState(null)
+    const [yourPicks, setYourPicks] = useState({})
+    const [viewRound, setViewRound] = useState(0)
 
     const pickModal = useRef(null)
     let draftInterval = useRef(undefined)
@@ -34,9 +34,20 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
         ]
     }))
 
-    const pickPlayer = (playerToAdd, total) => {
-        if (!total) {
-            total = Object.keys(draftState).length
+    const pickPlayer = (playerToAdd, total=Object.keys(draftState).length, manualPick=false) => {
+        if (manualPick === true) {
+            if (!(orderedPicks[total].full_name in yourPicks))
+                yourPicks[orderedPicks[total].full_name] = []
+            
+            let playerToAddCopy = {
+                ...playerToAdd
+            }
+            playerToAddCopy.pickedAt = total+1
+            yourPicks[orderedPicks[total].full_name].push(playerToAddCopy)
+
+            setYourPicks(_ => ({
+                ...yourPicks
+            }))
         }
 
         setDraftState(prev => ({
@@ -53,6 +64,13 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
             ...prev,
             [orderedPicks[total].full_name]: oldPd.slice(1)
         }))
+
+        setViewRound(parseInt(total / 32))
+
+        const elementId = orderedPicks[total].name + "_" + total
+        const element = document.getElementById(elementId)
+        if (element)
+            element.scrollIntoView({ behavior: 'smooth' });
     }
 
     const removePlayer = (playerToRemove) => {
@@ -104,15 +122,17 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
 
                 pickPlayer(possiblePositional[curPick][0], total)
             }
-        }, 1000)
+        }, 1000 / 4)
     }
 
     const startOrPauseDraft = () => {
+        let total = Object.keys(draftState).length
+
         if (draftRunning === true) {
             clearInterval(draftInterval.current)
             setDraftRunning(prev => !prev)
         } else {
-            picking = orderedPicks[Object.keys(draftState).length]
+            picking = orderedPicks[total]
             playerIsPicking = selectedTeams.includes(picking)
             if (draftRunning === true && playerIsPicking) {
                 setDraftRunning(_ => false)
@@ -125,9 +145,18 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 draftInterval.current = createDraftInterval()
             }
         }
+
+        setViewRound(parseInt(total / 32))
     }
 
-    console.log(draftState)
+    const forceNewIntervalAndContinue = () => {
+        draftInterval.current = createDraftInterval()
+        setUserPicking(_ => false)
+        setDraftRunning(_ => true)
+        setViewRound(parseInt(Object.keys(draftState).length / 32))
+
+        return () => clearInterval(draftInterval.current)
+    }
 
     function classNames(...classes) {
         return classes.join(" ")
@@ -148,16 +177,18 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
     }, [])
 
     useEffect(() => {
-        picking = orderedPicks[Object.keys(draftState).length]
-        // stop on selected team
+        // stop on selected team, keep draft running
+        let total = Object.keys(draftState).length
+        let picking = orderedPicks[total]
         if (draftRunning === true && !selectedTeams.includes(picking)) {
             draftInterval.current = createDraftInterval()
-            // setDraftRunning(_ => false) // only can do 2 picks with this
             setUserPicking(_ => false)
         } else if (draftRunning === true) {
             setUserPicking(_ => true)
             setTab('draft')
         }
+
+        setViewRound(parseInt(total / 32))
 
         return () => clearInterval(draftInterval.current)
     }, [draftState])
@@ -182,26 +213,54 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
 
     let currentPick = Object.keys(draftState).length
     let currentRound = parseInt(currentPick / 32)
-    let roundStart = currentRound * 32
+    let roundStart = viewRound * 32
     let roundEnd = Math.min(roundStart + 32, 256)
 
     return (<>
         {/* PMenu */}
         <div className="overflow-x-hidden overflow-y-auto border-r-2">
             <ul className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y">
+                <li className="dropdown dropdown-bottom">
+                    <label tabIndex={0} className="btn text-2xl">
+                        Round {viewRound+1}
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </label>
+
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        {[...Array(draftRounds)].map((_, index) => 
+                            <li key={"dr_"+index.toString()} onClick={(e) => setViewRound(parseInt(e.currentTarget.value))} value={index}>
+                                <a>Round {index+1}</a>
+                            </li>
+                        )}
+                    </ul>
+                </li>
+
                 {orderedPicks.slice(roundStart, roundEnd).map((team, index) => {
                     index = roundStart + index
 
                     return currentPick >= index+1 ? 
-                        <li key={team.name + "_" + index.toString()}>
+                        <li id={team.name + "_" + index.toString()} 
+                            key={team.name + "_" + index.toString()}
+                        >
                             <div className="flex justify-center items-center">
-                                <a className="text-sm">{team.name}: {draftState[index+1].full_name} ({draftState[index+1].position})</a>
+                                <a className={classNames("text-sm", team.id in selected ? "text-info" : "")}>
+                                    {team.name}: {draftState[index+1].full_name} ({draftState[index+1].position})
+                                </a>
                             </div>
                         </li>
                     :
-                        <li key={team.name + "_" + index.toString()}>
+                        <li id={team.name + "_" + index.toString()} 
+                            key={team.name + "_" + index.toString()}
+                        >
                             <div className="flex justify-center items-center">
-                                <a className="text-lg">{team.name}: {index+1}</a>
+                                <a
+                                    className={classNames("text-lg", team.id in selected ? (orderedPicks[Object.keys(draftState).length].id === team.id ? "text-warning" : "text-info") : "")}
+                                >
+                                    {team.name}: {index+1}
+                                </a>
                             </div>
                         </li>
                 })}
@@ -229,9 +288,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 <div>&nbsp;&nbsp;</div>
 
                 <div className="flex flex-col p-2 bg-neutral rounded text-neutral-content">
-                    <span className="countdown font-mono text-xl">
-                    <span style={{"--value":currentPick}}></span>
-                    </span>
+                    <span className="countdown font-mono text-xl">{currentPick+1}</span>
                     <span className="text-xs">Pick</span>
                 </div>
 
@@ -262,15 +319,17 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks })
                 <a onClick={(e) => handleClick(e, 'trade')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'trade' ? "tab-active" : "")}>Trade</a> 
                 <a onClick={(e) => handleClick(e, 'draft')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'draft' ? "tab-active" : "")}>Draft a Player</a> 
                 <a onClick={(e) => handleClick(e, 'analysis')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'analysis' ? "tab-active" : "")}>Analysis</a>
-                {userPicking && <div className="flex justify-end items-center h-full pl-48">
-                    <div className="text-xl font-bold text-error whitespace-nowrap">You are picking</div>
+                <a onClick={(e) => handleClick(e, 'your_picks')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'your_picks' ? "tab-active" : "")}>Your Picks</a>
+                {userPicking && <div className="flex justify-end items-center h-full pl-24">
+                    <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">You are picking ({orderedPicks[Object.keys(draftState).length].name})</div>
                 </div>}
             </div>
 
             <div className="flex justify-evenly w-[54rem] h-full">
-                {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} selectedTeams={selectedTeams} setSelectedTeams={setSelectedTeams} pickData={pickData} setPickData={setPickData} draftRunning={draftRunning} userPicking={userPicking} />}
+                {tab === 'trade' && <MdmTradeTab teams={teams} selected={selected} selectedTeams={selectedTeams} setSelectedTeams={setSelectedTeams} pickData={pickData} setPickData={setPickData} draftRunning={draftRunning} userPicking={userPicking} forceNewIntervalAndContinue={forceNewIntervalAndContinue} />}
                 {tab === 'draft' && <MdmDraftTab localPlayers={localPlayers}   preselectedPick={preselectedPick} setPreselectedPick={setPreselectedPick} userPicking={userPicking} pickModal={pickModal} pickPlayer={pickPlayer} />}
                 {tab === 'analysis' && <MdmAnalysisTab />}
+                {tab === 'your_picks' && <MdmYourPicksTab yourPicks={yourPicks} />}
             </div>
         </div>
     </>)

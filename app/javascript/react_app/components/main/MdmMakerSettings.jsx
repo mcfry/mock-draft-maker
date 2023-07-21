@@ -14,7 +14,7 @@ import {
 } from '@dnd-kit/sortable'
 import SortableTeam from "./helpers/SortableTeam"
 
-const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams, setStage, pickData, setPickData }) => {
+const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams, setStage, pickData, setPickData, speed, setSpeed, needsVsValue, setNeedsVsValue, randomness, setRandomness, draftRounds, setDraftRounds }) => {
  
     findIndex = (id, arr) => {
         for (let [index, val] of arr.entries()) {
@@ -70,8 +70,19 @@ const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams
             <div className="divider"></div>
 
             <div className="join join-vertical pt-4 pb-4">
+                <div className="join-item text-sm pb-2">Number of Rounds</div>
+                <select value={draftRounds} onChange={(e) => setDraftRounds(parseInt(e.currentTarget.value))} className="select select-sm select-bordered rounded-none w-[12rem]">
+                    {[1,2,3,4,5,6,7].map(rounds => {
+                        return <option key={"rounds_"+rounds.toString()} value={rounds}>
+                            {rounds}
+                        </option>
+                    })}
+                </select>
+            </div>
+
+            <div className="join join-vertical pt-4 pb-4">
                 <div className="join-item text-sm pb-2">Speed</div>
-                <input type="range" min={0} max="100" defaultValue="80" className="range range-xs" />
+                <input type="range" min="0" max="100" value={speed} onChange={(e) => setSpeed(parseInt(e.currentTarget.value))}className="range range-xs" />
             </div>
 
             <div className="join join-vertical pt-4 pb-4">
@@ -89,15 +100,15 @@ const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams
                     </svg>
                 </div>
                 </div>
-                <input type="range" min={0} max="100" defaultValue="50" className="range range-xs" />
+                <input type="range" min="0" max="100" value={needsVsValue} onChange={(e) => setNeedsVsValue(parseInt(e.currentTarget.value))} className="range range-xs" />
             </div>
 
             <div className="join join-vertical pt-4 pb-4">
                 <div className="join-item text-sm pb-2">Randomness</div>
-                <input type="range" min={0} max="100" defaultValue="10" className="range range-xs" />
+                <input type="range" min="0" max="100" value={randomness} onChange={(e) => setRandomness(parseInt(e.currentTarget.value))} className="range range-xs" />
             </div>
 
-            <div className="mt-auto pb-28">
+            <div className="mt-auto pb-12">
                 <button onClick={(e) => handleClick(e, 'stageClick')} className="btn rounded-none">Start</button>
             </div>
         </div>

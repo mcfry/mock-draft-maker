@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 
 const MdmDraftTab = ({ localPlayers, preselectedPick, setPreselectedPick, userPicking, pickModal, pickPlayer }) => {
 
     const selectPlayer = () => {
         if (preselectedPick) {
-            pickPlayer(preselectedPick)
+            pickPlayer(preselectedPick, undefined, true)
         }
     }
 
@@ -33,7 +33,7 @@ const MdmDraftTab = ({ localPlayers, preselectedPick, setPreselectedPick, userPi
                     </thead>
                     <tbody>
                         {localPlayers.map(player => {
-                            return <tr key={player.id} className={preselectedPick && preselectedPick.id === player.id ? "bg-success" : "hover"} onClick={(e) => handleClick(e, player)}>
+                            return <tr key={player.id} className={preselectedPick && preselectedPick.id === player.id ? "bg-success" : "hover cursor-pointer"} onClick={(e) => handleClick(e, player)}>
                                 <th>{player.projected}</th>
                                 <td>{player.full_name}</td>
                                 <td>{player.position}</td>

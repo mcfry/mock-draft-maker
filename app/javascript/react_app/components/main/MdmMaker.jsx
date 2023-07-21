@@ -15,6 +15,10 @@ const MdmMaker = () => {
   const [stage, setStage] = useState(1)
   const [pickData, setPickData] = useState(data)
   const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
+  const [speed, setSpeed] = useState(80)
+  const [needsVsValue, setNeedsVsValue] = useState(50)
+  const [randomness, setRandomness] = useState(10)
+  const [draftRounds, setDraftRounds] = useState(3)
 
   useEffect(() => {
     const url = "/api/v1/teams/index"
@@ -88,6 +92,14 @@ const MdmMaker = () => {
               setStage={setStage}
               pickData={pickData}
               setPickData={setPickData}
+              speed={speed}
+              setSpeed={setSpeed}
+              needsVsValue={needsVsValue}
+              setNeedsVsValue={setNeedsVsValue}
+              randomness={randomness}
+              setRandomness={setRandomness}
+              draftRounds={draftRounds}
+              setDraftRounds={setDraftRounds}
             />
           </div>
         </>}
@@ -101,6 +113,10 @@ const MdmMaker = () => {
               pickData={pickData}
               setPickData={setPickData}
               orderedPicks={orderedPicks}
+              speed={speed}
+              needsVsValue={needsVsValue}
+              randomness={randomness}
+              draftRounds={draftRounds}
             />
           </div>
         </>}
