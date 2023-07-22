@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import MdmMakerSettings from "./MdmMakerSettings.jsx"
 import MdmMakerDraft from "./MdmMakerDraft.jsx"
+import MdmAlerts from "./MdmAlerts.jsx"
 
 import data from './helpers/picks_2024.json'
 
@@ -71,6 +72,9 @@ const MdmMaker = () => {
     }
   }, [pickData, teamsLoaded])
 
+  // alert
+  // type, message, icon
+
   return (<>
     <header className="bg-white shadow">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -78,7 +82,8 @@ const MdmMaker = () => {
       </div>
     </header>
     <main>
-      <div className="flex w-full justify-center items-center p-10">
+      <div className="flex flex-col w-full justify-center items-center p-10">
+        <MdmAlerts />
 
         {stage === 1 && <>
           {/* Mdm Settings */}

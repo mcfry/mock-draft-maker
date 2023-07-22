@@ -14,7 +14,29 @@ import {
 } from '@dnd-kit/sortable'
 import SortableTeam from "./helpers/SortableTeam"
 
-const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams, setStage, pickData, setPickData, speed, setSpeed, needsVsValue, setNeedsVsValue, randomness, setRandomness, draftRounds, setDraftRounds }) => {
+import { ArrowLongLeftIcon, ArrowLongRightIcon, BoltIcon, VariableIcon } from '@heroicons/react/20/solid'
+
+import useStore from '../../store/store.js'
+
+const MdmMakerSettings = ({ 
+    teams, 
+    teamsMapping, 
+    selected, 
+    setSelected, 
+    setTeams, 
+    setStage, 
+    pickData, 
+    setPickData, 
+    speed, 
+    setSpeed, 
+    needsVsValue, 
+    setNeedsVsValue, 
+    randomness, 
+    setRandomness, 
+    draftRounds, 
+    setDraftRounds 
+}) => {
+    const addAlert = useStore(state => state.addAlert)
  
     findIndex = (id, arr) => {
         for (let [index, val] of arr.entries()) {
@@ -81,30 +103,32 @@ const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams
             </div>
 
             <div className="join join-vertical pt-4 pb-4">
-                <div className="join-item text-sm pb-2">Speed</div>
+                <div className="join-item flex items-center text-sm pb-2">
+                    <BoltIcon className="h-5 w-5" />&nbsp;
+                    Speed
+                </div>
                 <input type="range" min="0" max="100" value={speed} onChange={(e) => setSpeed(parseInt(e.currentTarget.value))}className="range range-xs" />
             </div>
 
             <div className="join join-vertical pt-4 pb-4">
                 <div className="flex justify-between join-item text-sm pb-2">
-                <div className="flex justify-items-start">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path fillRule="evenodd" d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z" clipRule="evenodd" />
-                    </svg>
+                <div className="flex justify-items-start items-center">
+                    <ArrowLongLeftIcon className="h-5 w-5" />
                     Needs
                 </div>
-                <div className="flex justify-items-end">
+                <div className="flex justify-items-end items-center">
                     Positional Value
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path fillRule="evenodd" d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z" clipRule="evenodd" />
-                    </svg>
+                    <ArrowLongRightIcon className="h-5 w-5" />
                 </div>
                 </div>
                 <input type="range" min="0" max="100" value={needsVsValue} onChange={(e) => setNeedsVsValue(parseInt(e.currentTarget.value))} className="range range-xs" />
             </div>
 
             <div className="join join-vertical pt-4 pb-4">
-                <div className="join-item text-sm pb-2">Randomness</div>
+            <div className="join-item flex items-center text-sm pb-2">
+                    <VariableIcon className="h-5 w-5" />&nbsp;
+                    Randomness
+                </div>
                 <input type="range" min="0" max="100" value={randomness} onChange={(e) => setRandomness(parseInt(e.currentTarget.value))} className="range range-xs" />
             </div>
 
@@ -157,7 +181,11 @@ const MdmMakerSettings = ({ teams, teamsMapping, selected, setSelected, setTeams
                     ...pickData
                 }))
             } else {
-                console.log('pick a team')
+                addAlert({
+                    type: 'error',
+                    message: 'Must select a team!',
+                    time: 4000,
+                })
             }
         }
     }

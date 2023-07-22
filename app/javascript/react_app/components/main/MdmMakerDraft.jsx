@@ -24,6 +24,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
     const [preselectedPick, setPreselectedPick] = useState(null)
     const [yourPicks, setYourPicks] = useState({})
     const [viewRound, setViewRound] = useState(0)
+    const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
 
     const pickModal = useRef(null)
     let draftInterval = useRef(undefined)
@@ -68,9 +69,8 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
         setViewRound(parseInt(total / 32))
 
         const elementId = orderedPicks[total].name + "_" + total
-        const element = document.getElementById(elementId)
-        if (element)
-            element.scrollIntoView({ behavior: 'smooth' });
+        if (!isMouseOverPicks)
+            document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' });
     }
 
     const removePlayer = (playerToRemove) => {
@@ -122,7 +122,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
 
                 pickPlayer(possiblePositional[curPick][0], total)
             }
-        }, 1000 / 4)
+        }, 1000 / (speed / 10))
     }
 
     const startOrPauseDraft = () => {
@@ -219,7 +219,11 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
     return (<>
         {/* PMenu */}
         <div className="overflow-x-hidden overflow-y-auto border-r-2">
-            <ul className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y">
+            <ul 
+                onMouseOver={() => setIsMouseOverPicks(true)}
+                onMouseOut={() => setIsMouseOverPicks(false)}
+                className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
+            >
                 <li className="dropdown dropdown-bottom">
                     <label tabIndex={0} className="btn text-2xl">
                         Round {viewRound+1}
@@ -231,7 +235,11 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
 
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         {[...Array(draftRounds)].map((_, index) => 
-                            <li key={"dr_"+index.toString()} onClick={(e) => setViewRound(parseInt(e.currentTarget.value))} value={index}>
+                            <li key={"dr_"+index.toString()} onClick={(e) => {
+                                document.activeElement?.blur()
+
+                                return setViewRound(parseInt(e.currentTarget.value))
+                            }} value={index}>
                                 <a>Round {index+1}</a>
                             </li>
                         )}

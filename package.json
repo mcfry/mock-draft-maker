@@ -9,6 +9,7 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "autoprefixer": "^10.4.14",
+    "classnames": "^2.3.2",
     "daisyui": "^3.2.1",
     "esbuild": "^0.18.12",
     "fuse.js": "^6.6.2",
@@ -16,7 +17,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "uuid": "^9.0.0",
+    "zustand": "^4.3.9"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
