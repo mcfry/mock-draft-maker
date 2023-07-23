@@ -19,23 +19,18 @@ import { ArrowLongLeftIcon, ArrowLongRightIcon, BoltIcon, VariableIcon } from '@
 import useStore from '../../store/store.js'
 
 const MdmMakerSettings = ({ 
-    teams, 
-    teamsMapping, 
-    selected, 
-    setSelected, 
-    setTeams, 
+    teamsMapping,  
     setStage, 
     pickData, 
     setPickData, 
-    speed, 
-    setSpeed, 
-    needsVsValue, 
-    setNeedsVsValue, 
-    randomness, 
-    setRandomness, 
-    draftRounds, 
-    setDraftRounds 
 }) => {
+    // Store State
+    const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
+    const [selected, setSelected] = useStore(state => [state.selected, state.setSelected])
+    const [speed, setSpeed] = useStore(state => [state.speed, state.setSpeed])
+    const [needsVsValue, setNeedsVsValue] = useStore(state => [state.needsVsValue, state.setNeedsVsValue])
+    const [randomness, setRandomness] = useStore(state => [state.randomness, state.setRandomness])
+    const [draftRounds, setDraftRounds] = useStore(state => [state.draftRounds, state.setDraftRounds])
     const addAlert = useStore(state => state.addAlert)
  
     findIndex = (id, arr) => {
@@ -160,14 +155,12 @@ const MdmMakerSettings = ({
             if (idx !== -1) {
                 if (idx in selected) {
                     delete selected[idx]
-                    setSelected(_ => ({
-                        ...selected
-                    }))
+                    setSelected(selected)
                 } else {
-                    setSelected(prev => ({
-                        ...prev,
+                    setSelected({
+                        ...selected,
                         [idx]: true
-                    }))
+                    })
                 }
             }
         } else if (type === 'stageClick') {

@@ -1,8 +1,10 @@
 import React from "react"
 
 import Alert from './helpers/Alert.jsx'
-
 import useStore from '../../store/store.js'
+
+// alert
+// { type, message, icon, time }
 
 const MdmAlerts = () => {
     const activeAlerts = useStore(state => state.activeAlerts)

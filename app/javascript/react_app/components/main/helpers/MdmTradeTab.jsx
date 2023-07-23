@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import classNames from "classnames"
 
 import pickValueData from './pick_value_rich_hill.json'
 // Extrapolate so don't have to manually enter everything
@@ -44,10 +45,6 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
         setTradeValue(_ => pvd)
     }
 
-    function classNames(...classes) {
-        return classes.join(" ")
-    }
-
     useEffect(() => {
         setSelectedTeams(teams.filter(team => team.id in selected))
         setLocalTeams(teams.filter(team => !(team.id in selected)))
@@ -80,7 +77,7 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
                                 active = true
                             }
 
-                            return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", active ? "border-primary" : "")}>{pick}</div>
+                            return <div key={"2024_tp_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'tradePartner')} className={classNames("flex justify-center items-center cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", {"border-primary": active})}>{pick}</div>
                         })}
                     </div>
                 </div>
@@ -106,7 +103,8 @@ const MdmTradeTab = ({ teams, selected, pickData, setPickData, selectedTeams, se
                                 active = true
                             }
 
-                            return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center hover cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", active ? "border-primary" : "")}>{pick}</div>
+                            return <div key={"2024_ct_"+pick.toString()} onClick={(e) => handleTradeClick(e, 'currentTeam')} className={classNames("flex justify-center items-center hover cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100", 
+                            {"border-primary": active})}>{pick}</div>
                         })}
                     </div>
                 </div>

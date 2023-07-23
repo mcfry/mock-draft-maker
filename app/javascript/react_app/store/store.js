@@ -1,28 +1,11 @@
 import { create } from 'zustand'
-import { v4 as uuidv4 } from 'uuid'
 
-const useStore = create((set) => ({
-    activeAlertCount: 0,
-    activeAlerts: [],
-    addAlert: (alert) => set(state => {
-        if (alert && alert.message && alert.type) {
-            alert.id = uuidv4()
-            return {
-                activeAlerts: state.activeAlerts.concat(alert)
-            }
-        } else {
-            console.log('bad alert object')
+import { createAlertSlice } from './alertSlice'
+import { createDraftSlice } from './draftSlice'
 
-            return {
-                activeAlerts: state.activeAlerts
-            }
-        }
-    }),
-    removeAlert: (id) => set(state => {
-        return {
-            activeAlerts: state.activeAlerts.filter(alert => alert.id !== id)
-        }
-    })
+const useStore = create((...a) => ({
+    ...createAlertSlice(...a),
+    ...createDraftSlice(...a),
 }))
 
 export default useStore

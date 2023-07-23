@@ -3,23 +3,25 @@ import { useNavigate } from "react-router-dom"
 
 import MdmMakerSettings from "./MdmMakerSettings.jsx"
 import MdmMakerDraft from "./MdmMakerDraft.jsx"
+import MdmMakerShare from "./MdmMakerShare.jsx"
 import MdmAlerts from "./MdmAlerts.jsx"
+import useStore from '../../store/store.js'
 
 import data from './helpers/picks_2024.json'
 
 const MdmMaker = () => {
-  const navigate = useNavigate();
-  const [teams, setTeams] = useState([])
+  const navigate = useNavigate()
+
+  // Local State
+  // map the dnd reordering for each team's first first-round pick
   const [teamsMapping, setTeamsMapping] = useState([])
   const [teamsLoaded, setTeamsLoaded] = useState(false)
-  const [selected, setSelected] = useState({})
   const [stage, setStage] = useState(1)
   const [pickData, setPickData] = useState(data)
   const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
-  const [speed, setSpeed] = useState(80)
-  const [needsVsValue, setNeedsVsValue] = useState(50)
-  const [randomness, setRandomness] = useState(10)
-  const [draftRounds, setDraftRounds] = useState(3)
+
+  // Store State
+  const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
 
   useEffect(() => {
     const url = "/api/v1/teams/index"
@@ -66,14 +68,11 @@ const MdmMaker = () => {
         }
       }
 
-      setTeams(_ => newTeams)
+      setTeams(newTeams)
       setTeamsMapping(_ => teamsMap)
       setOrderedPicks(_ => orderedPicks)
     }
   }, [pickData, teamsLoaded])
-
-  // alert
-  // type, message, icon
 
   return (<>
     <header className="bg-white shadow">
@@ -89,22 +88,10 @@ const MdmMaker = () => {
           {/* Mdm Settings */}
           <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
             <MdmMakerSettings 
-              teams={teams}
               teamsMapping={teamsMapping}
-              selected={selected}
-              setSelected={setSelected}
-              setTeams={setTeams}
               setStage={setStage}
               pickData={pickData}
               setPickData={setPickData}
-              speed={speed}
-              setSpeed={setSpeed}
-              needsVsValue={needsVsValue}
-              setNeedsVsValue={setNeedsVsValue}
-              randomness={randomness}
-              setRandomness={setRandomness}
-              draftRounds={draftRounds}
-              setDraftRounds={setDraftRounds}
             />
           </div>
         </>}
@@ -113,16 +100,18 @@ const MdmMaker = () => {
           {/* Mdm Draft */}
           <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
             <MdmMakerDraft
-              teams={teams}
-              selected={selected}
+              setStage={setStage}
               pickData={pickData}
               setPickData={setPickData}
               orderedPicks={orderedPicks}
-              speed={speed}
-              needsVsValue={needsVsValue}
-              randomness={randomness}
-              draftRounds={draftRounds}
             />
+          </div>
+        </>}
+
+        {stage === 3 && <>
+          {/* Mdm Share */}
+          <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+            <MdmMakerShare />
           </div>
         </>}
 

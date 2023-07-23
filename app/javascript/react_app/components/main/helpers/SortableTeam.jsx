@@ -1,6 +1,7 @@
-import React from 'react';
-import {useSortable} from '@dnd-kit/sortable';
-import {CSS} from '@dnd-kit/utilities';
+import React from 'react'
+import classNames from 'classnames'
+import {useSortable} from '@dnd-kit/sortable'
+import {CSS} from '@dnd-kit/utilities'
 
 const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
     const {
@@ -9,15 +10,11 @@ const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
         setNodeRef,
         transform,
         transition
-    } = useSortable({id: id});
+    } = useSortable({id: id})
 
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-    };
-
-    function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
     }
 
     return (
@@ -27,12 +24,12 @@ const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
             style={style} 
             {...attributes} 
             {...listeners} 
-            className={classNames((isSelected === true ? "border-primary " : "") + "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
+            className={classNames({"border-primary": isSelected === true}, "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
             onClick={(e) => handleClick(e, 'teamClick')}
         >
             <span className="text-xs">{pick}: {team.full_name}</span>
         </div>
-    );
+    )
 }
 
 export default SortableTeam

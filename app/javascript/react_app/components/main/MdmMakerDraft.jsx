@@ -5,15 +5,18 @@ import MdmTradeTab from "./helpers/MdmTradeTab"
 import MdmDraftTab from "./helpers/MdmDraftTab"
 import MdmAnalysisTab from "./helpers/MdmAnalysisTab"
 import MdmYourPicksTab from "./helpers/MdmYourPicksTab"
+import useStore from '../../store/store.js'
 
 import needsData from './helpers/needs_2024.json'
 import positionalData from './helpers/positional_value.json'
 
-import Fuse from "fuse.js";
+import Fuse from "fuse.js"
+import classNames from "classnames"
 
-const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, speed, needsVsValue, randomness, draftRounds }) => {
+const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
     const navigate = useNavigate();
-    const [selectedTeams, setSelectedTeams] = useState(teams.filter(team => team.id in selected))
+
+    // Local State
     const [players, setPlayers] = useState([])
     const [tab, setTab] = useState('trade')
     const [draftRunning, setDraftRunning] = useState(false)
@@ -22,9 +25,19 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
     const [search, setSearch] = useState("")
     const [localPlayers, setLocalPlayers] = useState(players)
     const [preselectedPick, setPreselectedPick] = useState(null)
-    const [yourPicks, setYourPicks] = useState({})
     const [viewRound, setViewRound] = useState(0)
     const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
+
+    // Store State
+    const teams = useStore(state => state.teams)
+    const selected = useStore(state => state.selected)
+    const speed = useStore(state => state.speed)
+    const needsVsValue = useStore(state => state.needsVsValue)
+    const randomness = useStore(state => state.randomness)
+    const draftRounds = useStore(state => state.draftRounds)
+    const [yourPicks, setYourPicks] = useStore(state => [state.yourPicks, state.setYourPicks])
+
+    const [selectedTeams, setSelectedTeams] = useState(teams.filter(team => team.id in selected))
 
     const pickModal = useRef(null)
     let draftInterval = useRef(undefined)
@@ -46,9 +59,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
             playerToAddCopy.pickedAt = total+1
             yourPicks[orderedPicks[total].full_name].push(playerToAddCopy)
 
-            setYourPicks(_ => ({
-                ...yourPicks
-            }))
+            setYourPicks(yourPicks)
         }
 
         setDraftState(prev => ({
@@ -158,10 +169,6 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
         return () => clearInterval(draftInterval.current)
     }
 
-    function classNames(...classes) {
-        return classes.join(" ")
-    }
-
     // Lifecycle Hooks
     useEffect(() => {
         const url = "/api/v1/players/index"
@@ -177,18 +184,25 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
     }, [])
 
     useEffect(() => {
-        // stop on selected team, keep draft running
         let total = Object.keys(draftState).length
-        let picking = orderedPicks[total]
-        if (draftRunning === true && !selectedTeams.includes(picking)) {
-            draftInterval.current = createDraftInterval()
-            setUserPicking(_ => false)
-        } else if (draftRunning === true) {
-            setUserPicking(_ => true)
-            setTab('draft')
-        }
 
-        setViewRound(parseInt(total / 32))
+        // TODO: update with actual number
+        // json file with number of picks in each round
+        if (total < draftRounds * 32) {
+            // stop on selected team, keep draft running
+            let picking = orderedPicks[total]
+            if (draftRunning === true && !selectedTeams.includes(picking)) {
+                draftInterval.current = createDraftInterval()
+                setUserPicking(_ => false)
+            } else if (draftRunning === true) {
+                setUserPicking(_ => true)
+                setTab('draft')
+            }
+
+            setViewRound(parseInt(total / 32))
+        } else {
+            setStage(3)
+        }
 
         return () => clearInterval(draftInterval.current)
     }, [draftState])
@@ -211,6 +225,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
         }
     }, [players])
 
+    // not 32 picks in each round
     let currentPick = Object.keys(draftState).length
     let currentRound = parseInt(currentPick / 32)
     let roundStart = viewRound * 32
@@ -254,7 +269,7 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
                             key={team.name + "_" + index.toString()}
                         >
                             <div className="flex justify-center items-center">
-                                <a className={classNames("text-sm", team.id in selected ? "text-info" : "")}>
+                                <a className={classNames("text-sm", {"text-info": team.id in selected})}>
                                     {team.name}: {draftState[index+1].full_name} ({draftState[index+1].position})
                                 </a>
                             </div>
@@ -324,10 +339,26 @@ const MdmMakerDraft = ({ teams, selected, pickData, setPickData, orderedPicks, s
             </div>
 
             <div className="tabs border-b-2">
-                <a onClick={(e) => handleClick(e, 'trade')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'trade' ? "tab-active" : "")}>Trade</a> 
-                <a onClick={(e) => handleClick(e, 'draft')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'draft' ? "tab-active" : "")}>Draft a Player</a> 
-                <a onClick={(e) => handleClick(e, 'analysis')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'analysis' ? "tab-active" : "")}>Analysis</a>
-                <a onClick={(e) => handleClick(e, 'your_picks')} className={classNames("tab tab-bordered border-info tab-lg", tab === 'your_picks' ? "tab-active" : "")}>Your Picks</a>
+                <a 
+                    onClick={(e) => handleClick(e, 'trade')} 
+                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'trade'})}>
+                    Trade
+                </a>
+                <a 
+                    onClick={(e) => handleClick(e, 'draft')} 
+                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'draft'})}>
+                    Draft a Player
+                </a> 
+                <a 
+                    onClick={(e) => handleClick(e, 'analysis')} 
+                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'analysis'})}>
+                    Analysis
+                </a>
+                <a 
+                    onClick={(e) => handleClick(e, 'your_picks')} 
+                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'your_picks'})}>
+                    Your Picks
+                </a>
                 {userPicking && <div className="flex justify-end items-center h-full pl-24">
                     <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">You are picking ({orderedPicks[Object.keys(draftState).length].name})</div>
                 </div>}
