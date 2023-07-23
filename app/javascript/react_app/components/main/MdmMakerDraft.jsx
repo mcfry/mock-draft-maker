@@ -14,7 +14,7 @@ import Fuse from "fuse.js"
 import classNames from "classnames"
 
 const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     // Local State
     const [players, setPlayers] = useState([])

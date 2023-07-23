@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 202307152000522) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_23_170948) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "draft_records", primary_key: "uuid", id: :string, force: :cascade do |t|
+    t.json "draft_picks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "picks", force: :cascade do |t|
     t.bigint "team_id"

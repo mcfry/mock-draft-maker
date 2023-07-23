@@ -1,0 +1,2 @@
+class DraftRecord < ApplicationRecord
+end

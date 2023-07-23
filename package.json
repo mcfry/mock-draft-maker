@@ -9,6 +9,7 @@
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.3.0",
     "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "daisyui": "^3.2.1",
     "esbuild": "^0.18.12",

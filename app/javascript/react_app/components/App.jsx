@@ -27,6 +27,8 @@ class App extends Component {
               <Routes>
                 <Route path="/" element={<components.Home/>} />
                 <Route path="/maker" element={<components.MdmMaker/>} />
+                <Route path="/about" element={<components.About/>} />
+                <Route path="/share_draft/:draft_uuid" element={<components.MdmShare/>} />
               </Routes>
             </div>
           </Router>
@@ -36,4 +38,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

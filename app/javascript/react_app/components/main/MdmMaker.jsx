@@ -33,8 +33,12 @@ const MdmMaker = () => {
         throw new Error("Network response was not ok.")
       })
       .then((res) => {
-        setTeams(res)
-        setTeamsLoaded(true)
+        if (res.length > 0) {
+          setTeams(res)
+          setTeamsLoaded(true)
+        } else {
+          console.log('No teams')
+        }
       })
       .catch(() => navigate("/"))
   }, [])

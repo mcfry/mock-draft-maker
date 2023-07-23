@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get 'draft_records/index'
+      get 'draft_records/create'
+      get 'draft_records/show'
+      get 'draft_records/destroy'
       get 'players/index'
       post 'players/create'
-      get 'players/show/:id', to: 'player#show'
+      get 'players/show/:id', to: 'players#show'
       delete 'players/destroy'
       get 'picks/index'
       post 'picks/create'
@@ -13,6 +17,8 @@ Rails.application.routes.draw do
       post 'teams/create'
       get 'teams/show/:id', to: 'teams#show'
       delete 'teams/destroy'
+      post 'draft_records/create'
+      get 'draft_records/show/:uuid', to: 'draft_records#show'
     end
   end
 
