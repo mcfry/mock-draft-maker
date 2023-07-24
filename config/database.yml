@@ -82,6 +82,4 @@ test:
 #
 production:
   <<: *default
-  database: mock_draft_maker_production
-  username: mock_draft_maker
-  password: <%= ENV["MOCK_DRAFT_MAKER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
