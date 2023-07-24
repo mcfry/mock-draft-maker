@@ -20,12 +20,27 @@ const MdmShare = () => {
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">Your Mock Draft</h1>
             </div>
         </header>
+
+        {/* Animation */}
+        <ul className="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
         <div className="flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10">
-            <div className="card shadow-xl rounded bg-base-100 p-2">
+            <div className="card shadow-xl rounded bg-base-100 p-2 z-30">
                 <span className="p-1">Your share link: <span className="bg-base-200 font-semibold p-1">{window.location.href}</span></span>
             </div>
 
-            <div className="flex flex-row card w-[74rem] shadow-xl rounded bg-base-100">
+            <div className="flex flex-row card w-[74rem] shadow-xl rounded bg-base-100 z-30">
                 <div className="overflow-x-auto">
                     <div className="flex flex-col w-[74rem]">
                         <div className="flex items-center justify-center w-full">

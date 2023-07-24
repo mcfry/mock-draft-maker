@@ -11,6 +11,21 @@ const Home = () => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">Welcome to Mock Draft Maker</h1>
         </div>
       </header>
+      
+      {/* Animation */}
+      <ul className="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
       <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
         <div className="hero-content text-center">
           <div className="max-w-md">
@@ -19,20 +34,6 @@ const Home = () => {
             <button className="btn btn-primary rounded-none" onClick={() => navigate("/maker")}>Get Started</button>
           </div>
         </div>
-
-        {/* Animation */}
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
       </div>
     </>
   )

@@ -7,8 +7,17 @@ export const createAlertSlice = (set) => ({
         console.log(alert)
         if (alert && alert.message && alert.type) {
             alert.id = uuidv4()
+
+            // Limit to 3
+            let newAlerts = []
+            if (state.activeAlerts.length <= 2) {
+                newAlerts = state.activeAlerts.concat(alert)
+            } else {
+                newAlerts = state.activeAlerts.slice(1).concat(alert)
+            }
+
             return {
-                activeAlerts: state.activeAlerts.concat(alert)
+                activeAlerts: newAlerts
             }
         } else {
             console.log('bad alert object')

@@ -8,6 +8,21 @@ const About = () => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">About</h1>
         </div>
       </header>
+
+      {/* Animation */}
+      <ul className="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
       <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
         <div className="hero-content h-auto text-center">
           <div className="max-w-md">
@@ -15,20 +30,6 @@ const About = () => {
             <p className="py-6">Created with Rails 7, React, Zustand, and Tailwind.<br/>Packaged with ESBuild.<br/>Served via Render.</p>
           </div>
         </div>
-
-        {/* Animation */}
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
       </div>
     </>
   )

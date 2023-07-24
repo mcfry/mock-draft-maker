@@ -1,6 +1,10 @@
 import React from "react"
 
+import useStore from "../../../store/store"
+
 const MdmDraftTab = ({ localPlayers, preselectedPick, setPreselectedPick, userPicking, pickModal, pickPlayer }) => {
+
+    const addAlert = useStore(state => state.addAlert)
 
     const selectPlayer = () => {
         if (preselectedPick) {
@@ -52,6 +56,12 @@ const MdmDraftTab = ({ localPlayers, preselectedPick, setPreselectedPick, userPi
 
         if (player && userPicking) {
             setPreselectedPick(player)
+        } else {
+            addAlert({
+                type: 'error',
+                message: "It's not your turn to pick!",
+                time: 4000
+            })
         }
     }
 

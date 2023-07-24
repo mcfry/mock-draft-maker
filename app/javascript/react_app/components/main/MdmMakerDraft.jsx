@@ -332,7 +332,10 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
                     <div className="flex-none gap-2">
                         <div className="form-control pl-2 pr-4">
-                            <input value={search} onChange={(e) => setSearch(e.target.value)} name="search" type="text" placeholder="Search" className="input input-bordered rounded-none w-24 md:w-auto" />
+                            <input value={search} onChange={(e) => {
+                                setTab('draft')
+                                setSearch(e.target.value)
+                            }} name="search" type="text" placeholder="Search" className="input input-bordered rounded-none w-24 text-primary md:w-auto" />
                         </div>
                     </div>
                 </div>

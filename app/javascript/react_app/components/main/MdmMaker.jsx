@@ -84,12 +84,36 @@ const MdmMaker = () => {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Maker</h1>
       </div>
     </header>
+
+    {/* Animation */}
+    <ul className="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
     <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10">
       <MdmAlerts />
 
       {stage === 1 && <>
+        <div className="relative -top-7">
+          <div className="absolute z-40 right-20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="90" height="45"><g fill="none" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeMiterlimit="20"><path d="M87.548 6.072c-21.556.856-42.411-3.021-63.754-3.035C4.07 3.024 7.433 21.816 9.215 36.406"/><path strokeinejoin="round" d="M2.452 32.48c3.721 2.326 4.349 6.604 7.403 9.482 1.045-3.027 3.442-9.07 6.125-11.113"/></g></svg>
+          </div>
+          <span className="absolute z-40 -left-[4.5rem] -top-[0.3rem] w-32 font-semibold">
+            Drag to reorder
+          </span>
+        </div>
+
         {/* Mdm Settings */}
-        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
           <MdmMakerSettings 
             teamsMapping={teamsMapping}
             setStage={setStage}
@@ -101,7 +125,7 @@ const MdmMaker = () => {
 
       {stage === 2 && <>
         {/* Mdm Draft */}
-        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
           <MdmMakerDraft
             setStage={setStage}
             pickData={pickData}
@@ -113,7 +137,7 @@ const MdmMaker = () => {
 
       {stage === 3 && <>
         {/* Mdm Share */}
-        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
           <MdmMakerShare />
         </div>
       </>}

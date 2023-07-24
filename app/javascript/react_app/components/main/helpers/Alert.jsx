@@ -35,7 +35,7 @@ const Alert = ({id, type, message, time, removeAlert}) => {
 
     return (
         <div 
-            className={clsx('alert', alertTypes[type], 'w-[74rem] flex justify-between')}
+            className={clsx('alert', alertTypes[type], 'w-[74rem] flex justify-between z-30')}
         >
             <div className="flex space-x-2">
                 {alertIcon(type)}
