@@ -84,7 +84,7 @@ const MdmMaker = () => {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Maker</h1>
       </div>
     </header>
-    <div className="flex flex-col grow justify-center items-center bg-base-200 p-10">
+    <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10">
       <MdmAlerts />
 
       {stage === 1 && <>

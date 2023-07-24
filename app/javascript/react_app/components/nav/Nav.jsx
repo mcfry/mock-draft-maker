@@ -2,7 +2,7 @@ import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { PresentationChartLineIcon, Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Home', link: ""},
@@ -24,18 +24,14 @@ const Navbar = () => {
 
     return (
       <>
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-primary">
             {({ open }) => (
             <>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                     <div className="flex-shrink-0">
-                        <img
-                            className="h-8 w-8"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                            alt="Your Company"
-                        />
+                        <PresentationChartLineIcon className="text-white block h-6 w-6" aria-hidden="true" />
                     </div>
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">

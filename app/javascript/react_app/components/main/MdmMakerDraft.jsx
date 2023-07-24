@@ -292,7 +292,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
         {/* Trade Stuff + PInfo */}
         <div className="flex flex-col">
-            <div className="navbar bg-base-300">
+            <div className="navbar bg-primary text-primary-content">
                 {!userPicking && 
                     <button onClick={startOrPauseDraft} className="btn rounded-none">
                         {draftRunning ? "Pause" : "Start"}
@@ -301,7 +301,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
                 <div>&nbsp;&nbsp;&nbsp;</div>
 
-                <div className="flex flex-col p-2 bg-neutral rounded text-neutral-content">
+                <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
                     <span className="countdown font-mono text-xl">
                     <span style={{"--value":currentRound+1}}></span>
                     </span>
@@ -310,7 +310,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
                 <div>&nbsp;&nbsp;</div>
 
-                <div className="flex flex-col p-2 bg-neutral rounded text-neutral-content">
+                <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
                     <span className="countdown font-mono text-xl">{currentPick+1}</span>
                     <span className="text-xs">Pick</span>
                 </div>
