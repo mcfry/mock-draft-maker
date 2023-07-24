@@ -137,12 +137,11 @@ const MdmMakerSettings = ({
     function handleDragEnd(event) {
         const {active, over} = event
         if (over && active && active.id !== over.id) {
-            setTeams((teams) => {
-                const oldIdx = findIndex(active.id, teams)
-                const newIdx = findIndex(over.id, teams)
-
-                return arrayMove(teams, oldIdx, newIdx)
-            })
+            const oldIdx = findIndex(active.id, teams)
+            const newIdx = findIndex(over.id, teams)
+            
+            // Swap teams in teams array and set the returned array
+            setTeams(arrayMove(teams, oldIdx, newIdx))
         }
     }
 

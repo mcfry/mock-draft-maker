@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import classNames from "classnames"
+import clsx from "clsx"
 import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, XMarkIcon } from '@heroicons/react/20/solid'
 
 const Alert = ({id, type, message, time, removeAlert}) => {
@@ -26,9 +26,16 @@ const Alert = ({id, type, message, time, removeAlert}) => {
         }
     }, [])
 
+    // Tailwind can't do dynamic "alert-"+type (will purge style)
+    const alertTypes = {
+        success: 'alert-success',
+        error: 'alert-error',
+        info: 'alert-info'
+    }
+
     return (
         <div 
-            className={classNames('alert', {[`alert-${type}`]: true}, 'w-[74rem]', 'flex justify-between')}
+            className={clsx('alert', alertTypes[type], 'w-[74rem] flex justify-between')}
         >
             <div className="flex space-x-2">
                 {alertIcon(type)}
@@ -38,7 +45,7 @@ const Alert = ({id, type, message, time, removeAlert}) => {
             </div>
 
             <XMarkIcon 
-                className="h-6 w-6" 
+                className="h-6 w-6 cursor-pointer" 
                 onClick={() => removeAlert(id)} 
             />
         </div>

@@ -84,43 +84,41 @@ const MdmMaker = () => {
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Maker</h1>
       </div>
     </header>
-    <main>
-      <div className="flex flex-col w-full justify-center items-center p-10">
-        <MdmAlerts />
+    <div className="flex flex-col grow justify-center items-center bg-base-200 p-10">
+      <MdmAlerts />
 
-        {stage === 1 && <>
-          {/* Mdm Settings */}
-          <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
-            <MdmMakerSettings 
-              teamsMapping={teamsMapping}
-              setStage={setStage}
-              pickData={pickData}
-              setPickData={setPickData}
-            />
-          </div>
-        </>}
+      {stage === 1 && <>
+        {/* Mdm Settings */}
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+          <MdmMakerSettings 
+            teamsMapping={teamsMapping}
+            setStage={setStage}
+            pickData={pickData}
+            setPickData={setPickData}
+          />
+        </div>
+      </>}
 
-        {stage === 2 && <>
-          {/* Mdm Draft */}
-          <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
-            <MdmMakerDraft
-              setStage={setStage}
-              pickData={pickData}
-              setPickData={setPickData}
-              orderedPicks={orderedPicks}
-            />
-          </div>
-        </>}
+      {stage === 2 && <>
+        {/* Mdm Draft */}
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+          <MdmMakerDraft
+            setStage={setStage}
+            pickData={pickData}
+            setPickData={setPickData}
+            orderedPicks={orderedPicks}
+          />
+        </div>
+      </>}
 
-        {stage === 3 && <>
-          {/* Mdm Share */}
-          <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
-            <MdmMakerShare />
-          </div>
-        </>}
+      {stage === 3 && <>
+        {/* Mdm Share */}
+        <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100">
+          <MdmMakerShare />
+        </div>
+      </>}
 
-      </div>
-    </main>
+    </div>
   </>)
 }
 

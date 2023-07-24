@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import clsx from 'clsx'
 import {useSortable} from '@dnd-kit/sortable'
 import {CSS} from '@dnd-kit/utilities'
 
@@ -24,7 +24,7 @@ const SortableTeam = ({ id, team, pick, isSelected, handleClick }) => {
             style={style} 
             {...attributes} 
             {...listeners} 
-            className={classNames({"border-primary": isSelected === true}, "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
+            className={clsx({"border-primary": isSelected === true}, "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100")}
             onClick={(e) => handleClick(e, 'teamClick')}
         >
             <span className="text-xs">{pick}: {team.full_name}</span>

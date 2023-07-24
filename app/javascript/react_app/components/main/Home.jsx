@@ -11,17 +11,15 @@ const Home = () => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900">Welcome to Mock Draft Maker</h1>
         </div>
       </header>
-      <main>
-        <div className="hero min-h-screen bg-base-200">
-          <div className="hero-content text-center">
-            <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Sup!</h1>
-              <p className="py-6">Interested in making a mock draft for the NFL and tired of bad simulators... or worse, simulators that you have pay for? Look no further. </p>
-              <button className="btn btn-primary rounded-none" onClick={() => navigate("/maker")}>Get Started</button>
-            </div>
+      <div className="hero grow bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-5xl font-bold">Sup!</h1>
+            <p className="py-6">Interested in making a mock draft for the NFL and tired of bad simulators... or worse, simulators that you have pay for? Look no further. </p>
+            <button className="btn btn-primary rounded-none" onClick={() => navigate("/maker")}>Get Started</button>
           </div>
         </div>
-      </main>
+      </div>
     </>
   )
 }

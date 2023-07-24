@@ -9,4 +9,7 @@ module.exports = {
     './app/javascript/**/*.tsx'
   ],
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ['lofi', 'light', 'dark', 'fantasy'],
+  }
 }

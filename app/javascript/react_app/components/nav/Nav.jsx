@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
+import clsx from "clsx"
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -15,10 +16,6 @@ const linkActive = (link, pathname) => {
     } else {
         return pathname.slice(1).startsWith(link)
     }
-}
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
 }
 
 // TODO: Router Link for mobile buttons
@@ -46,7 +43,7 @@ const Navbar = () => {
                             <Link
                                 key={item.name}
                                 to={item.link}
-                                className={classNames(
+                                className={clsx(
                                     linkActive(item.link, location.pathname)
                                     ? 'bg-gray-900 text-white'
                                     : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -91,7 +88,7 @@ const Navbar = () => {
                     <Disclosure.Button
                         key={item.name}
                         as="a"
-                        className={classNames(
+                        className={clsx(
                             linkActive(item.link, location.pathname) ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                             'block rounded-md px-3 py-2 text-base font-medium'
                         )}

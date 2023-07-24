@@ -19,11 +19,11 @@ import Navbar from'./nav/Nav'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="min-h-full">
+      <div data-theme="lofi" className="App">
+        <div className="h-screen min-h-screen">
           <Router>
-            <Navbar />
-            <div className="AppContent">
+            <div className="AppContent flex flex-col h-full min-h-full">
+              <Navbar />
               <Routes>
                 <Route path="/" element={<components.Home/>} />
                 <Route path="/maker" element={<components.MdmMaker/>} />

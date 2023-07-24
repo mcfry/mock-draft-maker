@@ -11,7 +11,7 @@ import needsData from './helpers/needs_2024.json'
 import positionalData from './helpers/positional_value.json'
 
 import Fuse from "fuse.js"
-import classNames from "classnames"
+import clsx from "clsx"
 
 const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
     const navigate = useNavigate()
@@ -269,7 +269,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
                             key={team.name + "_" + index.toString()}
                         >
                             <div className="flex justify-center items-center">
-                                <a className={classNames("text-sm", {"text-info": team.id in selected})}>
+                                <a className={clsx("text-sm", {"text-info": team.id in selected})}>
                                     {team.name}: {draftState[index+1].full_name} ({draftState[index+1].position})
                                 </a>
                             </div>
@@ -280,7 +280,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
                         >
                             <div className="flex justify-center items-center">
                                 <a
-                                    className={classNames("text-lg", team.id in selected ? (orderedPicks[Object.keys(draftState).length].id === team.id ? "text-warning" : "text-info") : "")}
+                                    className={clsx("text-lg", team.id in selected ? (orderedPicks[Object.keys(draftState).length].id === team.id ? "text-warning" : "text-info") : "")}
                                 >
                                     {team.name}: {index+1}
                                 </a>
@@ -341,22 +341,22 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
             <div className="tabs border-b-2">
                 <a 
                     onClick={(e) => handleClick(e, 'trade')} 
-                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'trade'})}>
+                    className={clsx("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'trade'})}>
                     Trade
                 </a>
                 <a 
                     onClick={(e) => handleClick(e, 'draft')} 
-                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'draft'})}>
+                    className={clsx("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'draft'})}>
                     Draft a Player
                 </a> 
                 <a 
                     onClick={(e) => handleClick(e, 'analysis')} 
-                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'analysis'})}>
+                    className={clsx("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'analysis'})}>
                     Analysis
                 </a>
                 <a 
                     onClick={(e) => handleClick(e, 'your_picks')} 
-                    className={classNames("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'your_picks'})}>
+                    className={clsx("tab tab-bordered border-info tab-lg", {"tab-active": tab === 'your_picks'})}>
                     Your Picks
                 </a>
                 {userPicking && <div className="flex justify-end items-center h-full pl-24">
