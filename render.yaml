@@ -2,10 +2,12 @@ databases:
   - name: mdm_maker
     databaseName: mdm_maker
     user: mdm_maker
+    plan: free
 
 services:
   - type: web
     name: mdm_maker
+    plan: free
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
