@@ -1,35 +1,35 @@
-import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from "uuid"
 
-export const createAlertSlice = (set) => ({
-    activeAlertCount: 0,
-    activeAlerts: [],
-    addAlert: (alert) => set(state => {
-        console.log(alert)
-        if (alert && alert.message && alert.type) {
-            alert.id = uuidv4()
+const createAlertSlice = (set) => ({
+  activeAlertCount: 0,
+  activeAlerts: [],
+  addAlert: (alert) =>
+    set((state) => {
+      const newAlert = alert
+      if (newAlert && newAlert.message && newAlert.type) {
+        newAlert.id = uuidv4()
 
-            // Limit to 3
-            let newAlerts = []
-            if (state.activeAlerts.length <= 2) {
-                newAlerts = state.activeAlerts.concat(alert)
-            } else {
-                newAlerts = state.activeAlerts.slice(1).concat(alert)
-            }
-
-            return {
-                activeAlerts: newAlerts
-            }
+        // Limit to 3
+        let newAlerts = []
+        if (state.activeAlerts.length <= 2) {
+          newAlerts = state.activeAlerts.concat(newAlert)
         } else {
-            console.log('bad alert object')
+          newAlerts = state.activeAlerts.slice(1).concat(newAlert)
+        }
 
-            return {
-                activeAlerts: state.activeAlerts
-            }
-        }
-    }),
-    removeAlert: (id) => set(state => {
         return {
-            activeAlerts: state.activeAlerts.filter(alert => alert.id !== id)
+          activeAlerts: newAlerts
         }
-    })
+      }
+
+      return {
+        activeAlerts: state.activeAlerts
+      }
+    }),
+  removeAlert: (id) =>
+    set((state) => ({
+      activeAlerts: state.activeAlerts.filter((alert) => alert.id !== id)
+    }))
 })
+
+export default createAlertSlice
