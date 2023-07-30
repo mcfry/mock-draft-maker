@@ -31,9 +31,15 @@
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
     "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint - fix src/**/*.{js,jsx,}",
-    "format": "prettier - write src/**/*.{js,jsx,} - config .prettierrc.json"
+    "format": "prettier - write src/**/*.{js,jsx,} - config .prettierrc.json",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "babel-jest": "^29.6.2",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.9.0",
@@ -41,6 +47,24 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^29.6.2",
+    "jest-environment-jsdom": "^29.6.2",
     "prettier": "^2.5.1"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "node_modules/",
+      "config/webpack/test.js",
+      "vendor/bundle/ruby"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "transformIgnorePatterns": [],
+    "testEnvironment": "jsdom"
   }
 }

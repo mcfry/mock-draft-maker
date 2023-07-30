@@ -391,36 +391,49 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           <button
             type="button"
             onClick={e => handleClick(e, "trade")}
-            className={clsx("tab tab-bordered border-info tab-lg", {
-              "tab-active": tab === "trade"
-            })}
+            className={clsx(
+              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              {
+                "bg-primary border-box text-primary-content": tab === "trade"
+              }
+            )}
           >
             Trade
           </button>
           <button
             type="button"
             onClick={e => handleClick(e, "draft")}
-            className={clsx("tab tab-bordered border-info tab-lg", {
-              "tab-active": tab === "draft"
-            })}
+            className={clsx(
+              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              {
+                "bg-primary border-box text-primary-content": tab === "draft"
+              }
+            )}
           >
             Draft a Player
           </button>
           <button
             type="button"
             onClick={e => handleClick(e, "analysis")}
-            className={clsx("tab tab-bordered border-info tab-lg", {
-              "tab-active": tab === "analysis"
-            })}
+            className={clsx(
+              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              {
+                "bg-primary border-box text-primary-content": tab === "analysis"
+              }
+            )}
           >
             Analysis
           </button>
           <button
             type="button"
             onClick={e => handleClick(e, "your_picks")}
-            className={clsx("tab tab-bordered border-info tab-lg", {
-              "tab-active": tab === "your_picks"
-            })}
+            className={clsx(
+              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              {
+                "bg-primary border-box text-primary-content":
+                  tab === "your_picks"
+              }
+            )}
           >
             Your Picks
           </button>

@@ -26,7 +26,7 @@ function About() {
       </ul>
 
       <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
-        <div className="hero-content h-auto text-center">
+        <div className="hero-content h-auto text-center z-20">
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">More to come!</h1>
             <p className="py-6">

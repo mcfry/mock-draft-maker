@@ -7,9 +7,9 @@ import useStore from "../../store/store"
 function MdmMakerShare() {
   const navigate = useNavigate()
 
-  const yourPicks = useStore((state) => state.yourPicks)
+  const yourPicks = useStore(state => state.yourPicks)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault()
 
     // Get CSRF token
@@ -25,10 +25,10 @@ function MdmMakerShare() {
         "Content-Type": "application/json"
       }
     })
-      .then((res) => {
+      .then(res => {
         navigate(`/share_draft/${res?.data?.uuid}`)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
   }
@@ -53,7 +53,7 @@ function MdmMakerShare() {
                       <tr>
                         <th>{team}</th>
                       </tr>
-                      {players.map((player) => (
+                      {players.map(player => (
                         <tr key={`yps_${player.id.toString()}`}>
                           <td>Projection: {player.projected}</td>
                           <td>Pick: {player.pickedAt}</td>
