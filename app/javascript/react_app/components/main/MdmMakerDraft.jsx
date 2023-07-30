@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 
+import Fuse from "fuse.js"
+import clsx from "clsx"
 import MdmTradeTab from "./helpers/MdmTradeTab"
 import MdmDraftTab from "./helpers/MdmDraftTab"
 import MdmAnalysisTab from "./helpers/MdmAnalysisTab"
 import MdmYourPicksTab from "./helpers/MdmYourPicksTab"
-import useStore from "../../store/store.js"
+import useStore from "../../store/store"
 
 import needsData from "./helpers/needs_2024.json"
 import positionalData from "./helpers/positional_value.json"
 
-import Fuse from "fuse.js"
-import clsx from "clsx"
-
-const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
+function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const navigate = useNavigate()
 
   // Local State
@@ -29,23 +28,23 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
 
   // Store State
-  const teams = useStore((state) => state.teams)
-  const selected = useStore((state) => state.selected)
-  const speed = useStore((state) => state.speed)
-  const needsVsValue = useStore((state) => state.needsVsValue)
-  const randomness = useStore((state) => state.randomness)
-  const draftRounds = useStore((state) => state.draftRounds)
-  const [yourPicks, setYourPicks] = useStore((state) => [
+  const teams = useStore(state => state.teams)
+  const selected = useStore(state => state.selected)
+  const speed = useStore(state => state.speed)
+  const needsVsValue = useStore(state => state.needsVsValue)
+  const randomness = useStore(state => state.randomness)
+  const draftRounds = useStore(state => state.draftRounds)
+  const [yourPicks, setYourPicks] = useStore(state => [
     state.yourPicks,
     state.setYourPicks
   ])
 
   const [selectedTeams, setSelectedTeams] = useState(
-    teams.filter((team) => team.id in selected)
+    teams.filter(team => team.id in selected)
   )
 
   const pickModal = useRef(null)
-  let draftInterval = useRef(undefined)
+  const draftInterval = useRef(undefined)
   const fuse = useRef(
     new Fuse(players, {
       keys: ["last", "first"]
@@ -61,7 +60,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
       if (!(orderedPicks[total].full_name in yourPicks))
         yourPicks[orderedPicks[total].full_name] = []
 
-      let playerToAddCopy = {
+      const playerToAddCopy = {
         ...playerToAdd
       }
       playerToAddCopy.pickedAt = total + 1
@@ -70,7 +69,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
       setYourPicks(yourPicks)
     }
 
-    setDraftState((prev) => ({
+    setDraftState(prev => ({
       ...prev,
       [total + 1]: playerToAdd
     }))
@@ -79,38 +78,38 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
     removePlayer(playerToAdd)
 
     // Remove pick data (trades)
-    oldPd = pickData[orderedPicks[total].full_name]
-    setPickData((prev) => ({
+    const oldPd = pickData[orderedPicks[total].full_name]
+    setPickData(prev => ({
       ...prev,
       [orderedPicks[total].full_name]: oldPd.slice(1)
     }))
 
     setViewRound(parseInt(total / 32))
 
-    const elementId = orderedPicks[total].name + "_" + total
+    const elementId = `${orderedPicks[total].name}_${total}`
     if (!isMouseOverPicks)
       document.getElementById(elementId)?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const removePlayer = (playerToRemove) => {
-    let idx = players.indexOf(playerToRemove)
-    setPlayers((_) => players.slice(0, idx).concat(players.slice(idx + 1)))
+  const removePlayer = playerToRemove => {
+    const idx = players.indexOf(playerToRemove)
+    setPlayers(_ => players.slice(0, idx).concat(players.slice(idx + 1)))
   }
 
-  const createDraftInterval = () => {
-    return setInterval(() => {
-      let total = Object.keys(draftState).length
-      let teamPicking = orderedPicks[total].full_name
-      let needs = needsData[teamPicking]
-      let needsHash = {}
-      for (let need of needs) {
+  const createDraftInterval = () =>
+    setInterval(() => {
+      const total = Object.keys(draftState).length
+      const teamPicking = orderedPicks[total].full_name
+      const needs = needsData[teamPicking]
+      const needsHash = {}
+      for (const need of needs) {
         needsHash[need] = true
       }
 
-      let possibleNeeds = []
+      const possibleNeeds = []
       if (needs.length > 0) {
         let i = 0
-        for (let player of players) {
+        for (const player of players) {
           if (player.position in needsHash) possibleNeeds.push(player)
           if (possibleNeeds.length >= 5) break
 
@@ -119,9 +118,9 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
         }
       }
 
-      let possiblePositional = []
+      const possiblePositional = []
       let i = 0
-      for (let player of players) {
+      for (const player of players) {
         if (!(player.position in positionalData)) console.log(player)
 
         possiblePositional.push([player, positionalData[player.position]])
@@ -131,13 +130,13 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
       }
       possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
 
-      let roll = parseInt(Math.random() * 10)
+      const roll = parseInt(Math.random() * 10)
       if (possibleNeeds.length > 0 && roll * 10 < needsVsValue) {
-        let curPick = parseInt(Math.random() * possibleNeeds.length)
+        const curPick = parseInt(Math.random() * possibleNeeds.length)
 
         pickPlayer(possibleNeeds[curPick], total)
       } else {
-        let curPick = parseInt(
+        const curPick = parseInt(
           Math.random() *
             possiblePositional.length *
             ((100 - needsVsValue) * 0.01)
@@ -146,36 +145,15 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
         pickPlayer(possiblePositional[curPick][0], total)
       }
     }, 1000 / (speed / 10))
-  }
 
   const startOrPauseDraft = () => {
-    let total = Object.keys(draftState).length
-
-    if (draftRunning === true) {
-      clearInterval(draftInterval.current)
-      setDraftRunning((prev) => !prev)
-    } else {
-      picking = orderedPicks[total]
-      playerIsPicking = selectedTeams.includes(picking)
-      if (draftRunning === true && playerIsPicking) {
-        setDraftRunning((_) => false)
-        setUserPicking((_) => true)
-        setTab("draft")
-      } else {
-        setDraftRunning((_) => true)
-        setUserPicking((_) => false)
-        setTab("draft")
-        draftInterval.current = createDraftInterval()
-      }
-    }
-
-    setViewRound(parseInt(total / 32))
+    setDraftRunning(prev => !prev)
   }
 
   const forceNewIntervalAndContinue = () => {
     draftInterval.current = createDraftInterval()
-    setUserPicking((_) => false)
-    setDraftRunning((_) => true)
+    setUserPicking(_ => false)
+    setDraftRunning(_ => true)
     setViewRound(parseInt(Object.keys(draftState).length / 32))
 
     return () => clearInterval(draftInterval.current)
@@ -185,29 +163,29 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
   useEffect(() => {
     const url = "/api/v1/players/index"
     fetch(url)
-      .then((res) => {
+      .then(res => {
         if (res.ok) {
           return res.json()
         }
         throw new Error("Network response was not ok.")
       })
-      .then((res) => setPlayers(res))
+      .then(res => setPlayers(res))
       .catch(() => navigate("/"))
   }, [])
 
   useEffect(() => {
-    let total = Object.keys(draftState).length
+    const total = Object.keys(draftState).length
 
-    // TODO: update with actual number
+    // TODO: update with actual number of picks in round (variable based on comp picks)
     // json file with number of picks in each round
     if (total < draftRounds * 32) {
       // stop on selected team, keep draft running
-      let picking = orderedPicks[total]
+      const picking = orderedPicks[total]
       if (draftRunning === true && !selectedTeams.includes(picking)) {
         draftInterval.current = createDraftInterval()
-        setUserPicking((_) => false)
+        setUserPicking(_ => false)
       } else if (draftRunning === true) {
-        setUserPicking((_) => true)
+        setUserPicking(_ => true)
         setTab("draft")
       }
 
@@ -217,12 +195,12 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
     }
 
     return () => clearInterval(draftInterval.current)
-  }, [draftState])
+  }, [draftState, draftRunning])
 
   useEffect(() => {
     if (search !== "") {
       setLocalPlayers(
-        fuse.current.search(search).map((searchItem) => searchItem.item)
+        fuse.current.search(search).map(searchItem => searchItem.item)
       )
     } else {
       setLocalPlayers(players)
@@ -234,7 +212,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
     if (search !== "") {
       setLocalPlayers(
-        fuse.current.search(search).map((searchItem) => searchItem.item)
+        fuse.current.search(search).map(searchItem => searchItem.item)
       )
     } else {
       setLocalPlayers(players)
@@ -242,22 +220,22 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
   }, [players])
 
   // not 32 picks in each round
-  let currentPick = Object.keys(draftState).length
-  let currentRound = parseInt(currentPick / 32)
-  let roundStart = viewRound * 32
-  let roundEnd = Math.min(roundStart + 32, 256)
+  const currentPick = Object.keys(draftState).length
+  const currentRound = parseInt(currentPick / 32)
+  const roundStart = viewRound * 32
+  const roundEnd = Math.min(roundStart + 32, 256)
 
   return (
     <>
       {/* PMenu */}
       <div className="overflow-x-hidden overflow-y-auto border-r-2">
         <ul
-          onMouseOver={() => setIsMouseOverPicks(true)}
-          onMouseOut={() => setIsMouseOverPicks(false)}
+          onFocus={() => setIsMouseOverPicks(true)}
+          onBlur={() => setIsMouseOverPicks(false)}
           className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
         >
           <li className="dropdown dropdown-bottom">
-            <label tabIndex={0} className="btn text-2xl">
+            <button type="button" tabIndex={0} className="btn text-2xl w-full">
               Round {viewRound + 1}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -273,54 +251,57 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
                   d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                 />
               </svg>
-            </label>
+            </button>
 
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
+            <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               {[...Array(draftRounds)].map((_, index) => (
-                <li
-                  key={"dr_" + index.toString()}
-                  onClick={(e) => {
-                    document.activeElement?.blur()
+                <li key={`dr_${index.toString()}`}>
+                  <button
+                    tabIndex={0}
+                    type="button"
+                    onClick={e => {
+                      document.activeElement?.blur()
 
-                    return setViewRound(parseInt(e.currentTarget.value))
-                  }}
-                  value={index}
-                >
-                  <a>Round {index + 1}</a>
+                      return setViewRound(parseInt(e.currentTarget.value))
+                    }}
+                    value={index}
+                  >
+                    Round {index + 1}
+                  </button>
                 </li>
               ))}
             </ul>
           </li>
 
+          {/* List of Picks */}
           {orderedPicks.slice(roundStart, roundEnd).map((team, index) => {
-            index = roundStart + index
+            const actualIndex = roundStart + index
 
-            return currentPick >= index + 1 ? (
+            return currentPick >= actualIndex + 1 ? (
               <li
-                id={team.name + "_" + index.toString()}
-                key={team.name + "_" + index.toString()}
+                id={`${team.name}_${actualIndex.toString()}`}
+                key={`${team.name}_${actualIndex.toString()}`}
               >
                 <div className="flex justify-center items-center">
-                  <a
+                  <button
+                    type="button"
                     className={clsx("text-sm", {
                       "text-info": team.id in selected
                     })}
                   >
-                    {team.name}: {draftState[index + 1].full_name} (
-                    {draftState[index + 1].position})
-                  </a>
+                    {team.name}: {draftState[actualIndex + 1].full_name} (
+                    {draftState[actualIndex + 1].position})
+                  </button>
                 </div>
               </li>
             ) : (
               <li
-                id={team.name + "_" + index.toString()}
-                key={team.name + "_" + index.toString()}
+                id={`${team.name}_${actualIndex.toString()}`}
+                key={`${team.name}_${actualIndex.toString()}`}
               >
                 <div className="flex justify-center items-center">
-                  <a
+                  <button
+                    type="button"
                     className={clsx(
                       "text-lg",
                       team.id in selected
@@ -331,8 +312,8 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
                         : ""
                     )}
                   >
-                    {team.name}: {index + 1}
-                  </a>
+                    {team.name}: {actualIndex + 1}
+                  </button>
                 </div>
               </li>
             )
@@ -344,7 +325,11 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
       <div className="flex flex-col">
         <div className="navbar bg-primary text-primary-content">
           {!userPicking && (
-            <button onClick={startOrPauseDraft} className="btn rounded-none">
+            <button
+              type="button"
+              onClick={startOrPauseDraft}
+              className="btn rounded-none"
+            >
               {draftRunning ? "Pause" : "Start"}
             </button>
           )}
@@ -353,7 +338,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
 
           <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
             <span className="countdown font-mono text-xl">
-              <span style={{ "--value": currentRound + 1 }}></span>
+              <span style={{ "--value": currentRound + 1 }} />
             </span>
             <span className="text-xs">Round</span>
           </div>
@@ -372,10 +357,11 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
           <div className="flex justify-end w-full">
             {tab === "draft" && userPicking && preselectedPick && (
               <button
+                type="button"
                 className="btn bg-primary hover:bg-secondary text-base-100 rounded-none pr-4"
                 onClick={() => {
                   if (pickModal.current) {
-                    return pickModal.current.showModal()
+                    pickModal.current.showModal()
                   }
                 }}
               >
@@ -387,7 +373,7 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
               <div className="form-control pl-2 pr-4">
                 <input
                   value={search}
-                  onChange={(e) => {
+                  onChange={e => {
                     setTab("draft")
                     setSearch(e.target.value)
                   }}
@@ -402,38 +388,42 @@ const MdmMakerDraft = ({ pickData, setPickData, orderedPicks, setStage }) => {
         </div>
 
         <div className="tabs border-b-2">
-          <a
-            onClick={(e) => handleClick(e, "trade")}
+          <button
+            type="button"
+            onClick={e => handleClick(e, "trade")}
             className={clsx("tab tab-bordered border-info tab-lg", {
               "tab-active": tab === "trade"
             })}
           >
             Trade
-          </a>
-          <a
-            onClick={(e) => handleClick(e, "draft")}
+          </button>
+          <button
+            type="button"
+            onClick={e => handleClick(e, "draft")}
             className={clsx("tab tab-bordered border-info tab-lg", {
               "tab-active": tab === "draft"
             })}
           >
             Draft a Player
-          </a>
-          <a
-            onClick={(e) => handleClick(e, "analysis")}
+          </button>
+          <button
+            type="button"
+            onClick={e => handleClick(e, "analysis")}
             className={clsx("tab tab-bordered border-info tab-lg", {
               "tab-active": tab === "analysis"
             })}
           >
             Analysis
-          </a>
-          <a
-            onClick={(e) => handleClick(e, "your_picks")}
+          </button>
+          <button
+            type="button"
+            onClick={e => handleClick(e, "your_picks")}
             className={clsx("tab tab-bordered border-info tab-lg", {
               "tab-active": tab === "your_picks"
             })}
           >
             Your Picks
-          </a>
+          </button>
           {userPicking && (
             <div className="flex justify-end items-center h-full pl-24">
               <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">

@@ -18,12 +18,11 @@ const navigation = [
 const linkActive = (link, pathname) => {
   if (link === "") {
     return pathname === "/"
-  } 
-    return pathname.slice(1).startsWith(link)
-  
+  }
+
+  return pathname.slice(1).startsWith(link)
 }
 
-// TODO: Router Link for mobile buttons
 function Navbar() {
   const location = useLocation()
 
@@ -43,7 +42,7 @@ function Navbar() {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
-                      {navigation.map((item) => (
+                      {navigation.map(item => (
                         <Link
                           key={item.name}
                           to={item.link}
@@ -92,10 +91,11 @@ function Navbar() {
 
             <Disclosure.Panel className="md:hidden">
               <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                {navigation.map((item) => (
+                {navigation.map(item => (
                   <Disclosure.Button
                     key={item.name}
-                    as="a"
+                    as={Link}
+                    to={item.link}
                     className={clsx(
                       linkActive(item.link, location.pathname)
                         ? "bg-gray-900 text-white"

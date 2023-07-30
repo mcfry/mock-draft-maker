@@ -1,7 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 
-const Home = () => {
+function Home() {
   const navigate = useNavigate()
 
   return (
@@ -16,16 +16,16 @@ const Home = () => {
 
       {/* Animation */}
       <ul className="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
       </ul>
 
       <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
@@ -38,6 +38,7 @@ const Home = () => {
               further.{" "}
             </p>
             <button
+              type="button"
               className="btn btn-primary rounded-none"
               onClick={() => navigate("/maker")}
             >

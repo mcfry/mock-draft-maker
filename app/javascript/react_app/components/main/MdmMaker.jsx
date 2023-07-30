@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import MdmMakerSettings from "./MdmMakerSettings.jsx"
-import MdmMakerDraft from "./MdmMakerDraft.jsx"
-import MdmMakerShare from "./MdmMakerShare.jsx"
-import MdmAlerts from "./MdmAlerts.jsx"
-import useStore from "../../store/store.js"
+import MdmMakerSettings from "./MdmMakerSettings"
+import MdmMakerDraft from "./MdmMakerDraft"
+import MdmMakerShare from "./MdmMakerShare"
+import MdmAlerts from "./MdmAlerts"
+import useStore from "../../store/store"
 
 import data from "./helpers/picks_2024.json"
 
-const MdmMaker = () => {
+function MdmMaker() {
   const navigate = useNavigate()
 
   // Local State
@@ -21,18 +21,18 @@ const MdmMaker = () => {
   const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
 
   // Store State
-  const [teams, setTeams] = useStore((state) => [state.teams, state.setTeams])
+  const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
 
   useEffect(() => {
     const url = "/api/v1/teams/index"
     fetch(url)
-      .then((res) => {
+      .then(res => {
         if (res.ok) {
           return res.json()
         }
         throw new Error("Network response was not ok.")
       })
-      .then((res) => {
+      .then(res => {
         if (res.length > 0) {
           setTeams(res)
           setTeamsLoaded(true)
@@ -45,21 +45,21 @@ const MdmMaker = () => {
 
   useEffect(() => {
     if (teamsLoaded === true) {
-      let teamsHash = {}
-      for (let team of teams) {
+      const teamsHash = {}
+      for (const team of teams) {
         teamsHash[team.full_name] = team
       }
 
-      for (let [k, v] of Object.entries(pickData)) {
-        for (let pick of v) {
+      for (const [k, v] of Object.entries(pickData)) {
+        for (const pick of v) {
           orderedPicks[pick - 1] = teamsHash[k]
         }
       }
 
-      let teamsMap = []
-      let newTeams = []
-      let seen = new Set()
-      for (let [i, op] of Object.entries(orderedPicks)) {
+      const teamsMap = []
+      const newTeams = []
+      const seen = new Set()
+      for (const [i, op] of Object.entries(orderedPicks)) {
         if (seen.size < 32) {
           if (!seen.has(op.full_name)) {
             seen.add(op.full_name)
@@ -73,8 +73,8 @@ const MdmMaker = () => {
       }
 
       setTeams(newTeams)
-      setTeamsMapping((_) => teamsMap)
-      setOrderedPicks((_) => orderedPicks)
+      setTeamsMapping(_ => teamsMap)
+      setOrderedPicks(_ => orderedPicks)
     }
   }, [pickData, teamsLoaded])
 
@@ -90,19 +90,19 @@ const MdmMaker = () => {
 
       {/* Animation */}
       <ul className="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
+        <li />
       </ul>
 
-      <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10">
+      <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermax:hidden">
         <MdmAlerts />
 
         {stage === 1 && (
@@ -119,7 +119,7 @@ const MdmMaker = () => {
                   >
                     <path d="M87.548 6.072c-21.556.856-42.411-3.021-63.754-3.035C4.07 3.024 7.433 21.816 9.215 36.406" />
                     <path
-                      strokeinejoin="round"
+                      strokeLinejoin="round"
                       d="M2.452 32.48c3.721 2.326 4.349 6.604 7.403 9.482 1.045-3.027 3.442-9.07 6.125-11.113"
                     />
                   </g>
@@ -164,6 +164,14 @@ const MdmMaker = () => {
             </div>
           </>
         )}
+      </div>
+      <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermin:hidden space-y-4">
+        <p>
+          <span className="font-semibold">Mock Draft Maker</span> is only
+          available on a larger screen&nbsp;
+          <span className="italic">for the moment.</span>
+        </p>
+        <p className="text-xl">Stay tuned!</p>
       </div>
     </>
   )

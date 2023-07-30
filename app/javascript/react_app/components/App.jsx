@@ -37,6 +37,10 @@ function App() {
                                 path="/share_draft/:draft_uuid"
                                 element={<components.MdmShare />}
                             />
+                            <Route
+                                path="*"
+                                element={<components.NotFound />} 
+                            />
                         </Routes>
                     </div>
                 </Router>

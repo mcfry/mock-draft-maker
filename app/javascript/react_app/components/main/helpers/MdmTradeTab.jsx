@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import clsx from "clsx"
+import PickGrid from "./PickGrid"
 
 import pickValueData from "./pick_value_rich_hill.json"
 // Extrapolate so don't have to manually enter everything
@@ -25,6 +25,7 @@ for (let i = 17; i < 257; i += 1) {
 
   const pickValueDataVal =
     pickValueData[i - 1] - diff > 0 ? pickValueData[i - 1] - diff : 1
+
   pickValueData[i] = pickValueDataVal
 }
 
@@ -41,7 +42,7 @@ function MdmTradeTab({
 }) {
   // useState
   const [localTeams, setLocalTeams] = useState(
-    teams.filter((team) => !(team.id in selected))
+    teams.filter(team => !(team.id in selected))
   )
   const [tradePartner, setTradePartner] = useState(teams[0].full_name)
   const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].full_name)
@@ -51,20 +52,20 @@ function MdmTradeTab({
   const findAndSetTradeValue = (tp, ct) => {
     let pvd = 0
     if (tp in activeTrades)
-      activeTrades[tp].forEach((value) => {
+      activeTrades[tp].forEach(value => {
         pvd += pickValueData[value]
       })
     if (ct in activeTrades)
-      activeTrades[ct].forEach((value) => {
+      activeTrades[ct].forEach(value => {
         pvd -= pickValueData[value]
       })
 
-    setTradeValue((_) => pvd)
+    setTradeValue(_ => pvd)
   }
 
   useEffect(() => {
-    setSelectedTeams(teams.filter((team) => team.id in selected))
-    setLocalTeams(teams.filter((team) => !(team.id in selected)))
+    setSelectedTeams(teams.filter(team => team.id in selected))
+    setLocalTeams(teams.filter(team => !(team.id in selected)))
   }, [selected])
 
   return (
@@ -80,10 +81,10 @@ function MdmTradeTab({
           <div className="flex flex-col items-center border-r-2 w-[27rem]">
             <div className="pt-6">
               <select
-                onChange={(e) => handleChange(e, "tradePartner")}
+                onChange={e => handleChange(e, "tradePartner")}
                 className="select select-bordered rounded-none w-[20rem]"
               >
-                {localTeams.map((team) => (
+                {localTeams.map(team => (
                   <option key={team.name + team.id.toString()}>
                     {team.full_name}
                   </option>
@@ -99,41 +100,21 @@ function MdmTradeTab({
               <div className="text-error">Trade Value: {tradeValue}</div>
             )}
             <div className="flex justify-center border-b-2 pt-2">2024</div>
-            <div className="flex justify-center pt-2 w-[24rem]">
-              <div className="grid grid-cols-7 gap-2">
-                {pickData[tradePartner].map((pick) => {
-                  let active = false
-                  if (
-                    tradePartner in activeTrades &&
-                    activeTrades[tradePartner].includes(pick)
-                  ) {
-                    active = true
-                  }
-
-                  return (
-                    <button
-                      type="button"
-                      key={`2024_tp_${pick.toString()}`}
-                      onClick={(e) => handleTradeClick(e, "tradePartner")}
-                      className={clsx(
-                        "flex justify-center items-center cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100",
-                        { "border-primary": active }
-                      )}
-                    >
-                      {pick}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
+            <PickGrid
+              pickData={pickData}
+              team={tradePartner}
+              isCt={false}
+              activeTrades={activeTrades}
+              handleTradeClick={handleTradeClick}
+            />
           </div>
           <div className="flex flex-col items-center w-[27rem]">
             <div className="pt-6">
               <select
-                onChange={(e) => handleChange(e, "currentTeam")}
+                onChange={e => handleChange(e, "currentTeam")}
                 className="select select-bordered rounded-none w-[20rem]"
               >
-                {selectedTeams.map((team) => (
+                {selectedTeams.map(team => (
                   <option key={team.name + team.id.toString()}>
                     {team.full_name}
                   </option>
@@ -149,33 +130,13 @@ function MdmTradeTab({
               <div className="text-error">Trade Value: {-tradeValue}</div>
             )}
             <div className="flex justify-center border-b-2 pt-2">2024</div>
-            <div className="flex justify-center pt-2 w-[24rem]">
-              <div className="grid grid-cols-7 gap-2">
-                {pickData[currentTeam].map((pick) => {
-                  let active = false
-                  if (
-                    currentTeam in activeTrades &&
-                    activeTrades[currentTeam].includes(pick)
-                  ) {
-                    active = true
-                  }
-
-                  return (
-                    <button
-                      type="button"
-                      key={`2024_ct_${pick.toString()}`}
-                      onClick={(e) => handleTradeClick(e, "currentTeam")}
-                      className={clsx(
-                        "flex justify-center items-center hover cursor-pointer bg-base-100 border-neutral border-solid p-2 border-2 hover:bg-primary hover:text-base-100",
-                        { "border-primary": active }
-                      )}
-                    >
-                      {pick}
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
+            <PickGrid
+              pickData={pickData}
+              team={currentTeam}
+              isCt={true}
+              activeTrades={activeTrades}
+              handleTradeClick={handleTradeClick}
+            />
 
             <div className="flex flex-col justify-center items-center mt-auto pb-12">
               {tradeValue !== 0 && (
@@ -228,7 +189,7 @@ function MdmTradeTab({
     if (type === "currentTeam") k = currentTeam
 
     if (k in activeTrades && activeTrades[k].includes(pickInt)) {
-      activeTrades[k] = activeTrades[k].filter((x) => x !== pickInt)
+      activeTrades[k] = activeTrades[k].filter(x => x !== pickInt)
     } else if (k in activeTrades) {
       activeTrades[k].push(pickInt)
     } else {
@@ -236,7 +197,7 @@ function MdmTradeTab({
     }
 
     findAndSetTradeValue(tradePartner, currentTeam)
-    setActiveTrades((_) => ({
+    setActiveTrades(_ => ({
       ...activeTrades
     }))
   }
@@ -251,15 +212,15 @@ function MdmTradeTab({
       currentTeam in activeTrades ? activeTrades[currentTeam] : []
 
     const newTp = oldTp
-      .filter((x) => !activeTp.includes(x))
+      .filter(x => !activeTp.includes(x))
       .concat(activeCt)
       .sort((a, b) => a - b)
     const newCt = oldCt
-      .filter((x) => !activeCt.includes(x))
+      .filter(x => !activeCt.includes(x))
       .concat(activeTp)
       .sort((a, b) => a - b)
 
-    setPickData((prev) => ({
+    setPickData(prev => ({
       ...prev,
       [tradePartner]: newTp,
       [currentTeam]: newCt
@@ -269,8 +230,8 @@ function MdmTradeTab({
       forceNewIntervalAndContinue()
     }
 
-    setActiveTrades((_) => ({}))
-    setTradeValue((_) => 0)
+    setActiveTrades(_ => ({}))
+    setTradeValue(_ => 0)
   }
 }
 
