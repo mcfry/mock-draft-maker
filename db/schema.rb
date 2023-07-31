@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_23_170948) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_230938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -19,6 +19,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_170948) do
     t.json "draft_picks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "passings", id: :uuid, default: nil, force: :cascade do |t|
+    t.bigint "player_id"
+    t.integer "year"
+    t.integer "games_played"
+    t.integer "attempts"
+    t.integer "completions"
+    t.integer "yards"
+    t.integer "touchdowns"
+    t.integer "interceptions"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_passings_on_player_id"
   end
 
   create_table "picks", force: :cascade do |t|
@@ -45,6 +60,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_170948) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "receivings", id: :uuid, default: nil, force: :cascade do |t|
+    t.bigint "player_id"
+    t.integer "year"
+    t.integer "games_played"
+    t.integer "receptions"
+    t.integer "yards"
+    t.integer "touchdowns"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_receivings_on_player_id"
+  end
+
+  create_table "rushings", id: :uuid, default: nil, force: :cascade do |t|
+    t.bigint "player_id"
+    t.integer "year"
+    t.integer "games_played"
+    t.integer "attempts"
+    t.integer "yards"
+    t.integer "touchdowns"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_rushings_on_player_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
     t.string "city", null: false
@@ -56,6 +95,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_23_170948) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "passings", "players"
   add_foreign_key "picks", "players"
   add_foreign_key "picks", "teams"
+  add_foreign_key "receivings", "players"
+  add_foreign_key "rushings", "players"
 end

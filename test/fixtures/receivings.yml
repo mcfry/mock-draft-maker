@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  player_id: 
+  year: 1
+  games_played: 1
+  receptions: 1
+  yards: 1
+  touchdowns: 1
+
+two:
+  player_id: 
+  year: 1
+  games_played: 1
+  receptions: 1
+  yards: 1
+  touchdowns: 1

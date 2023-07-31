@@ -26,6 +26,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const [preselectedPick, setPreselectedPick] = useState(null)
   const [viewRound, setViewRound] = useState(0)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
+  const [playersLoaded, setPlayersLoaded] = useState(false)
 
   // Store State
   const teams = useStore(state => state.teams)
@@ -169,7 +170,11 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
         }
         throw new Error("Network response was not ok.")
       })
-      .then(res => setPlayers(res))
+      .then(res => {
+        console.log(res)
+        setPlayersLoaded(false)
+        setPlayers(res)
+      })
       .catch(() => navigate("/"))
   }, [])
 
