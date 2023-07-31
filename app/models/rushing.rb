@@ -4,6 +4,10 @@ class Rushing < ApplicationRecord
     attr_accessor :average
 
     def average
-        yards / attempts
+        (yards.to_f / attempts.to_f).round(2)
+    end
+
+    def as_json(options = {})
+        super(options).merge(average: average)
     end
 end

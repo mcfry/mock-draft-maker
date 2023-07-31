@@ -1,4 +1,5 @@
 import React from "react"
+import clsx from "clsx"
 
 import useStore from "../../../store/store"
 
@@ -8,9 +9,10 @@ function MdmDraftTab({
   setPreselectedPick,
   userPicking,
   pickModal,
-  pickPlayer
+  pickPlayer,
+  handleAnalyzeClick
 }) {
-  const addAlert = useStore((state) => state.addAlert)
+  const addAlert = useStore(state => state.addAlert)
 
   const selectPlayer = () => {
     if (preselectedPick) {
@@ -48,10 +50,11 @@ function MdmDraftTab({
                 <th>Name</th>
                 <th>Position</th>
                 <th>College</th>
+                <th>&nbsp;</th>
               </tr>
             </thead>
             <tbody>
-              {localPlayers.map((player) => (
+              {localPlayers.map(player => (
                 <tr
                   key={player.id}
                   className={
@@ -59,12 +62,23 @@ function MdmDraftTab({
                       ? "bg-success"
                       : "hover cursor-pointer"
                   }
-                  onClick={(e) => handleClick(e, player)}
+                  onClick={e => handleClick(e, player)}
                 >
                   <th>{player.projected}</th>
                   <td>{player.full_name}</td>
                   <td>{player.position}</td>
                   <td>{player.college}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className={clsx(
+                        "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+                      )}
+                      onClick={e => handleAnalyzeClick(e, player)}
+                    >
+                      Analyze
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

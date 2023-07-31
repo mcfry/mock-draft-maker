@@ -26,6 +26,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const [preselectedPick, setPreselectedPick] = useState(null)
   const [viewRound, setViewRound] = useState(0)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
+  const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [playersLoaded, setPlayersLoaded] = useState(false)
 
   // Store State
@@ -293,6 +294,9 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
                     className={clsx("text-sm", {
                       "text-info": team.id in selected
                     })}
+                    onClick={e =>
+                      handleAnalyzeClick(e, draftState[actualIndex + 1])
+                    }
                   >
                     {team.name}: {draftState[actualIndex + 1].full_name} (
                     {draftState[actualIndex + 1].position})
@@ -397,7 +401,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "trade")}
             className={clsx(
-              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "trade"
               }
@@ -409,7 +413,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "draft")}
             className={clsx(
-              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "draft"
               }
@@ -421,19 +425,26 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "analysis")}
             className={clsx(
-              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "analysis"
               }
             )}
           >
             Analysis
+            {playerInAnalysis?.full_name ? (
+              <span className="font-semibold">
+                &nbsp;({playerInAnalysis.full_name})
+              </span>
+            ) : (
+              ""
+            )}
           </button>
           <button
             type="button"
             onClick={e => handleClick(e, "your_picks")}
             className={clsx(
-              "tab tab-lg hover:bg-gray-800 hover:text-primary-content",
+              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content":
                   tab === "your_picks"
@@ -443,7 +454,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             Your Picks
           </button>
           {userPicking && (
-            <div className="flex justify-end items-center h-full pl-24">
+            <div className="flex justify-center items-center h-full tab">
               <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">
                 You are picking (
                 {orderedPicks[Object.keys(draftState).length].name})
@@ -474,9 +485,12 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
               userPicking={userPicking}
               pickModal={pickModal}
               pickPlayer={pickPlayer}
+              handleAnalyzeClick={handleAnalyzeClick}
             />
           )}
-          {tab === "analysis" && <MdmAnalysisTab />}
+          {tab === "analysis" && (
+            <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
+          )}
           {tab === "your_picks" && <MdmYourPicksTab yourPicks={yourPicks} />}
         </div>
       </div>
@@ -488,6 +502,14 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
     event.preventDefault()
 
     setTab(type)
+  }
+
+  function handleAnalyzeClick(event, player) {
+    event.preventDefault()
+    event.stopPropagation()
+
+    setPlayerInAnalysis(player)
+    setTab("analysis")
   }
 }
 
