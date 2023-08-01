@@ -121,6 +121,9 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
         }
       }
 
+      // TODO: Allow needs to have weighted value selection
+      // i.e. if First pick wants a QB, don't hard cap them at 2 choices like
+      // in possible positional.
       const possiblePositional = []
       let i = 0
       for (const player of players) {
@@ -129,7 +132,11 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
         possiblePositional.push([player, positionalData[player.position]])
 
         i += 1
-        if (i >= total * 3 || i >= 15) break
+        if (
+          i >= (total + 1) * 2 * (randomness / 10 / 2) ||
+          i >= 5 * (randomness / 10)
+        )
+          break
       }
       possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
 
@@ -139,11 +146,18 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
         pickPlayer(possibleNeeds[curPick], total)
       } else {
-        const curPick = parseInt(
-          Math.random() *
-            possiblePositional.length *
-            ((100 - needsVsValue) * 0.01)
+        // cumulative dist func to get weighted arr
+        const weighted = possiblePositional.map(
+          (
+            sum => value =>
+              (sum += value[1])
+          )(0)
         )
+
+        const min = weighted[0]
+        const max = weighted[weighted.length - 1]
+        const weightedPick = Math.random() * (max - min) + min
+        const curPick = weighted.findIndex(el => el >= weightedPick)
 
         pickPlayer(possiblePositional[curPick][0], total)
       }

@@ -24,25 +24,25 @@ import useStore from "../../store/store"
 
 function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
   // Store State
-  const [teams, setTeams] = useStore((state) => [state.teams, state.setTeams])
-  const [selected, setSelected] = useStore((state) => [
+  const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
+  const [selected, setSelected] = useStore(state => [
     state.selected,
     state.setSelected
   ])
-  const [speed, setSpeed] = useStore((state) => [state.speed, state.setSpeed])
-  const [needsVsValue, setNeedsVsValue] = useStore((state) => [
+  const [speed, setSpeed] = useStore(state => [state.speed, state.setSpeed])
+  const [needsVsValue, setNeedsVsValue] = useStore(state => [
     state.needsVsValue,
     state.setNeedsVsValue
   ])
-  const [randomness, setRandomness] = useStore((state) => [
+  const [randomness, setRandomness] = useStore(state => [
     state.randomness,
     state.setRandomness
   ])
-  const [draftRounds, setDraftRounds] = useStore((state) => [
+  const [draftRounds, setDraftRounds] = useStore(state => [
     state.draftRounds,
     state.setDraftRounds
   ])
-  const addAlert = useStore((state) => state.addAlert)
+  const addAlert = useStore(state => state.addAlert)
 
   const findIndex = (id, arr) => {
     for (const [index, val] of arr.entries()) {
@@ -102,10 +102,10 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           <div className="join-item text-sm pb-2">Number of Rounds</div>
           <select
             value={draftRounds}
-            onChange={(e) => setDraftRounds(parseInt(e.currentTarget.value))}
+            onChange={e => setDraftRounds(parseInt(e.currentTarget.value))}
             className="select select-sm select-bordered rounded-none w-[12rem]"
           >
-            {[1, 2, 3, 4, 5, 6, 7].map((rounds) => (
+            {[1, 2, 3, 4, 5, 6, 7].map(rounds => (
               <option key={`rounds_${rounds.toString()}`} value={rounds}>
                 {rounds}
               </option>
@@ -120,10 +120,10 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           </div>
           <input
             type="range"
-            min="0"
+            min="10"
             max="100"
             value={speed}
-            onChange={(e) => setSpeed(parseInt(e.currentTarget.value))}
+            onChange={e => setSpeed(parseInt(e.currentTarget.value))}
             className="range range-xs"
           />
         </div>
@@ -141,10 +141,10 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           </div>
           <input
             type="range"
-            min="0"
+            min="10"
             max="100"
             value={needsVsValue}
-            onChange={(e) => setNeedsVsValue(parseInt(e.currentTarget.value))}
+            onChange={e => setNeedsVsValue(parseInt(e.currentTarget.value))}
             className="range range-xs"
           />
         </div>
@@ -156,10 +156,10 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           </div>
           <input
             type="range"
-            min="0"
+            min="10"
             max="100"
             value={randomness}
-            onChange={(e) => setRandomness(parseInt(e.currentTarget.value))}
+            onChange={e => setRandomness(parseInt(e.currentTarget.value))}
             className="range range-xs"
           />
         </div>
@@ -167,7 +167,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         <div className="mt-auto pb-12">
           <button
             type="button"
-            onClick={(e) => handleClick(e, "stageClick")}
+            onClick={e => handleClick(e, "stageClick")}
             className="btn rounded-none"
           >
             Start
@@ -214,7 +214,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         }
 
         setStage(2)
-        setPickData((_) => ({
+        setPickData(_ => ({
           ...pickDataCopy
         }))
       } else {
