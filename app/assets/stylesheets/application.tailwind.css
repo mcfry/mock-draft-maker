@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.tab-ml {
+  height: 2.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  line-height: 2;
+  --tab-padding: 1.1rem;
+}
+
 .circles {
   position: absolute;
   top: 64;

@@ -49,7 +49,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const draftInterval = useRef(undefined)
   const fuse = useRef(
     new Fuse(players, {
-      keys: ["last", "first"]
+      keys: ["full_name"],
+      threshold: 0.3
     })
   )
 
@@ -240,8 +241,12 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           onBlur={() => setIsMouseOverPicks(false)}
           className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
         >
-          <li className="dropdown dropdown-bottom">
-            <button type="button" tabIndex={0} className="btn text-2xl w-full">
+          <li className="dropdown dropdown-bottom sticky top-0 z-50">
+            <button
+              type="button"
+              tabIndex={0}
+              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300"
+            >
               Round {viewRound + 1}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -401,7 +406,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "trade")}
             className={clsx(
-              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
+              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "trade"
               }
@@ -413,7 +418,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "draft")}
             className={clsx(
-              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
+              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "draft"
               }
@@ -425,7 +430,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "analysis")}
             className={clsx(
-              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
+              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content": tab === "analysis"
               }
@@ -444,7 +449,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             type="button"
             onClick={e => handleClick(e, "your_picks")}
             className={clsx(
-              "tab tab-md hover:bg-gray-600 hover:text-primary-content",
+              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
               {
                 "bg-primary border-box text-primary-content":
                   tab === "your_picks"

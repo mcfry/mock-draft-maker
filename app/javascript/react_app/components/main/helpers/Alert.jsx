@@ -10,7 +10,7 @@ import {
 function Alert({ id, type, message, time, removeAlert }) {
   const timerId = useRef(null)
 
-  const alertIcon = (iconType) => {
+  const alertIcon = iconType => {
     switch (iconType) {
       case "success":
         return <CheckCircleIcon className="h-6 w-6" />
@@ -39,22 +39,23 @@ function Alert({ id, type, message, time, removeAlert }) {
   }
 
   return (
-    <div
-      className={clsx(
-        "alert",
-        alertTypes[type],
-        "w-[74rem] flex justify-between z-30"
-      )}
-    >
-      <div className="flex space-x-2">
-        {alertIcon(type)}
-        <span>{message}</span>
-      </div>
+    <div className="flex flex-col justify-center items-center relative">
+      <div
+        className={clsx(
+          "alert w-[74rem] flex justify-between z-30 absolute mb-12",
+          alertTypes[type]
+        )}
+      >
+        <div className="flex space-x-2">
+          {alertIcon(type)}
+          <span>{message}</span>
+        </div>
 
-      <XMarkIcon
-        className="h-6 w-6 cursor-pointer"
-        onClick={() => removeAlert(id)}
-      />
+        <XMarkIcon
+          className="h-6 w-6 cursor-pointer"
+          onClick={() => removeAlert(id)}
+        />
+      </div>
     </div>
   )
 }
