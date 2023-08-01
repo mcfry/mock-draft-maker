@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom"
 
 import Fuse from "fuse.js"
 import clsx from "clsx"
-import MdmTradeTab from "./helpers/MdmTradeTab"
-import MdmDraftTab from "./helpers/MdmDraftTab"
-import MdmAnalysisTab from "./helpers/MdmAnalysisTab"
-import MdmYourPicksTab from "./helpers/MdmYourPicksTab"
+import MdmTradeTab from "./maker_tabs/MdmTradeTab"
+import MdmDraftTab from "./maker_tabs/MdmDraftTab"
+import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
+import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
 import useStore from "../../store/store"
 
-import needsData from "./helpers/needs_2024.json"
-import positionalData from "./helpers/positional_value.json"
+import needsData from "./maker_static_data/needs_2024.json"
+import positionalData from "./maker_static_data/positional_value.json"
 
 function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const navigate = useNavigate()

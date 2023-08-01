@@ -18,7 +18,7 @@ import {
   BoltIcon,
   VariableIcon
 } from "@heroicons/react/20/solid"
-import SortableTeam from "./helpers/SortableTeam"
+import SortableTeam from "../helpers/SortableTeam"
 
 import useStore from "../../store/store"
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import PickGrid from "./PickGrid"
+import PickGrid from "../../helpers/PickGrid"
 
-import pickValueData from "./pick_value_rich_hill.json"
+import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
 // Extrapolate so don't have to manually enter everything
 for (let i = 17; i < 257; i += 1) {
   let diff = 0

@@ -1,6 +1,6 @@
 import React from "react"
 
-import Alert from "./helpers/Alert"
+import Alert from "../helpers/Alert"
 import useStore from "../../store/store"
 
 // alert

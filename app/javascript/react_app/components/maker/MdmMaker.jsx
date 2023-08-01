@@ -10,7 +10,7 @@ import MdmMakerSkeleton from "./MdmMakerSkeleton"
 import useStore from "../../store/store"
 import ROUTES from "../../constants/routes"
 
-import data from "./helpers/picks_2024.json"
+import data from "./maker_static_data/picks_2024.json"
 
 function MdmMaker() {
   const navigate = useNavigate()
