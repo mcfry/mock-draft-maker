@@ -12,4 +12,5 @@ bundle install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rake db:migrate
+bundle exec rake custom:unseed_db
 bundle exec rake db:seed

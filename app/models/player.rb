@@ -6,9 +6,9 @@ class Player < ApplicationRecord
 
     has_many :picks
     has_many :teams, through: :picks
-    has_one :passing
-    has_one :rushing
-    has_one :receiving
+    has_one :passing, dependent: :destroy
+    has_one :rushing, dependent: :destroy
+    has_one :receiving, dependent: :destroy
 
     attr_accessor :full_name, :total
 
