@@ -4,6 +4,9 @@ import React from "react"
 import { render, fireEvent, screen, cleanup } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
 import MdmDraftTab from "../components/maker/maker_tabs/MdmDraftTab"
+import useStore from "../store/store"
+
+jest.mock("../store/store")
 
 afterEach(cleanup)
 
@@ -55,6 +58,8 @@ it("should select a player when clicked", () => {
 
 it("should open player analysis modal when Analyze button is clicked", () => {
   const handleAnalyzeClick = jest.fn()
+  useStore.mockReturnValueOnce(jest.fn()) // mock addAlert
+
   render(
     <MdmDraftTab
       localPlayers={[
@@ -75,26 +80,27 @@ it("should open player analysis modal when Analyze button is clicked", () => {
 })
 
 // Mock the store
-// it("should show an alert when userPicking is false", () => {
-//   const setPreselectedPick = jest.fn()
-//   render(
-//     <MdmDraftTab
-//       localPlayers={[
-//         {
-//           id: 1,
-//           projected: 10,
-//           full_name: "John Doe",
-//           position: "QB",
-//           college: "Some College"
-//         }
-//       ]}
-//       setPreselectedPick={setPreselectedPick}
-//       userPicking={false}
-//     />
-//   )
-//   const playerRow = screen.getByText("John Doe").closest("tr")
-//   fireEvent.click(playerRow)
-//   expect(setPreselectedPick).not.toHaveBeenCalled()
-//   const alert = screen.getByText("It's not your turn to pick!")
-//   expect(alert).toBeInTheDocument()
-// })
+it("should add an alert when userPicking is false", () => {
+  const setPreselectedPick = jest.fn()
+  const addAlert = useStore.mockReturnValueOnce(jest.fn()) // mock addAlert
+
+  render(
+    <MdmDraftTab
+      localPlayers={[
+        {
+          id: 1,
+          projected: 10,
+          full_name: "John Doe",
+          position: "QB",
+          college: "Some College"
+        }
+      ]}
+      setPreselectedPick={setPreselectedPick}
+      userPicking={false}
+    />
+  )
+  const playerRow = screen.getByText("John Doe").closest("tr")
+  fireEvent.click(playerRow)
+  expect(setPreselectedPick).not.toHaveBeenCalled()
+  expect(addAlert).toHaveBeenCalled()
+})

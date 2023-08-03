@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-
 import Fuse from "fuse.js"
 import clsx from "clsx"
+
 import MdmTradeTab from "./maker_tabs/MdmTradeTab"
 import MdmDraftTab from "./maker_tabs/MdmDraftTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
 import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
+import MdmTab from "../helpers/MdmTab"
 import useStore from "../../store/store"
 
 import needsData from "./maker_static_data/needs_2024.json"
@@ -80,6 +81,9 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
     // Remove from possible picks
     removePlayer(playerToAdd)
 
+    // Reset preselected
+    setPreselectedPick(_ => null)
+
     // Remove pick data (trades)
     const oldPd = pickData[orderedPicks[total].full_name]
     setPickData(prev => ({
@@ -123,7 +127,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
       // TODO: Allow needs to have weighted value selection
       // i.e. if First pick wants a QB, don't hard cap them at 2 choices like
-      // in possible positional.
+      // in possiblePositional.
       const possiblePositional = []
       let i = 0
       for (const player of players) {
@@ -241,8 +245,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   }, [players])
 
   // not 32 picks in each round
-  const currentPick = Object.keys(draftState).length
-  const currentRound = parseInt(currentPick / 32)
+  const currentPickIndex = Object.keys(draftState).length
+  const currentRound = parseInt(currentPickIndex / 32)
   const roundStart = viewRound * 32
   const roundEnd = Math.min(roundStart + 32, 256)
 
@@ -253,6 +257,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
         <ul
           onFocus={() => setIsMouseOverPicks(true)}
           onBlur={() => setIsMouseOverPicks(false)}
+          onMouseOver={() => setIsMouseOverPicks(true)}
+          onMouseOut={() => setIsMouseOverPicks(false)}
           className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
         >
           <li className="dropdown dropdown-bottom sticky top-0 z-50">
@@ -302,7 +308,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           {orderedPicks.slice(roundStart, roundEnd).map((team, index) => {
             const actualIndex = roundStart + index
 
-            return currentPick >= actualIndex + 1 ? (
+            return currentPickIndex >= actualIndex + 1 ? (
               <li
                 id={`${team.name}_${actualIndex.toString()}`}
                 key={`${team.name}_${actualIndex.toString()}`}
@@ -351,52 +357,47 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
       {/* Trade Stuff + PInfo */}
       <div className="flex flex-col">
-        <div className="navbar bg-primary text-primary-content">
-          {!userPicking && (
-            <button
-              type="button"
-              onClick={startOrPauseDraft}
-              className="btn rounded-none"
-            >
-              {draftRunning ? "Pause" : "Start"}
-            </button>
-          )}
-
-          <div>&nbsp;&nbsp;&nbsp;</div>
-
-          <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
-            <span className="countdown font-mono text-xl">
-              <span style={{ "--value": currentRound + 1 }} />
-            </span>
-            <span className="text-xs">Round</span>
-          </div>
-
-          <div>&nbsp;&nbsp;</div>
-
-          <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
-            <span className="countdown font-mono text-xl">
-              {currentPick + 1}
-            </span>
-            <span className="text-xs">Pick</span>
-          </div>
-
-          <div>&nbsp;&nbsp;&nbsp;</div>
-
-          <div className="flex justify-end w-full">
-            {tab === "draft" && userPicking && preselectedPick && (
+        <div className="navbar bg-primary text-primary-content justify-between">
+          <div className="navbar w-max">
+            {!userPicking && (
               <button
                 type="button"
-                className="btn bg-primary hover:bg-secondary text-base-100 rounded-none pr-4"
-                onClick={() => {
-                  if (pickModal.current) {
-                    pickModal.current.showModal()
-                  }
-                }}
+                onClick={startOrPauseDraft}
+                className="btn rounded-none"
               >
-                Draft Player
+                {draftRunning ? "Pause" : "Start"}
               </button>
             )}
 
+            <div>&nbsp;&nbsp;&nbsp;</div>
+
+            <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
+              <span className="countdown font-mono text-xl">
+                <span style={{ "--value": currentRound + 1 }} />
+              </span>
+              <span className="text-xs">Round</span>
+            </div>
+
+            <div>&nbsp;&nbsp;</div>
+
+            <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
+              <span className="countdown font-mono text-xl">
+                {currentPickIndex + 1}
+              </span>
+              <span className="text-xs">Pick</span>
+            </div>
+          </div>
+
+          {userPicking && (
+            <div className="flex justify-center items-center h-full w-full">
+              <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">
+                You are picking (
+                {orderedPicks[Object.keys(draftState).length].name})
+              </div>
+            </div>
+          )}
+
+          <div className="flex justify-end w-max">
             <div className="flex-none gap-2">
               <div className="form-control pl-2 pr-4">
                 <input
@@ -415,76 +416,48 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           </div>
         </div>
 
-        <div className="tabs border-b-2">
-          <button
-            type="button"
-            onClick={e => handleClick(e, "trade")}
-            className={clsx(
-              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content": tab === "trade"
-              }
-            )}
-          >
-            Trade
-          </button>
-          <button
-            type="button"
-            onClick={e => handleClick(e, "draft")}
-            className={clsx(
-              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content": tab === "draft"
-              }
-            )}
-          >
-            Draft a Player
-          </button>
-          <button
-            type="button"
-            onClick={e => handleClick(e, "analysis")}
-            className={clsx(
-              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content": tab === "analysis"
-              }
-            )}
-          >
-            Analysis
-            {playerInAnalysis?.full_name ? (
-              <span className="font-semibold">
-                &nbsp;({playerInAnalysis.full_name})
-              </span>
-            ) : (
-              ""
-            )}
-          </button>
-          <button
-            type="button"
-            onClick={e => handleClick(e, "your_picks")}
-            className={clsx(
-              "tab tab-ml hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content":
-                  tab === "your_picks"
-              }
-            )}
-          >
-            Your Picks
-          </button>
-          {userPicking && (
-            <div className="flex justify-center items-center h-full tab">
-              <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">
-                You are picking (
-                {orderedPicks[Object.keys(draftState).length].name})
-              </div>
-            </div>
-          )}
+        <div className="tabs border-b-2 border-t-2">
+          <MdmTab
+            handleClick={e => handleClick(e, "trade")}
+            currentTab={tab}
+            tabName="trade"
+            displayText="Trade"
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "draft")}
+            currentTab={tab}
+            tabName="draft"
+            displayText="Draft a Player"
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "analysis")}
+            currentTab={tab}
+            tabName="analysis"
+            displayText={
+              <>
+                Analysis
+                {playerInAnalysis?.full_name ? (
+                  <span className="font-semibold">
+                    &nbsp;({playerInAnalysis.full_name})
+                  </span>
+                ) : (
+                  ""
+                )}
+              </>
+            }
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "your-picks")}
+            currentTab={tab}
+            tabName="your-picks"
+            displayText="Your Picks"
+          />
         </div>
 
         <div className="flex justify-evenly w-[54rem] h-full">
           {tab === "trade" && (
             <MdmTradeTab
+              startOrPauseDraft={startOrPauseDraft}
               teams={teams}
               selected={selected}
               selectedTeams={selectedTeams}
@@ -493,6 +466,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
               setPickData={setPickData}
               draftRunning={draftRunning}
               userPicking={userPicking}
+              setUserPicking={setUserPicking}
+              currentPickIndex={currentPickIndex}
               forceNewIntervalAndContinue={forceNewIntervalAndContinue}
             />
           )}
@@ -510,7 +485,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           {tab === "analysis" && (
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
-          {tab === "your_picks" && <MdmYourPicksTab yourPicks={yourPicks} />}
+          {tab === "your-picks" && <MdmYourPicksTab yourPicks={yourPicks} />}
         </div>
       </div>
     </>

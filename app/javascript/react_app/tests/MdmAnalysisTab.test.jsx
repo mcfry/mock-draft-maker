@@ -108,7 +108,7 @@ it("should highlight the passing tab when clicked", () => {
   fireEvent.click(getByText("Passing"))
 
   expect(getByText("Passing")).toHaveClass(
-    "bg-primary border-box text-primary-content"
+    "bg-gray-600 border-box text-primary-content"
   )
 })
 
@@ -121,7 +121,7 @@ it("should highlight the rushing tab when clicked", () => {
   fireEvent.click(getByText("Rushing"))
 
   expect(getByText("Rushing")).toHaveClass(
-    "bg-primary border-box text-primary-content"
+    "bg-gray-600 border-box text-primary-content"
   )
 })
 
@@ -134,6 +134,6 @@ it("should highlight the receiving tab when clicked", () => {
   fireEvent.click(getByText("Receiving"))
 
   expect(getByText("Receiving")).toHaveClass(
-    "bg-primary border-box text-primary-content"
+    "bg-gray-600 border-box text-primary-content"
   )
 })

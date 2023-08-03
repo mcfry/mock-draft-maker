@@ -1,5 +1,17 @@
 import React, { useState } from "react"
-import clsx from "clsx"
+
+import MdmTab from "../../helpers/MdmTab"
+
+function NoData({ type }) {
+  return (
+    <div className="flex flex-col items-center justify-center w-[54rem] h-[27rem]">
+      <p className="font-semibold">No {type} data for this player</p>
+      <p>
+        (If you think this player should have data, they may have been injured)
+      </p>
+    </div>
+  )
+}
 
 const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   const [tab, setTab] = useState("passing")
@@ -8,76 +20,34 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     <>
       <div className="flex flex-col">
         <div className="tabs border-b-2">
-          <button
-            type="button"
-            onClick={e => handleClick(e, "passing")}
-            className={clsx(
-              "tab tab-lg hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content": tab === "passing"
-              }
-            )}
-          >
-            Passing
-          </button>
-          <button
-            type="button"
-            onClick={e => handleClick(e, "rushing")}
-            className={clsx(
-              "tab tab-lg hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content": tab === "rushing"
-              }
-            )}
-          >
-            Rushing
-          </button>
-          <button
-            type="button"
-            onClick={e => handleClick(e, "receiving")}
-            className={clsx(
-              "tab tab-lg hover:bg-gray-600 hover:text-primary-content",
-              {
-                "bg-primary border-box text-primary-content":
-                  tab === "receiving"
-              }
-            )}
-          >
-            Receiving
-          </button>
-          {/* <div className="flex justify-end items-center h-full pl-24">
-            <div className="text-md font-bold text-warning whitespace-nowrap">
-              {playerInAnalysis?.full_name}
-            </div>
-          </div> */}
+          <MdmTab
+            handleClick={e => handleClick(e, "passing")}
+            currentTab={tab}
+            tabName="passing"
+            displayText="Passing"
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "rushing")}
+            currentTab={tab}
+            tabName="rushing"
+            displayText="Rushing"
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "receiving")}
+            currentTab={tab}
+            tabName="receiving"
+            displayText="Receiving"
+          />
         </div>
         <div className="overflow-x-auto w-[54rem] h-[27rem]">
           {tab === "passing" && !playerInAnalysis?.passing && (
-            <div className="flex flex-col items-center justify-center w-[54rem] h-[27rem]">
-              <p className="font-semibold">No passing data for this player</p>
-              <p>
-                (If you think this player should have data, they may have been
-                injured)
-              </p>
-            </div>
+            <NoData type={tab} />
           )}
           {tab === "rushing" && !playerInAnalysis?.rushing && (
-            <div className="flex flex-col items-center justify-center w-[54rem] h-[27rem]">
-              <p className="font-semibold">No rushing data for this player</p>
-              <p>
-                (If you think this player should have data, they may have been
-                injured)
-              </p>
-            </div>
+            <NoData type={tab} />
           )}
           {tab === "receiving" && !playerInAnalysis?.receiving && (
-            <div className="flex flex-col items-center justify-center w-[54rem] h-[27rem]">
-              <p className="font-semibold">No receiving data for this player</p>
-              <p>
-                (If you think this player should have data, they may have been
-                injured)
-              </p>
-            </div>
+            <NoData type={tab} />
           )}
           <table className="table">
             {/* head */}

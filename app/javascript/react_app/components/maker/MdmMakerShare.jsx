@@ -14,7 +14,6 @@ function MdmMakerShare() {
   const handleSubmit = e => {
     e.preventDefault()
 
-    // Get CSRF token
     const token = getCsrfToken()
 
     if (yourPicks && Object.keys(yourPicks).length > 0) {

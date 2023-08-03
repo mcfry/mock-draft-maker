@@ -30,6 +30,7 @@ for (let i = 17; i < 257; i += 1) {
 }
 
 function MdmTradeTab({
+  startOrPauseDraft,
   teams,
   selected,
   pickData,
@@ -38,9 +39,10 @@ function MdmTradeTab({
   setSelectedTeams,
   draftRunning,
   userPicking,
+  setUserPicking,
+  currentPickIndex,
   forceNewIntervalAndContinue
 }) {
-  // useState
   const [localTeams, setLocalTeams] = useState(
     teams.filter(team => !(team.id in selected))
   )
@@ -71,10 +73,17 @@ function MdmTradeTab({
   return (
     <>
       {draftRunning && !userPicking ? (
-        <div className="flex justify-center items-center w-[54rem]">
+        <div className="flex flex-col justify-center items-center w-[54rem] space-y-8">
           <span className="text-info text-5xl whitespace-nowrap">
             Can&apos;t trade while draft is running.
           </span>
+          <button
+            type="button"
+            className="btn btn-lg rounded-none"
+            onClick={() => startOrPauseDraft()}
+          >
+            Pause
+          </button>
         </div>
       ) : (
         <>
@@ -238,6 +247,8 @@ function MdmTradeTab({
 
     if (userPicking && oldCt[0] !== newCt[0]) {
       forceNewIntervalAndContinue()
+    } else if (!userPicking && newCt[0] === currentPickIndex + 1) {
+      setUserPicking(_ => true)
     }
 
     setActiveTrades(_ => ({}))

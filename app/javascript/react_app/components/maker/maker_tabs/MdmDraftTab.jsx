@@ -15,7 +15,7 @@ function MdmDraftTab({
   const addAlert = useStore(state => state.addAlert)
 
   const selectPlayer = () => {
-    if (preselectedPick) {
+    if (preselectedPick && userPicking) {
       pickPlayer(preselectedPick, undefined, true)
     }
   }
@@ -31,8 +31,15 @@ function MdmDraftTab({
           <div className="modal-action">
             <button
               type="button"
-              className="btn btn-primary"
-              onClick={handleDraftClick}
+              className="btn bg-primary text-primary-content hover:bg-primary-content hover:text-primary hover:border-2 hover:border-primary"
+              onClick={e => handleDraftClick(e, false)}
+            >
+              No
+            </button>
+            <button
+              type="button"
+              className="btn bg-primary text-primary-content hover:bg-primary-content hover:text-primary hover:border-2 hover:border-primary"
+              onClick={e => handleDraftClick(e, true)}
             >
               Yes
             </button>
@@ -51,6 +58,7 @@ function MdmDraftTab({
                 <th>Position</th>
                 <th>College</th>
                 <th>&nbsp;</th>
+                <th className="w-2/12">&nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -79,6 +87,23 @@ function MdmDraftTab({
                       Analyze
                     </button>
                   </td>
+                  <td>
+                    {preselectedPick === player && (
+                      <button
+                        type="button"
+                        className={clsx(
+                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+                        )}
+                        onClick={() => {
+                          if (pickModal.current) {
+                            pickModal.current.showModal()
+                          }
+                        }}
+                      >
+                        Draft
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -103,12 +128,16 @@ function MdmDraftTab({
     }
   }
 
-  function handleDraftClick(e) {
+  function handleDraftClick(e, isSure) {
     e.preventDefault()
 
-    selectPlayer()
-    setPreselectedPick(null)
-    if (pickModal.current) pickModal.current.close()
+    if (isSure) {
+      selectPlayer()
+      setPreselectedPick(null)
+      if (pickModal.current) pickModal.current.close()
+    } else if (pickModal.current) {
+      pickModal.current.close()
+    }
   }
 }
 
