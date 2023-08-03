@@ -81,6 +81,8 @@ function MdmTradeTab({
           <div className="flex flex-col items-center border-r-2 w-[27rem]">
             <div className="pt-6">
               <select
+                data-testid="tradePartner"
+                value={tradePartner}
                 onChange={e => handleChange(e, "tradePartner")}
                 className="select select-bordered rounded-none w-[20rem]"
               >
@@ -111,6 +113,8 @@ function MdmTradeTab({
           <div className="flex flex-col items-center w-[27rem]">
             <div className="pt-6">
               <select
+                data-testid="currentTeam"
+                value={currentTeam}
                 onChange={e => handleChange(e, "currentTeam")}
                 className="select select-bordered rounded-none w-[20rem]"
               >
@@ -183,22 +187,28 @@ function MdmTradeTab({
 
   function handleTradeClick(e, type) {
     let k = null
-    const pickInt = parseInt(e.currentTarget.innerText)
+    let pickInt = null
+    if (e.currentTarget.innerText) {
+      pickInt = parseInt(e.currentTarget.innerText)
+    } else {
+      pickInt = parseInt(e.currentTarget.textContent)
+    }
 
     if (type === "tradePartner") k = tradePartner
     if (type === "currentTeam") k = currentTeam
 
+    const newActiveTrades = { ...activeTrades }
     if (k in activeTrades && activeTrades[k].includes(pickInt)) {
-      activeTrades[k] = activeTrades[k].filter(x => x !== pickInt)
-    } else if (k in activeTrades) {
-      activeTrades[k].push(pickInt)
+      newActiveTrades[k] = newActiveTrades[k].filter(x => x !== pickInt)
+    } else if (k in newActiveTrades) {
+      newActiveTrades[k].push(pickInt)
     } else {
-      activeTrades[k] = [pickInt]
+      newActiveTrades[k] = [pickInt]
     }
 
     findAndSetTradeValue(tradePartner, currentTeam)
     setActiveTrades(_ => ({
-      ...activeTrades
+      ...newActiveTrades
     }))
   }
 

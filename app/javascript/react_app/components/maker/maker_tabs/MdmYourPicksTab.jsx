@@ -4,7 +4,7 @@ function MdmYourPicksTab({ yourPicks }) {
   return (
     <>
       <div className="flex flex-col">
-        {yourPicks.length > 0 ? (
+        {yourPicks && Object.keys(yourPicks).length > 0 ? (
           <div className="overflow-x-auto w-[54rem] h-[27rem]">
             <table className="table">
               <tbody>
@@ -14,7 +14,7 @@ function MdmYourPicksTab({ yourPicks }) {
                       <th>{team}</th>
                     </tr>
                     {players.map(player => (
-                      <tr key={`yps_${player.id.toString()}`}>
+                      <tr key={`yps_${player.id}`}>
                         <td>Projection: {player.projected}</td>
                         <td>Pick: {player.pickedAt}</td>
                         <td>{player.full_name}</td>

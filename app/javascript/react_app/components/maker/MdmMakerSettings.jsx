@@ -101,6 +101,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         <div className="join join-vertical pt-4 pb-4">
           <div className="join-item text-sm pb-2">Number of Rounds</div>
           <select
+            data-testid="numRounds"
             value={draftRounds}
             onChange={e => setDraftRounds(parseInt(e.currentTarget.value))}
             className="select select-sm select-bordered rounded-none w-[12rem]"
@@ -119,6 +120,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             &nbsp; Speed
           </div>
           <input
+            data-testid="speed"
             type="range"
             min="10"
             max="100"
@@ -140,6 +142,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             </div>
           </div>
           <input
+            data-testid="needsVsPositional"
             type="range"
             min="10"
             max="100"
@@ -155,6 +158,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             &nbsp; Randomness
           </div>
           <input
+            data-testid="randomness"
             type="range"
             min="10"
             max="100"
@@ -166,6 +170,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
 
         <div className="mt-auto pb-12">
           <button
+            data-testid="start-button"
             type="button"
             onClick={e => handleClick(e, "stageClick")}
             className="btn rounded-none"

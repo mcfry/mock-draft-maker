@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import clsx from "clsx"
 
-function MdmAnalysisTab({ playerInAnalysis }) {
+const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   const [tab, setTab] = useState("passing")
 
   return (
@@ -187,6 +187,6 @@ function MdmAnalysisTab({ playerInAnalysis }) {
 
     setTab(type)
   }
-}
+})
 
 export default MdmAnalysisTab

@@ -5,7 +5,7 @@ function PickGrid({ pickData, team, isCt, activeTrades, handleTradeClick }) {
   return (
     <div className="flex justify-center pt-2 w-[24rem]">
       <div className="grid grid-cols-7 gap-2">
-        {pickData[team].map(pick => {
+        {pickData[team].map((pick, index) => {
           let active = false
           if (team in activeTrades && activeTrades[team].includes(pick)) {
             active = true
@@ -13,6 +13,9 @@ function PickGrid({ pickData, team, isCt, activeTrades, handleTradeClick }) {
 
           return (
             <button
+              data-testid={`${
+                isCt ? "currentTeam" : "tradePartner"
+              }_pick_${index}`}
               type="button"
               key={`2024_tp_${pick.toString()}`}
               onClick={e =>

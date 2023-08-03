@@ -3,17 +3,15 @@
 import React from "react"
 import { render } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect"
-import Home from "./Home"
+import Home from "../components/main/Home"
 
-// pay attention to write it at the top level of your file
 const mockedUsedNavigate = jest.fn()
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedUsedNavigate
 }))
 
-jest.mock("../../other/wave", () => () => {})
+jest.mock("../other/wave", () => () => {})
 
 it("test_header_rendering", () => {
   const { getByText } = render(<Home />)

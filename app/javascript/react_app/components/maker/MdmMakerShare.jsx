@@ -3,34 +3,46 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 import useStore from "../../store/store"
+import getCsrfToken from "../../other/getCsrfToken"
 
 function MdmMakerShare() {
   const navigate = useNavigate()
 
   const yourPicks = useStore(state => state.yourPicks)
+  const addAlert = useStore(state => state.addAlert)
 
   const handleSubmit = e => {
     e.preventDefault()
 
     // Get CSRF token
-    const token = document.querySelector('meta[name="csrf-token"]').content
+    const token = getCsrfToken()
 
-    axios({
-      url: "/api/v1/draft_records/create",
-      method: "post",
-      data: { draft_picks: yourPicks },
-      headers: {
-        Accept: "Application/json",
-        "X-CSRF-Token": token,
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => {
-        navigate(`/share_draft/${res?.data?.uuid}`)
+    if (yourPicks && Object.keys(yourPicks).length > 0) {
+      axios({
+        url: "/api/v1/draft_records/create",
+        method: "post",
+        data: { draft_picks: yourPicks },
+        headers: {
+          Accept: "Application/json",
+          "X-CSRF-Token": token,
+          "Content-Type": "application/json"
+        }
       })
-      .catch(err => {
-        console.log(err)
+        .then(res => {
+          navigate(`/share_draft/${res?.data?.uuid}`)
+        })
+        .catch(_ => {
+          addAlert({
+            type: "error",
+            message: "Save failed, please try again."
+          })
+        })
+    } else {
+      addAlert({
+        type: "error",
+        message: "There is no data to submit."
       })
+    }
   }
 
   return (
