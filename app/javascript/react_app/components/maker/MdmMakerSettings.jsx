@@ -94,7 +94,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
       <div className="divider divider-horizontal" />
 
       {/* Options Area */}
-      <div className="flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full">
+      <section className="flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full">
         <div className="text-md pt-4">Settings</div>
         <div className="divider" />
 
@@ -178,7 +178,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             Start
           </button>
         </div>
-      </div>
+      </section>
     </>
   )
 

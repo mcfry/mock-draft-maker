@@ -110,7 +110,7 @@ function MdmMaker() {
         <li />
       </ul>
 
-      <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermax:hidden">
+      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermax:hidden">
         <MdmAlerts />
 
         {teamsLoaded === false ? (
@@ -147,50 +147,52 @@ function MdmMaker() {
                 </div>
 
                 {/* Mdm Settings */}
-                <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
                   <MdmMakerSettings
                     teamsMapping={teamsMapping}
                     setStage={setStage}
                     pickData={pickData}
                     setPickData={setPickData}
                   />
-                </div>
+                </section>
               </>
             )}
 
             {stage === 2 && (
               <>
                 {/* Mdm Draft */}
-                <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
                     pickData={pickData}
                     setPickData={setPickData}
                     orderedPicks={orderedPicks}
                   />
-                </div>
+                </section>
               </>
             )}
 
             {stage === 3 && (
               <>
                 {/* Mdm Share */}
-                <div className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
                   <MdmMakerShare />
-                </div>
+                </section>
               </>
             )}
           </>
         )}
-      </div>
-      <div className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermin:hidden space-y-4">
+      </main>
+
+      {/* Small screens */}
+      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermin:hidden space-y-4">
         <p>
           <span className="font-semibold">Mock Draft Maker</span> is only
           available on a larger screen&nbsp;
           <span className="italic">for the moment.</span>
         </p>
         <p className="text-xl">Stay tuned!</p>
-      </div>
+      </main>
     </>
   )
 }

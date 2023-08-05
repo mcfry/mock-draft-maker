@@ -35,7 +35,7 @@ function Home() {
       </ul> */}
       <canvas id="waves" />
 
-      <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300 z-0">
+      <section className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300 z-0">
         <div className="hero-content text-center z-50">
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">Sup!</h1>
@@ -53,7 +53,7 @@ function Home() {
             </button>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

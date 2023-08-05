@@ -1,17 +1,7 @@
 import React, { useState } from "react"
 
 import MdmTab from "../../helpers/MdmTab"
-
-function NoData({ type }) {
-  return (
-    <div className="flex flex-col items-center justify-center w-[54rem] h-[27rem]">
-      <p className="font-semibold">No {type} data for this player</p>
-      <p>
-        (If you think this player should have data, they may have been injured)
-      </p>
-    </div>
-  )
-}
+import NoPlayerData from "../../helpers/NoPlayerData"
 
 const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   const [tab, setTab] = useState("passing")
@@ -41,13 +31,13 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
         </div>
         <div className="overflow-x-auto w-[54rem] h-[27rem]">
           {tab === "passing" && !playerInAnalysis?.passing && (
-            <NoData type={tab} />
+            <NoPlayerData type={tab} />
           )}
           {tab === "rushing" && !playerInAnalysis?.rushing && (
-            <NoData type={tab} />
+            <NoPlayerData type={tab} />
           )}
           {tab === "receiving" && !playerInAnalysis?.receiving && (
-            <NoData type={tab} />
+            <NoPlayerData type={tab} />
           )}
           <table className="table">
             {/* head */}

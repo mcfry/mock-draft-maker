@@ -25,7 +25,7 @@ function About() {
         <li />
       </ul>
 
-      <div className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
+      <section className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300">
         <div className="hero-content h-auto text-center z-20">
           <div className="max-w-md">
             <h1 className="text-5xl font-bold">More to come!</h1>
@@ -38,7 +38,7 @@ function About() {
             </p>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

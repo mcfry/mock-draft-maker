@@ -29,6 +29,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [playersLoaded, setPlayersLoaded] = useState(false)
+  const [positionSelect, setPositionSelect] = useState("All")
 
   // Store State
   const teams = useStore(state => state.teams)
@@ -41,6 +42,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
     state.yourPicks,
     state.setYourPicks
   ])
+  const addAlert = useStore(state => state.addAlert)
 
   const [selectedTeams, setSelectedTeams] = useState(
     teams.filter(team => team.id in selected)
@@ -180,6 +182,38 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
     return () => clearInterval(draftInterval.current)
   }
 
+  const filterPlayers = (setCollection = false) => {
+    // Edit csv and reseed, remove erroneous from positionalData
+    // EDGE/DE/OLB -> EDGE
+    // LT/RT/G/C/OL -> OL
+    //
+    let newPlayers = players
+    if (positionSelect !== "All") {
+      newPlayers = players.filter(player => player.position === positionSelect)
+    }
+
+    if (setCollection === true) fuse.current.setCollection(newPlayers)
+
+    if (search !== "") {
+      const searchedPlayers = searchPlayers()
+      if (searchedPlayers) {
+        setLocalPlayers(searchedPlayers)
+      } else {
+        addAlert({
+          type: "error",
+          message: "Error searching"
+        })
+        setLocalPlayers(newPlayers)
+      }
+    } else {
+      setLocalPlayers(newPlayers)
+    }
+  }
+
+  const searchPlayers = () => {
+    return fuse.current.search(search).map(searchItem => searchItem.item)
+  }
+
   // Lifecycle Hooks
   useEffect(() => {
     const url = "/api/v1/players/index"
@@ -223,26 +257,12 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   }, [draftState, draftRunning])
 
   useEffect(() => {
-    if (search !== "") {
-      setLocalPlayers(
-        fuse.current.search(search).map(searchItem => searchItem.item)
-      )
-    } else {
-      setLocalPlayers(players)
-    }
+    filterPlayers(false)
   }, [search])
 
   useEffect(() => {
-    fuse.current.setCollection(players)
-
-    if (search !== "") {
-      setLocalPlayers(
-        fuse.current.search(search).map(searchItem => searchItem.item)
-      )
-    } else {
-      setLocalPlayers(players)
-    }
-  }, [players])
+    filterPlayers(true)
+  }, [players, positionSelect])
 
   // not 32 picks in each round
   const currentPickIndex = Object.keys(draftState).length
@@ -253,14 +273,15 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   return (
     <>
       {/* PMenu */}
-      <div className="overflow-x-hidden overflow-y-auto border-r-2">
-        <ul
+      <section className="overflow-x-hidden overflow-y-auto border-r-2">
+        <menu
           onFocus={() => setIsMouseOverPicks(true)}
           onBlur={() => setIsMouseOverPicks(false)}
           onMouseOver={() => setIsMouseOverPicks(true)}
           onMouseOut={() => setIsMouseOverPicks(false)}
           className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
         >
+          {/* Dropdown */}
           <li className="dropdown dropdown-bottom sticky top-0 z-50">
             <button
               type="button"
@@ -283,7 +304,6 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
                 />
               </svg>
             </button>
-
             <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               {[...Array(draftRounds)].map((_, index) => (
                 <li key={`dr_${index.toString()}`}>
@@ -352,11 +372,11 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
               </li>
             )
           })}
-        </ul>
-      </div>
+        </menu>
+      </section>
 
       {/* Trade Stuff + PInfo */}
-      <div className="flex flex-col">
+      <section className="flex flex-col">
         <div className="navbar bg-primary text-primary-content justify-between">
           <div className="navbar w-max">
             {!userPicking && (
@@ -397,26 +417,43 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             </div>
           )}
 
-          <div className="flex justify-end w-max">
-            <div className="flex-none gap-2">
-              <div className="form-control pl-2 pr-4">
-                <input
-                  value={search}
-                  onChange={e => {
-                    setTab("draft")
-                    setSearch(e.target.value)
-                  }}
-                  name="search"
-                  type="text"
-                  placeholder="Search"
-                  className="input input-bordered rounded-none w-24 text-primary md:w-auto"
-                />
-              </div>
+          <div className="flex justify-between space-x-2" role="search">
+            <div className="flex justify-center">
+              <select
+                data-testid="positionFilter"
+                value={positionSelect}
+                onChange={handleChange}
+                className="select select-bordered rounded-none w-[6rem] text-primary"
+              >
+                <option value="All">ALL</option>
+                {Object.keys(positionalData).map(position => (
+                  <option key={position} value={position}>
+                    {position}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex justify-center">
+              <input
+                value={search}
+                onChange={e => {
+                  setTab("draft")
+                  setSearch(e.target.value)
+                }}
+                name="search"
+                type="text"
+                placeholder="Search"
+                className="input input-bordered rounded-none w-24 font-semibold text-primary md:w-auto"
+              />
             </div>
           </div>
         </div>
 
-        <div className="tabs border-b-2 border-t-2">
+        <div
+          className="tabs border-b-2 border-t-2"
+          aria-label="Draft management"
+        >
           <MdmTab
             handleClick={e => handleClick(e, "trade")}
             currentTab={tab}
@@ -454,7 +491,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           />
         </div>
 
-        <div className="flex justify-evenly w-[54rem] h-full">
+        <section className="flex justify-evenly w-[54rem] h-full">
           {tab === "trade" && (
             <MdmTradeTab
               startOrPauseDraft={startOrPauseDraft}
@@ -486,8 +523,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
           {tab === "your-picks" && <MdmYourPicksTab yourPicks={yourPicks} />}
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   )
 
@@ -504,6 +541,15 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
     setPlayerInAnalysis(player)
     setTab("analysis")
+  }
+
+  function handleChange(event) {
+    const pos = event.currentTarget.value
+
+    if (pos) {
+      setPositionSelect(pos)
+      setTab("draft")
+    }
   }
 }
 

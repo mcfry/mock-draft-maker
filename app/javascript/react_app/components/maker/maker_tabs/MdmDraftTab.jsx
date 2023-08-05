@@ -53,11 +53,11 @@ function MdmDraftTab({
             {/* head */}
             <thead>
               <tr>
-                <th>Projected</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>College</th>
-                <th>&nbsp;</th>
+                <th className="w-1/12">Projected</th>
+                <th className="w-3/12">Name</th>
+                <th className="w-1/12">Position</th>
+                <th className="w-3/12">College</th>
+                <th className="w-2/12">&nbsp;</th>
                 <th className="w-2/12">&nbsp;</th>
               </tr>
             </thead>

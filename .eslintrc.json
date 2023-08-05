@@ -29,11 +29,12 @@
     "no-console": "off",
     "camelcase": "off",
     "react/jsx-boolean-value": "off",
+    "react/forbid-prop-types": "off",
     // "jsx-a11y/click-events-have-key-events": "off",
     "no-nested-ternary": "off",
     "react/jsx-props-no-spreading": "off",
-    "no-return-assign": "warn",
-    "no-param-reassign": "warn",
+    "no-return-assign": "off",
+    "no-param-reassign": "off",
     "arrow-body-style": "off"
   }
 }

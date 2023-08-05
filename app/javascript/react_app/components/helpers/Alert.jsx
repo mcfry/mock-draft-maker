@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from "react"
+import PropTypes from "prop-types"
+
 import clsx from "clsx"
 import {
   CheckCircleIcon,
@@ -24,7 +26,7 @@ function Alert({ id, type, message, time, removeAlert }) {
   useEffect(() => {
     timerId.current = setTimeout(() => {
       removeAlert(id)
-    }, time || 5000)
+    }, time)
 
     return () => {
       clearTimeout(timerId.current)
@@ -39,7 +41,10 @@ function Alert({ id, type, message, time, removeAlert }) {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center relative">
+    <div
+      className="flex flex-col justify-center items-center relative"
+      role="alert"
+    >
       <div
         className={clsx(
           "alert w-[74rem] flex justify-between z-30 absolute mb-12",
@@ -58,6 +63,18 @@ function Alert({ id, type, message, time, removeAlert }) {
       </div>
     </div>
   )
+}
+
+Alert.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["success", "error", "info"]).isRequired,
+  message: PropTypes.string.isRequired,
+  time: PropTypes.number,
+  removeAlert: PropTypes.func.isRequired
+}
+
+Alert.defaultProps = {
+  time: 5000
 }
 
 export default Alert

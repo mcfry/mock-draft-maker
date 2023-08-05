@@ -1,4 +1,6 @@
 import React from "react"
+import PropTypes from "prop-types"
+
 import clsx from "clsx"
 
 function PickGrid({ pickData, team, isCt, activeTrades, handleTradeClick }) {
@@ -35,6 +37,14 @@ function PickGrid({ pickData, team, isCt, activeTrades, handleTradeClick }) {
       </div>
     </div>
   )
+}
+
+PickGrid.propTypes = {
+  pickData: PropTypes.object.isRequired,
+  team: PropTypes.string.isRequired,
+  isCt: PropTypes.bool.isRequired,
+  activeTrades: PropTypes.object.isRequired,
+  handleTradeClick: PropTypes.func.isRequired
 }
 
 export default PickGrid
