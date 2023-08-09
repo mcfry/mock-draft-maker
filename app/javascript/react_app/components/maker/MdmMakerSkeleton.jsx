@@ -2,7 +2,7 @@ import React from "react"
 
 function MdmMakerSkeleton() {
   return (
-    <section className="flex flex-row card w-[74rem] shadow-xl rounded bg-base-100 z-30">
+    <section className="flex flex-row card w-[74rem] shadow-xl rounded bg-base-100 dark:bg-gray-500 z-30">
       <div
         role="status"
         className="animate-pulse w-full flex flex-col space-y-9 p-12"
