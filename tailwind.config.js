@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
   content: [
     "./app/views/**/*.html.erb",
@@ -8,10 +9,29 @@ module.exports = {
     "./app/javascript/**/*.ts",
     "./app/javascript/**/*.tsx"
   ],
-  // eslint-disable-next-line
+  // Specify class to handle manually and will fetch system setting in codebase
+  darkMode: "class",
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["lofi", "light", "dark", "fantasy"]
+    themes: [
+      {
+        lofi: {
+          ...require("daisyui/src/theming/themes")["[data-theme=lofi]"],
+          secondary: "#111827",
+          accent: "#dc2626",
+          error: "#dc2626"
+        }
+      },
+      {
+        "dark-lofi": {
+          ...require("daisyui/src/theming/themes")["[data-theme=lofi]"],
+          accent: "#dc2626",
+          error: "#dc2626",
+          primary: "#ffffff",
+          secondary: "#0d0d0d"
+        }
+      }
+    ]
   },
   theme: {
     extend: {

@@ -23,22 +23,22 @@ function MdmDraftTab({
   return (
     <>
       <dialog ref={pickModal} id="my_modal_2" className="modal">
-        <form method="dialog" className="modal-box">
-          <p className="py-4">
+        <form method="dialog" className="modal-box dark:bg-gray-700">
+          <p className="py-4 dark:text-gray-100">
             Select {preselectedPick && preselectedPick.full_name}?
           </p>
 
           <div className="modal-action">
             <button
               type="button"
-              className="btn bg-primary text-primary-content hover:bg-primary-content hover:text-primary hover:border-2 hover:border-primary"
+              className="btn bg-primary dark:bg-gray-900 text-primary-content dark:text-gray-100 hover:bg-primary-content dark:hover:bg-gray-100 hover:text-primary dark:hover:text-gray-900 hover:border-2 hover:border-primary dark:hover:border-gray-100"
               onClick={e => handleDraftClick(e, false)}
             >
               No
             </button>
             <button
               type="button"
-              className="btn bg-primary text-primary-content hover:bg-primary-content hover:text-primary hover:border-2 hover:border-primary"
+              className="btn bg-primary dark:bg-gray-900 text-primary-content dark:text-gray-100 hover:bg-primary-content dark:hover:bg-gray-100 hover:text-primary dark:hover:text-gray-900 hover:border-2 hover:border-primary dark:hover:border-gray-100"
               onClick={e => handleDraftClick(e, true)}
             >
               Yes
@@ -47,12 +47,12 @@ function MdmDraftTab({
         </form>
       </dialog>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         <div className="overflow-x-auto w-[54rem] h-[27rem]">
-          <table className="table">
+          <table className="table rounded-none">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="font-bold">
                 <th className="w-1/12">Projected</th>
                 <th className="w-3/12">Name</th>
                 <th className="w-1/12">Position</th>

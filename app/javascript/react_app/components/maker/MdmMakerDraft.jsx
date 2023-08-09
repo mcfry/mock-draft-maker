@@ -270,6 +270,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const roundStart = viewRound * 32
   const roundEnd = Math.min(roundStart + 32, 256)
 
+  console.log(selected, orderedPicks)
+
   return (
     <>
       {/* PMenu */}
@@ -279,14 +281,14 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           onBlur={() => setIsMouseOverPicks(false)}
           onMouseOver={() => setIsMouseOverPicks(true)}
           onMouseOut={() => setIsMouseOverPicks(false)}
-          className="menu bg-base-200 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
+          className="menu bg-base-200 dark:bg-gray-500 w-[20rem] p-0 [&_li>*]:rounded-none divide-y"
         >
           {/* Dropdown */}
           <li className="dropdown dropdown-bottom sticky top-0 z-50">
             <button
               type="button"
               tabIndex={0}
-              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300"
+              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100"
             >
               Round {viewRound + 1}
               <svg
@@ -333,42 +335,52 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
                 id={`${team.name}_${actualIndex.toString()}`}
                 key={`${team.name}_${actualIndex.toString()}`}
               >
-                <div className="flex justify-center items-center">
-                  <button
-                    type="button"
-                    className={clsx("text-sm", {
-                      "text-info": team.id in selected
-                    })}
-                    onClick={e =>
-                      handleAnalyzeClick(e, draftState[actualIndex + 1])
+                <button
+                  type="button"
+                  className={clsx(
+                    "flex justify-center items-center dark:hover:bg-gray-700",
+                    {
+                      "dark:bg-gray-700": team.id in selected
                     }
+                  )}
+                  onClick={e =>
+                    handleAnalyzeClick(e, draftState[actualIndex + 1])
+                  }
+                >
+                  <div
+                    className={clsx("text-sm dark:text-gray-100", {
+                      "text-accent dark:text-accent": team.id in selected
+                    })}
                   >
-                    {team.name}: {draftState[actualIndex + 1].full_name} (
+                    <span className="font-semibold">{team.name}:</span>{" "}
+                    {draftState[actualIndex + 1].full_name} (
                     {draftState[actualIndex + 1].position})
-                  </button>
-                </div>
+                  </div>
+                </button>
               </li>
             ) : (
               <li
                 id={`${team.name}_${actualIndex.toString()}`}
                 key={`${team.name}_${actualIndex.toString()}`}
               >
-                <div className="flex justify-center items-center">
-                  <button
-                    type="button"
+                <button
+                  type="button"
+                  className={clsx(
+                    "flex justify-center items-center dark:hover:bg-gray-700",
+                    {
+                      "dark:bg-gray-700": team.id in selected
+                    }
+                  )}
+                >
+                  <div
                     className={clsx(
-                      "text-lg",
-                      team.id in selected
-                        ? orderedPicks[Object.keys(draftState).length].id ===
-                          team.id
-                          ? "text-warning"
-                          : "text-info"
-                        : ""
+                      "text-lg dark:text-gray-100",
+                      team.id in selected ? "text-accent dark:text-accent" : ""
                     )}
                   >
                     {team.name}: {actualIndex + 1}
-                  </button>
-                </div>
+                  </div>
+                </button>
               </li>
             )
           })}
@@ -377,7 +389,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
       {/* Trade Stuff + PInfo */}
       <section className="flex flex-col">
-        <div className="navbar bg-primary text-primary-content justify-between">
+        <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between">
           <div className="navbar w-max">
             {!userPicking && (
               <button
@@ -391,7 +403,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
             <div>&nbsp;&nbsp;&nbsp;</div>
 
-            <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
+            <div className="flex flex-col p-2 bg-base-100 rounded text-primary dark:bg-gray-700 dark:text-gray-100">
               <span className="countdown font-mono text-xl">
                 <span style={{ "--value": currentRound + 1 }} />
               </span>
@@ -400,7 +412,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
             <div>&nbsp;&nbsp;</div>
 
-            <div className="flex flex-col p-2 bg-primary-content rounded text-primary">
+            <div className="flex flex-col p-2 bg-base-100 rounded text-primary dark:bg-gray-700 dark:text-gray-100">
               <span className="countdown font-mono text-xl">
                 {currentPickIndex + 1}
               </span>
@@ -423,7 +435,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
                 data-testid="positionFilter"
                 value={positionSelect}
                 onChange={handleChange}
-                className="select select-bordered rounded-none w-[6rem] text-primary"
+                className="select select-bordered rounded-none w-[6rem] text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100"
               >
                 <option value="All">ALL</option>
                 {Object.keys(positionalData).map(position => (
@@ -444,7 +456,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
                 name="search"
                 type="text"
                 placeholder="Search"
-                className="input input-bordered rounded-none w-24 font-semibold text-primary md:w-auto"
+                className="input input-bordered rounded-none w-24 font-semibold text-primary md:w-auto dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
               />
             </div>
           </div>

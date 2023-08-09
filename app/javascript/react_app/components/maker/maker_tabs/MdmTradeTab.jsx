@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react"
-import PickGrid from "../../helpers/PickGrid"
 
+import PickGrid from "../../helpers/PickGrid"
+import useStore from "../../../store/store"
 import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
+import TradeValue from "../../helpers/TradeValue"
+
 // Extrapolate so don't have to manually enter everything
 for (let i = 17; i < 257; i += 1) {
   let diff = 0
@@ -51,14 +54,16 @@ function MdmTradeTab({
   const [activeTrades, setActiveTrades] = useState({})
   const [tradeValue, setTradeValue] = useState(0)
 
-  const findAndSetTradeValue = (tp, ct) => {
+  const addAlert = useStore(state => state.addAlert)
+
+  const findAndSetTradeValue = (tp, ct, newActiveTrades) => {
     let pvd = 0
-    if (tp in activeTrades)
-      activeTrades[tp].forEach(value => {
+    if (tp in newActiveTrades)
+      newActiveTrades[tp].forEach(value => {
         pvd += pickValueData[value]
       })
-    if (ct in activeTrades)
-      activeTrades[ct].forEach(value => {
+    if (ct in newActiveTrades)
+      newActiveTrades[ct].forEach(value => {
         pvd -= pickValueData[value]
       })
 
@@ -93,7 +98,7 @@ function MdmTradeTab({
                 data-testid="tradePartner"
                 value={tradePartner}
                 onChange={e => handleChange(e, "tradePartner")}
-                className="select select-bordered rounded-none w-[20rem]"
+                className="select select-bordered rounded-none w-[20rem] dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
               >
                 {localTeams.map(team => (
                   <option key={team.name + team.id.toString()}>
@@ -103,15 +108,10 @@ function MdmTradeTab({
               </select>
             </div>
 
-            <div className="pt-4" />
-            {tradeValue > 0 && (
-              <div className="text-success">Trade Value: {tradeValue}</div>
-            )}
-            {tradeValue < 0 && (
-              <div className="text-error">Trade Value: {tradeValue}</div>
-            )}
-            <div className="flex justify-center border-b-2 pt-2">2024</div>
+            <TradeValue tradeValue={tradeValue} />
+
             <PickGrid
+              year={2024}
               pickData={pickData}
               team={tradePartner}
               isCt={false}
@@ -125,7 +125,7 @@ function MdmTradeTab({
                 data-testid="currentTeam"
                 value={currentTeam}
                 onChange={e => handleChange(e, "currentTeam")}
-                className="select select-bordered rounded-none w-[20rem]"
+                className="select select-bordered rounded-none w-[20rem] dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
               >
                 {selectedTeams.map(team => (
                   <option key={team.name + team.id.toString()}>
@@ -135,15 +135,10 @@ function MdmTradeTab({
               </select>
             </div>
 
-            <div className="pt-4" />
-            {tradeValue < 0 && (
-              <div className="text-success">Trade Value: {-tradeValue}</div>
-            )}
-            {tradeValue > 0 && (
-              <div className="text-error">Trade Value: {-tradeValue}</div>
-            )}
-            <div className="flex justify-center border-b-2 pt-2">2024</div>
+            <TradeValue tradeValue={-tradeValue} />
+
             <PickGrid
+              year={2024}
               pickData={pickData}
               team={currentTeam}
               isCt={true}
@@ -215,7 +210,7 @@ function MdmTradeTab({
       newActiveTrades[k] = [pickInt]
     }
 
-    findAndSetTradeValue(tradePartner, currentTeam)
+    findAndSetTradeValue(tradePartner, currentTeam, newActiveTrades)
     setActiveTrades(_ => ({
       ...newActiveTrades
     }))
@@ -230,29 +225,36 @@ function MdmTradeTab({
     const activeCt =
       currentTeam in activeTrades ? activeTrades[currentTeam] : []
 
-    const newTp = oldTp
-      .filter(x => !activeTp.includes(x))
-      .concat(activeCt)
-      .sort((a, b) => a - b)
-    const newCt = oldCt
-      .filter(x => !activeCt.includes(x))
-      .concat(activeTp)
-      .sort((a, b) => a - b)
+    if (activeTp.length === 0 && activeCt.length === 0) {
+      addAlert({
+        type: "error",
+        message: "You must select picks to trade first!"
+      })
+    } else {
+      const newTp = oldTp
+        .filter(x => !activeTp.includes(x))
+        .concat(activeCt)
+        .sort((a, b) => a - b)
+      const newCt = oldCt
+        .filter(x => !activeCt.includes(x))
+        .concat(activeTp)
+        .sort((a, b) => a - b)
 
-    setPickData(prev => ({
-      ...prev,
-      [tradePartner]: newTp,
-      [currentTeam]: newCt
-    }))
+      setPickData(prev => ({
+        ...prev,
+        [tradePartner]: newTp,
+        [currentTeam]: newCt
+      }))
 
-    if (userPicking && oldCt[0] !== newCt[0]) {
-      forceNewIntervalAndContinue()
-    } else if (!userPicking && newCt[0] === currentPickIndex + 1) {
-      setUserPicking(_ => true)
+      if (userPicking && oldCt[0] !== newCt[0]) {
+        forceNewIntervalAndContinue()
+      } else if (!userPicking && newCt[0] === currentPickIndex + 1) {
+        setUserPicking(_ => true)
+      }
+
+      setActiveTrades(_ => ({}))
+      setTradeValue(_ => 0)
     }
-
-    setActiveTrades(_ => ({}))
-    setTradeValue(_ => 0)
   }
 }
 

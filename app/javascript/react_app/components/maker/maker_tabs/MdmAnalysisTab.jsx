@@ -8,8 +8,8 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
 
   return (
     <>
-      <div className="flex flex-col">
-        <div className="tabs border-b-2">
+      <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
+        <div className="tabs border-b-2 dark:bg-gray-700">
           <MdmTab
             handleClick={e => handleClick(e, "passing")}
             currentTab={tab}
@@ -42,7 +42,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="font-bold">
                 {tab === "passing" && (
                   <>
                     {playerInAnalysis?.passing && (

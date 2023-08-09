@@ -91,12 +91,12 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         </div>
       </DndContext>
 
-      <div className="divider divider-horizontal" />
+      <div className="divider divider-horizontal dark:before:bg-gray-100 dark:after:bg-gray-100" />
 
       {/* Options Area */}
-      <section className="flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full">
+      <section className="flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full dark:text-gray-100">
         <div className="text-md pt-4">Settings</div>
-        <div className="divider" />
+        <div className="divider dark:before:bg-gray-100 dark:after:bg-gray-100" />
 
         <div className="join join-vertical pt-4 pb-4">
           <div className="join-item text-sm pb-2">Number of Rounds</div>
@@ -104,7 +104,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             data-testid="numRounds"
             value={draftRounds}
             onChange={e => setDraftRounds(parseInt(e.currentTarget.value))}
-            className="select select-sm select-bordered rounded-none w-[12rem]"
+            className="select select-sm select-bordered dark:select-primary rounded-none w-[12rem] dark:bg-gray-500 dark:border-gray-100"
           >
             {[1, 2, 3, 4, 5, 6, 7].map(rounds => (
               <option key={`rounds_${rounds.toString()}`} value={rounds}>
@@ -126,7 +126,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={speed}
             onChange={e => setSpeed(parseInt(e.currentTarget.value))}
-            className="range range-xs"
+            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200 dark:[&::-ms-fill-upper]:bg-gray-200 dark:[&::-ms-fill-lower]:bg-gray-200"
           />
         </div>
 
@@ -148,7 +148,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={needsVsValue}
             onChange={e => setNeedsVsValue(parseInt(e.currentTarget.value))}
-            className="range range-xs"
+            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
           />
         </div>
 
@@ -164,7 +164,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={randomness}
             onChange={e => setRandomness(parseInt(e.currentTarget.value))}
-            className="range range-xs"
+            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
           />
         </div>
 

@@ -88,29 +88,7 @@ function MdmMaker() {
 
   return (
     <>
-      <header className="bg-white shadow">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-            Maker
-          </h1>
-        </div>
-      </header>
-
-      {/* Animation */}
-      <ul className="circles">
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-        <li />
-      </ul>
-
-      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 p-10 makermax:hidden">
+      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-base-300 dark:to-gray-100 makermax:hidden">
         <MdmAlerts />
 
         {teamsLoaded === false ? (
@@ -147,7 +125,7 @@ function MdmMaker() {
                 </div>
 
                 {/* Mdm Settings */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerSettings
                     teamsMapping={teamsMapping}
                     setStage={setStage}
@@ -161,7 +139,7 @@ function MdmMaker() {
             {stage === 2 && (
               <>
                 {/* Mdm Draft */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
                     pickData={pickData}
@@ -175,7 +153,7 @@ function MdmMaker() {
             {stage === 3 && (
               <>
                 {/* Mdm Share */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 z-30">
+                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerShare />
                 </section>
               </>

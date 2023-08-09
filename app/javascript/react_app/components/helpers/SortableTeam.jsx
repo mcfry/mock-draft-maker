@@ -21,8 +21,8 @@ function SortableTeam({ id, team, pick, isSelected, handleClick }) {
       {...attributes}
       {...listeners}
       className={clsx(
-        { "border-primary": isSelected === true },
-        "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100"
+        { "border-accent": isSelected === true },
+        "flex justify-center items-center card w-full h-12 border-solid border-2 rounded-sm bg-base-100 font-semibold dark:bg-gray-500 dark:text-gray-100"
       )}
       onClick={e => handleClick(e, "teamClick")}
     >

@@ -8,7 +8,7 @@ function MdmAlerts() {
   const removeAlert = useStore(state => state.removeAlert)
 
   return (
-    <div className="flex flex-col space-y-2 pb-4">
+    <div className="flex flex-col space-y-2 pb-4 pt-10">
       {activeAlerts &&
         activeAlerts.map(alert => (
           <Alert
