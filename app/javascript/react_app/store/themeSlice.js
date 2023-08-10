@@ -5,8 +5,10 @@ const createThemeSlice = set => ({
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
+      localStorage.theme = "dark"
       return "dark"
     }
+    localStorage.theme = "light"
     return "light"
   })(),
   setTheme: theme =>

@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from "@headlessui/react"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
-import MdmLogo from "../../images/mdm_logo.png"
 
-import useStore from "../../store/store"
+import MdmLogo from "../../images/mdm_logo.png"
+import ThemeChanger from "../helpers/ThemeChanger"
 
 const navigation = [
   { name: "Home", link: "" },
@@ -23,17 +23,6 @@ const linkActive = (link, pathname) => {
 
 function Navbar() {
   const location = useLocation()
-  const setContextTheme = useStore(state => state.setTheme)
-
-  const setTheme = theme => {
-    if (theme === "light") {
-      localStorage.theme = "light"
-      setContextTheme("light")
-    } else if (theme === "dark") {
-      localStorage.theme = "dark"
-      setContextTheme("dark")
-    }
-  }
 
   return (
     <>
@@ -43,12 +32,12 @@ function Navbar() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center justify-center">
-                  <a href="/" className="flex items-center justify-center">
+                  <Link to="/" className="flex items-center justify-center">
                     <span className="text-accent text-2xl font-bold">MDM</span>
                     <div className="flex-shrink-0">
                       <img className="h-14 w-14" src={MdmLogo} alt="mdm logo" />
                     </div>
-                  </a>
+                  </Link>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map(item => (
@@ -80,27 +69,8 @@ function Navbar() {
                   </div>
                 </div>
 
-                {/* Dark Mode Changer */}
-                <div className="flex justify-center items-center">
-                  <div className="font-semibold text-sm text-base-100 dark:text-gray-100 mr-2">
-                    Theme{" "}
-                  </div>
-                  <select
-                    data-testid="themeChanger"
-                    value={localStorage?.theme || "system managed"}
-                    onChange={e => setTheme(e.currentTarget.value)}
-                    className="select select-sm select-bordered dark:select-primary rounded-none dark:bg-gray-500 dark:border-gray-100"
-                  >
-                    {["light", "dark"].map(themeType => (
-                      <option key={themeType} value={themeType}>
-                        {/* Capitalize first letter each word */}
-                        {themeType.replace(/(^\w{1})|(\s+\w{1})/g, letter =>
-                          letter.toUpperCase()
-                        )}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                {/* Theme Changer */}
+                <ThemeChanger />
 
                 {/* Mobile menu button */}
                 <div className="-mr-2 flex md:hidden">
