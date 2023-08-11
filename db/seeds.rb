@@ -118,7 +118,6 @@ if Player.all.count == 0
         begin
             full_name = pd[0]
             player = Player.create!(player_hash)
-            puts "Created #{player.full_name}"
 
             if passing_hash.include?(full_name)
                 passing_hash[full_name][:player_id] = player.id

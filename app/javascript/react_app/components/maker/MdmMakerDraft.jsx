@@ -8,16 +8,24 @@ import MdmDraftTab from "./maker_tabs/MdmDraftTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
 import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
 import MdmTab from "../helpers/MdmTab"
+import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import useStore from "../../store/store"
 
 import needsData from "./maker_static_data/needs_2024.json"
 import positionalData from "./maker_static_data/positional_value.json"
 
-function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
+function MdmMakerDraft({
+  pickData,
+  setPickData,
+  orderedPicks,
+  setStage,
+  players,
+  setPlayers,
+  playersLoaded
+}) {
   const navigate = useNavigate()
 
   // Local State
-  const [players, setPlayers] = useState([])
   const [tab, setTab] = useState("trade")
   const [draftRunning, setDraftRunning] = useState(false)
   const [draftState, setDraftState] = useState({})
@@ -28,7 +36,6 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const [viewRound, setViewRound] = useState(0)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
-  const [playersLoaded, setPlayersLoaded] = useState(false)
   const [positionSelect, setPositionSelect] = useState("All")
 
   // Store State
@@ -214,24 +221,6 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   }
 
   // Lifecycle Hooks
-  // TODO: Because this is larger now, should load it earlier
-  // in nonblocking way
-  useEffect(() => {
-    const url = "/api/v1/players/index"
-    fetch(url)
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        throw new Error("Network response was not ok.")
-      })
-      .then(res => {
-        setPlayersLoaded(true)
-        setPlayers(res)
-      })
-      .catch(() => navigate("/"))
-  }, [])
-
   useEffect(() => {
     const total = Object.keys(draftState).length
 
@@ -289,20 +278,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
               className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100"
             >
               Round {viewRound + 1}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
+              <DownArrowSvg />
             </button>
             <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               {[...Array(draftRounds)].map((_, index) => (
@@ -386,16 +362,24 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
       </section>
 
       {/* Trade Stuff + PInfo */}
-      <section className="flex flex-col">
+      <section className="flex flex-col h-full">
         <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between">
           <div className="navbar w-max">
             {!userPicking && (
               <button
                 type="button"
-                onClick={startOrPauseDraft}
+                onClick={e => {
+                  if (playersLoaded === true) {
+                    startOrPauseDraft(e)
+                  }
+                }}
                 className="btn rounded-none"
               >
-                {draftRunning ? "Pause" : "Start"}
+                {playersLoaded === false ? (
+                  <span className="loading loading-infinity loading-xs" />
+                ) : (
+                  <>{draftRunning ? "Pause" : "Start"}</>
+                )}
               </button>
             )}
 

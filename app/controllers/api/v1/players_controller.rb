@@ -1,10 +1,14 @@
 class Api::V1::PlayersController < ApplicationController
   def index
-    players = Player.includes(:passing, :rushing, :receiving, :defense)
-    .all
-    .order(:projected, :last, :first)
+    players_json = Rails.cache.fetch("all_player_info", expires_in: 12.hours) do 
+      players = Player.includes(:passing, :rushing, :receiving, :defense)
+        .all
+        .order(:projected, :last, :first)
 
-    render json: players.to_json(methods: [:full_name, :passing, :rushing, :receiving, :defense, :total])
+      players.to_json(methods: [:full_name, :passing, :rushing, :receiving, :defense, :total])
+    end
+
+    render json: players_json
   end
 
   def create

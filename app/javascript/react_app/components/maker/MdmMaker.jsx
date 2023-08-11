@@ -7,6 +7,7 @@ import MdmMakerDraft from "./MdmMakerDraft"
 import MdmMakerShare from "./MdmMakerShare"
 import MdmAlerts from "./MdmAlerts"
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
+import ArrowSvg from "../helpers/svgs/ArrowSvg"
 import useStore from "../../store/store"
 import ROUTES from "../../constants/routes"
 
@@ -19,6 +20,8 @@ function MdmMaker() {
   // map the dnd reordering for each team's first first-round pick
   const [teamsMapping, setTeamsMapping] = useState([])
   const [teamsLoaded, setTeamsLoaded] = useState(false)
+  const [players, setPlayers] = useState([])
+  const [playersLoaded, setPlayersLoaded] = useState(false)
   const [stage, setStage] = useState(1)
   const [pickData, setPickData] = useState(data)
   const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
@@ -27,6 +30,7 @@ function MdmMaker() {
   const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
   const addAlert = useStore(state => state.addAlert)
 
+  // Lifecycle Hooks
   useEffect(() => {
     const url = "/api/v1/teams/index"
     axios
@@ -40,6 +44,22 @@ function MdmMaker() {
         }
       })
       .catch(() => navigate(ROUTES.HOME))
+  }, [])
+
+  useEffect(() => {
+    const url = "/api/v1/players/index"
+    fetch(url)
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        throw new Error("Network response was not ok.")
+      })
+      .then(res => {
+        setPlayersLoaded(true)
+        setPlayers(res)
+      })
+      .catch(() => navigate("/"))
   }, [])
 
   useEffect(() => {
@@ -99,25 +119,7 @@ function MdmMaker() {
               <>
                 <div className="relative -top-7">
                   <div className="absolute z-40 right-20">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="90"
-                      height="45"
-                    >
-                      <g
-                        fill="none"
-                        stroke="#000"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeMiterlimit="20"
-                      >
-                        <path d="M87.548 6.072c-21.556.856-42.411-3.021-63.754-3.035C4.07 3.024 7.433 21.816 9.215 36.406" />
-                        <path
-                          strokeLinejoin="round"
-                          d="M2.452 32.48c3.721 2.326 4.349 6.604 7.403 9.482 1.045-3.027 3.442-9.07 6.125-11.113"
-                        />
-                      </g>
-                    </svg>
+                    <ArrowSvg />
                   </div>
                   <span className="absolute z-40 -left-[4.5rem] -top-[0.3rem] w-32 font-semibold">
                     Drag to reorder
@@ -125,7 +127,7 @@ function MdmMaker() {
                 </div>
 
                 {/* Mdm Settings */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row card w-[74rem] h-[39rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerSettings
                     teamsMapping={teamsMapping}
                     setStage={setStage}
@@ -139,12 +141,15 @@ function MdmMaker() {
             {stage === 2 && (
               <>
                 {/* Mdm Draft */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row card w-[74rem] h-[39rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
                     pickData={pickData}
                     setPickData={setPickData}
                     orderedPicks={orderedPicks}
+                    players={players}
+                    setPlayers={setPlayers}
+                    playersLoaded={playersLoaded}
                   />
                 </section>
               </>
@@ -153,7 +158,7 @@ function MdmMaker() {
             {stage === 3 && (
               <>
                 {/* Mdm Share */}
-                <section className="flex flex-row card w-[74rem] h-[35rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row card w-[74rem] h-[39rem] shadow-xl rounded bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerShare />
                 </section>
               </>

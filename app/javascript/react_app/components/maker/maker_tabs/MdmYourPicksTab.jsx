@@ -5,7 +5,7 @@ function MdmYourPicksTab({ yourPicks }) {
     <>
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         {yourPicks && Object.keys(yourPicks).length > 0 ? (
-          <div className="overflow-x-auto w-[54rem] h-[27rem]">
+          <div className="overflow-x-auto w-[54rem] h-[31rem]">
             <table className="table">
               <tbody>
                 {Object.entries(yourPicks).map(([team, players]) => (
@@ -28,8 +28,10 @@ function MdmYourPicksTab({ yourPicks }) {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col justify-center items-center w-[54rem] h-[27rem]">
-            <p>You haven&apos;t picked any players yet.</p>
+          <div className="flex flex-col justify-center items-center w-[54rem] h-[31rem]">
+            <p className="font-semibold">
+              You haven&apos;t picked any players yet.
+            </p>
           </div>
         )}
       </div>
