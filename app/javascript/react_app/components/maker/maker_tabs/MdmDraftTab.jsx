@@ -5,6 +5,7 @@ import useStore from "../../../store/store"
 
 function MdmDraftTab({
   localPlayers,
+  playersLoaded,
   preselectedPick,
   setPreselectedPick,
   userPicking,
@@ -49,65 +50,73 @@ function MdmDraftTab({
 
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         <div className="overflow-x-auto w-[54rem] h-[27rem]">
-          <table className="table rounded-none">
-            {/* head */}
-            <thead>
-              <tr className="font-bold">
-                <th className="w-1/12">Projected</th>
-                <th className="w-3/12">Name</th>
-                <th className="w-1/12">Position</th>
-                <th className="w-3/12">College</th>
-                <th className="w-2/12">&nbsp;</th>
-                <th className="w-2/12">&nbsp;</th>
-              </tr>
-            </thead>
-            <tbody>
-              {localPlayers.map(player => (
-                <tr
-                  key={player.id}
-                  className={
-                    preselectedPick && preselectedPick.id === player.id
-                      ? "bg-success"
-                      : "hover cursor-pointer"
-                  }
-                  onClick={e => handleClick(e, player)}
-                >
-                  <th>{player.projected}</th>
-                  <td>{player.full_name}</td>
-                  <td>{player.position}</td>
-                  <td>{player.college}</td>
-                  <td>
-                    <button
-                      type="button"
-                      className={clsx(
-                        "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
-                      )}
-                      onClick={e => handleAnalyzeClick(e, player)}
-                    >
-                      Analyze
-                    </button>
-                  </td>
-                  <td>
-                    {preselectedPick === player && (
+          {playersLoaded === false ? (
+            <div className="flex flex-col justify-center items-center h-full">
+              <span>Loading Players...</span>
+              <span className="loading loading-spinner loading-lg" />
+            </div>
+          ) : (
+            <table className="table rounded-none">
+              <thead>
+                <tr className="font-bold">
+                  <th className="w-1/12">Projected</th>
+                  <th className="w-3/12">Name</th>
+                  <th className="w-1/12">Position</th>
+                  <th className="w-3/12">College</th>
+                  <th className="w-2/12">&nbsp;</th>
+                  <th className="w-2/12">&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                {localPlayers.slice(0, 400).map(player => (
+                  <tr
+                    key={player.id}
+                    className={
+                      preselectedPick && preselectedPick.id === player.id
+                        ? "bg-success"
+                        : "hover cursor-pointer"
+                    }
+                    onClick={e => handleClick(e, player)}
+                  >
+                    <th>
+                      {player.projected === -1 ? "N/A" : player.projected}
+                    </th>
+                    <td>{player.full_name}</td>
+                    <td>{player.position}</td>
+                    <td>{player.college}</td>
+                    <td>
                       <button
                         type="button"
                         className={clsx(
                           "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
                         )}
-                        onClick={() => {
-                          if (pickModal.current) {
-                            pickModal.current.showModal()
-                          }
-                        }}
+                        onClick={e => handleAnalyzeClick(e, player)}
                       >
-                        Draft
+                        Analyze
                       </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    </td>
+                    <td>
+                      {preselectedPick === player && (
+                        <button
+                          type="button"
+                          className={clsx(
+                            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+                          )}
+                          onClick={() => {
+                            if (pickModal.current) {
+                              pickModal.current.showModal()
+                            }
+                          }}
+                        >
+                          Draft
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </div>
     </>

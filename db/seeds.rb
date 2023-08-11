@@ -1,8 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-
 require 'csv'
-require 'securerandom'
 
 if Team.all.count == 0
     teams_csv_path = File.expand_path("teams.csv", File.dirname(__FILE__))
@@ -35,104 +31,95 @@ if Player.all.count == 0
     passing_hash = {}
     rushing_hash = {}
     receiving_hash = {}
+    defensive_hash = {}
 
     passing_csv_path = File.expand_path("2023_passing.csv", File.dirname(__FILE__))
     passing_data = CSV.read(passing_csv_path)
-    passing_data[3..-1].each do |pd|
+    passing_data.each do |pd|
         temp_hash = {
-            id: SecureRandom.uuid,
             year: 2023,
-            games_played: pd[4],
-            attempts: pd[6],
-            completions: pd[5],
-            yards: pd[8],
-            touchdowns: pd[11],
-            interceptions: pd[12],
-            rating: pd[13]
+            completions: pd[2],
+            attempts: pd[3],
+            yards: pd[5],
+            long: pd[7],
+            touchdowns: pd[8],
+            interceptions: pd[9],
+            sacked: pd[10],
+            rating: pd[11]
         }
 
-        name = pd[1][-1] == "*" ? pd[1][0..-2] : pd[1]
-        passing_hash[name] = temp_hash
-        # could be only record, so complete it
-        if pd[14].to_i > 0
-            rushing_hash[name] = {}
-            rushing_hash[name][:id] = SecureRandom.uuid
-            rushing_hash[name][:year] = 2023
-            rushing_hash[name][:games_played] = pd[4]
-            rushing_hash[name][:attempts] = pd[14]
-            rushing_hash[name][:yards] = pd[15]
-            rushing_hash[name][:touchdowns] = pd[17]
-        end
+        passing_hash[pd[0]] = temp_hash
     end
 
     rushing_csv_path = File.expand_path("2023_rushing.csv", File.dirname(__FILE__))
     rushing_data = CSV.read(rushing_csv_path)
-    rushing_data[2..-1].each do |rd|
+    rushing_data.each do |rd|
         temp_hash = {
-            id: SecureRandom.uuid,
             year: 2023,
-            games_played: rd[4],
-            attempts: rd[5],
-            yards: rd[6],
-            touchdowns: rd[8]
+            attempts: rd[2],
+            yards: rd[3],
+            long: rd[5],
+            touchdowns: rd[6]
         }
 
-        name = rd[1][-1] == "*" ? rd[1][0..-2] : rd[1]
-        rushing_hash[name] = temp_hash # overwrite if exists
-        # could be only record, so complete it
-        if rd[9].to_i > 0
-            receiving_hash[name] = {}
-            receiving_hash[name][:id] = SecureRandom.uuid
-            receiving_hash[name][:year] = 2023
-            receiving_hash[name][:games_played] = rd[4]
-            receiving_hash[name][:receptions] = rd[9]
-            receiving_hash[name][:yards] = rd[10]
-            receiving_hash[name][:touchdowns] = rd[12]
-        end
+        rushing_hash[rd[0]] = temp_hash
     end
 
     receiving_csv_path = File.expand_path("2023_receiving.csv", File.dirname(__FILE__))
     receiving_data = CSV.read(receiving_csv_path)
-    receiving_data[2..-1].each do |rd|
+    receiving_data.each do |rd|
         temp_hash = {
-            id: SecureRandom.uuid,
             year: 2023,
-            games_played: rd[4],
-            receptions: rd[5],
-            yards: rd[6],
-            touchdowns: rd[8]
+            receptions: rd[2],
+            yards: rd[3],
+            long: rd[5],
+            touchdowns: rd[6]
         }
 
-        name = rd[1][-1] == "*" ? rd[1][0..-2] : rd[1]
-        receiving_hash[name] = temp_hash # overwrite if exists
-        # could be only record, so complete it
-        if rd[9].to_i > 0
-            rushing_hash[name] = {}
-            rushing_hash[name][:id] = SecureRandom.uuid
-            rushing_hash[name][:year] = 2023
-            rushing_hash[name][:games_played] = rd[4]
-            rushing_hash[name][:attempts] = rd[9]
-            rushing_hash[name][:yards] = rd[10]
-            rushing_hash[name][:touchdowns] = rd[12]
-        end
+        receiving_hash[rd[0]] = temp_hash
     end
 
-    draft_csv_path = File.expand_path("2023_draft.csv", File.dirname(__FILE__))
-    draft_data = CSV.read(draft_csv_path)
-    draft_data.each do |td|
-        first, *last = td[3].split(" ")
+    defensive_csv_path = File.expand_path("2023_defensive.csv", File.dirname(__FILE__))
+    defensive_data = CSV.read(defensive_csv_path)
+    defensive_data.each do |dd|
+        temp_hash = {
+            year: 2023,
+            solo: dd[2],
+            assisted: dd[3],
+            sacks: dd[5],
+            sack_yards: dd[6],
+            passes_deflected: dd[7],
+            interceptions: dd[8],
+            int_yards: dd[9],
+            int_long: dd[10],
+            touchdowns: dd[11],
+            forced_fumbles: dd[12]
+        }
+
+        defensive_hash[dd[0]] = temp_hash
+    end
+
+    players_csv_path = File.expand_path("2023_players.csv", File.dirname(__FILE__))
+    player_data = CSV.read(players_csv_path, liberal_parsing: true)
+    player_data.each do |pd|
+        first, *last = pd[0].split(" ")
+        feet, inches = pd[2].split(" ")
         player_hash = {
             first: first,
             last: last.join(" "),
-            number: td[5],
-            position: td[4],
-            college: td[27],
-            projected: td[1]
+            position: pd[1] == "--" ? nil : pd[1],
+            height: pd[2] == "--" ? nil : feet[0].to_i*12 + inches[0].to_i,
+            weight: pd[3] == "--" ? nil : pd[3].split(" ")[0].to_i,
+            player_class: pd[4] == "--" ? nil : pd[4],
+            college: pd[7] == "--" ? nil : pd[7],
+            projected: -1
         }
 
         begin
-            full_name = [first, last].join(" ")
+            full_name = pd[0]
             player = Player.create!(player_hash)
+            puts "Created #{player.full_name}"
+
             if passing_hash.include?(full_name)
                 passing_hash[full_name][:player_id] = player.id
                 Passing.create!(passing_hash[full_name])
@@ -146,6 +133,11 @@ if Player.all.count == 0
             if receiving_hash.include?(full_name)
                 receiving_hash[full_name][:player_id] = player.id
                 Receiving.create!(receiving_hash[full_name])
+            end
+
+            if defensive_hash.include?(full_name)
+                defensive_hash[full_name][:player_id] = player.id
+                Defense.create!(defensive_hash[full_name])
             end
         rescue => e
             puts "error: #{e.message}"

@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_230938) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_11_151625) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "defenses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.bigint "player_id"
+    t.integer "year"
+    t.integer "solo"
+    t.integer "assisted"
+    t.float "sacks"
+    t.integer "sack_yards"
+    t.integer "passes_deflected"
+    t.integer "interceptions"
+    t.integer "int_yards"
+    t.integer "int_long"
+    t.integer "touchdowns"
+    t.integer "forced_fumbles"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_defenses_on_player_id"
+  end
 
   create_table "draft_records", primary_key: "uuid", id: :string, force: :cascade do |t|
     t.json "draft_picks"
@@ -21,15 +39,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_230938) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "passings", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "passings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "player_id"
     t.integer "year"
-    t.integer "games_played"
     t.integer "attempts"
     t.integer "completions"
+    t.integer "long"
     t.integer "yards"
     t.integer "touchdowns"
     t.integer "interceptions"
+    t.integer "sacked"
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,32 +71,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_230938) do
   create_table "players", force: :cascade do |t|
     t.string "first", null: false
     t.string "last", null: false
-    t.integer "number"
     t.string "position", null: false
+    t.integer "height"
+    t.integer "weight"
+    t.string "player_class"
     t.string "college"
     t.integer "projected", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "receivings", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "receivings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "player_id"
     t.integer "year"
-    t.integer "games_played"
     t.integer "receptions"
     t.integer "yards"
+    t.integer "long"
     t.integer "touchdowns"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["player_id"], name: "index_receivings_on_player_id"
   end
 
-  create_table "rushings", id: :uuid, default: nil, force: :cascade do |t|
+  create_table "rushings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "player_id"
     t.integer "year"
-    t.integer "games_played"
     t.integer "attempts"
     t.integer "yards"
+    t.integer "long"
     t.integer "touchdowns"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_230938) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "defenses", "players"
   add_foreign_key "passings", "players"
   add_foreign_key "picks", "players"
   add_foreign_key "picks", "teams"

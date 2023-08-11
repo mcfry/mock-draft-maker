@@ -1,477 +1,2131 @@
-,,,,,Receiving,Receiving,Receiving,Receiving,Rushing,Rushing,Rushing,Rushing,Scrimmage,Scrimmage,Scrimmage,Scrimmage,-additional
-Rk,Player,School,Conf,G,Rec,Yds,Avg,TD,Att,Yds,Avg,TD,Plays,Yds,Avg,TD,-9999
-1,Trea Shropshire*,UAB,CUSA,12,41,923,22.5,6,0,0,,0,41,923,22.5,6,trea-shropshire-1
-2,Johnny Wilson*,Florida State,ACC,13,43,897,20.9,5,0,0,,0,43,897,20.9,5,johnny-wilson-3
-3,Marvin Mims*,Oklahoma,Big 12,13,54,1083,20.1,6,2,3,1.5,0,56,1086,19.4,6,marvin-mims-1
-4,Ricky Pearsall*,Florida,SEC,13,33,661,20.0,5,8,113,14.1,1,41,774,18.9,6,ricky-pearsall-1
-5,Brad Rozner*,Rice,CUSA,13,44,876,19.9,10,0,0,,0,44,876,19.9,10,brad-rozner-1
-6,Duece Watts*,Tulane,American,14,33,657,19.9,8,1,1,1.0,0,34,658,19.4,8,duece-watts-1
-7,Justin Shorter*,Florida,SEC,9,29,577,19.9,2,0,0,,0,29,577,19.9,2,justin-shorter-1
-8,Rajae' Johnson-Sanders*,Troy,Sun Belt,14,36,713,19.8,7,0,0,,0,36,713,19.8,7,rajae-johnson-sanders-1
-9,Shae Wyatt*,Tulane,American,14,35,692,19.8,7,0,0,,0,35,692,19.8,7,shae-wyatt-1
-10,Gavin Holmes*,Baylor,Big 12,12,27,521,19.3,4,0,0,,0,27,521,19.3,4,gavin-holmes-1
-11,Matt Landers*,Arkansas,SEC,13,47,901,19.2,8,2,21,10.5,0,49,922,18.8,8,matt-landers-1
-12,Ja'Varrius Johnson,Auburn,SEC,12,26,493,19.0,3,4,12,3.0,0,30,505,16.8,3,javarrius-johnson-1
-13,Jalin Hyatt*,Tennessee,SEC,12,67,1267,18.9,15,1,0,0.0,0,68,1267,18.6,15,jalin-hyatt-1
-14,Griffin Hebert,Louisiana Tech,CUSA,9,23,431,18.7,3,0,0,,0,23,431,18.7,3,griffin-hebert-1
-15,Antoine Green*,North Carolina,ACC,9,43,798,18.6,7,0,0,,0,43,798,18.6,7,antoine-green-1
-16,Javon Harvey,Old Dominion,Sun Belt,12,30,558,18.6,4,2,-6,-3.0,0,32,552,17.3,4,javon-harvey-1
-17,Jamari Thrash,Georgia State,Sun Belt,12,61,1122,18.4,7,2,5,2.5,0,63,1127,17.9,7,jamari-thrash-1
-18,James Bostic*,Ohio,MAC,14,33,607,18.4,1,0,0,,0,33,607,18.4,1,james-bostic-2
-19,Kaleb Smith,Virginia Tech,ACC,11,37,674,18.2,3,0,0,,0,37,674,18.2,3,kaleb-smith-2
-20,Christian Horn,Appalachian State,Sun Belt,12,34,620,18.2,4,0,0,,0,34,620,18.2,4,christian-horn-1
-21,Ramel Keyton*,Tennessee,SEC,13,31,562,18.1,5,0,0,,0,31,562,18.1,5,ramel-keyton-1
-22,Terrance Greene Jr.,James Madison,Sun Belt,11,22,399,18.1,2,0,0,,0,22,399,18.1,2,terrance-greene-jr-2
-23,Tetairoa McMillan,Arizona,Pac-12,12,39,702,18.0,8,0,0,,0,39,702,18.0,8,tetairoa-mcmillan-1
-24,Quentin Johnston*,TCU,Big 12,14,60,1069,17.8,6,3,-7,-2.3,0,63,1062,16.9,6,quentin-johnston-1
-25,Ali Jennings,Old Dominion,Sun Belt,9,54,959,17.8,9,0,0,,0,54,959,17.8,9,ali-jennings-1
-26,Noah Frith*,Liberty,Ind,13,25,446,17.8,1,0,0,,0,25,446,17.8,1,noah-frith-1
-27,Jared Wayne*,Pitt,ACC,12,60,1063,17.7,5,0,0,,0,60,1063,17.7,5,jared-wayne-1
-28,Braydon Johnson*,Oklahoma State,Big 12,10,32,566,17.7,3,2,17,8.5,0,34,583,17.1,3,braydon-johnson-1
-29,Donavon Greene*,Wake Forest,ACC,13,37,642,17.4,6,0,0,,0,37,642,17.4,6,donavon-greene-1
-30,Jacoby Jones*,Ohio,MAC,14,45,777,17.3,6,2,11,5.5,0,47,788,16.8,6,jacoby-jones-3
-31,Ja'Corey Brooks*,Alabama,SEC,13,39,674,17.3,8,0,0,,0,39,674,17.3,8,jacorey-brooks-1
-32,Kris Thornton,James Madison,Sun Belt,11,59,1015,17.2,7,4,27,6.8,0,63,1042,16.5,7,kris-thornton-1
-33,Monaray Baldwin*,Baylor,Big 12,11,33,565,17.1,4,7,71,10.1,1,40,636,15.9,5,monaray-baldwin-1
-34,Tyrone Howell,Louisiana-Monroe,Sun Belt,12,50,852,17.0,6,0,0,,0,50,852,17.0,6,tyrone-howell-1
-35,Jonathan Mingo*,Ole Miss,SEC,13,51,861,16.9,5,4,-7,-1.8,1,55,854,15.5,6,jonathan-mingo-1
-36,Ja'lynn Polk*,Washington,Pac-12,13,41,694,16.9,6,1,15,15.0,0,42,709,16.9,6,jalynn-polk-1
-37,Jermaine Burton*,Alabama,SEC,13,40,677,16.9,7,0,0,,0,40,677,16.9,7,jermaine-burton-1
-38,Roderic Burns*,North Texas,CUSA,14,40,676,16.9,1,1,3,3.0,0,41,679,16.6,1,roderic-burns-1
-39,Tyrell Shavers*,San Diego State,MWC,13,38,643,16.9,3,0,0,,0,38,643,16.9,3,tyrell-shavers-1
-40,Anthony Gould*,Oregon State,Pac-12,10,27,457,16.9,3,2,11,5.5,0,29,468,16.1,3,anthony-gould-1
-41,Quentin Skinner*,Kansas,Big 12,13,26,440,16.9,5,2,41,20.5,0,28,481,17.2,5,quentin-skinner-2
-42,Sean Ryan,Rutgers,Big Ten,12,26,440,16.9,3,0,0,,0,26,440,16.9,3,sean-ryan-2
-43,Jha'Quan Jackson*,Tulane,American,14,33,554,16.8,3,1,8,8.0,0,34,562,16.5,3,jhaquan-jackson-1
-44,Dorian Singer,Arizona,Pac-12,12,66,1105,16.7,6,0,0,,0,66,1105,16.7,6,dorian-singer-1
-45,Reggie Brown,James Madison,Sun Belt,8,24,401,16.7,4,0,0,,0,24,401,16.7,4,reggie-brown-12
-46,Tyler Scott*,Cincinnati,American,12,54,899,16.6,9,0,0,,0,54,899,16.6,9,tyler-scott-3
-47,Taye Barber*,TCU,Big 12,15,37,613,16.6,5,1,-2,-2.0,0,38,611,16.1,5,taye-barber-1
-48,Kacper Rutkiewicz,Northern Illinois,MAC,12,26,432,16.6,6,5,45,9.0,1,31,477,15.4,7,kacper-rutkiewicz-1
-49,Elijah Spencer,Charlotte,CUSA,12,57,943,16.5,9,0,0,,0,57,943,16.5,9,elijah-spencer-1
-50,Ontaria Wilson*,Florida State,ACC,12,30,495,16.5,4,0,0,,0,30,495,16.5,4,ontaria-wilson-1
-51,Marvin Harrison Jr.*,Ohio State,Big Ten,13,77,1263,16.4,14,2,32,16.0,0,79,1295,16.4,14,marvin-harrison-jr-1
-52,Kobe Hudson*,UCF,American,12,39,641,16.4,7,0,0,,0,39,641,16.4,7,kobe-hudson-1
-53,Jeff Foreman,Arkansas State,Sun Belt,12,30,491,16.4,4,0,0,,0,30,491,16.4,4,jeff-foreman-1
-54,Lawrence Arnold*,Kansas,Big 12,13,44,716,16.3,4,0,0,,0,44,716,16.3,4,lawrence-arnold-2
-55,Justus Ross-Simmons,Colorado State,MWC,12,26,424,16.3,3,0,0,,0,26,424,16.3,3,justus-ross-simmons-1
-56,Malik Heath*,Ole Miss,SEC,13,60,971,16.2,5,0,0,,0,60,971,16.2,5,malik-heath-1
-57,Jason Brownlee*,Southern Mississippi,Sun Belt,13,55,891,16.2,8,0,0,,0,55,891,16.2,8,jason-brownlee-1
-58,J.C. Santana,Tulsa,American,12,53,859,16.2,7,0,0,,0,53,859,16.2,7,jc-santana-1
-59,Sam James,West Virginia,Big 12,12,46,745,16.2,6,3,9,3.0,0,49,754,15.4,6,sam-james-1
-60,Bryson Green*,Oklahoma State,Big 12,11,36,584,16.2,5,1,-5,-5.0,0,37,579,15.6,5,bryson-green-1
-61,Devin Carter*,North Carolina State,ACC,9,25,406,16.2,2,0,0,,0,25,406,16.2,2,devin-carter-1
-62,Keylon Stokes,Tulsa,American,12,76,1224,16.1,8,4,9,2.3,0,80,1233,15.4,8,keylon-stokes-1
-63,Jeremiah Hunter,California,Pac-12,11,60,965,16.1,5,0,0,,0,60,965,16.1,5,jeremiah-hunter-1
-64,Jared Brown*,Coastal Carolina,Sun Belt,13,49,789,16.1,6,20,187,9.4,1,69,976,14.1,7,jared-brown-2
-65,Moose Muhammad III,Texas A&M,SEC,10,38,610,16.1,4,0,0,,0,38,610,16.1,4,moose-muhammad-iii-1
-66,Justin Lockhart*,San Jose State,MWC,12,36,578,16.1,1,0,0,,0,36,578,16.1,1,justin-lockhart-1
-67,Michael Wilson,Stanford,Pac-12,6,26,418,16.1,4,4,47,11.8,0,30,465,15.5,4,michael-wilson-3
-68,Squirrel White*,Tennessee,SEC,12,30,481,16.0,2,1,5,5.0,0,31,486,15.7,2,squirrel-white-1
-69,Tejhaun Palmer*,UAB,CUSA,13,30,479,16.0,2,0,0,,0,30,479,16.0,2,tejhaun-palmer-1
-70,Tory Horton,Colorado State,MWC,12,71,1131,15.9,8,2,6,3.0,0,73,1137,15.6,8,tory-horton-1
-71,Oronde Gadsden II*,Syracuse,ACC,13,61,969,15.9,6,0,0,,0,61,969,15.9,6,oronde-gadsden-ii-1
-72,Devontez Walker,Kent State,MAC,12,58,921,15.9,11,3,29,9.7,1,61,950,15.6,12,devontez-walker-1
-73,Michael Jefferson*,Louisiana,Sun Belt,12,51,810,15.9,7,0,0,,0,51,810,15.9,7,michael-jefferson-1
-74,Jordan Kerley*,SMU,American,10,37,588,15.9,6,0,0,,0,37,588,15.9,6,jordan-kerley-1
-75,Keanu Hill*,Brigham Young,Ind,13,36,572,15.9,7,0,0,,0,36,572,15.9,7,keanu-hill-2
-76,Dylan Drummond*,Eastern Michigan,MAC,10,33,525,15.9,3,0,0,,0,33,525,15.9,3,dylan-drummond-1
-77,Mario Williams*,USC,Pac-12,12,40,631,15.8,5,1,10,10.0,0,41,641,15.6,5,mario-williams-2
-78,KeSean Carter*,Houston,American,13,38,601,15.8,5,0,0,,0,38,601,15.8,5,kesean-carter-1
-79,Tyrone Broden*,Bowling Green State,MAC,13,32,506,15.8,7,0,0,,0,32,506,15.8,7,tyrone-broden-1
-80,Jerjuan Newton*,Toledo,MAC,14,53,830,15.7,9,1,-1,-1.0,0,54,829,15.4,9,jerjuan-newton-1
-81,Tahj Washington*,USC,Pac-12,14,50,785,15.7,6,0,0,,0,50,785,15.7,6,tahj-washington-1
-82,Brenden Rice*,USC,Pac-12,14,39,611,15.7,4,0,0,,0,39,611,15.7,4,brenden-rice-1
-83,Julian Fleming*,Ohio State,Big Ten,11,34,533,15.7,6,0,0,,0,34,533,15.7,6,julian-fleming-1
-84,Je'Quan Burton,Florida Atlantic,CUSA,11,33,517,15.7,4,1,2,2.0,0,34,519,15.3,4,jequan-burton-1
-85,Emeka Egbuka*,Ohio State,Big Ten,13,74,1151,15.6,10,11,87,7.9,2,85,1238,14.6,12,emeka-egbuka-1
-86,Elijah Cooks*,San Jose State,MWC,12,69,1076,15.6,10,0,0,,0,69,1076,15.6,10,elijah-cooks-1
-87,Cornelius Johnson*,Michigan,Big Ten,14,32,499,15.6,6,0,0,,0,32,499,15.6,6,cornelius-johnson-1
-88,Montana Lemonious-Craig,Colorado,Pac-12,11,23,359,15.6,3,0,0,,0,23,359,15.6,3,montana-lemonious-craig-1
-89,Dante Cephas,Kent State,MAC,9,48,744,15.5,3,2,12,6.0,0,50,756,15.1,3,dante-cephas-1
-90,Nick Williams,UNLV,MWC,12,28,435,15.5,2,0,0,,0,28,435,15.5,2,nick-williams-9
-91,Kaedin Robinson,Appalachian State,Sun Belt,11,27,419,15.5,2,1,15,15.0,0,28,434,15.5,2,kaedin-robinson-1
-92,Tez Johnson*,Troy,Sun Belt,13,56,863,15.4,4,5,11,2.2,0,61,874,14.3,4,tez-johnson-1
-93,Matthew Golden*,Houston,American,11,38,584,15.4,7,0,0,,0,38,584,15.4,7,matthew-golden-1
-94,Rome Odunze*,Washington,Pac-12,12,75,1145,15.3,7,3,6,2.0,1,78,1151,14.8,8,rome-odunze-1
-95,Jalen Brooks*,South Carolina,SEC,12,33,504,15.3,1,4,51,12.8,1,37,555,15.0,2,jalen-brooks-2
-96,C.J. Johnson*,East Carolina,American,13,67,1016,15.2,10,0,0,,0,67,1016,15.2,10,cj-johnson-6
-97,Marcus Washington,Nebraska,Big Ten,12,31,471,15.2,1,0,0,,0,31,471,15.2,1,marcus-washington-6
-98,Rivaldo Fairweather,Florida International,CUSA,12,28,426,15.2,3,0,0,,0,28,426,15.2,3,rivaldo-fairweather-1
-99,Dominic Lovett*,Missouri,SEC,12,56,846,15.1,3,7,6,0.9,0,63,852,13.5,3,dominic-lovett-1
-100,Malik Knowles*,Kansas State,Big 12,14,48,725,15.1,2,8,164,20.5,3,56,889,15.9,5,malik-knowles-1
-101,Jahmal Banks*,Wake Forest,ACC,12,42,636,15.1,9,0,0,,0,42,636,15.1,9,jahmal-banks-1
-102,Daniel Jackson*,Minnesota,Big Ten,11,37,557,15.1,5,0,0,,0,37,557,15.1,5,daniel-jackson-5
-103,Bryan Thompson,Arizona State,Pac-12,11,25,377,15.1,0,0,0,,0,25,377,15.1,0,bryan-thompson-1
-104,Kris Mitchell,Florida International,CUSA,12,23,348,15.1,4,4,20,5.0,0,27,368,13.6,4,kris-mitchell-1
-105,Tyler Hudson*,Louisville,ACC,12,69,1034,15.0,2,0,0,,0,69,1034,15.0,2,tyler-hudson-1
-106,Brock Bowers*,Georgia,SEC,15,63,942,15.0,7,9,109,12.1,3,72,1051,14.6,10,brock-bowers-1
-107,Jaray Jenkins*,LSU,SEC,13,27,404,15.0,6,0,0,,0,27,404,15.0,6,jaray-jenkins-1
-108,Corey Gammage*,Marshall,Sun Belt,13,52,774,14.9,6,0,0,,0,52,774,14.9,6,corey-gammage-1
-109,Jimmy Horn Jr.,South Florida,American,11,37,551,14.9,3,9,95,10.6,1,46,646,14.0,4,jimmy-horn-jr-1
-110,Bub Means*,Pitt,ACC,13,27,401,14.9,2,3,10,3.3,0,30,411,13.7,2,bub-means-1
-111,Malachi Carter,Georgia Tech,ACC,11,23,342,14.9,2,2,36,18.0,0,25,378,15.1,2,malachi-carter-1
-112,Jordan Addison*,USC,Pac-12,11,59,875,14.8,8,4,33,8.3,0,63,908,14.4,8,jordan-addison-1
-113,Skyler Bell*,Wisconsin,Big Ten,13,30,444,14.8,5,13,160,12.3,0,43,604,14.0,5,skyler-bell-1
-114,Trey Palmer,Nebraska,Big Ten,12,71,1043,14.7,9,5,75,15.0,0,76,1118,14.7,9,trey-palmer-1
-115,Chimere Dike*,Wisconsin,Big Ten,13,47,689,14.7,6,5,32,6.4,1,52,721,13.9,7,chimere-dike-1
-116,Eddie Lewis*,Memphis,American,13,41,603,14.7,7,2,10,5.0,0,43,613,14.3,7,eddie-lewis-2
-117,Tyrin Smith,UTEP,CUSA,12,71,1039,14.6,7,5,36,7.2,0,76,1075,14.1,7,tyrin-smith-1
-118,Troy Franklin*,Oregon,Pac-12,13,61,891,14.6,9,0,0,,0,61,891,14.6,9,troy-franklin-2
-119,Jerand Bradley*,Texas Tech,Big 12,12,51,744,14.6,6,0,0,,0,51,744,14.6,6,jerand-bradley-1
-120,Jahmal Edrine,Florida Atlantic,CUSA,11,39,570,14.6,6,0,0,,0,39,570,14.6,6,jahmal-edrine-1
-121,Justin McGriff*,Utah State,MWC,13,30,438,14.6,4,0,0,,0,30,438,14.6,4,justin-mcgriff-1
-122,Jadon Thompson*,Cincinnati,American,12,27,393,14.6,1,0,0,,0,27,393,14.6,1,jadon-thompson-1
-123,De'Corian Clark*,UTSA,CUSA,9,51,741,14.5,8,0,0,,0,51,741,14.5,8,decorian-clark-1
-124,Bryson Nesbit*,North Carolina,ACC,14,35,507,14.5,4,0,0,,0,35,507,14.5,4,bryson-nesbit-1
-125,Jacob Copeland*,Maryland,Big Ten,12,26,376,14.5,2,1,-1,-1.0,0,27,375,13.9,2,jacob-copeland-1
-126,Tre Harris,Louisiana Tech,CUSA,12,65,935,14.4,10,5,22,4.4,0,70,957,13.7,10,tre-harris-1
-127,Billy Bowens*,Boise State,MWC,14,32,462,14.4,4,1,12,12.0,0,33,474,14.4,4,billy-bowens-1
-128,Ben Sinnott*,Kansas State,Big 12,14,31,447,14.4,4,0,0,,0,31,447,14.4,4,ben-sinnott-1
-129,Jakarius Caston*,Southern Mississippi,Sun Belt,10,31,446,14.4,5,1,9,9.0,0,32,455,14.2,5,jakarius-caston-1
-130,George Johnson,Massachusetts,Ind,12,28,402,14.4,1,7,4,0.6,0,35,406,11.6,1,george-johnson-6
-131,Jaelen Gill,Boston College,ACC,12,27,388,14.4,0,0,0,,0,27,388,14.4,0,jaelen-gill-1
-132,Jayden Thomas*,Notre Dame,Ind,13,25,361,14.4,3,1,0,0.0,0,26,361,13.9,3,jayden-thomas-1
-133,Ronnie Bell*,Michigan,Big Ten,14,62,889,14.3,4,3,23,7.7,1,65,912,14.0,5,ronnie-bell-3
-134,Jake Bobo*,UCLA,Pac-12,13,57,817,14.3,7,0,0,,0,57,817,14.3,7,jake-bobo-1
-135,Corey Crooms,Western Michigan,MAC,12,57,814,14.3,5,2,-5,-2.5,0,59,809,13.7,5,corey-crooms-1
-136,Dontayvion Wicks,Virginia,ACC,8,30,430,14.3,2,0,0,,0,30,430,14.3,2,dontayvion-wicks-1
-137,Javon Baker*,UCF,American,14,56,796,14.2,5,0,0,,0,56,796,14.2,5,javon-baker-1
-138,Mac Hippenhammer*,Miami (OH),MAC,13,54,769,14.2,9,0,0,,0,54,769,14.2,9,mac-hippenhammer-1
-139,Rara Thomas*,Mississippi State,SEC,12,44,626,14.2,7,0,0,,0,44,626,14.2,7,rara-thomas-1
-140,Ke'Shawn Williams*,Wake Forest,ACC,13,39,553,14.2,1,0,0,,0,39,553,14.2,1,keshawn-williams-2
-141,Luke Lachey*,Iowa,Big Ten,13,28,398,14.2,4,0,0,,0,28,398,14.2,4,luke-lachey-1
-142,Rashee Rice*,SMU,American,12,96,1355,14.1,10,0,0,,0,96,1355,14.1,10,rashee-rice-1
-143,Malik Nabers*,LSU,SEC,14,72,1017,14.1,3,1,5,5.0,0,73,1022,14.0,3,malik-nabers-1
-144,Jalon Calhoun*,Duke,ACC,13,62,873,14.1,4,0,0,,0,62,873,14.1,4,jalon-calhoun-1
-145,Jalen Wayne*,South Alabama,Sun Belt,13,58,817,14.1,9,0,0,,0,58,817,14.1,9,jalen-wayne-1
-146,Devin Maddox*,Toledo,MAC,13,39,548,14.1,3,5,12,2.4,0,44,560,12.7,3,devin-maddox-1
-147,Zion Bowens,Hawaii,MWC,9,35,494,14.1,4,0,0,,0,35,494,14.1,4,zion-bowens-1
-148,Oscar Cardenas*,UTSA,CUSA,14,31,438,14.1,2,2,3,1.5,0,33,441,13.4,2,oscar-cardenas-1
-149,Jake Roberts*,North Texas,CUSA,14,28,394,14.1,3,1,10,10.0,0,29,404,13.9,3,jake-roberts-1
-150,Sam Pinckney*,Coastal Carolina,Sun Belt,13,71,996,14.0,3,0,0,,0,71,996,14.0,3,sam-pinckney-1
-151,Cole Tucker,Northern Illinois,MAC,11,45,632,14.0,4,0,0,,0,45,632,14.0,4,cole-tucker-1
-152,Tanner Knue*,Eastern Michigan,MAC,12,45,632,14.0,9,2,16,8.0,0,47,648,13.8,9,tanner-knue-1
-153,Dane Key*,Kentucky,SEC,13,37,519,14.0,6,1,-2,-2.0,0,38,517,13.6,6,dane-key-1
-154,Jalen McMillan*,Washington,Pac-12,13,79,1098,13.9,9,1,2,2.0,0,80,1100,13.8,9,jalen-mcmillan-1
-155,Zay Flowers,Boston College,ACC,12,78,1077,13.8,12,12,40,3.3,0,90,1117,12.4,12,zay-flowers-1
-156,Daewood Davis*,Western Kentucky,CUSA,12,63,872,13.8,7,1,15,15.0,0,64,887,13.9,7,daewood-davis-1
-157,Keon Coleman,Michigan State,Big Ten,12,58,798,13.8,7,0,0,,0,58,798,13.8,7,keon-coleman-1
-158,Chase Cota*,Oregon,Pac-12,10,36,497,13.8,3,0,0,,0,36,497,13.8,3,chase-cota-1
-159,Amare Jones*,Georgia Southern,Sun Belt,8,35,483,13.8,6,1,-2,-2.0,0,36,481,13.4,6,amare-jones-1
-160,Josh Cameron*,Baylor,Big 12,13,28,386,13.8,0,1,1,1.0,0,29,387,13.3,0,josh-cameron-1
-161,Cam Sullivan-Brown,Massachusetts,Ind,10,27,373,13.8,2,0,0,,0,27,373,13.8,2,cam-sullivan-brown-1
-162,Jordan Smith,Temple,American,11,25,346,13.8,4,0,0,,0,25,346,13.8,4,jordan-smith-7
-163,Stefan Cobbs*,Boise State,MWC,12,29,396,13.7,2,1,7,7.0,0,30,403,13.4,2,stefan-cobbs-1
-164,Jaylin Lane*,Middle Tennessee State,CUSA,11,69,940,13.6,5,3,4,1.3,0,72,944,13.1,5,jaylin-lane-1
-165,Antwane Wells Jr.*,South Carolina,SEC,13,68,928,13.6,6,3,10,3.3,1,71,938,13.2,7,antwane-wells-jr-1
-166,Alex Adams,Akron,MAC,11,63,856,13.6,9,0,0,,0,63,856,13.6,9,alex-adams-1
-167,Devaughn Cooper*,Syracuse,ACC,13,36,490,13.6,3,0,0,,0,36,490,13.6,3,devaughn-cooper-1
-168,A.T. Perry*,Wake Forest,ACC,13,81,1096,13.5,11,0,0,,0,81,1096,13.5,11,at-perry-1
-169,Devin Voisin*,South Alabama,Sun Belt,13,64,867,13.5,5,0,0,,0,64,867,13.5,5,devin-voisin-1
-170,Xavier Weaver,South Florida,American,9,53,718,13.5,6,1,1,1.0,0,54,719,13.3,6,xavier-weaver-1
-171,Kyle Williams,UNLV,MWC,9,40,541,13.5,5,1,12,12.0,0,41,553,13.5,5,kyle-williams-11
-172,Var'keyes Gumms*,North Texas,CUSA,14,34,458,13.5,5,0,0,,0,34,458,13.5,5,varkeyes-gumms-1
-173,Savion Williams*,TCU,Big 12,15,29,392,13.5,4,0,0,,0,29,392,13.5,4,savion-williams-2
-174,Kelvontay Dixon*,SMU,American,13,28,378,13.5,3,0,0,,0,28,378,13.5,3,kelvontay-dixon-2
-175,CJ Lewis*,Bowling Green State,MAC,12,26,352,13.5,2,1,-1,-1.0,0,27,351,13.0,2,cj-lewis-2
-176,Tanner McLachlan,Arizona,Pac-12,12,34,456,13.4,2,0,0,,0,34,456,13.4,2,tanner-mclachlan-2
-177,Parker Washington*,Penn State,Big Ten,10,46,611,13.3,2,2,8,4.0,0,48,619,12.9,2,parker-washington-1
-178,Pat Bryant*,Illinois,Big Ten,12,34,453,13.3,2,0,0,,0,34,453,13.3,2,pat-bryant-1
-179,Loic Fouonji*,Texas Tech,Big 12,13,34,451,13.3,3,0,0,,0,34,451,13.3,3,loic-fouonji-1
-180,Brayden Willis*,Oklahoma,Big 12,13,39,514,13.2,7,10,26,2.6,0,49,540,11.0,7,brayden-willis-1
-181,Marshon Ford*,Louisville,ACC,13,33,434,13.2,3,0,0,,0,33,434,13.2,3,marshon-ford-1
-182,Traeshon Holden*,Alabama,SEC,10,25,331,13.2,6,0,0,,0,25,331,13.2,6,traeshon-holden-1
-183,Henry Pearson,Appalachian State,Sun Belt,12,25,329,13.2,5,0,0,,0,25,329,13.2,5,henry-pearson-1
-184,Jalen Cropper*,Fresno State,MWC,14,83,1086,13.1,5,7,19,2.7,0,90,1105,12.3,5,jalen-cropper-1
-185,Justin Marshall*,Buffalo,MAC,13,64,837,13.1,9,0,0,,0,64,837,13.1,9,justin-marshall-1
-186,Ladd McConkey*,Georgia,SEC,15,58,762,13.1,7,7,134,19.1,2,65,896,13.8,9,ladd-mcconkey-1
-187,Seydou Traore,Arkansas State,Sun Belt,12,50,655,13.1,4,0,0,,0,50,655,13.1,4,seydou-traore-1
-188,Jaylen Johnson*,East Carolina,American,10,26,340,13.1,4,0,0,,0,26,340,13.1,4,jaylen-johnson-3
-189,Jordan Whittington*,Texas,Big 12,13,50,652,13.0,1,0,0,,0,50,652,13.0,1,jordan-whittington-2
-190,Puka Nacua*,Brigham Young,Ind,9,48,625,13.0,5,25,209,8.4,5,73,834,11.4,10,puka-nacua-1
-191,Phillip Brooks*,Kansas State,Big 12,14,45,587,13.0,4,4,29,7.3,0,49,616,12.6,4,phillip-brooks-1
-192,Isaiah Esdale*,Rice,CUSA,13,42,544,13.0,2,2,3,1.5,0,44,547,12.4,2,isaiah-esdale-1
-193,Jamal Turner*,Toledo,MAC,14,29,378,13.0,8,0,0,,0,29,378,13.0,8,jamal-turner-2
-194,Devin Ravenel,James Madison,Sun Belt,11,24,313,13.0,7,1,-4,-4.0,0,25,309,12.4,7,devin-ravenel-1
-195,Will Sheppard,Vanderbilt,SEC,12,60,776,12.9,9,0,0,,0,60,776,12.9,9,will-sheppard-1
-196,Odieu Hiliare*,Bowling Green State,MAC,13,58,747,12.9,6,6,5,0.8,0,64,752,11.8,6,odieu-hiliare-1
-197,Tre Tucker*,Cincinnati,American,12,52,672,12.9,3,1,8,8.0,0,53,680,12.8,3,tre-tucker-1
-198,Brycen Tremayne,Stanford,Pac-12,12,38,490,12.9,3,0,0,,0,38,490,12.9,3,brycen-tremayne-1
-199,Shamir Hagans*,Duke,ACC,13,31,400,12.9,5,0,0,,0,31,400,12.9,5,shamir-hagans-1
-200,Nathaniel Dell*,Houston,American,13,109,1398,12.8,17,4,9,2.3,0,113,1407,12.5,17,nathaniel-dell-1
-201,Malachi Corley*,Western Kentucky,CUSA,14,101,1295,12.8,11,11,87,7.9,0,112,1382,12.3,11,malachi-corley-1
-202,Jose Barbon,Temple,American,12,72,918,12.8,2,0,0,,0,72,918,12.8,2,jose-barbon-1
-203,Jaylen Hall*,Western Kentucky,CUSA,14,68,869,12.8,6,3,48,16.0,0,71,917,12.9,6,jaylen-hall-2
-204,Bru McCoy*,Tennessee,SEC,12,52,667,12.8,4,1,3,3.0,0,53,670,12.6,4,bru-mccoy-1
-205,Will Mallory,Miami (FL),ACC,12,42,538,12.8,3,0,0,,0,42,538,12.8,3,will-mallory-1
-206,Joseph Ngata*,Clemson,ACC,14,41,526,12.8,2,0,0,,0,41,526,12.8,2,joseph-ngata-1
-207,Ja'Cyais Credle,Georgia State,Sun Belt,11,28,359,12.8,2,0,0,,0,28,359,12.8,2,jacyais-credle-1
-208,Dalton Kincaid*,Utah,Pac-12,12,70,890,12.7,8,0,0,,0,70,890,12.7,8,dalton-kincaid-1
-209,Caullin Lacy*,South Alabama,Sun Belt,13,64,812,12.7,6,1,2,2.0,0,65,814,12.5,6,caullin-lacy-1
-210,Xavier Worthy*,Texas,Big 12,13,60,760,12.7,9,2,14,7.0,0,62,774,12.5,9,xavier-worthy-1
-211,Jason Ivory*,Memphis,American,12,46,586,12.7,2,0,0,,0,46,586,12.7,2,jason-ivory-1
-212,Xavier White*,Texas Tech,Big 12,13,45,572,12.7,3,1,5,5.0,0,46,577,12.5,3,xavier-white-1
-213,Jeshaun Jones*,Maryland,Big Ten,13,44,557,12.7,4,1,16,16.0,0,45,573,12.7,4,jeshaun-jones-1
-214,Corey Dyches*,Maryland,Big Ten,13,39,494,12.7,3,0,0,,0,39,494,12.7,3,corey-dyches-1
-215,Malachai Jones,Tulsa,American,12,37,470,12.7,2,0,0,,0,37,470,12.7,2,malachai-jones-1
-216,Dalvin Smith*,Western Kentucky,CUSA,14,35,443,12.7,4,0,0,,0,35,443,12.7,4,dalvin-smith-1
-217,Mason Fairchild*,Kansas,Big 12,13,35,443,12.7,6,0,0,,0,35,443,12.7,6,mason-fairchild-1
-218,Jevin Frett,Louisiana-Monroe,Sun Belt,12,30,382,12.7,2,0,0,,0,30,382,12.7,2,jevin-frett-1
-219,Alred Luke,Louisiana-Monroe,Sun Belt,12,23,293,12.7,1,8,23,2.9,0,31,316,10.2,1,alred-luke-1
-220,Demario Douglas*,Liberty,Ind,13,79,993,12.6,6,5,105,21.0,1,84,1098,13.1,7,demario-douglas-1
-221,Shocky Jacques-Louis,Akron,MAC,12,74,931,12.6,2,0,0,,0,74,931,12.6,2,shocky-jacques-louis-1
-222,Devaughn Vele*,Utah,Pac-12,14,55,695,12.6,5,2,-4,-2.0,0,57,691,12.1,5,devaughn-vele-1
-223,Barion Brown*,Kentucky,SEC,13,50,628,12.6,4,4,-2,-0.5,0,54,626,11.6,4,barion-brown-1
-224,Derius Davis*,TCU,Big 12,14,42,531,12.6,5,3,30,10.0,1,45,561,12.5,6,derius-davis-1
-225,Lideatrick Griffin*,Mississippi State,SEC,13,40,502,12.6,4,0,0,,0,40,502,12.6,4,lideatrick-griffin-1
-226,Amad Anderson Jr.,Temple,American,11,38,479,12.6,4,4,-4,-1.0,0,42,475,11.3,4,amad-anderson-jr-1
-227,Jalil Farooq*,Oklahoma,Big 12,13,37,466,12.6,5,15,140,9.3,0,52,606,11.7,5,jalil-farooq-1
-228,Cameron Latu*,Alabama,SEC,11,30,377,12.6,4,0,0,,0,30,377,12.6,4,cameron-latu-1
-229,Luke McCaffrey*,Rice,CUSA,11,58,723,12.5,6,12,148,12.3,1,70,871,12.4,7,luke-mccaffrey-1
-230,Zane Pope*,Fresno State,MWC,14,50,623,12.5,4,0,0,,0,50,623,12.5,4,zane-pope-1
-231,Caden Prieskorn*,Memphis,American,13,48,602,12.5,7,0,0,,0,48,602,12.5,7,caden-prieskorn-1
-232,Demeer Blankumsee*,Toledo,MAC,11,41,512,12.5,3,0,0,,0,41,512,12.5,3,demeer-blankumsee-1
-233,Giovanni Sanders,Arizona State,Pac-12,12,40,500,12.5,1,1,0,0.0,0,41,500,12.2,1,giovanni-sanders-1
-234,Charlie Jones*,Purdue,Big Ten,13,110,1361,12.4,12,2,3,1.5,0,112,1364,12.2,12,charlie-jones-7
-235,Elijhah Badger,Arizona State,Pac-12,12,70,866,12.4,7,4,23,5.8,0,74,889,12.0,7,elijhah-badger-1
-236,Grant Dubose,Charlotte,CUSA,12,64,792,12.4,9,0,0,,0,64,792,12.4,9,grant-dubose-1
-237,Derwin Burgess Jr.*,Georgia Southern,Sun Belt,10,58,717,12.4,7,2,10,5.0,0,60,727,12.1,7,derwin-burgess-jr-1
-238,Cam Camper,Indiana,Big Ten,7,46,569,12.4,2,0,0,,0,46,569,12.4,2,cam-camper-1
-239,Deshon Stoudemire*,Troy,Sun Belt,14,41,507,12.4,2,0,0,,0,41,507,12.4,2,deshon-stoudemire-1
-240,Tayvion Robinson*,Kentucky,SEC,11,40,497,12.4,3,8,38,4.8,0,48,535,11.1,3,tayvion-robinson-1
-241,Jamari Gassett*,Buffalo,MAC,10,28,347,12.4,2,1,-1,-1.0,0,29,346,11.9,2,jamari-gassett-1
-242,Isaiah Winstead*,East Carolina,American,13,88,1085,12.3,6,0,0,,0,88,1085,12.3,6,isaiah-winstead-1
-243,Tyson Mobley*,Coastal Carolina,Sun Belt,13,40,490,12.3,5,2,1,0.5,0,42,491,11.7,5,tyson-mobley-1
-244,Nehemiah Martinez*,Texas Tech,Big 12,13,32,394,12.3,2,2,6,3.0,0,34,400,11.8,2,nehemiah-martinez-1
-245,Kamari Morales*,North Carolina,ACC,14,29,358,12.3,4,0,0,,0,29,358,12.3,4,kamari-morales-1
-246,Jehlani Galloway,Western Michigan,MAC,12,28,344,12.3,0,0,0,,0,28,344,12.3,0,jehlani-galloway-1
-247,Jalen Walthall,Hawaii,MWC,11,27,333,12.3,1,0,0,,0,27,333,12.3,1,jalen-walthall-1
-248,Jacob Cowing,Arizona,Pac-12,12,85,1034,12.2,7,3,1,0.3,0,88,1035,11.8,7,jacob-cowing-1
-249,Quian Williams*,Buffalo,MAC,13,61,743,12.2,5,2,2,1.0,0,63,745,11.8,5,quian-williams-1
-250,Evan Stewart,Texas A&M,SEC,10,53,649,12.2,2,1,-1,-1.0,0,54,648,12.0,2,evan-stewart-2
-251,Taylor Morin*,Wake Forest,ACC,13,47,575,12.2,9,0,0,,0,47,575,12.2,9,taylor-morin-1
-252,Gabriel Rogers*,Memphis,American,13,40,489,12.2,0,9,58,6.4,1,49,547,11.2,1,gabriel-rogers-1
-253,Brian Hightower*,Illinois,Big Ten,12,37,452,12.2,2,0,0,,0,37,452,12.2,2,brian-hightower-1
-254,Terrance Ferguson*,Oregon,Pac-12,13,32,391,12.2,5,0,0,,0,32,391,12.2,5,terrance-ferguson-1
-255,Zakhari Franklin*,UTSA,CUSA,14,94,1136,12.1,15,0,0,,0,94,1136,12.1,15,zakhari-franklin-1
-256,Brian Cobbs*,Utah State,MWC,13,76,923,12.1,5,2,6,3.0,0,78,929,11.9,5,brian-cobbs-2
-257,Brennan Presley*,Oklahoma State,Big 12,13,67,813,12.1,2,5,12,2.4,1,72,825,11.5,3,brennan-presley-1
-258,Michael Mayer*,Notre Dame,Ind,12,67,809,12.1,9,0,0,,0,67,809,12.1,9,michael-mayer-1
-259,Ricky White,UNLV,MWC,12,51,619,12.1,4,1,3,3.0,0,52,622,12.0,4,ricky-white-2
-260,Brian Casteel,Nevada,MWC,12,48,581,12.1,4,0,0,,0,48,581,12.1,4,brian-casteel-1
-261,Dalevon Campbell,Nevada,MWC,12,38,459,12.1,1,0,0,,0,38,459,12.1,1,dalevon-campbell-1
-262,Brayden Cosper*,Brigham Young,Ind,13,30,363,12.1,1,0,0,,0,30,363,12.1,1,brayden-cosper-1
-263,Sam Wiglusz*,Ohio,MAC,14,73,877,12.0,11,2,23,11.5,0,75,900,12.0,11,sam-wiglusz-1
-264,Luke Grimm*,Kansas,Big 12,12,52,623,12.0,6,0,0,,0,52,623,12.0,6,luke-grimm-1
-265,Champ Flemings,Arkansas State,Sun Belt,11,41,492,12.0,1,2,20,10.0,0,43,512,11.9,1,champ-flemings-1
-266,Dimitri Stanley,Iowa State,Big 12,11,32,383,12.0,1,0,0,,0,32,383,12.0,1,dimitri-stanley-1
-267,Mekhi Shaw*,San Diego State,MWC,13,29,349,12.0,3,2,7,3.5,0,31,356,11.5,3,mekhi-shaw-1
-268,John Humphreys,Stanford,Pac-12,11,29,348,12.0,1,0,0,,0,29,348,12.0,1,john-humphreys-2
-269,Elijah Higgins,Stanford,Pac-12,12,59,704,11.9,2,4,48,12.0,0,63,752,11.9,2,elijah-higgins-1
-270,Jadon Haselwood*,Arkansas,SEC,12,59,704,11.9,3,8,7,0.9,0,67,711,10.6,3,jadon-haselwood-1
-271,Miles Cross*,Ohio,MAC,14,47,560,11.9,3,3,5,1.7,0,50,565,11.3,3,miles-cross-1
-272,Luke Schoonmaker*,Michigan,Big Ten,12,35,418,11.9,3,0,0,,0,35,418,11.9,3,luke-schoonmaker-1
-273,Hal Presley*,Baylor,Big 12,13,32,382,11.9,4,1,2,2.0,0,33,384,11.6,4,hal-presley-1
-274,Elijah Metcalf*,Middle Tennessee State,CUSA,13,26,309,11.9,2,0,0,,0,26,309,11.9,2,elijah-metcalf-1
-275,Mookie Cooper*,Missouri,SEC,13,25,297,11.9,0,0,0,,0,25,297,11.9,0,mookie-cooper-1
-276,Daniel George,Akron,MAC,12,67,793,11.8,2,1,5,5.0,0,68,798,11.7,2,daniel-george-1
-277,Michael Mathison*,Western Kentucky,CUSA,14,52,615,11.8,3,5,61,12.2,0,57,676,11.9,3,michael-mathison-1
-278,De'Zhaun Stribling*,Washington State,Pac-12,12,51,602,11.8,5,0,0,,0,51,602,11.8,5,dezhaun-stribling-1
-279,Brevyn Spann-Ford*,Minnesota,Big Ten,13,42,497,11.8,2,0,0,,0,42,497,11.8,2,brevyn-spann-ford-1
-280,Darius Lassiter*,Eastern Michigan,MAC,13,40,471,11.8,4,0,0,,0,40,471,11.8,4,darius-lassiter-1
-281,Rakim Jarrett*,Maryland,Big Ten,11,40,471,11.8,3,3,15,5.0,0,43,486,11.3,3,rakim-jarrett-1
-282,Kody Epps*,Brigham Young,Ind,8,39,459,11.8,6,1,2,2.0,0,40,461,11.5,6,kody-epps-1
-283,Adonicas Sanders,Temple,American,9,37,437,11.8,2,6,22,3.7,0,43,459,10.7,2,adonicas-sanders-1
-284,Ahmari Huggins-Bruce*,Louisville,ACC,12,31,365,11.8,2,3,4,1.3,0,34,369,10.9,2,ahmari-huggins-bruce-1
-285,Neal Johnson*,Louisiana,Sun Belt,13,25,296,11.8,2,0,0,,0,25,296,11.8,2,neal-johnson-1
-286,Kenny McIntosh*,Georgia,SEC,15,43,505,11.7,2,149,829,5.6,10,192,1334,6.9,12,kenny-mcintosh-1
-287,Dashaun Davis,Appalachian State,Sun Belt,12,36,421,11.7,3,4,33,8.3,0,40,454,11.4,3,dashaun-davis-1
-288,Ja'Shaun Poke,Kent State,MAC,8,31,362,11.7,1,2,7,3.5,1,33,369,11.2,2,jashaun-poke-1
-289,Giles Jackson*,Washington,Pac-12,13,28,328,11.7,1,9,48,5.3,0,37,376,10.2,1,giles-jackson-1
-290,J. Michael Sturdivant,California,Pac-12,12,65,755,11.6,7,2,-8,-4.0,0,67,747,11.1,7,j-michael-sturdivant-1
-291,LaJohntay Wester,Florida Atlantic,CUSA,12,62,719,11.6,8,15,106,7.1,1,77,825,10.7,9,lajohntay-wester-1
-292,Jayden Reed,Michigan State,Big Ten,11,55,636,11.6,5,4,11,2.8,0,59,647,11.0,5,jayden-reed-1
-293,Tre'Shaun Harrison*,Oregon State,Pac-12,12,52,604,11.6,4,1,-2,-2.0,0,53,602,11.4,4,treshaun-harrison-1
-294,Carlos Carriere,Central Michigan,MAC,11,45,520,11.6,2,0,0,,0,45,520,11.6,2,carlos-carriere-1
-295,Isaiah Epps,Tulsa,American,12,37,429,11.6,5,0,0,,0,37,429,11.6,5,isaiah-epps-1
-296,Josh Cobbs*,Wyoming,MWC,12,35,407,11.6,2,0,0,,0,35,407,11.6,2,josh-cobbs-1
-297,Brian Thomas Jr.*,LSU,SEC,13,31,361,11.6,5,0,0,,0,31,361,11.6,5,brian-thomas-jr-1
-298,Marcus Rosemy-Jacksaint*,Georgia,SEC,15,29,337,11.6,2,0,0,,0,29,337,11.6,2,marcus-rosemy-jacksaint-1
-299,Jonah Panoke,Hawaii,MWC,7,27,312,11.6,1,0,0,,0,27,312,11.6,1,jonah-panoke-1
-300,Nikko Remigio*,Fresno State,MWC,14,74,852,11.5,6,6,42,7.0,2,80,894,11.2,8,nikko-remigio-1
-301,Sam Brown*,Houston,American,11,41,471,11.5,4,0,0,,0,41,471,11.5,4,sam-brown-5
-302,Colbie Young,Miami (FL),ACC,10,32,367,11.5,5,0,0,,0,32,367,11.5,5,colbie-young-1
-303,Da'Wain Lofton,Virginia Tech,ACC,11,22,254,11.5,2,1,-3,-3.0,0,23,251,10.9,2,dawain-lofton-1
-304,Ja'Tavion Sanders*,Texas,Big 12,13,54,613,11.4,5,0,0,,0,54,613,11.4,5,jatavion-sanders-1
-305,Donovan Ollie*,Washington State,Pac-12,12,43,491,11.4,3,0,0,,0,43,491,11.4,3,donovan-ollie-1
-306,Davis Allen*,Clemson,ACC,14,39,443,11.4,5,0,0,,0,39,443,11.4,5,davis-allen-1
-307,Nico Ragaini*,Iowa,Big Ten,11,34,386,11.4,1,2,17,8.5,0,36,403,11.2,1,nico-ragaini-1
-308,Dayton Wade*,Ole Miss,SEC,13,27,309,11.4,3,9,78,8.7,0,36,387,10.8,3,dayton-wade-1
-309,Josh Henderson,Indiana,Big Ten,12,24,274,11.4,4,90,398,4.4,4,114,672,5.9,8,josh-henderson-2
-310,Joshua Cephus*,UTSA,CUSA,13,87,985,11.3,6,3,10,3.3,1,90,995,11.1,7,joshua-cephus-1
-311,Jayson Jackson,Ball State,MAC,12,73,823,11.3,3,13,105,8.1,0,86,928,10.8,3,jayson-jackson-1
-312,Sam Laporta*,Iowa,Big Ten,12,58,657,11.3,1,2,6,3.0,0,60,663,11.1,1,sam-laporta-1
-313,Thayer Thomas*,North Carolina State,ACC,13,57,642,11.3,4,1,-7,-7.0,0,58,635,10.9,4,thayer-thomas-1
-314,Mitchell Tinsley*,Penn State,Big Ten,13,51,577,11.3,5,0,0,,0,51,577,11.3,5,mitchell-tinsley-1
-315,Jesse Matthews*,San Diego State,MWC,13,45,508,11.3,3,1,1,1.0,0,46,509,11.1,3,jesse-matthews-1
-316,Cedric Tillman*,Tennessee,SEC,6,37,417,11.3,3,0,0,,0,37,417,11.3,3,cedric-tillman-1
-317,Cade Stover*,Ohio State,Big Ten,13,36,406,11.3,5,0,0,,0,36,406,11.3,5,cade-stover-1
-318,Brenton Strange*,Penn State,Big Ten,13,32,362,11.3,5,1,0,0.0,0,33,362,11.0,5,brenton-strange-1
-319,Lorenzo Styles Jr.*,Notre Dame,Ind,13,30,340,11.3,1,3,49,16.3,0,33,389,11.8,1,lorenzo-styles-jr-1
-320,Jermaine Braddock*,San Jose State,MWC,12,26,295,11.3,0,0,0,,0,26,295,11.3,0,jermaine-braddock-1
-321,Kayshon Boutte*,LSU,SEC,11,48,538,11.2,2,1,41,41.0,0,49,579,11.8,2,kayshon-boutte-1
-322,Jordan Watkins*,Ole Miss,SEC,13,40,449,11.2,2,2,-3,-1.5,0,42,446,10.6,2,jordan-watkins-2
-323,Charles Montgomery*,Marshall,Sun Belt,13,36,402,11.2,1,6,15,2.5,0,42,417,9.9,1,charles-montgomery-1
-324,Kobe Paysour*,North Carolina,ACC,12,29,324,11.2,4,0,0,,0,29,324,11.2,4,kobe-paysour-1
-325,Tony Johnson,Florida Atlantic,CUSA,12,23,258,11.2,3,1,6,6.0,0,24,264,11.0,3,tony-johnson-10
-326,Terrell Vaughn*,Utah State,MWC,13,56,624,11.1,5,13,72,5.5,1,69,696,10.1,6,terrell-vaughn-1
-327,Jalin Conyers,Arizona State,Pac-12,12,38,422,11.1,5,0,0,,0,38,422,11.1,5,jalin-conyers-1
-328,David Martin-Robinson,Temple,American,9,33,366,11.1,2,0,0,,0,33,366,11.1,2,david-martin-robinson-1
-329,Renard Bell*,Washington State,Pac-12,8,28,310,11.1,2,1,-2,-2.0,0,29,308,10.6,2,renard-bell-1
-330,Emery Simmons,Indiana,Big Ten,12,37,408,11.0,1,2,54,27.0,0,39,462,11.8,1,emery-simmons-1
-331,Jack Westover*,Washington,Pac-12,13,31,342,11.0,1,0,0,,0,31,342,11.0,1,jack-westover-1
-332,Keyon Lesane*,North Carolina State,ACC,13,31,342,11.0,2,0,0,,0,31,342,11.0,2,keyon-lesane-1
-333,Frank Ladson Jr.,Miami (FL),ACC,12,27,298,11.0,1,1,2,2.0,0,28,300,10.7,1,frank-ladson-jr-1
-334,Trey Knox*,Arkansas,SEC,12,26,287,11.0,5,1,0,0.0,0,27,287,10.6,5,trey-knox-1
-335,Xavier Hutchinson,Iowa State,Big 12,12,107,1171,10.9,6,0,0,,0,107,1171,10.9,6,xavier-hutchinson-1
-336,Josh Downs*,North Carolina,ACC,11,94,1029,10.9,11,0,0,,0,94,1029,10.9,11,josh-downs-2
-337,Bryce Ford-Wheaton,West Virginia,Big 12,12,62,675,10.9,7,0,0,,0,62,675,10.9,7,bryce-ford-wheaton-1
-338,Jordan Moore*,Duke,ACC,13,60,656,10.9,5,4,33,8.3,0,64,689,10.8,5,jordan-moore-5
-339,Nate McCollum,Georgia Tech,ACC,11,60,655,10.9,3,6,56,9.3,1,66,711,10.8,4,nate-mccollum-1
-340,Keytaon Thompson,Virginia,ACC,8,53,579,10.9,0,4,25,6.3,1,57,604,10.6,1,keytaon-thompson-1
-341,Reynaldo Flores,UTEP,CUSA,12,49,536,10.9,1,38,276,7.3,5,87,812,9.3,6,reynaldo-flores-1
-342,Mason Taylor*,LSU,SEC,14,38,414,10.9,3,0,0,,0,38,414,10.9,3,mason-taylor-1
-343,Kobe Prentice*,Alabama,SEC,13,31,337,10.9,2,0,0,,0,31,337,10.9,2,kobe-prentice-1
-344,Shermar Thornton,Northern Illinois,MAC,10,30,327,10.9,0,0,0,,0,30,327,10.9,0,shermar-thornton-1
-345,Justin Robinson*,Mississippi State,SEC,13,30,326,10.9,3,0,0,,0,30,326,10.9,3,justin-robinson-2
-346,Jeremy Singleton*,Georgia Southern,Sun Belt,12,66,713,10.8,2,0,-8,,0,66,705,10.7,2,jeremy-singleton-1
-347,Antonio Williams*,Clemson,ACC,14,56,604,10.8,4,5,8,1.6,0,61,612,10.0,4,antonio-williams-2
-348,Latrell Caples*,Boise State,MWC,14,51,549,10.8,4,2,6,3.0,0,53,555,10.5,4,latrell-caples-1
-349,Brady Hunt,Ball State,MAC,12,46,498,10.8,5,0,0,,0,46,498,10.8,5,brady-hunt-1
-350,Xzavier Henderson*,Florida,SEC,11,38,410,10.8,2,0,0,,0,38,410,10.8,2,xzavier-henderson-1
-351,Malik Washington,Northwestern,Big Ten,12,65,694,10.7,1,9,16,1.8,0,74,710,9.6,1,malik-washington-1
-352,Tyrese Chambers,Florida International,CUSA,10,51,544,10.7,4,1,8,8.0,0,52,552,10.6,4,tyrese-chambers-1
-353,Kris Hutson*,Oregon,Pac-12,13,44,472,10.7,0,0,0,,0,44,472,10.7,0,kris-hutson-1
-354,Tanner Koziol,Ball State,MAC,12,35,373,10.7,7,0,0,,0,35,373,10.7,7,tanner-koziol-1
-355,Jeff Weimer,UNLV,MWC,7,26,278,10.7,1,0,0,,0,26,278,10.7,1,jeff-weimer-1
-356,Khaleb Hood*,Georgia Southern,Sun Belt,13,87,923,10.6,3,2,3,1.5,0,89,926,10.4,3,khaleb-hood-1
-357,Erik Brooks*,Fresno State,MWC,14,37,391,10.6,3,0,0,,0,37,391,10.6,3,erik-brooks-1
-358,Tyjon Lindsey*,Oregon State,Pac-12,13,30,317,10.6,1,2,21,10.5,1,32,338,10.6,2,tyjon-lindsey-1
-359,RJ Maryland*,SMU,American,13,28,296,10.6,6,0,0,,0,28,296,10.6,6,rj-maryland-1
-360,Ashtyn Hawkins,Texas State,Sun Belt,9,56,587,10.5,7,1,-4,-4.0,0,57,583,10.2,7,ashtyn-hawkins-1
-361,CJ Dippre*,Maryland,Big Ten,12,30,314,10.5,3,0,0,,0,30,314,10.5,3,cj-dippre-1
-362,Robert Ferrel*,Washington State,Pac-12,11,56,582,10.4,4,1,-3,-3.0,0,57,579,10.2,4,robert-ferrel-1
-363,TJ Sheffield*,Purdue,Big Ten,14,46,480,10.4,4,4,3,0.8,0,50,483,9.7,4,tj-sheffield-1
-364,Caleb Ducking*,Mississippi State,SEC,13,46,477,10.4,8,0,0,,0,46,477,10.4,8,caleb-ducking-1
-365,Barrett Banister*,Missouri,SEC,11,44,457,10.4,0,0,0,,0,44,457,10.4,0,barrett-banister-1
-366,Jaylen Dixon*,Utah,Pac-12,14,33,344,10.4,3,10,118,11.8,4,43,462,10.7,7,jaylen-dixon-1
-367,John Paul Richardson*,Oklahoma State,Big 12,13,49,503,10.3,4,1,-10,-10.0,0,50,493,9.9,4,john-paul-richardson-1
-368,Jayden McGowan,Vanderbilt,SEC,12,44,453,10.3,3,14,51,3.6,0,58,504,8.7,3,jayden-mcgowan-1
-369,Tre Mosley,Michigan State,Big Ten,12,35,359,10.3,4,0,0,,0,35,359,10.3,4,tre-mosley-1
-370,Mycah Pittman*,Florida State,ACC,13,32,330,10.3,3,7,35,5.0,0,39,365,9.4,3,mycah-pittman-1
-371,Gunnar Oakes*,Eastern Michigan,MAC,12,27,279,10.3,0,0,0,,0,27,279,10.3,0,gunnar-oakes-1
-372,Christian Sims*,Bowling Green State,MAC,12,45,458,10.2,2,2,7,3.5,0,47,465,9.9,2,christian-sims-1
-373,Jaden Walley*,Mississippi State,SEC,13,34,348,10.2,3,0,0,,0,34,348,10.2,3,jaden-walley-1
-374,Josh Whyle*,Cincinnati,American,12,32,326,10.2,3,0,0,,0,32,326,10.2,3,josh-whyle-1
-375,Caleb Phillips,Hawaii,MWC,13,31,317,10.2,3,0,0,,0,31,317,10.2,3,caleb-phillips-1
-376,Frank Peasant*,Middle Tennessee State,CUSA,13,28,286,10.2,2,182,777,4.3,9,210,1063,5.1,11,frank-peasant-1
-377,Rontavious Groves,Texas State,Sun Belt,10,23,235,10.2,1,0,0,,0,23,235,10.2,1,rontavious-groves-1
-378,Myles Price*,Texas Tech,Big 12,11,51,513,10.1,2,0,0,,0,51,513,10.1,2,myles-price-1
-379,Joel Wilson,Central Michigan,MAC,9,44,445,10.1,6,3,1,0.3,0,47,446,9.5,6,joel-wilson-1
-380,Jahmyr Gibbs*,Alabama,SEC,12,44,444,10.1,3,151,926,6.1,7,195,1370,7.0,10,jahmyr-gibbs-1
-381,Ryan Jones*,East Carolina,American,12,41,413,10.1,4,2,1,0.5,0,43,414,9.6,4,ryan-jones-4
-382,Drake Stoops*,Oklahoma,Big 12,13,39,393,10.1,3,8,48,6.0,0,47,441,9.4,3,drake-stoops-1
-383,Mavin Anderson,California,Pac-12,12,37,372,10.1,3,2,-2,-1.0,0,39,370,9.5,3,mavin-anderson-1
-384,Jaylin Noel,Iowa State,Big 12,12,61,609,10.0,3,3,47,15.7,0,64,656,10.3,3,jaylin-noel-1
-385,Payne Durham*,Purdue,Big Ten,13,56,560,10.0,8,1,4,4.0,0,57,564,9.9,8,payne-durham-1
-386,Jamaal Bell,Nevada,MWC,11,28,279,10.0,0,5,8,1.6,0,33,287,8.7,0,jamaal-bell-1
-387,Monroe Young,California,Pac-12,12,23,231,10.0,3,0,0,,0,23,231,10.0,3,monroe-young-1
-388,Amir Abdur-Rahman,Ball State,MAC,12,23,229,10.0,1,0,0,,0,23,229,10.0,1,amir-abdur-rahman-1
-389,Ryan O'Keefe*,UCF,American,13,73,725,9.9,5,23,222,9.7,0,96,947,9.9,5,ryan-okeefe-1
-390,Evan Hull,Northwestern,Big Ten,12,55,546,9.9,2,221,913,4.1,5,276,1459,5.3,7,evan-hull-2
-391,Kade Warner*,Kansas State,Big 12,14,46,456,9.9,5,3,21,7.0,0,49,477,9.7,5,kade-warner-1
-392,Victor Tucker,Charlotte,CUSA,10,41,406,9.9,6,3,8,2.7,0,44,414,9.4,6,victor-tucker-1
-393,Casey Washington*,Illinois,Big Ten,13,31,306,9.9,0,0,0,,0,31,306,9.9,0,casey-washington-1
-394,Lawrence Keys III*,Tulane,American,13,30,296,9.9,2,5,43,8.6,1,35,339,9.7,3,lawrence-keys-iii-1
-395,Nakia Watson*,Washington State,Pac-12,11,30,296,9.9,4,144,769,5.3,9,174,1065,6.1,13,nakia-watson-1
-396,Jalen Walker*,Miami (OH),MAC,12,28,276,9.9,0,2,-4,-2.0,0,30,272,9.1,0,jalen-walker-2
-397,Johnnie Lang,Arkansas State,Sun Belt,12,24,238,9.9,3,119,419,3.5,3,143,657,4.6,6,johnnie-lang-1
-398,Smoke Harris,Louisiana Tech,CUSA,12,65,635,9.8,5,8,-1,-0.1,0,73,634,8.7,5,smoke-harris-1
-399,Taron Keith*,Bowling Green State,MAC,12,34,333,9.8,4,47,195,4.1,1,81,528,6.5,5,taron-keith-1
-400,George Takacs,Boston College,ACC,9,26,256,9.8,1,0,0,,0,26,256,9.8,1,george-takacs-1
-401,Malik Rutherford,Georgia Tech,ACC,12,23,225,9.8,0,1,4,4.0,0,24,229,9.5,0,malik-rutherford-1
-402,Hassan Beydoun*,Eastern Michigan,MAC,13,49,473,9.7,4,4,4,1.0,0,53,477,9.0,4,hassan-beydoun-1
-403,Michael Wiley,Arizona,Pac-12,11,36,349,9.7,3,113,771,6.8,8,149,1120,7.5,11,michael-wiley-3
-404,Raheim Sanders*,Arkansas,SEC,13,28,271,9.7,2,222,1443,6.5,10,250,1714,6.9,12,raheim-sanders-1
-405,D.J. Matthews,Indiana,Big Ten,9,23,224,9.7,2,4,0,0.0,0,27,224,8.3,2,dj-matthews-1
-406,Kaden Prather,West Virginia,Big 12,11,52,501,9.6,3,0,0,,0,52,501,9.6,3,kaden-prather-1
-407,Bucky Irving*,Oregon,Pac-12,13,31,299,9.6,3,156,1058,6.8,5,187,1357,7.3,8,markeise-irving-1
-408,Konata Mumpfield*,Pitt,ACC,12,58,551,9.5,1,1,3,3.0,0,59,554,9.4,1,konata-mumpfield-1
-409,Rufus Harvey*,Mississippi State,SEC,13,53,505,9.5,3,0,0,,0,53,505,9.5,3,rufus-harvey-1
-410,Johnny Langan,Rutgers,Big Ten,12,31,296,9.5,1,31,139,4.5,1,62,435,7.0,2,johnny-langan-1
-411,Lincoln Victor*,Washington State,Pac-12,13,26,245,9.4,0,1,-19,-19.0,0,27,226,8.4,0,lincoln-victor-1
-412,Izaiah Gathings*,Middle Tennessee State,CUSA,12,60,559,9.3,2,0,0,,0,60,559,9.3,2,izaiah-gathings-1
-413,Brashard Smith,Miami (FL),ACC,11,33,308,9.3,0,3,22,7.3,0,36,330,9.2,0,brashard-smith-1
-414,Darryl Jones*,North Carolina State,ACC,13,30,280,9.3,3,0,0,,0,30,280,9.3,3,darryl-jones-1
-415,Julian Ortega-Jones,Texas State,Sun Belt,9,29,270,9.3,1,0,0,,0,29,270,9.3,1,julian-ortega-jones-2
-416,Jack Bradley*,Rice,CUSA,13,28,260,9.3,2,0,0,,0,28,260,9.3,2,jack-bradley-1
-417,Keaton Mitchell*,East Carolina,American,12,27,252,9.3,1,201,1452,7.2,14,228,1704,7.5,15,keaton-mitchell-1
-418,Aaron Turner*,Connecticut,Ind,13,57,527,9.2,3,14,53,3.8,0,71,580,8.2,3,aaron-turner-2
-419,Aron Cruickshank,Rutgers,Big Ten,12,42,385,9.2,2,11,115,10.5,1,53,500,9.4,3,aron-cruickshank-1
-420,Micah Bernard*,Utah,Pac-12,14,34,314,9.2,1,106,533,5.0,4,140,847,6.1,5,micah-bernard-1
-421,Devin Culp*,Washington,Pac-12,13,29,266,9.2,1,1,2,2.0,0,30,268,8.9,1,devin-culp-1
-422,Jaheim Bell*,South Carolina,SEC,12,25,231,9.2,2,73,261,3.6,3,98,492,5.0,5,jaheim-bell-1
-423,Benjamin Yurosek,Stanford,Pac-12,12,49,445,9.1,1,1,50,50.0,0,50,495,9.9,1,benjamin-yurosek-1
-424,Yo'Heinz Tyler,Ball State,MAC,11,49,441,9.0,1,0,0,,0,49,441,9.0,1,yoheinz-tyler-1
-425,Deuce Vaughn*,Kansas State,Big 12,14,42,378,9.0,3,293,1558,5.3,9,335,1936,5.8,12,deuce-vaughn-1
-426,Roman Hemby*,Maryland,Big Ten,13,33,298,9.0,1,188,989,5.3,10,221,1287,5.8,11,roman-hemby-1
-427,Josiah Miamen,Florida International,CUSA,12,27,242,9.0,1,0,0,,0,27,242,9.0,1,josiah-miamen-1
-428,Chase Brown*,Illinois,Big Ten,12,27,240,8.9,3,328,1643,5.0,10,355,1883,5.3,13,chase-brown-3
-429,Isaiah Williams*,Illinois,Big Ten,13,82,715,8.7,5,7,5,0.7,0,89,720,8.1,5,isaiah-williams-7
-430,Zach Charbonnet*,UCLA,Pac-12,10,37,321,8.7,0,195,1359,7.0,14,232,1680,7.2,14,zach-charbonnet-1
-431,Asa Martin*,Memphis,American,12,36,312,8.7,1,85,435,5.1,7,121,747,6.2,8,asa-martin-1
-432,Austin Williams*,Mississippi State,SEC,13,34,291,8.6,5,0,0,,0,34,291,8.6,5,austin-williams-3
-433,Luke Wysong,New Mexico,MWC,11,34,291,8.6,1,21,32,1.5,1,55,323,5.9,2,luke-wysong-1
-434,Devin Mockobee*,Purdue,Big Ten,13,32,274,8.6,0,195,968,5.0,9,227,1242,5.5,9,devin-mockobee-1
-435,Blake Watson,Old Dominion,Sun Belt,11,37,314,8.5,2,158,918,5.8,5,195,1232,6.3,7,blake-watson-2
-436,Nick Gallo,Virginia Tech,ACC,11,30,256,8.5,0,0,0,,0,30,256,8.5,0,nick-gallo-2
-437,Jordan Houston*,North Carolina State,ACC,12,25,213,8.5,1,136,544,4.0,0,161,757,4.7,1,jordan-houston-1
-438,Sieh Bangura*,Ohio,MAC,12,27,226,8.4,2,222,1078,4.9,13,249,1304,5.2,15,sieh-bangura-1
-439,Luther Burden*,Missouri,SEC,13,45,375,8.3,6,18,88,4.9,2,63,463,7.3,8,luther-burden-1
-440,Patrick Garwo,Boston College,ACC,12,29,241,8.3,0,132,402,3.0,3,161,643,4.0,3,patrick-garwo-1
-441,Kazmeir Allen*,UCLA,Pac-12,11,49,403,8.2,2,15,203,13.5,2,64,606,9.5,4,kazmeir-allen-1
-442,Ben Sims*,Baylor,Big 12,12,31,255,8.2,3,1,1,1.0,1,32,256,8.0,4,ben-sims-1
-443,Dior Scott,Hawaii,MWC,10,25,204,8.2,0,2,-5,-2.5,0,27,199,7.4,0,dior-scott-1
-444,Shane Calhoun*,East Carolina,American,11,25,202,8.1,2,0,0,,0,25,202,8.1,2,shane-calhoun-1
-445,TJ Jones*,UAB,CUSA,13,29,231,8.0,1,2,31,15.5,0,31,262,8.5,1,tj-jones-7
-446,Lincoln Pare,Texas State,Sun Belt,12,29,229,7.9,1,172,772,4.5,5,201,1001,5.0,6,lincoln-pare-1
-447,Xazavian Valladay,Arizona State,Pac-12,12,37,289,7.8,2,215,1192,5.5,16,252,1481,5.9,18,xazavian-valladay-1
-448,Leyton Smithson*,Washington State,Pac-12,13,30,235,7.8,1,1,3,3.0,1,31,238,7.7,2,leyton-smithson-1
-449,Donny Navarro III,Northwestern,Big Ten,12,31,237,7.6,2,0,0,,0,31,237,7.6,2,donny-navarro-iii-1
-450,Yusuf Ali*,Middle Tennessee State,CUSA,13,51,385,7.5,2,2,3,1.5,0,53,388,7.3,2,yusuf-ali-1
-451,Jalen Bracey,Florida International,CUSA,12,39,294,7.5,2,8,0,0.0,0,47,294,6.3,2,jalen-bracey-1
-452,Edward Saydee,Temple,American,12,36,262,7.3,0,149,639,4.3,6,185,901,4.9,6,edward-saydee-1
-453,Toa Taua,Nevada,MWC,12,41,295,7.2,1,217,911,4.2,11,258,1206,4.7,12,toa-taua-1
-454,Sean Tucker*,Syracuse,ACC,12,36,254,7.1,2,206,1060,5.1,11,242,1314,5.4,13,sean-tucker-2
-455,AJ Barner,Indiana,Big Ten,10,28,199,7.1,3,0,0,,0,28,199,7.1,3,aj-barner-1
-456,Tyrone Tracy Jr.*,Purdue,Big Ten,14,28,198,7.1,0,17,138,8.1,0,45,336,7.5,0,tyrone-tracy-jr-1
-457,Jaydn Ott,California,Pac-12,12,46,321,7.0,3,170,897,5.3,8,216,1218,5.6,11,jaydn-ott-1
-458,Eric Gray*,Oklahoma,Big 12,12,33,229,6.9,0,213,1366,6.4,11,246,1595,6.5,11,eric-gray-2
-459,Josiah Johnson,Massachusetts,Ind,12,24,163,6.8,0,0,0,,0,24,163,6.8,0,josiah-johnson-1
-460,Will Shipley*,Clemson,ACC,14,38,242,6.4,0,210,1182,5.6,15,248,1424,5.7,15,will-shipley-1
-461,Alex Broome,Boston College,ACC,10,26,166,6.4,1,50,225,4.5,1,76,391,5.1,2,alex-broome-1
-462,Tahj Brooks*,Texas Tech,Big 12,13,26,164,6.3,1,147,691,4.7,7,173,855,4.9,8,tahj-brooks-1
-463,Jo'quavious Marks*,Mississippi State,SEC,12,48,288,6.0,0,113,582,5.2,9,161,870,5.4,9,joquavious-marks-1
-464,Tank Bigsby,Auburn,SEC,12,30,180,6.0,0,179,970,5.4,10,209,1150,5.5,10,tank-bigsby-1
-465,Nate Noel,Appalachian State,Sun Belt,9,24,145,6.0,0,87,604,6.9,6,111,749,6.7,6,nate-noel-1
-466,Dillon Johnson*,Mississippi State,SEC,11,48,285,5.9,0,89,488,5.5,3,137,773,5.6,3,dillon-johnson-1
-467,Hassan Hall,Georgia Tech,ACC,12,28,165,5.9,0,116,521,4.5,1,144,686,4.8,1,hassan-hall-1
-468,Lexington Joseph,Florida International,CUSA,12,29,169,5.8,2,108,536,5.0,5,137,705,5.1,7,lexington-joseph-1
-469,Re'Mahn Davis,Vanderbilt,SEC,12,29,169,5.8,3,232,1042,4.5,5,261,1211,4.6,8,remahn-davis-1
-470,Dedrick Parson,Hawaii,MWC,13,30,171,5.7,1,187,830,4.4,11,217,1001,4.6,12,dedrick-parson-1
-471,Carson Steele,Ball State,MAC,12,29,166,5.7,1,289,1556,5.4,14,318,1722,5.4,15,carson-steele-1
-472,Kairee Robinson*,San Jose State,MWC,12,26,144,5.5,0,157,752,4.8,10,183,896,4.9,10,kairee-robinson-1
-473,Devon Achane,Texas A&M,SEC,10,36,196,5.4,3,196,1102,5.6,8,232,1298,5.6,11,devon-achane-1
-474,Aidan Robbins,UNLV,MWC,11,23,125,5.4,1,209,1009,4.8,9,232,1134,4.9,10,aidan-robbins-1
-475,Clyde Price,Akron,MAC,12,31,139,4.5,1,99,309,3.1,7,130,448,3.4,8,clyde-price-1
+Tank Dell,WR,109,1398,12.8,63,17
+Charlie Jones,WR,110,1361,12.4,60,12
+Rashee Rice,WR,96,1355,14.1,75,10
+Malachi Corley,WR,101,1293,12.8,76,11
+Jalin Hyatt,WR,67,1267,18.9,78,15
+Marvin Harrison Jr.,WR,77,1263,16.4,58,14
+Keylon Stokes,WR,76,1224,16.1,76,8
+Xavier Hutchinson,WR,107,1171,10.9,38,6
+Emeka Egbuka,WR,74,1151,15.6,69,10
+Rome Odunze,WR,75,1145,15.3,61,7
+Zakhari Franklin,WR,93,1137,12.2,43,15
+Tory Horton,WR,71,1131,15.9,69,8
+Jamari Thrash,WR,61,1122,18.4,75,7
+Dorian Singer,WR,66,1105,16.7,73,6
+Jalen McMillan,WR,79,1098,13.9,84,9
+A.T. Perry,WR,81,1096,13.5,68,11
+Jalen Moreno-Cropper,WR,84,1093,13.0,75,5
+Isaiah Winstead,WR,88,1085,12.3,67,6
+Marvin Mims Jr.,WR,54,1083,20.1,77,6
+Zay Flowers,WR,78,1077,13.8,69,12
+Elijah Cooks,WR,69,1076,15.6,52,10
+Quentin Johnston,WR,60,1069,17.8,76,6
+Jared Wayne,WR,60,1062,17.7,66,5
+Trey Palmer,WR,71,1043,14.7,87,9
+Tyrin Smith,WR,71,1039,14.6,76,7
+Tyler Hudson,WR,69,1034,15.0,54,2
+Jacob Cowing,WR,85,1034,12.2,39,7
+Josh Downs,WR,94,1029,10.9,43,11
+Malik Nabers,WR,72,1017,14.1,75,3
+C.J. Johnson,WR,67,1016,15.2,74,10
+Kris Thornton,WR,59,1015,17.2,54,7
+Sam Pinckney,WR,71,996,14.0,48,3
+Demario Douglas,WR,79,993,12.6,51,6
+Joshua Cephus,WR,87,985,11.3,65,6
+Malik Heath,WR,60,971,16.2,53,5
+Oronde Gadsden II,TE,61,969,15.9,46,6
+Jeremiah Hunter,WR,60,965,16.1,58,5
+Ali Jennings,WR,54,959,17.8,77,9
+Elijah Spencer,WR,57,943,16.5,60,9
+Brock Bowers,TE,63,942,15.0,78,7
+Jaylin Lane,WR,69,940,13.6,89,5
+Tre Harris,WR,65,935,14.4,64,10
+Shocky Jacques-Louis,WR,74,931,12.6,41,2
+Antwane Wells Jr.,WR,68,928,13.6,72,6
+Khaleb Hood,WR,87,925,10.6,46,3
+Brian Cobbs,WR,76,923,12.1,44,5
+Trea Shropshire,WR,41,923,22.5,74,6
+Devontez Walker,WR,58,921,15.9,56,11
+Jose Barbon,WR,72,918,12.8,78,2
+Matt Landers,WR,47,901,19.2,59,8
+Tyler Scott,WR,54,899,16.6,76,9
+Johnny Wilson,WR,43,897,20.9,78,5
+Troy Franklin,WR,61,891,14.6,67,9
+Jason Brownlee,WR,55,891,16.2,76,8
+Dalton Kincaid,TE,70,890,12.7,37,8
+Ronnie Bell,WR,62,889,14.3,49,4
+Sam Wiglusz,WR,73,877,12.0,75,11
+Bradley Rozner,WR,44,876,19.9,78,10
+Jordan Addison,WR,59,875,14.8,75,8
+Jalon Calhoun,WR,62,873,14.1,51,4
+Daewood Davis,WR,63,872,13.8,62,7
+Jaylen Hall,WR,68,869,12.8,52,6
+Devin Voisin,WR,64,867,13.5,47,5
+Elijhah Badger,WR,70,866,12.4,39,7
+Tez Johnson,WR,56,863,15.4,74,4
+Jonathan Mingo,WR,51,861,16.9,72,5
+JuanCarlos Santana,WR,53,859,16.2,59,7
+Alex Adams,WR,63,855,13.6,80,9
+Nikko Remigio,WR,74,852,11.5,39,6
+Tyrone Howell,WR,50,852,17.0,89,6
+Dominic Lovett,WR,56,846,15.1,79,3
+Justin Marshall,WR,64,837,13.1,69,9
+Jerjuan Newton,WR,53,830,15.7,43,9
+Jayshon Jackson,WR,73,823,11.3,43,3
+Jalen Wayne,WR,58,817,14.1,64,9
+Jake Bobo,WR,57,817,14.3,40,7
+Corey Crooms Jr.,WR,57,814,14.3,75,5
+Caullin Lacy,WR,65,813,12.5,44,6
+Brennan Presley,WR,67,813,12.1,55,2
+Michael Jefferson,WR,51,810,15.9,63,7
+Michael Mayer,TE,67,809,12.1,37,9
+Antoine Green,WR,43,798,18.6,80,7
+Keon Coleman,WR,58,798,13.8,51,7
+Javon Baker,WR,56,796,14.2,53,5
+Daniel George,WR,67,793,11.8,43,2
+Grant DuBose,WR,64,792,12.4,52,9
+Jared Brown,WR,49,789,16.1,75,6
+Tahj Washington,WR,50,785,15.7,61,6
+Will Sheppard,WR,60,776,12.9,31,9
+Jacoby Jones,WR,45,776,17.2,48,6
+Corey Gammage,WR,52,774,14.9,57,6
+Mac Hippenhammer,WR,54,769,14.2,58,9
+Ladd McConkey,WR,58,762,13.1,37,7
+Xavier Worthy,WR,60,760,12.7,46,9
+J. Michael Sturdivant,WR,65,755,11.6,48,7
+Odieu Hiliare,WR,58,747,12.9,59,6
+Sam James,WR,46,745,16.2,71,6
+Dante Cephas,WR,48,744,15.5,54,3
+Jerand Bradley,WR,51,744,14.6,47,6
+Quian Williams,WR,61,743,12.2,59,5
+De'Corian Clark,WR,51,741,14.5,69,8
+Malik Knowles,WR,48,725,15.1,68,2
+Ryan O'Keefe,WR,73,725,9.9,68,5
+Luke McCaffrey,WR,58,723,12.5,66,6
+Lajohntay Wester,WR,62,719,11.6,42,8
+Xavier Weaver,WR,53,718,13.5,63,6
+Derwin Burgess Jr.,WR,58,717,12.4,53,7
+Lawrence Arnold,WR,44,716,16.3,60,4
+Isaiah Williams,WR,82,715,8.7,63,5
+Jeremy Singleton,WR,66,714,10.8,65,2
+RaJae' Johnson,WR,36,713,19.8,67,7
+Elijah Higgins,WR,59,704,11.9,51,2
+Jadon Haselwood,WR,59,702,11.9,68,3
+Tetairoa McMillan,WR,39,702,18.0,47,8
+Devaughn Vele,WR,55,695,12.6,47,5
+Ja'Lynn Polk,WR,41,694,16.9,76,6
+Malik Washington,WR,65,694,10.7,49,1
+Shae Wyatt,WR,35,692,19.8,72,7
+Chimere Dike,WR,47,689,14.7,74,6
+Jermaine Burton,WR,40,677,16.9,52,7
+Roderic Burns,WR,40,676,16.9,70,1
+Bryce Ford-Wheaton,WR,62,675,10.9,67,7
+Kaleb Smith,WR,37,674,18.2,85,3
+Ja'Corey Brooks,WR,39,674,17.3,41,8
+Tre Tucker,WR,52,672,12.9,55,3
+Bru McCoy,WR,52,667,12.8,70,4
+Ricky Pearsall,WR,33,661,20.0,52,5
+Sam LaPorta,TE,58,657,11.3,58,1
+Duece Watts,WR,33,657,19.9,73,8
+Jordan Moore,WR,60,656,10.9,52,5
+Nate McCollum,WR,60,655,10.9,56,3
+Seydou Traore,TE,50,655,13.1,51,4
+Jordan Whittington,WR,50,652,13.0,32,1
+Evan Stewart,WR,53,649,12.2,43,2
+Tyrell Shavers,WR,38,643,16.9,66,3
+Thayer Thomas,WR,57,642,11.3,75,4
+Donavon Greene,WR,37,642,17.4,60,6
+Kobe Hudson,WR,39,641,16.4,64,7
+Smoke Harris,WR,66,640,9.7,74,5
+Jayden Reed,WR,55,636,11.6,35,5
+Jahmal Banks,WR,42,636,15.1,48,9
+Cole Tucker,WR,45,632,14.0,70,4
+Tanner Knue,WR,45,632,14.0,67,9
+Mario Williams,WR,40,631,15.8,65,5
+Jyaire Shorter,WR,23,628,27.3,58,11
+Barion Brown,WR,50,628,12.6,70,4
+Rara Thomas,WR,44,626,14.2,75,7
+Puka Nacua,WR,48,625,13.0,46,5
+Terrell Vaughn,WR,56,624,11.1,75,5
+Zane Pope,WR,50,623,12.5,43,4
+Luke Grimm,WR,52,623,12.0,45,6
+Ricky White,WR,51,619,12.1,72,4
+Eddie Lewis,WR,42,615,14.6,55,7
+Michael Mathison,WR,52,615,11.8,55,3
+Taye Barber,WR,37,613,16.6,77,5
+Ja'Tavion Sanders,TE,54,613,11.4,37,5
+Parker Washington,WR,46,611,13.3,58,2
+Brenden Rice,WR,39,611,15.7,74,4
+Moose Muhammad III,WR,38,610,16.1,45,4
+James Bostic,WR,33,607,18.4,54,1
+Tre'Shaun Harrison,WR,52,604,11.6,63,4
+Antonio Williams,WR,56,604,10.8,59,4
+Caden Prieskorn,TE,48,602,12.5,48,7
+De'Zhaun Stribling,WR,51,602,11.8,38,5
+KeSean Carter,WR,38,601,15.8,41,5
+Christan Horn,WR,33,600,18.2,80,4
+Jordan Kerley,WR,37,588,15.9,70,6
+Phillip Brooks,WR,45,587,13.0,81,4
+Ashtyn Hawkins,WR,56,587,10.5,74,7
+Javon Ivory,WR,46,586,12.7,68,2
+Bryson Green,WR,36,584,16.2,41,5
+Matthew Golden,WR,38,584,15.4,44,7
+Robert Ferrel,WR,56,582,10.4,38,4
+BJ Casteel,WR,48,581,12.1,75,4
+Keytaon Thompson,WR,53,579,10.9,45,0
+Justin Lockhart,WR,36,578,16.1,82,1
+Justin Shorter,WR,29,577,19.9,75,2
+Mitchell Tinsley,WR,51,577,11.3,34,5
+Taylor Morin,WR,47,575,12.2,48,9
+Xavier White,WR,45,572,12.7,55,3
+Keanu Hill,WR,36,572,15.9,68,7
+Jaylin Noel,WR,60,572,9.5,54,3
+Jahmal Edrine,WR,39,570,14.6,45,6
+Cam Camper,WR,46,569,12.4,40,2
+Braydon Johnson,WR,32,566,17.7,49,3
+Monaray Baldwin,WR,33,565,17.1,74,4
+Ramel Keyton,WR,31,562,18.1,57,5
+Payne Durham,TE,56,560,10.0,56,8
+Miles Cross,WR,47,560,11.9,49,3
+Izaiah Gathings,WR,60,559,9.3,26,2
+Javon Harvey,WR,30,558,18.6,61,4
+Jeshaun Jones,WR,44,557,12.7,45,4
+Daniel Jackson,WR,37,557,15.1,66,5
+Jha'Quan Jackson,WR,33,554,16.8,87,3
+Ke'Shawn Williams,WR,39,553,14.2,42,1
+Jimmy Horn Jr.,WR,37,551,14.9,91,3
+Konata Mumpfield,WR,58,551,9.5,30,1
+Latrell Caples,WR,51,549,10.8,50,4
+Devin Maddox,WR,39,548,14.1,57,3
+Evan Hull,RB,55,546,9.9,45,2
+Isaiah Esdale,WR,42,544,13.0,39,2
+Tyrese Chambers,WR,51,544,10.7,36,4
+Kyle Williams,WR,40,541,13.5,49,5
+Will Mallory,TE,42,538,12.8,39,3
+Kayshon Boutte,WR,48,538,11.2,53,2
+Reynaldo Flores,RB,49,534,10.9,38,1
+Julian Fleming,WR,34,533,15.7,79,6
+Derius Davis,WR,42,531,12.6,80,5
+Aaron Turner,WR,57,527,9.2,56,3
+Joseph Ngata,WR,41,526,12.8,46,2
+Dylan Drummond,WR,33,525,15.9,58,3
+Carlos Carriere,WR,45,520,11.6,39,2
+Dane Key,WR,37,519,14.0,55,6
+Gavin Holmes,WR,26,517,19.9,56,4
+Je'Quan Burton,WR,33,517,15.7,57,4
+Brayden Willis,TE,39,514,13.2,78,7
+Myles Price,WR,51,513,10.1,54,2
+DeMeer Blankumsee,WR,41,512,12.5,41,3
+Jesse Matthews,WR,45,508,11.3,31,3
+Bryson Nesbit,TE,35,507,14.5,36,4
+Deshon Stoudemire,WR,41,507,12.4,65,2
+Tyrone Broden,WR,32,506,15.8,44,7
+Rufus Harvey,WR,53,505,9.5,36,3
+Kenny McIntosh,RB,43,504,11.7,83,2
+Jalen Brooks,WR,33,504,15.3,54,1
+JP Richardson,WR,49,503,10.3,83,4
+Lideatrick Griffin,WR,40,502,12.6,57,4
+Kaden Prather,WR,52,501,9.6,25,3
+Giovanni Sanders,WR,40,500,12.5,73,1
+Cyrus Allen,WR,22,500,22.7,64,4
+Cornelius Johnson,WR,32,499,15.6,75,6
+Brady Hunt,TE,46,498,10.8,30,5
+Brevyn Spann-Ford,TE,42,497,11.8,45,2
+Chase Cota,WR,36,497,13.8,49,3
+Tayvion Robinson,WR,40,497,12.4,69,3
+Pokey Wilson,WR,30,495,16.5,72,4
+Corey Dyches,TE,39,494,12.7,68,3
+Zion Bowens,WR,35,494,14.1,66,4
+Ja'Varrius Johnson,WR,26,493,19.0,56,3
+Champ Flemings,WR,41,492,12.0,58,1
+Jeff Foreman,WR,30,491,16.4,49,4
+Donovan Ollie,WR,43,491,11.4,60,3
+Devaughn Cooper,WR,36,490,13.6,33,3
+Brycen Tremayne,WR,38,490,12.9,37,3
+Tyson Mobley,WR,40,490,12.3,33,5
+Gabriel Rogers,WR,40,489,12.2,56,0
+Amare Jones,WR,35,483,13.8,75,6
+Squirrel White,WR,30,481,16.0,64,2
+TJ Sheffield,WR,46,480,10.4,34,4
+Amad Anderson Jr.,WR,38,479,12.6,40,4
+Tejhaun Palmer,WR,30,479,16.0,75,2
+Caleb Ducking,WR,46,477,10.4,35,8
+Hassan Beydoun,WR,49,473,9.7,38,4
+Kris Hutson,WR,44,472,10.7,58,0
+Rakim Jarrett,WR,40,471,11.8,49,3
+Marcus Washington,WR,31,471,15.2,33,1
+Samuel Brown,WR,41,471,11.5,32,4
+Darius Lassiter,WR,40,471,11.8,45,4
+Malachai Jones,WR,37,470,12.7,44,2
+Jordyn Tyson,WR,22,470,21.4,81,4
+Jalil Farooq,WR,37,466,12.6,41,5
+Billy Bowens,WR,32,462,14.4,53,4
+Kody Epps,WR,39,459,11.8,53,6
+Dalevon Campbell,WR,38,459,12.1,73,1
+Christian Sims,TE,45,458,10.2,35,2
+Var'Keyes Gumms,TE,34,458,13.5,54,5
+Barrett Banister,WR,44,457,10.4,29,0
+Anthony Gould,WR,27,457,16.9,74,3
+Kade Warner,WR,46,456,9.9,41,5
+Tanner McLachlan,TE,34,456,13.4,30,2
+Darnell Washington,TE,28,454,16.2,34,2
+Pat Bryant,WR,34,453,13.3,43,2
+Jayden McGowan,WR,44,453,10.3,75,3
+Brian Hightower,WR,37,452,12.2,35,2
+Loic Fouonji,WR,34,451,13.3,39,3
+Justin McGriff,WR,31,450,14.5,41,4
+Jordan Watkins,WR,40,449,11.2,61,2
+Ben Sinnott,TE,31,447,14.4,39,4
+Jakarius Caston,WR,31,446,14.4,55,5
+Joel Wilson,TE,44,445,10.1,23,6
+Benjamin Yurosek,TE,49,445,9.1,31,1
+Noah Frith,WR,25,444,17.8,60,1
+Jahmyr Gibbs,RB,44,444,10.1,60,3
+Skyler Bell,WR,30,444,14.8,49,5
+Davis Allen,TE,39,443,11.4,41,5
+Mason Fairchild,TE,35,443,12.7,48,6
+Dalvin Smith,WR,35,443,12.7,47,4
+Yo'Heinz Tyler,WR,49,441,9.0,23,1
+Dashaun Davis,WR,37,441,11.9,44,3
+Sean Ryan,WR,26,440,16.9,55,3
+Quentin Skinner,WR,26,440,16.9,56,5
+Justice Powers,WR,20,440,22.0,69,1
+Oscar Cardenas,TE,31,438,14.1,54,2
+Adonicas Sanders,WR,37,437,11.8,50,2
+Nick Williams,WR,28,435,15.5,70,2
+Marshon Ford,TE,33,434,13.2,39,3
+J.J. Jones,WR,24,434,18.1,74,2
+Kacper Rutkiewicz,WR,26,432,16.6,63,6
+Griffin Hebert,TE,23,431,18.7,75,3
+Dontayvion Wicks,WR,30,430,14.3,44,2
+Isaiah Epps,WR,37,429,11.6,54,5
+Damien Alford,WR,20,429,21.5,58,2
+Rivaldo Fairweather,TE,28,426,15.2,75,3
+Justus Ross-Simmons,WR,26,424,16.3,76,3
+Jalin Conyers,TE,38,422,11.1,47,5
+Dimitri Stanley,WR,33,420,12.7,53,1
+Kaedin Robinson,WR,27,419,15.5,57,2
+Michael Wilson,WR,26,418,16.1,78,4
+Luke Schoonmaker,TE,35,418,11.9,40,3
+Cedric Tillman,WR,37,417,11.3,61,3
+Money Parks,WR,26,414,15.9,57,2
+Mason Taylor,TE,38,414,10.9,38,3
+Ryan Jones,TE,41,413,10.1,25,4
+Joseph Scates,WR,18,412,22.9,79,4
+Xzavier Henderson,WR,38,410,10.8,78,2
+Emery Simmons,WR,37,408,11.0,40,1
+Joshua Cobbs,WR,35,407,11.6,51,2
+Victor Tucker,WR,41,406,9.9,41,6
+Devin Carter,WR,25,406,16.2,52,2
+Cade Stover,TE,36,406,11.3,38,5
+Jaray Jenkins,WR,27,404,15.0,54,6
+David Cormier,WR,15,404,26.9,80,4
+Kazmeir Allen,RB,49,403,8.2,55,2
+George Johnson III,WR,28,402,14.4,53,1
+Charles Montgomery,WR,36,402,11.2,71,1
+Reggie Brown,TE,4,16,4.0,5,1
+Bub Means,WR,27,401,14.9,45,2
+Sahmir Hagans,WR,31,400,12.9,41,5
+Terrance Greene Jr.,WR,22,399,18.1,62,2
+Luke Lachey,TE,28,398,14.2,34,4
+Stefan Cobbs,WR,29,396,13.7,37,2
+Jake Roberts,TE,28,394,14.1,70,3
+Nehemiah Martinez I,WR,32,394,12.3,43,2
+Drake Stoops,WR,39,393,10.1,33,3
+Jadon Thompson,WR,27,393,14.6,39,1
+Savion Williams,WR,29,392,13.5,57,4
+Erik Brooks,WR,37,391,10.6,39,3
+Terrance Ferguson,TE,32,391,12.2,53,5
+Miles Marshall,WR,24,390,16.3,76,2
+KeAndre Lambert-Smith,WR,24,389,16.2,88,4
+Jaelen Gill,WR,27,388,14.4,50,0
+Nico Ragaini,WR,34,386,11.4,46,1
+Josh Cameron,WR,28,386,13.8,42,0
+Yusuf Ali,WR,51,385,7.5,38,2
+Aron Cruickshank,WR,42,385,9.2,40,2
+Tiaquelin Mims,WR,25,384,15.4,52,3
+Jevin Frett,WR,30,382,12.7,46,2
+Hal Presley,WR,32,382,11.9,40,4
+Ja'Mori Maclin,WR,16,380,23.8,53,2
+Robert Lewis,WR,22,379,17.2,53,6
+Jamal Turner,TE,29,378,13.0,69,8
+Theo Wease Jr.,WR,19,378,19.9,61,4
+Damon Ward,WR,26,378,14.5,56,3
+Moochie Dixon,WR,28,378,13.5,47,3
+Deuce Vaughn,RB,42,378,9.0,80,3
+Bryan Thompson,WR,25,377,15.1,38,0
+Cameron Latu,TE,30,377,12.6,38,4
+Jacob Copeland,WR,26,376,14.5,45,2
+Roman Wilson,WR,25,376,15.0,61,4
+Colbie Young,WR,32,376,11.8,71,5
+Luther Burden III,WR,45,375,8.3,35,6
+Cameron Sullivan-Brown,WR,27,373,13.8,53,2
+Beaux Collins,WR,22,373,17.0,59,5
+Tanner Koziol,TE,35,373,10.7,30,7
+Mavin Anderson,WR,37,372,10.1,47,3
+Lavel Davis Jr.,WR,16,371,23.2,62,2
+Dalton Stroman,WR,19,371,19.5,55,4
+Dylan Goffney,WR,18,369,20.5,47,2
+David Martin-Robinson,TE,33,366,11.1,30,2
+Dont'e Thornton Jr.,WR,17,366,21.5,58,1
+DJ England-Chisolm,WR,23,366,15.9,98,4
+Kyle Ford,WR,20,365,18.3,70,2
+Ahmari Huggins-Bruce,WR,31,365,11.8,55,2
+Brayden Cosper,WR,30,363,12.1,40,1
+Ja'Shaun Poke,WR,31,362,11.7,46,1
+Brenton Strange,TE,32,362,11.3,67,5
+Kam Brown,WR,24,362,15.1,51,3
+Jayden Thomas,WR,25,361,14.4,38,3
+Brian Thomas Jr.,WR,31,361,11.6,57,5
+Tre Mosley,WR,35,359,10.3,43,4
+Montana Lemonious-Craig,WR,23,359,15.6,69,3
+Ja'Cyais Credle,WR,28,359,12.8,57,2
+Kamari Morales,TE,29,358,12.3,55,4
+Chase Roberts,WR,22,357,16.2,59,3
+CJ Lewis,WR,26,352,13.5,34,2
+Jabre Barber,WR,25,351,14.0,60,2
+Michael Wiley,RB,36,349,9.7,38,3
+Mekhi Shaw,WR,29,349,12.0,51,3
+Kris Mitchell,WR,23,348,15.1,55,4
+John Humphreys,WR,29,348,12.0,53,1
+Ta'ron Keith,RB,35,348,9.9,42,4
+Jaden Walley,WR,34,348,10.2,47,3
+Eli Pancol,WR,23,347,15.1,81,0
+Jamari Gassett,WR,28,347,12.4,65,2
+Jordan Smith,TE,25,346,13.8,47,4
+Jaylen Dixon,WR,33,344,10.4,31,3
+Jehlani Galloway,WR,28,344,12.3,34,0
+Trey Cleveland,WR,22,344,15.6,58,0
+Kordell David,WR,24,343,14.3,70,4
+Malachi Carter,WR,23,342,14.9,59,2
+Jack Westover,TE,31,342,11.0,27,1
+Keyon Lesane,WR,31,342,11.0,44,2
+Jaylen Johnson,WR,26,340,13.1,38,4
+Lorenzo Styles Jr.,CB,30,340,11.3,54,1
+Michael Brown Stephens,WR,22,338,15.4,49,0
+Marcus Rosemy-Jacksaint,WR,29,337,11.6,28,2
+Kobe Prentice,WR,31,337,10.9,47,2
+Jalen Walthall,WR,27,333,12.3,31,1
+Traeshon Holden,WR,25,331,13.2,33,6
+Jordan Smart,WR,21,331,15.8,53,1
+Mycah Pittman,WR,32,330,10.3,25,3
+Henry Pearson,TE,25,329,13.2,40,5
+Giles Jackson,WR,28,328,11.7,27,1
+Theo Johnson,TE,20,328,16.4,48,4
+Shemar Thornton,WR,30,327,10.9,38,0
+Josh Whyle,TE,32,326,10.2,35,3
+Justin Robinson,WR,30,326,10.9,25,3
+Kobe Paysour,WR,29,324,11.2,49,4
+Zach Charbonnet,RB,37,321,8.7,44,0
+Jaydn Ott,RB,46,321,7.0,27,3
+Kearis Jackson,WR,21,320,15.2,35,0
+Isaac Rex,TE,22,320,14.5,43,6
+Tyjon Lindsey,WR,30,317,10.6,47,1
+Caleb Phillips,TE,31,317,10.2,40,3
+E.J. Jenkins,TE,17,316,18.6,43,3
+Blake Watson,RB,37,314,8.5,36,2
+Micah Bernard,RB,34,314,9.2,29,1
+Bijan Robinson,RB,19,314,16.5,42,2
+Koy Moore,WR,20,314,15.7,46,1
+CJ Dippre,TE,30,314,10.5,26,3
+Devin Ravenel,WR,24,313,13.0,43,7
+Jalen McGaughy,WR,20,313,15.6,54,2
+Keontez Lewis,WR,20,313,15.6,51,3
+Geordon Porter,WR,22,312,14.2,69,2
+Asa Martin,RB,36,312,8.7,43,1
+Camren McDonald,TE,21,312,14.9,41,1
+Jonah Panoke,WR,27,312,11.6,28,1
+Renard Bell,WR,28,310,11.1,47,2
+Jonathan Brady,WR,23,310,13.5,50,3
+Daniel Arias,WR,19,309,16.3,42,1
+Braden Lenzy,WR,24,309,12.9,44,3
+Dayton Wade,WR,27,309,11.4,39,3
+Elijah Metcalf,WR,26,309,11.9,69,2
+Tai Felton,WR,23,309,13.4,37,2
+Treyton Welch,TE,22,308,14.0,47,5
+Brashard Smith,WR,33,308,9.3,30,0
+Casey Washington,WR,31,306,9.9,25,0
+Silas Bolden,WR,23,305,13.3,34,4
+Thomas Yassmin,TE,13,301,23.2,72,6
+Wyatt Wieland,WR,23,299,13.0,39,1
+Bucky Irving,RB,31,299,9.6,37,3
+Marcell Barbee,WR,21,299,14.2,45,1
+Frank Ladson Jr.,WR,27,298,11.0,23,1
+Mookie Cooper,WR,26,298,11.5,46,0
+Roman Hemby,RB,33,298,9.0,27,1
+Charles Brown,WR,22,297,13.5,67,3
+Johnny Langan,TE,31,296,9.5,31,1
+Josh Vann,WR,18,296,16.4,60,3
+Lawrence Keys III,WR,30,296,9.9,43,2
+Neal Johnson,TE,25,296,11.8,43,2
+Trey Knox,TE,26,296,11.4,36,5
+RJ Maryland,TE,28,296,10.6,51,6
+Toa Taua,RB,41,295,7.2,29,1
+Blake Whiteheart,TE,24,295,12.3,30,3
+Nakia Watson,RB,30,295,9.8,35,4
+Jermaine Braddock,WR,26,295,11.3,32,0
+Jalen Bracey,WR,39,294,7.5,26,2
+Stephon Johnson,WR,17,293,17.2,84,2
+Alred Luke,WR,23,293,12.7,68,1
+Austin Williams,WR,34,291,8.6,24,5
+Ainias Smith,WR,15,291,19.4,63,2
+Luke Wysong,WR,34,291,8.6,33,1
+Titus Mokiao-Atimalala,WR,17,290,17.1,49,1
+Xazavian Valladay,RB,37,289,7.8,35,2
+Mikel Barkley,WR,22,289,13.1,39,3
+Kevens Clercius,WR,24,288,12.0,40,1
+Jo'Quavious Marks,RB,48,288,6.0,20,0
+Jack Coldiron,TE,24,286,11.9,43,1
+Frank Peasant,RB,28,286,10.2,32,2
+Tyrick James,TE,25,285,11.4,29,5
+Jake Briningstool,TE,25,285,11.4,49,4
+Dillon Johnson,RB,48,285,5.9,38,0
+John Stephens Jr.,WR,14,284,20.3,55,3
+Logan Loya,WR,18,284,15.8,70,3
+Mershawn Rice,WR,23,283,12.3,29,1
+Kentron Poitier,WR,14,283,20.2,48,4
+Gavin Bartholomew,TE,21,283,13.5,57,2
+Jack Velling,TE,16,281,17.6,60,3
+Darryl Jones,WR,30,280,9.3,27,3
+Dylan Wright,WR,17,280,16.5,42,1
+Gunnar Oakes,TE,27,279,10.3,27,0
+Jamaal Bell,WR,28,279,10.0,58,0
+Jeff Weimer,WR,26,278,10.7,32,1
+Taj Davis,WR,21,277,13.2,62,3
+Ketron Jackson Jr.,WR,16,277,17.3,64,3
+Jalen Walker,WR,28,276,9.9,33,0
+Alec Holler,TE,22,276,12.5,64,1
+Anthony Sambucci,WR,20,276,13.8,44,1
+Kelly Akharaiyi,WR,21,275,13.1,68,1
+Josh Henderson,RB,24,274,11.4,44,4
+Devin Mockobee,RB,32,274,8.6,28,0
+Joshua Simon,TE,20,273,13.6,47,7
+Harrison Wallace III,WR,19,273,14.4,48,1
+Javen Banks,WR,19,271,14.3,52,4
+Raheim Sanders,RB,28,271,9.7,73,2
+Julian Ortega-Jones,WR,29,270,9.3,47,1
+Isaiah Alston,WR,16,269,16.8,67,1
+Lawrance Toafili,RB,24,268,11.2,65,1
+Kyren Lacy,WR,24,268,11.2,45,0
+Austin Jones,RB,25,267,10.7,29,1
+Devin Culp,TE,29,266,9.2,26,1
+Jayden Umbarger,WR,16,265,16.6,52,2
+Dean Patterson,WR,17,264,15.5,46,0
+Will Kacmarek,TE,20,264,13.2,32,0
+Taylor Thompson,TE,14,263,18.8,40,0
+Edward Saydee,RB,36,262,7.3,61,0
+Samario Rudolph,WR,14,262,18.7,59,2
+Jack Bradley,TE,28,260,9.3,31,2
+Eric McAlister,WR,11,259,23.5,44,4
+Tony Johnson,WR,23,258,11.2,37,3
+George Takacs,TE,26,256,9.8,34,1
+Tyjae Spears,RB,22,256,11.6,30,2
+Nick Gallo,TE,30,256,8.5,35,0
+Ben Sims,TE,31,255,8.2,25,3
+Sean Tucker,RB,36,254,7.1,55,2
+Da'Wain Lofton,WR,22,254,11.5,53,2
+Shameen Jones,WR,16,252,15.8,43,2
+Keaton Mitchell,RB,27,252,9.3,73,1
+Justin Joly,TE,18,250,13.9,62,2
+Ta'Zhawn Henry,RB,21,246,11.7,39,1
+Spencer Curtis,WR,18,245,13.6,28,1
+Lincoln Victor,WR,26,245,9.4,27,0
+Jared Wiley,TE,24,245,10.2,30,4
+Daejon Reynolds,WR,11,244,22.2,74,2
+DeShawn Hanika,TE,17,244,14.4,26,4
+Roderick Daniels Jr.,WR,22,243,11.0,75,3
+Josiah Miamen,TE,27,242,9.0,21,1
+Will Shipley,RB,38,242,6.4,26,0
+Mark Walker,WR,13,242,18.6,37,1
+Princeton Fant,TE,22,241,11.0,41,3
+Pat Garwo III,RB,29,241,8.3,45,0
+Travis Vokolek,TE,20,240,12.0,56,2
+Chase Brown,RB,27,240,8.9,43,3
+Tauskie Dove,WR,16,240,15.0,46,1
+Xavier Restrepo,WR,21,240,11.4,52,2
+Daniel Barker,TE,21,239,11.4,26,2
+Gavin Blackwell,WR,18,239,13.3,36,1
+Johnnie Lang,RB,24,238,9.9,27,3
+Sean Atkins,WR,19,238,12.5,37,3
+Quincy Skinner Jr.,WR,17,238,14.0,66,2
+Donny Navarro III,WR,31,237,7.6,22,2
+Christian Trahan,TE,23,237,10.3,37,3
+Andison Coby,WR,18,237,13.2,49,1
+Dea Dea McDougle,WR,23,236,10.3,38,1
+Michael Jackson III,WR,17,236,13.9,59,4
+Rontavius Groves,WR,23,235,10.2,18,1
+Colston Loveland,TE,16,235,14.7,45,2
+Leyton Smithson,WR,30,235,7.8,29,1
+Joseph Griffin Jr.,WR,18,234,13.0,36,5
+Dontay Demus Jr.,WR,22,233,10.6,35,1
+Mark Redman,TE,21,233,11.1,28,2
+Donovan Green,TE,22,233,10.6,28,2
+Monroe Young,WR,23,231,10.0,36,3
+Jaheim Bell,TE,25,231,9.2,46,2
+TJ Jones,WR,29,231,8.0,64,1
+Amir Abdur-Rahman,WR,23,229,10.0,39,1
+Eric Gray,RB,33,229,6.9,24,0
+Lincoln Pare,RB,29,229,7.9,64,1
+Isaiah Hamilton,WR,11,228,20.7,37,2
+Dominick Blaylock,WR,15,227,15.1,35,1
+DJ Thomas-Jones,TE,24,227,9.5,19,4
+Michael Ezeike,TE,20,226,11.3,49,4
+Talik Keaton,WR,24,226,9.4,38,0
+Sieh Bangura,RB,27,226,8.4,25,2
+Braylon McReynolds,RB,21,226,10.8,33,1
+Wayne Taulapapa,RB,24,225,9.4,34,1
+Roc Taylor,WR,20,225,11.3,30,1
+Malik Rutherford,WR,23,225,9.8,38,0
+Jordan Bly,WR,22,225,10.2,32,0
+D.J. Matthews Jr.,WR,23,224,9.7,52,2
+Jared Casey,TE,18,224,12.4,66,4
+Jarquez Hunter,RB,17,224,13.2,62,2
+Gunnar Henderson,WR,11,223,20.3,62,2
+Shadrick Byrd,RB,21,222,10.6,36,1
+Keegan Jones,WR,21,222,10.6,52,3
+John Copenhaver,TE,15,222,14.8,47,0
+Davis Koetter,WR,14,221,15.8,52,1
+Drew Painter,TE,19,221,11.6,31,2
+CJ Yarbrough,WR,16,221,13.8,41,2
+Vincent Terrell Jr.,WR,9,221,24.6,65,2
+Tykee Ogle-Kellogg,WR,13,220,16.9,70,2
+Dominic Richardson,RB,22,220,10.0,44,0
+Jordan Dingle,TE,20,220,11.0,24,3
+Isaiah Bond,WR,17,220,12.9,53,1
+Frank Gore Jr.,RB,19,219,11.5,32,0
+Keilan Robinson,RB,20,219,10.9,35,3
+Nick Mardner,WR,19,218,11.5,35,3
+Zae Baines,WR,18,218,12.1,35,2
+Harold Fannin Jr.,TE,19,218,11.5,42,1
+Shedrick Jackson,WR,16,217,13.6,43,0
+Jalen White,RB,22,217,9.9,37,1
+Michael Redding III,WR,15,217,14.5,34,1
+Dominick Mazotti,TE,21,216,10.3,36,3
+RJ Harvey,RB,22,215,9.8,29,0
+Braden Smith,WR,21,215,10.2,31,1
+Chris Autman-Bell,WR,11,214,19.5,54,1
+Riley Smith,TE,25,214,8.6,35,1
+Jordan Houston,RB,25,213,8.5,34,1
+La'Damian Webb,RB,21,213,10.1,28,2
+Bryce Kirtz,WR,19,212,11.2,41,0
+Bryce Childress,WR,17,212,12.5,72,1
+Marcus Rogers,WR,14,211,15.1,50,0
+Logan Diggs,RB,10,211,21.1,75,2
+Austin Stogner,TE,20,210,10.5,25,1
+Maliq Carr,TE,16,209,13.1,72,2
+Senika McKie,WR,17,209,12.3,38,1
+John Samuel Shenker,TE,20,208,10.4,27,1
+Ay'Jaun Marshall,WR,6,208,34.7,77,2
+Dae'Quan Wright,TE,19,208,10.9,36,0
+Kenan Christon,RB,9,207,23.0,73,2
+Ron Cook Jr.,RB,16,207,12.9,39,0
+Josh Kelly,WR,12,207,17.3,60,0
+Keleki Latu,TE,18,207,11.5,29,1
+Brant Kuithe,TE,19,206,10.8,37,3
+Malik McClain,WR,17,206,12.1,44,3
+Andreas Paaske,TE,10,206,20.6,75,2
+Reese Smith,WR,19,205,10.8,30,1
+Casey Filkins,RB,17,205,12.1,42,1
+Jake Bailey,WR,12,205,17.1,45,1
+Juju McDowell,RB,24,205,8.5,65,1
+Charles Ross,WR,14,204,14.6,40,1
+Dior Scott,WR,25,204,8.2,24,0
+Trent Thompson,TE,9,203,22.6,56,2
+Trebor Pena,WR,22,203,9.2,30,0
+Le'Meke Brockington,WR,11,203,18.5,45,1
+Travis Dye,RB,21,202,9.6,19,0
+Shane Calhoun,TE,25,202,8.1,36,2
+Courtney Jackson,WR,15,201,13.4,25,1
+Casey Cain,WR,8,201,25.1,49,0
+Chris Long,WR,15,200,13.3,48,1
+Donovan Edwards,RB,18,200,11.1,33,2
+Jack Bech,WR,16,200,12.5,29,1
+A.J. Barner,TE,28,199,7.1,43,3
+Key'Shawn Smith,WR,13,199,15.3,39,2
+Tyrone Tracy Jr.,RB,28,198,7.1,32,0
+Caleb McMillan,WR,13,198,15.2,78,1
+Arian Smith,WR,7,198,28.3,76,1
+Thomas Zsiros,WR,10,198,19.8,50,1
+De'Von Achane,RB,36,196,5.4,25,3
+Oliver Martin,WR,11,195,17.7,45,1
+Brannon Spector,WR,15,195,13.0,43,2
+Beau Johnson,TE,9,195,21.7,42,0
+Isaac Ross,WR,21,195,9.3,27,1
+Caleb Snead,WR,18,193,10.7,27,0
+CJ Beasley,RB,19,193,10.2,59,1
+Jjay Mcafee,TE,20,193,9.6,30,4
+Ben Bresnahan,TE,16,192,12.0,28,1
+Kobie Campbell,WR,17,192,11.3,32,0
+Deion Colzie,WR,9,192,21.3,30,1
+Marshall Lang,TE,15,192,12.8,37,0
+Joey Beljan,TE,15,191,12.7,27,4
+Jacob Bernard,WR,11,191,17.4,45,2
+Jontavis Robertson,WR,14,191,13.6,38,1
+Alante Brown,WR,16,191,11.9,32,0
+Brenden Brady,RB,18,190,10.6,25,0
+Xavier Gravette,TE,20,190,9.5,31,2
+Markeston Douglas,TE,14,190,13.6,29,2
+Errol Rogers Jr.,WR,20,189,9.4,22,0
+Jaden Nixon,RB,21,189,9.0,35,3
+Ahmarean Brown,WR,23,188,8.2,26,0
+Kaytron Allen,RB,20,188,9.4,45,1
+Amari Terry,WR,7,187,26.7,68,1
+Arland Bruce IV,WR,19,187,9.8,27,1
+Henry Rutledge,RB,12,187,15.6,36,1
+Julien Lewis,WR,18,187,10.4,38,0
+Treon Sibley,WR,11,186,16.9,30,3
+EJ Horton,WR,12,186,15.5,65,1
+Isaiah Bowser,RB,14,185,13.2,45,0
+Messiah Swinson,TE,15,185,12.3,35,2
+Raymond Pauwels,TE,21,185,8.8,29,2
+Tyler Foster,TE,13,185,14.2,39,4
+Devin Neal,RB,21,183,8.7,53,1
+Dino Tomlin,WR,10,181,18.1,32,0
+Dontae Fleming,WR,19,181,9.5,55,3
+Austin Upshaw,WR,18,180,10.0,38,1
+D'Marcus Adams,WR,6,180,30.0,45,2
+Tristen Tewes,TE,15,180,12.0,34,3
+Tank Bigsby,RB,30,180,6.0,37,0
+Dillon Bell,WR,20,180,9.0,24,3
+Joshua Thompson,WR,3,179,59.7,79,1
+Warren Thompson,WR,12,178,14.8,56,2
+Jsi Hatfield,WR,11,178,16.2,55,0
+Keon Zipperer,TE,13,177,13.6,44,1
+Braheam Murphy,RB,6,177,29.5,73,1
+Kaelon Black,RB,17,177,10.4,25,2
+MarShawn Lloyd,RB,18,176,9.8,43,2
+Omarion Dollison,WR,12,176,14.7,40,0
+TJ Banks,TE,21,175,8.3,22,0
+Raleek Brown,WR,16,175,10.9,40,3
+Caleb Douglas,WR,10,175,17.5,62,2
+Lexington Joseph,RB,29,174,6.0,60,2
+Peter LeBlanc,WR,22,174,7.9,26,1
+Jase McClellan,RB,14,174,12.4,65,3
+Fabian McCray,WR,13,174,13.4,33,0
+Jordan Hudson,WR,14,174,12.4,31,3
+Tip Reiman,TE,19,174,9.2,20,1
+Ahmarian Granger,WR,15,174,11.6,38,0
+Drake Dabney,TE,16,173,10.8,29,0
+Nate Jones,TE,16,173,10.8,31,1
+Isaiah Spencer,TE,18,172,9.6,22,1
+Dedrick Parson,RB,30,171,5.7,22,1
+Marcus Sanders Jr.,WR,20,171,8.6,25,1
+Boogie Knight,WR,19,170,8.9,37,1
+Leonard Taylor,TE,18,170,9.4,21,2
+Te'Vailance Hunt,WR,16,170,10.6,33,3
+Christian Wells,WR,9,170,18.9,75,3
+Nicky Dalmolin,TE,21,170,8.1,38,4
+Cole Harrity,WR,13,170,13.1,33,1
+Jaden Williams,WR,11,170,15.5,53,2
+Parker Christensen,TE,19,169,8.9,29,1
+Luke Musgrave,TE,11,169,15.4,30,1
+Ray Davis,RB,29,169,5.8,24,3
+Noah Whittington,RB,22,169,7.7,29,1
+Donaven McCulley,WR,16,169,10.6,48,1
+R.J. Sneed II,WR,20,168,8.4,20,0
+Devin Miller,TE,21,168,8.0,20,2
+Shelton Zeon III,TE,15,168,11.2,41,0
+Nate Adkins,TE,13,168,12.9,32,0
+Cade Conley,TE,11,168,15.3,39,0
+Xavier Legette,WR,18,167,9.3,42,3
+Hudson Habermehl,TE,15,167,11.1,51,2
+Adam Jones,WR,16,167,10.4,25,0
+Noah Koenigsknecht,WR,10,167,16.7,47,1
+Brionne Penny,WR,12,166,13.8,40,0
+Larry McCammon,RB,15,166,11.1,35,1
+Carson Steele,RB,29,166,5.7,29,1
+Alex Broome,RB,26,166,6.4,14,1
+Hassan Hall,RB,28,165,5.9,36,0
+Sackett Wood Jr.,TE,12,165,13.8,33,0
+Tahj Brooks,RB,27,164,6.1,17,1
+Nolan McCormick,RB,20,164,8.2,35,1
+Josiah Johnson,TE,24,163,6.8,21,0
+Jacob Warren,TE,12,163,13.6,45,0
+Cole Cavallo,TE,19,163,8.6,30,1
+Tailique Williams,WR,15,163,10.9,26,0
+Bryce Damous,TE,14,163,11.6,33,1
+Thomas Gordon,TE,12,162,13.5,26,0
+Cole Turner,WR,8,161,20.1,68,0
+Terrell Bynum,WR,16,159,9.9,29,1
+Cavon Croom,WR,18,159,8.8,30,1
+Koby Drake,WR,13,159,12.2,41,1
+Daverrick Jenkins,WR,9,159,17.7,53,0
+Zach Horton,TE,13,159,12.2,23,2
+Joseph Manjack IV,WR,15,158,10.5,23,1
+Octavian Smith Jr.,WR,12,157,13.1,42,2
+Jack Hestera,WR,14,157,11.2,31,0
+Michael Trigg,TE,17,156,9.2,28,3
+Chris Smith,RB,21,155,7.4,24,1
+Torry Locklin,RB,8,155,19.4,60,2
+Jayden Ballard,WR,8,155,19.4,72,1
+JoJo Earle,WR,12,155,12.9,42,2
+Finn Hogan,WR,19,155,8.2,28,1
+Ashton Jeanty,RB,14,155,11.1,42,0
+Jaylen Ellis,WR,3,154,51.3,57,1
+Dan Dishman,TE,13,154,11.8,42,1
+Brady Russell,TE,20,153,7.7,14,0
+Sean Shaw Jr.,WR,16,153,9.6,18,2
+Tristian Brank,TE,16,153,9.6,22,1
+James Tupou,FB,12,152,12.7,24,2
+Lance LeGendre,WR,13,152,11.7,37,1
+Dean Engram,WR,13,152,11.7,37,0
+Kyron Hudson,WR,15,152,10.1,29,3
+Xavier Johnson,WR,13,151,11.6,37,2
+George Holani,RB,24,151,6.3,22,3
+Porter Rooks,WR,19,151,7.9,18,1
+Isiah Paige,WR,16,151,9.4,22,1
+Star Thomas,RB,12,151,12.6,44,3
+J.J. Sparkman,WR,14,150,10.7,33,1
+Tyler Roberts,WR,7,150,21.4,47,3
+Shadeed Ahmed,WR,16,150,9.4,33,1
+Deion Burks,WR,15,149,9.9,30,0
+Jacob Jenkins,TE,11,149,13.5,37,5
+Dae Dae Hunter,RB,18,149,8.3,41,1
+James Phillips,WR,17,148,8.7,24,0
+Demie Sumo-Karngbaye,RB,12,148,12.3,38,1
+Devonte Ross,WR,13,147,11.3,37,0
+Cortez Braham,WR,14,147,10.5,30,0
+Israel Abanikanda,RB,12,146,12.2,37,1
+Tamatoa Mokiao-Atimalala,WR,15,146,9.7,18,2
+Nate Noel,RB,24,145,6.0,33,0
+Blake Bosma,TE,20,145,7.3,38,1
+Zack Kuntz,TE,12,144,12.0,34,2
+Trey Benson,RB,13,144,11.1,34,0
+Kairee Robinson,RB,26,144,5.5,26,0
+Johnny Lumpkin,TE,16,143,8.9,28,4
+Sean Dollars,RB,16,143,8.9,39,0
+Paul Piferi,TE,10,143,14.3,26,1
+Kevin Davis,RB,19,143,7.5,18,0
+Michael Marchese,TE,9,142,15.8,39,2
+Clay Cundiff,TE,9,142,15.8,47,2
+Chris Bellamy,WR,12,142,11.8,27,0
+Robbie Mangas,TE,16,141,8.8,23,0
+Kimani Vidal,RB,26,140,5.4,18,0
+Clyde Price III,RB,31,139,4.5,22,1
+Chris Tyree,RB,24,138,5.8,21,2
+Orion Peters,WR,13,138,10.6,27,1
+Thai Chiaokhiao-Bowman,WR,7,138,19.7,38,0
+Cody Schrader,RB,19,137,7.2,29,0
+Keshawn King,RB,20,137,6.8,25,1
+Cameron Davis,RB,19,137,7.2,19,0
+Maquel Haywood,RB,8,137,17.1,43,2
+Fred Lloyd Jr.,WR,7,136,19.4,46,0
+Geor'quarius Spivey,TE,11,136,12.4,23,1
+Trell Harris,WR,13,136,10.5,24,1
+Johnny Ford,RB,10,135,13.5,35,1
+Ikaika Ragsdale,RB,19,135,7.1,26,3
+Audric Estime,RB,9,135,15.0,36,1
+Qualan Jones,RB,23,135,5.9,25,0
+Mike Washington,RB,23,135,5.9,23,1
+Tyrell Robinson,RB,7,135,19.3,47,1
+Stephen Gosnell,WR,10,134,13.4,24,0
+Moliki Matavao,TE,10,134,13.4,24,1
+Adonai Mitchell,WR,9,134,14.9,27,3
+Stacy Sneed,RB,22,133,6.0,27,0
+Marlyn Johnson,WR,17,133,7.8,18,0
+Zach Rasmussen,TE,16,133,8.3,17,4
+Baylor Cupp,TE,12,132,11.0,24,2
+Josh Williams,RB,21,132,6.3,21,0
+Quinshon Judkins,RB,15,132,8.8,25,1
+Darion Williamson,WR,8,131,16.4,52,0
+Kaylon Horton,WR,12,131,10.9,51,1
+Tyler Page,WR,11,130,11.8,42,2
+Christopher Toudle,WR,11,130,11.8,27,1
+Sam Kenerson,WR,8,130,16.3,31,0
+Jacolby George,WR,13,130,10.0,24,0
+Andre Johnson,WR,15,130,8.7,28,1
+Jaden Bradley,WR,10,130,13.0,37,2
+Calvin Tyler Jr.,RB,15,129,8.6,35,1
+Grant Misch,TE,17,129,7.6,16,0
+Max Wright,TE,9,129,14.3,31,1
+John Emery Jr.,RB,13,129,9.9,39,2
+Easton Dean,TE,10,129,12.9,24,2
+Josh Sterzer,TE,11,129,11.7,68,1
+Jaleel Skinner,TE,9,129,14.3,30,1
+Jadan Blue,WR,12,128,10.7,29,1
+Shaun Shivers,RB,22,128,5.8,24,1
+Roschon Johnson,RB,14,128,9.1,38,1
+Lew Nichols,RB,21,128,6.1,21,0
+Jalen Berger,RB,19,128,6.7,32,0
+Germie Bernard,WR,7,128,18.3,44,2
+Adam Randall,WR,10,128,12.8,18,0
+Mekhi Miller,WR,8,128,16.0,25,0
+Donnovan Moorer,WR,17,128,7.5,21,1
+Pearse Migl,TE,17,127,7.5,17,2
+Gamarion Carter,WR,6,127,21.2,80,1
+Jaylon Jackson,WR,3,46,15.3,28,0
+Xavier Townsend,WR,23,127,5.5,16,0
+Jordan Mims,RB,21,126,6.0,26,1
+Dontae Smith,RB,19,125,6.6,24,0
+Sammy Wheeler,TE,8,125,15.6,42,2
+Andrew Bench,TE,10,125,12.5,31,2
+Aidan Robbins,RB,23,125,5.4,22,1
+Brady Boyd,WR,13,125,9.6,18,1
+Josh Kattus,TE,7,125,17.9,70,0
+Josiah Norwood,WR,11,124,11.3,50,1
+Deyunkrea Lewis,TE,5,124,24.8,40,2
+Mitch Leigber,S,16,124,7.8,23,0
+Jeremiah Aaron,WR,12,124,10.3,22,1
+Latreal Jones,WR,10,124,12.4,59,0
+Ja'Khi Douglas,WR,10,123,12.3,27,2
+Tyler Warren,TE,10,123,12.3,38,3
+Fred Farrier II,WR,11,123,11.2,20,1
+Camden Brown,WR,9,123,13.7,49,2
+Javon Swinton,WR,12,122,10.2,35,0
+Tyler Lavine,RB,16,122,7.6,13,0
+Will Pauling,WR,12,122,10.2,30,0
+Johnny Richardson,RB,22,122,5.5,25,1
+Genson Hooper Price,WR,12,121,10.1,25,0
+Jerome Jackson,TE,15,120,8.0,17,1
+Dakereon Joyner,RB,8,120,15.0,48,1
+Jack Eschenbach,TE,14,120,8.6,23,0
+Henry Parrish Jr.,RB,17,120,7.1,15,2
+Jermaine Brown Jr.,RB,19,120,6.3,21,0
+Isaiah Garcia-Castaneda,WR,5,120,24.0,58,1
+SaRodorick Thompson Jr.,RB,23,119,5.2,30,1
+Ty McCullouch,WR,13,119,9.2,25,0
+Harrison Waylee,RB,17,119,7.0,25,0
+Caleb Hood,RB,13,119,9.2,22,1
+Zach Evans,RB,12,119,9.9,23,1
+Jordin Parker,WR,6,119,19.8,36,0
+Kemore Gamble,TE,7,118,16.9,35,1
+Jeremiah Ballard,WR,10,118,11.8,42,1
+Bentley Hanshaw,TE,6,117,19.5,67,1
+Ezrah Archie,WR,9,117,13.0,25,1
+Dexter Boykin,WR,13,117,9.0,15,0
+Cam Wiley,RB,22,117,5.3,15,0
+Billy Riviere III,TE,12,117,9.8,38,1
+LeQuint Allen,RB,17,117,6.9,41,1
+Khalan Laborn,RB,16,116,7.3,30,0
+Chuck McClelland,RB,14,116,8.3,30,0
+Billy Kemp IV,WR,16,116,7.3,20,0
+Walker Merrill,WR,8,116,14.5,38,3
+Jaylen Thomas,RB,15,116,7.7,27,0
+Kendre Miller,RB,16,116,7.3,21,0
+Tanner Arkin,TE,14,116,8.3,26,0
+Isaac Guerendo,RB,17,115,6.8,27,1
+Mike Hollins,RB,8,114,14.3,64,0
+Eugene Minter Jr.,TE,10,114,11.4,38,0
+Sam Olson,TE,14,114,8.1,18,1
+Jaelin Carter,WR,7,113,16.1,28,2
+Jirehl Brock,RB,21,113,5.4,13,1
+Kevorian Barnes,RB,10,113,11.3,42,0
+Quaterrius Tolbert,WR,14,113,8.1,26,0
+Yulkeith Brown,WR,6,112,18.7,66,1
+Simeon Price,RB,13,112,8.6,32,1
+Alex Bauman,TE,8,112,14.0,24,1
+Trent Pennix,TE,8,111,13.9,27,2
+Sean Tyler,RB,12,111,9.3,76,1
+Lincoln Sefcik,TE,13,111,8.5,24,1
+Andrew Erickson,WR,12,110,9.2,31,0
+Kris Byrd,TE,10,110,11.0,55,3
+Chris Hilton Jr.,WR,7,109,15.6,51,0
+Bryce Stephens,WR,9,109,12.1,54,1
+Tanaka Scott,WR,8,109,13.6,52,0
+Tyler Walton,WR,10,108,10.8,24,0
+Tyneil Hopper,TE,13,108,8.3,30,0
+Titus Swen,RB,14,108,7.7,43,0
+Chris Marshall,WR,11,108,9.8,18,0
+Rashod Dubinion,RB,12,108,9.0,29,1
+Ben Redding,TE,13,107,8.2,20,4
+Ahmon Green,TE,13,107,8.2,22,0
+Elijah Green,RB,17,107,6.3,22,1
+Melquan Stovall,WR,13,106,8.2,22,0
+Jordan Waters,RB,16,106,6.6,19,0
+Jimmy Holiday,WR,6,106,17.7,53,1
+Jabari Small,RB,12,106,8.8,16,2
+Lake McRee,TE,10,106,10.6,31,2
+Vincent Davis Jr.,RB,12,106,8.8,22,0
+Michael Vice,TE,12,105,8.8,31,1
+Julian Gray,WR,11,105,9.5,24,0
+Joshua Lingenfelter,TE,3,105,35.0,44,0
+Chris Bell,WR,7,105,15.0,29,0
+Peyton Sawyer,WR,6,104,17.3,53,1
+Anthony Grant,RB,18,104,5.8,19,0
+Chauncey Magwood,WR,7,104,14.9,26,1
+Kyle Maxwell,WR,12,104,8.7,19,0
+Charles Hall IV,WR,9,104,11.6,23,0
+Braelon Allen,RB,13,104,8.0,39,0
+Jevyon Ducker,RB,12,103,8.6,37,0
+Kendrick Law,WR,8,103,12.9,39,0
+D.J. Jones,RB,12,102,8.5,42,1
+Jaivian Lofton,WR,10,102,10.2,34,2
+Solomon Enis,WR,12,101,8.4,16,1
+Devonte Lee,RB,13,101,7.8,26,0
+Daijun Edwards,RB,14,101,7.2,21,0
+Will Pelissier,WR,8,101,12.6,48,1
+Jacob Munro,TE,9,101,11.2,24,0
+Chancellor Brewington,TE,11,100,9.1,45,1
+Gavin Schoenwald,TE,9,100,11.1,27,3
+JuTahn McClain,RB,18,100,5.6,31,1
+Dylan Downing,RB,12,100,8.3,15,0
+Mason Tharp,TE,12,100,8.3,21,2
+Brenden Bates,TE,10,99,9.9,23,1
+Romello Brinson,WR,7,99,14.1,58,0
+Jacob Gill,WR,7,99,14.1,47,1
+Nick Cenacle,WR,8,99,12.4,33,0
+Chris Brooks,RB,10,98,9.8,27,0
+Tyler Hunt,TE,15,98,6.5,18,0
+Tahj Magee,WR,9,98,10.9,34,2
+Montorie Foster Jr.,WR,7,98,14.0,25,1
+DJ Giddens,RB,8,98,12.3,36,0
+Louis Brown,WR,12,98,8.2,24,0
+Jaylen Jenkins,RB,13,98,7.5,45,2
+Raymond James,WR,13,97,7.5,14,0
+Michael Allen,RB,11,97,8.8,34,1
+Hinckley Ropati,RB,6,97,16.2,48,1
+NyNy Davis,WR,14,97,6.9,14,0
+Elijah Queen,TE,10,96,9.6,26,0
+Andrew Sowinski,WR,9,96,10.7,24,0
+Dallas Dixon,WR,6,96,16.0,43,0
+Patrick Herbert,TE,6,95,15.8,40,1
+Jayden Harrison,WR,12,95,7.9,28,1
+Daniel Hishaw Jr.,RB,3,95,31.7,73,1
+John Dunmore,WR,9,95,10.6,26,0
+Kris Leach,TE,8,94,11.8,23,0
+Marquez Cooper,RB,8,94,11.8,27,0
+Diante Vines,WR,10,94,9.4,15,0
+Liam Soraghan,TE,11,93,8.5,17,3
+Samson Evans,RB,15,93,6.2,11,0
+Kevin Terry,WR,8,93,11.6,30,0
+Elijah Collins,RB,14,93,6.6,22,0
+Nate Muersch,TE,9,93,10.3,30,1
+Darius Bracy,RB,16,92,5.8,20,2
+Mac Dalena,WR,10,92,9.2,24,1
+Peyton Higgins,WR,5,92,18.4,39,1
+Andrew Henry,RB,11,92,8.4,29,1
+Bryce Williams,RB,11,91,8.3,19,0
+Brian Battie,RB,14,91,6.5,31,0
+Taji Johnson,WR,9,91,10.1,32,0
+Trent Battle,RB,7,91,13.0,21,0
+Markus Allen,WR,7,91,13.0,19,1
+Malachi Thomas,RB,13,91,7.0,23,1
+DeMarcus Harris,WR,4,90,22.5,58,0
+Brandon Campbell,RB,15,90,6.0,35,0
+Dylan Leonard,TE,11,90,8.2,19,0
+Malachi Holt-Bennett,WR,6,90,15.0,28,0
+Austin Evans,TE,7,90,12.9,24,1
+Jalen Preston,WR,7,89,12.7,20,1
+Karter Johnson,TE,6,89,14.8,41,0
+Nolan Groulx,WR,7,89,12.7,26,0
+Liam Clifford,WR,8,89,11.1,20,0
+Keelan Marion,WR,4,89,22.3,37,1
+Richard Reese,RB,13,89,6.8,17,0
+Connor Blumrick,TE,8,88,11.0,16,0
+Luke Ford,TE,10,88,8.8,18,0
+Quinton Patten,WR,9,88,9.8,22,0
+Kyle Van Leeuwen,WR,8,88,11.0,31,1
+Dane Kinamon,WR,2,88,44.0,80,1
+Trent Whittemore,WR,4,87,21.8,33,0
+Trevor Borland,TE,11,87,7.9,14,0
+Brody Brecht,WR,9,87,9.7,19,0
+Jalen May,WR,2,87,43.5,89,1
+Solomon Vanhorse,RB,6,86,14.3,46,1
+Dallin Holker,TE,9,86,9.6,19,1
+Blake Nowell,WR,6,86,14.3,44,0
+Matt Sykes,WR,6,86,14.3,27,1
+Braydon Bennett,RB,4,86,21.5,41,0
+Sean Wilson,WR,8,86,10.8,15,0
+Clay Geary,WR,6,85,14.2,26,1
+Luke Benson,TE,9,85,9.4,19,0
+Jawhar Jordan,RB,10,85,8.5,15,0
+Rashod Owens,WR,6,85,14.2,41,0
+Shamar Garrett,RB,9,85,9.4,27,1
+Nicholas Singleton,RB,11,85,7.7,22,1
+Bugs Mortimer,WR,14,85,6.1,15,0
+Deion Smith,RB,11,84,7.6,41,0
+Cam Johnson,WR,10,84,8.4,16,0
+Jeremy Tate Jr.,WR,8,84,10.5,34,1
+Deneric Prince,RB,9,84,9.3,19,1
+Peny Boone,RB,10,84,8.4,28,0
+Davion Ervin-Poindexter,RB,15,84,5.6,34,0
+Trae Hall,WR,8,83,10.4,21,0
+Marcus Bellon,WR,5,83,16.6,52,1
+Colin O'Brien,TE,4,83,20.8,46,0
+Tony Grimes Jr.,WR,10,83,8.3,16,0
+Myles Bailey,RB,9,83,9.2,22,1
+Jaylan Knighton,RB,9,82,9.1,41,0
+Dariyan Wiley,WR,7,82,11.7,25,0
+Eli Wilson,TE,10,82,8.2,27,1
+Dekel Crowdus,WR,4,82,20.5,50,0
+Carsen Ryan,RB,6,82,13.7,26,0
+Ethan Payne,RB,10,82,8.2,15,0
+Jaylin Lucas,RB,16,82,5.1,25,0
+Thomaz Whitford,TE,12,82,6.8,14,2
+Tylan Hines,RB,9,82,9.1,29,0
+Messiah Travis,WR,9,81,9.0,13,1
+Shedro Louis,RB,9,81,9.0,21,0
+Leo Blackburn,WR,5,81,16.2,37,1
+Jaquez Moore,RB,7,81,11.6,32,0
+Marion Lukes,RB,5,81,16.2,37,1
+Sherod White,RB,9,80,8.9,27,0
+Craig Williams,RB,11,80,7.3,39,1
+Lopini Katoa,RB,10,80,8.0,12,0
+Blake Corum,RB,11,80,7.3,41,1
+Andrel Anthony,WR,7,80,11.4,29,1
+Tre Watson,TE,8,80,10.0,17,0
+Jackson Canaan,TE,8,80,10.0,26,1
+Drue Jackson,WR,9,79,8.8,21,0
+Terrell Timmons Jr.,WR,3,79,26.3,43,1
+Boden Groen,TE,9,79,8.8,16,0
+Elijah Mojarro,TE,8,78,9.8,20,0
+Leshon Williams,RB,11,78,7.1,15,0
+Max Bredeson,TE,5,78,15.6,56,0
+Marlon Gunn Jr.,RB,14,77,5.5,14,0
+Braylen Walker,WR,4,77,19.3,48,1
+Ronald Awatt,RB,6,76,12.7,34,0
+Gavin Sharp,TE,5,76,15.2,47,0
+Chase Lane,WR,7,76,10.9,25,0
+Noah Cain,RB,9,76,8.4,20,0
+Ian Stewart,WR,7,76,10.9,15,2
+Kenny Tracy,RB,12,76,6.3,13,1
+Ollie Gordon II,RB,12,76,6.3,14,2
+Christian Washington,RB,12,76,6.3,27,0
+Cameron Montgomery,RB,8,75,9.4,35,0
+Dante Zanders,TE,10,75,7.5,12,0
+Courtney Reese,RB,14,75,5.4,18,0
+Hayden Rucci,TE,6,75,12.5,15,1
+AJ Green,RB,6,75,12.5,30,0
+Makai Cope,WR,7,75,10.7,21,1
+Demick Starling,WR,3,75,25.0,40,0
+EJ Wilson Jr.,RB,19,75,3.9,13,0
+Joshua Youngblood,WR,6,74,12.3,22,0
+Ryan Davis,WR,6,74,12.3,36,0
+Chandler Pittman,RB,5,74,14.8,53,1
+Emmanual Stevenson,TE,13,74,5.7,15,0
+Kye Robichaux,RB,13,74,5.7,17,0
+Boobie Curry,WR,6,73,12.2,20,0
+Jackson Acker,RB,5,73,14.6,28,1
+Seth Jones,WR,7,73,10.4,18,0
+Rodney Hammond Jr.,RB,6,73,12.2,49,0
+Duece Jones,WR,5,73,14.6,26,0
+Dequan Stanley,WR,1,73,73.0,73,1
+Omni Wells,RB,14,73,5.2,17,0
+Dalen Cobb,WR,8,73,9.1,17,0
+Michel Dukes,RB,8,72,9.0,35,0
+Keshawn Wicks,RB,13,72,5.5,21,0
+Koali Nishigaya,WR,6,72,12.0,17,0
+Rayvante Embry,TE,5,72,14.4,28,0
+Maurice Turner,RB,12,72,6.0,24,0
+Beau Corrales,WR,6,71,11.8,15,0
+Rahjai Harris,RB,9,71,7.9,19,1
+Chris Carpenter,WR,10,71,7.1,22,0
+Michael Hetzel,WR,5,71,14.2,22,0
+Christian Moss,WR,6,71,11.8,21,0
+Jamoni Jones,RB,6,71,11.8,39,1
+Jordan Murray,TE,10,70,7.0,13,0
+RJ Garcia II,WR,7,70,10.0,25,1
+E.J. Williams Jr.,WR,7,70,10.0,14,0
+Tsion Nunnally,WR,7,70,10.0,39,0
+Craig Burt Jr.,WR,4,70,17.5,25,0
+Mason Starling,WR,7,70,10.0,17,0
+Ta'ir Brooks,WR,2,70,35.0,62,0
+Will Jones,RB,9,69,7.7,33,0
+Langston Anderson,WR,4,69,17.3,26,0
+Jonathan Odom,TE,7,69,9.9,21,2
+Alex Brown,WR,6,69,11.5,32,1
+Holden Willis,WR,6,69,11.5,24,1
+Cartevious Norton,RB,12,69,5.8,23,0
+Micah Kelly,RB,12,68,5.7,20,1
+Artez Hooker,WR,9,68,7.6,15,0
+Zach Jackson,WR,9,67,7.4,17,0
+Dee Wiggins,WR,4,67,16.8,23,0
+Juma Otoviano,RB,4,67,16.8,48,1
+Tucker Gregg,RB,6,67,11.2,16,0
+Seven McGee,WR,11,67,6.1,15,0
+Justin Ball,TE,5,67,13.4,36,0
+Cam McCormick,TE,10,66,6.6,17,3
+Jalen Holston,RB,10,66,6.6,20,0
+Raymond Niro III,WR,5,66,13.2,41,2
+Scoobie Ford,WR,8,66,8.3,19,0
+Mike O'Laughlin,TE,5,66,13.2,32,0
+Steven Fiso,WR,3,66,22.0,27,1
+Nathaniel Peat,RB,10,66,6.6,12,1
+Will Nixon,RB,7,66,9.4,18,0
+Trey Cooley,RB,9,66,7.3,17,1
+Elijah Arroyo,TE,5,66,13.2,29,0
+Trevor Etienne,RB,9,66,7.3,26,0
+Ryan Montgomery,RB,4,65,16.3,30,0
+Saan Lewis,WR,6,65,10.8,21,1
+Emari Demercado,RB,13,65,5.0,18,1
+Trevor Kardell,TE,5,65,13.0,22,1
+DJ Williams,RB,5,65,13.0,26,0
+Jackson Meeks,WR,6,65,10.8,18,0
+Marquis Crosby,RB,9,65,7.2,38,0
+Gage Haskin,TE,4,65,16.3,27,0
+Bryce Bohanon,WR,4,65,16.3,24,0
+Marqeese Dietz,WR,5,65,13.0,25,0
+Brody Belt,WR,7,64,9.1,21,1
+Anthony Torres,TE,5,64,12.8,23,0
+Kendall Milton,RB,5,64,12.8,35,1
+Javion Posey,WR,5,64,12.8,26,0
+Deuce Spann,WR,8,64,8.0,20,0
+Drew Swinney,WR,8,63,7.9,17,0
+Malik Jackson,RB,16,63,3.9,12,0
+Miller Gibbs,TE,7,63,9.0,13,3
+Blair Conwright,WR,5,63,12.6,17,0
+E.J. Smith,RB,8,63,7.9,15,1
+Avery Morrow,RB,18,63,3.5,16,0
+Brody Dalton,TE,4,63,15.8,32,0
+Malique Dieudonne,WR,5,63,12.6,28,0
+Wayne Knight,RB,5,63,12.6,32,0
+Peje' Harris,TE,6,62,10.3,23,0
+Blue Smith,WR,5,62,12.4,23,0
+Matt Salerno,WR,5,62,12.4,31,1
+Justice Ellison,RB,6,62,10.3,22,0
+Nick Nash,WR,6,62,10.3,17,1
+Jay'juan Townsend,WR,4,62,15.5,30,0
+Anton Hall Jr.,RB,1,62,62.0,62,1
+Jacquon Gibson,WR,4,62,15.5,29,0
+Ty Jones,WR,6,61,10.2,21,0
+Henry Teeter,TE,6,61,10.2,23,1
+A.J. Abbott,WR,5,61,12.2,31,1
+Marcus Major,RB,8,61,7.6,24,1
+Khafre Brown,WR,4,61,15.3,20,0
+Delbert Mimms III,RB,5,61,12.2,30,1
+Antonio Harmon,TE,5,61,12.2,16,0
+Devin Boddie Jr.,WR,3,61,20.3,38,0
+Oscar Delp,TE,5,61,12.2,28,1
+Kelsey Johnson,TE,9,61,6.8,14,1
+Damien Martinez,RB,4,61,15.3,30,0
+Quentin Moore,TE,5,61,12.2,25,0
+Jordan Byrd,RB,10,60,6.0,16,1
+A.J. Henning,WR,9,60,6.7,16,0
+Ja'Quavion Fraziars,WR,5,60,12.0,19,1
+Zuberi Mobley,RB,7,60,8.6,22,1
+Isaiah Jones,WR,4,60,15.0,25,1
+Richard Newton,RB,3,59,19.7,36,1
+Gunner Romney,WR,5,59,11.8,34,0
+Skylar Loving-Black,TE,6,59,9.8,32,2
+Isaiah Washington,WR,3,59,19.7,43,1
+Cole Wright,WR,2,59,29.5,47,0
+Jamire Calvin,WR,11,58,5.3,9,1
+Stephen Martin,WR,4,58,14.5,34,1
+Eric Marsh,TE,4,58,14.5,25,1
+Malachi Fields,WR,5,58,11.6,15,1
+Zay Franks,WR,1,58,58.0,58,1
+Montrell Johnson Jr.,RB,12,58,4.8,18,1
+Anthony Smith,WR,2,58,29.0,40,1
+Sutton Smith,RB,4,58,14.5,24,0
+OJ Arnold,RB,10,58,5.8,19,1
+Braden Cassity,FB,5,57,11.4,38,0
+Yusuf Terry,WR,7,57,8.1,14,0
+King Doerue,RB,6,57,9.5,32,0
+Kalvin Souders,WR,4,57,14.3,18,0
+Bryce Bailey,WR,6,57,9.5,19,0
+Alex Fontenot,RB,6,56,9.3,16,0
+Steven Anderson,RB,3,56,18.7,40,0
+Kobe Lewis,RB,7,56,8.0,17,0
+Demarcus Jones,WR,3,56,18.7,36,0
+JJ Henry,WR,5,56,11.2,22,0
+Cedd Seabrough,TE,9,56,6.2,18,1
+Ja'Quez Cross,RB,10,56,5.6,15,0
+Omari Kelly,WR,3,56,18.7,25,0
+Anthony Simpson,WR,4,56,14.0,51,0
+Jonah Morris,WR,4,55,13.8,21,0
+La'Darius Jefferson,RB,5,55,11.0,25,0
+Justin Richard Baker,WR,1,55,55.0,55,1
+Kole Taylor,TE,5,55,11.0,26,0
+Omari Evans,WR,5,55,11.0,32,1
+Ross Fournet,WR,9,55,6.1,19,0
+Tyler Stephens,TE,5,54,10.8,28,1
+Traevon Kenion,TE,3,54,18.0,21,1
+Tyson Davis,WR,3,54,18.0,36,1
+Jaden Bray,WR,5,54,10.8,24,0
+Tyrese Mack,WR,6,54,9.0,19,0
+Quinton Jackson,RB,2,54,27.0,34,0
+Chuuky Hines,WR,7,54,7.7,23,0
+Daniyel Ngata,RB,9,53,5.9,14,0
+Darren Wilson Jr.,WR,3,53,17.7,39,0
+Khalil Dinkins,TE,4,53,13.3,28,1
+Mudia Reuben,WR,5,53,10.6,18,2
+Jacolby Hewitt,WR,4,52,13.0,33,0
+Demontrez Brown,WR,4,52,13.0,28,0
+Cadarrius Thompson,WR,5,52,10.4,29,0
+Devin Price,WR,4,52,13.0,25,0
+Corey Rucker,WR,1,52,52.0,52,1
+Jere Getzinger,TE,4,52,13.0,28,0
+Trevor Wilson,WR,2,52,26.0,47,0
+Aaron Steinfeldt,TE,6,52,8.7,17,1
+Nate Boerkircher,TE,6,52,8.7,19,1
+Kerry King,WR,6,52,8.7,12,0
+Langston Lewis,WR,2,52,26.0,45,1
+Colson Yankoff,RB,7,51,7.3,15,2
+Jake Overman,TE,7,51,7.3,15,0
+Luke Floriea,WR,4,51,12.8,39,0
+Tyler Fromm,TE,3,51,17.0,35,0
+Malik Sherrod,RB,7,51,7.3,32,0
+Treylan Davis,TE,5,51,10.2,17,0
+Lewis Bond,WR,5,51,10.2,19,0
+Eli Sanders,RB,7,51,7.3,15,0
+Noah Thomas,WR,5,51,10.2,22,2
+Anderson Grover,WR,5,51,10.2,17,1
+Mohamed Ibrahim,RB,7,50,7.1,17,0
+J.J. Jones III,TE,6,50,8.3,25,0
+Keaton Upshaw,TE,4,50,12.5,22,0
+Cam Porter,RB,7,50,7.1,15,0
+Austin Henderson,TE,5,50,10.0,25,1
+Matt Byrnes,TE,4,50,12.5,31,1
+Jaeger Bull,TE,6,49,8.2,12,0
+Alec Burton,TE,7,49,7.0,24,0
+Joshua Fleeks,WR,2,49,24.5,45,0
+Jaylen Coleman,RB,6,49,8.2,26,1
+Darius Lewis,WR,6,49,8.2,20,0
+Dalen Cambre,WR,3,49,16.3,24,0
+Jaedon Wilson,WR,3,49,16.3,30,0
+Anthony Tyus III,RB,5,49,9.8,34,1
+Joshua Burgett,TE,4,48,12.0,21,1
+Jarek Broussard,RB,4,48,12.0,21,0
+Jahmyl Jeter,RB,12,48,4.0,12,0
+Isaac Jernagin,WR,6,48,8.0,14,0
+Phil Mafah,RB,9,48,5.3,17,0
+Devontae Houston,RB,10,48,4.8,19,0
+Ellis Merriweather,RB,8,48,6.0,27,0
+K.D. Hutchinson,WR,5,48,9.6,25,0
+Kalani Norris,WR,2,47,23.5,30,0
+Latrele Palmer,RB,6,47,7.8,13,0
+Cole Finney,TE,4,47,11.8,20,0
+Terrence Williams,RB,9,47,5.2,12,1
+Jaylon Griffin,WR,4,47,11.8,19,0
+Charlie Offerdahl,RB,2,47,23.5,36,0
+Jack Colletto,FB,3,46,15.3,30,0
+Trey Lowe,RB,2,46,23.0,41,0
+Brian Snead,RB,9,46,5.1,14,0
+Jesiah Irish,WR,3,46,15.3,23,0
+Calvin Hill,RB,8,46,5.8,16,0
+Justin Johnson Jr.,RB,8,46,5.8,10,1
+AJ Toney,WR,8,46,5.8,16,0
+A'Varius Sparrow,RB,5,46,9.2,25,0
+Richard Mays Jr.,WR,1,46,46.0,46,0
+Reagan Ealy,WR,7,46,6.6,15,0
+Gavin Freeman,WR,3,46,15.3,41,0
+Titus Lyons,TE,6,46,7.7,24,0
+Jared Rus,TE,7,45,6.4,13,0
+Kelley Joiner Jr.,RB,7,45,6.4,24,0
+Jacquez Stuart,RB,10,45,4.5,11,0
+Al-Jay Henderson,RB,6,45,7.5,13,0
+Peter Montini,TE,2,45,22.5,25,0
+Jamir Roberts,WR,1,45,45.0,45,0
+Evan Lester Jr.,TE,6,45,7.5,25,1
+Clayton Ollendieck,TE,6,45,7.5,11,0
+Cade Harris,WR,2,45,22.5,41,1
+Colby Bowman,WR,7,44,6.3,10,0
+D'Wan Mathis,WR,6,44,7.3,19,0
+Kevin Bauman,TE,3,44,14.7,22,0
+Gavin Williams,RB,9,44,4.9,32,0
+Antwain Littleton II,RB,6,44,7.3,18,0
+Jaden Hullaby,TE,2,44,22.0,38,0
+Ryan Marquez,WR,5,44,8.8,13,0
+D.Q. James,RB,5,44,8.8,23,0
+Isaiah Johnson,RB,8,44,5.5,13,2
+Carlton Brown III,TE,4,44,11.0,37,0
+Gunnar Helm,TE,5,44,8.8,19,0
+Jack Jancek,WR,3,44,14.7,22,0
+George Gumbs,DE,4,44,11.0,14,0
+Joshua Nicholson,WR,4,44,11.0,18,1
+Nate Anderson,WR,7,44,6.3,11,0
+Decorion Temple,TE,1,44,44.0,44,0
+Easton Messer,WR,1,44,44.0,44,1
+Daetrich Harrington,RB,4,43,10.8,26,0
+Tavion Thomas,RB,6,43,7.2,18,0
+Camerun Peoples,RB,6,43,7.2,12,0
+Logan Kendall,TE,5,43,8.6,16,1
+Perris Jones,RB,6,43,7.2,11,2
+Tommy Christakos,WR,4,43,10.8,17,0
+Jaxon Smith-Njigba,WR,5,43,8.6,21,0
+Jordan Mosley,WR,2,43,21.5,28,0
+Emani Bailey,RB,7,43,6.1,16,0
+Lenny Kuhl,TE,7,43,6.1,12,3
+Robbie Ouzts,TE,4,43,10.8,17,0
+Kahleil Jackson,WR,2,43,21.5,23,0
+Maurice Bell,WR,13,42,3.2,15,0
+Bryan Bradford,RB,5,42,8.4,14,1
+Masen Wake,TE,10,42,4.2,10,0
+Reese White,RB,8,42,5.3,15,2
+Shawn Naim,WR,5,42,8.4,15,0
+Ethan Hall,TE,6,42,7.0,20,1
+Terrell Warner,WR,3,42,14.0,27,1
+Deion Hankins,RB,4,42,10.5,16,0
+Jhaylin Embry,WR,2,42,21.0,35,0
+Levi Wentz,WR,1,42,42.0,42,0
+Tyler Moore,TE,4,42,10.5,25,0
+Umari Hatcher,WR,3,42,14.0,16,1
+Chance Bell,RB,5,41,8.2,13,0
+Chris Rodriguez Jr.,RB,5,41,8.2,17,0
+Thaddius Franklin Jr.,RB,5,41,8.2,12,0
+Jermaine Terry II,TE,7,41,5.9,18,0
+Demarcus Jones II,RB,5,41,8.2,25,0
+Patrick Smith,RB,8,41,5.1,14,0
+Ramon Brown,RB,9,41,4.6,15,0
+Jamie Felix,RB,6,41,6.8,17,1
+Tobias Merriweather,WR,1,41,41.0,41,1
+Preston Fox,WR,4,41,10.3,26,1
+Tarique Milton,WR,2,40,20.0,28,0
+Jaylan Franklin,TE,2,40,20.0,21,0
+Spencer Witter,TE,4,40,10.0,22,0
+ChaVon McEachern,RB,6,40,6.7,17,0
+Omarion Hampton,RB,6,40,6.7,15,1
+Matt Lauter,TE,4,40,10.0,29,0
+Brandon Engel,WR,3,40,13.3,15,0
+Jamal Bell,WR,2,39,19.5,30,0
+Tyre Shelton,RB,8,39,4.9,8,0
+Christian Turner,RB,5,39,7.8,17,1
+Demariyon Houston,WR,6,39,6.5,12,1
+Ky Thomas,RB,5,39,7.8,29,1
+Elijah Young,RB,8,39,4.9,11,0
+Caleb Anderson,WR,5,39,7.8,11,0
+Nathan Carter,RB,5,39,7.8,18,0
+Broc Lane,TE,6,39,6.5,16,1
+Mitchell Evans,TE,3,39,13.0,18,1
+Ahmani Marshall,RB,4,38,9.5,16,0
+Jahleel Billingsley,TE,3,38,12.7,20,0
+Deon Silas,RB,9,38,4.2,8,0
+CJ Daniels,WR,3,38,12.7,25,1
+Ryan King,WR,4,38,9.5,25,0
+Jordan Johnson,RB,3,38,12.7,14,0
+Brock Lampe,RB,2,38,19.0,31,0
+Trevor Stephens,TE,2,38,19.0,20,0
+Walter Dawn Jr.,WR,7,37,5.3,15,0
+Khaleb Coleman,WR,3,37,12.3,22,1
+Monte Pottebaum,FB,3,37,12.3,17,0
+Marcel Murray,RB,7,37,5.3,12,0
+Chris Mottillo,TE,3,37,12.3,20,1
+Darvon Hubbard,RB,9,37,4.1,10,0
+Will Derrick,WR,4,37,9.3,16,0
+Cameron Wright,WR,4,37,9.3,20,0
+Gunnar Greenwald,TE,4,37,9.3,16,0
+Jonathon Brooks,RB,2,37,18.5,34,1
+Jaylen Jones,S,3,37,12.3,20,0
+Roydell Williams,RB,5,37,7.4,15,0
+Cale Cabbiness,WR,2,37,18.5,25,1
+Chase Curtis,TE,1,37,37.0,37,0
+Jake Tafelski,RB,4,37,9.3,16,0
+Brian Polendey,TE,6,36,6.0,15,0
+Daiyan Henley,LB,1,36,36.0,36,0
+T.J. Green,RB,5,36,7.2,13,0
+Ari Broussard,RB,3,36,12.0,16,0
+Jordan Young,WR,4,36,9.0,16,0
+Bo Nix,QB,2,36,18.0,18,1
+Erick All,TE,3,36,12.0,22,0
+Terrell McDonald,TE,7,36,5.1,12,2
+Camar Wheaton,RB,7,36,5.1,17,0
+Anthony Williams Jr.,RB,4,36,9.0,19,0
+Tavorus Jones,RB,2,36,18.0,32,0
+Jordan Williams,TE,3,36,12.0,21,1
+Malikhi Miller,WR,6,35,5.8,8,0
+Sam Adams II,RB,5,35,7.0,15,2
+Janari Dean,RB,6,35,5.8,11,0
+Terry Wilkins,RB,5,35,7.0,14,0
+Kobe Pace,RB,6,35,5.8,10,0
+Marvin Landy,TE,2,35,17.5,24,0
+Nick Presley,WR,6,35,5.8,15,0
+Rico Arnold,WR,4,34,8.5,11,0
+Tommy Bush,WR,3,34,11.3,15,1
+Darwin Barlow,RB,3,34,11.3,20,0
+Khyheem Waleed,WR,5,34,6.8,10,0
+Antavious Willis,RB,8,34,4.3,9,0
+Abdur-Rahmaan Yaseen,WR,4,34,8.5,13,0
+Byron Cardwell,RB,4,34,8.5,13,1
+Luke Deal,TE,3,34,11.3,32,0
+Keegan Wilburn,WR,1,34,34.0,34,0
+Colby McDonald,RB,4,34,8.5,17,0
+Sam Roush,TE,2,34,17.0,23,0
+Savion Red,RB,6,34,5.7,11,0
+De'Nylon Morrissette,WR,4,34,8.5,16,0
+Jay Fair,WR,2,34,17.0,23,0
+Andrew Paige,WR,3,34,11.3,23,0
+Jayson Littlejohn,TE,2,34,17.0,17,2
+C.J. Williams,WR,4,34,8.5,14,0
+Malik Cunningham,QB,1,33,33.0,33,0
+Dylan McDuffie,RB,5,33,6.6,9,0
+Ryan Lezon,RB,5,33,6.6,15,0
+Carter Boatwright,TE,4,33,8.3,23,0
+Chris Parker,WR,4,33,8.3,15,0
+Kai Puailoa-Rojas,RB,4,33,8.3,14,0
+Dylan Paine,RB,4,33,8.3,22,0
+Mason Blakemore,RB,4,33,8.3,21,0
+Wesley Grimes,WR,4,33,8.3,13,1
+Deon Fountain,WR,1,32,32.0,32,0
+Garrett Greene,QB,4,32,8.0,12,0
+Chris Scott,WR,4,32,8.0,15,0
+Chamon Metayer,TE,1,32,32.0,32,0
+Ahmonte Watkins,CB,5,32,6.4,22,1
+Jacob Flynn,WR,5,32,6.4,10,1
+Kyle Patterson,TE,3,32,10.7,11,0
+Ryan Hoerstkamp,TE,2,32,16.0,32,1
+Brenen Thompson,WR,1,32,32.0,32,0
+Xavier Brown,RB,9,32,3.6,8,0
+Nathan Kent,WR,1,32,32.0,32,0
+Wyatt Fischer,WR,2,31,15.5,20,1
+Devyn Ford,RB,5,31,6.2,12,0
+Quincy Brown,WR,3,31,10.3,17,2
+Mason Mangum,WR,1,31,31.0,31,0
+Cade McDonald,WR,3,31,10.3,15,0
+Zac Larrier,QB,2,31,15.5,37,0
+Kyle Monangai,RB,6,31,5.2,7,0
+Maximilian Mang,TE,5,31,6.2,8,0
+Jaison Patterson,RB,7,31,4.4,11,0
+Talyn Shettron,WR,3,31,10.3,16,1
+Ty Robinson,WR,3,31,10.3,12,0
+Robert Briggs Jr.,RB,7,31,4.4,16,0
+Alec Wick,WR,2,31,15.5,17,0
+Chandler Speights,WR,6,30,5.0,9,0
+Josh Falo,TE,4,30,7.5,12,2
+Adam Beale,WR,2,30,15.0,24,0
+Kavosiey Smoke,RB,3,30,10.0,14,0
+Joe Ervin,RB,8,30,3.8,14,0
+Duke Olges,DL,3,30,10.0,15,1
+Tyler Crowe,RB,2,30,15.0,26,0
+Marcus Burke,WR,4,30,7.5,14,0
+David Larkins,TE,3,30,10.0,17,0
+Tar'Varish Dawson,WR,2,30,15.0,22,0
+Bobby Wooden,S,6,30,5.0,9,0
+Rylan Green,TE,4,30,7.5,12,0
+Caleb Rillos,TE,2,30,15.0,15,1
+Dwartney Wortham,WR,2,30,15.0,24,0
+Bryant Kieft,TE,2,30,15.0,20,0
+Jaylon Robinson,WR,5,29,5.8,16,0
+TJ Ivy Jr.,TE,2,29,14.5,25,0
+Oscar Adaway III,RB,5,29,5.8,11,1
+Marcus Carroll,RB,5,29,5.8,13,0
+Jordan Younge-Humphrey,RB,4,29,7.3,14,0
+Caleb Robinson,RB,6,29,4.8,8,0
+Shaadie Clayton-Johnson,RB,7,29,4.1,16,0
+Vaughn Pemberton,RB,7,29,4.1,8,0
+C.J. Hawkins,TE,2,29,14.5,20,0
+Bryce Duke,RB,3,29,9.7,27,1
+Miles Scott,DB,4,29,7.3,19,0
+Martin Blake,RB,1,29,29.0,29,0
+Robert Burns,RB,5,28,5.6,8,0
+Omar Manning,WR,4,28,7.0,13,0
+Daniel Parker,FB,4,28,7.0,12,0
+Nolan Quinlan,TE,7,28,4.0,8,0
+Jaren Hall,QB,2,28,14.0,22,1
+Nolan Matthews-Harris,TE,2,28,14.0,29,0
+Broc Thompson,WR,3,28,9.3,18,0
+Gee Scott Jr.,TE,5,28,5.6,16,1
+TreVeyon Henderson,RB,4,28,7.0,31,1
+Russell Dixon,TE,3,28,9.3,19,0
+Alex Maxwell,WR,2,28,14.0,20,0
+La'Vell Wright,RB,6,28,4.7,13,0
+Malcolm Johnson Jr.,WR,2,28,14.0,15,0
+Kyre Duplessis,WR,2,28,14.0,20,0
+Reginald Virgil,WR,1,28,28.0,28,0
+Jostein Clarke,WR,4,28,7.0,13,0
+Jamyest Williams,RB,4,27,6.8,20,0
+Cooper Lutz,RB,1,27,27.0,27,0
+Marquez Bell,WR,3,27,9.0,11,0
+Nate Jefferson,WR,4,27,6.8,10,0
+Tyler Savage,TE,2,27,13.5,24,0
+Miyan Williams,RB,5,27,5.4,12,0
+Taye McWilliams,RB,5,27,5.4,9,0
+Hudson Henry,TE,4,27,6.8,11,0
+Nigel Drummond II,WR,3,27,9.0,10,0
+Gavin Thomson,WR,2,27,13.5,19,0
+Miles Davis,RB,6,27,4.5,14,0
+Jeremiah Franklin,TE,5,27,5.4,9,0
+Kaleb Johnson,RB,4,27,6.8,14,0
+Toby Payne,TE,2,27,13.5,15,1
+Davis Dalton,WR,1,27,27.0,27,0
+Casey Coll,TE,2,27,13.5,23,0
+Zach Westmoreland,LB,2,27,13.5,21,0
+Johnny Martin,RB,3,27,9.0,13,0
+CJ Donaldson Jr.,RB,9,27,3.0,9,0
+Christian Beal-Smith,RB,5,26,5.2,9,0
+Trelon Smith,RB,2,26,13.0,16,0
+Jakairi Moses,RB,5,26,5.2,26,0
+A'Jon Vivens,RB,4,26,6.5,19,0
+Iverson Celestine,RB,4,26,6.5,10,0
+Aidan Bitter,WR,4,26,6.5,16,0
+Sevion Morrison,RB,3,26,8.7,13,0
+Terence Loville,WR,1,26,26.0,26,0
+Jovantae Barnes,RB,5,26,5.2,13,0
+Andre Greene Jr.,WR,3,26,8.7,13,1
+Tai Lavatai,QB,1,26,26.0,26,1
+Kibet Chepyator,TE,3,26,8.7,14,0
+Darius De Los Reyes,WR,3,26,8.7,9,0
+Braylin Presley,RB,5,26,5.2,9,0
+Jaden Milliner,WR,2,26,13.0,18,0
+Jayshon Platt,WR,3,26,8.7,14,0
+Terry Moore,S,4,26,6.5,15,0
+Greyson Morgan,TE,2,26,13.0,21,0
+Andrew Clair,RB,6,25,4.2,9,0
+Kenny Brewer III,WR,3,25,8.3,10,0
+Chez Mellusi,RB,2,25,12.5,23,1
+Quinton Cooley,RB,3,25,8.3,10,0
+Jam Griffin,RB,4,25,6.3,19,0
+Charvis Thornton,RB,5,25,5.0,15,0
+Joey Braasch,RB,4,25,6.3,8,0
+Brian Brewton,RB,5,25,5.0,10,0
+Chase Penry,WR,2,25,12.5,14,0
+Jake Clemons,TE,5,25,5.0,10,1
+Shaleak Knotts,WR,5,25,5.0,18,0
+Tyler Morris,WR,3,25,8.3,9,0
+Earnest Crownover,RB,1,25,25.0,25,0
+Hank Beatty,WR,7,25,3.6,8,0
+Leon Haughton Jr.,WR,1,25,25.0,25,0
+Jeremiah Noga,WR,2,25,12.5,21,0
+Cole Peterlin,WR,2,25,12.5,14,0
+LaMarcus Brand,WR,4,25,6.3,12,0
+Josh Berry,RB,3,25,8.3,17,0
+Sean Clifford,QB,2,24,12.0,25,0
+Gary Williams,TE,2,24,12.0,23,0
+Jaren Mangham,RB,4,24,6.0,10,0
+LV Bunkley-Shelton,WR,2,24,12.0,14,0
+Ben Gulbranson,QB,1,24,24.0,27,0
+Damien Moore,RB,5,24,4.8,10,0
+Landen King,TE,1,24,24.0,24,0
+Brendon Barrow,RB,4,24,6.0,11,0
+Colby Powers,TE,5,24,4.8,9,0
+Anthony Hankerson,RB,5,24,4.8,15,0
+Shield Taylor,TE,4,24,6.0,12,0
+Isaiah Gash,RB,3,24,8.0,20,0
+Greg Desrosiers Jr.,RB,8,24,3.0,8,0
+Jonah Coleman,RB,8,24,3.0,14,0
+Gavin Garcia,RB,1,24,24.0,24,0
+Jordan Ford,RB,5,24,4.8,10,2
+Jamaal Pritchett,WR,2,24,12.0,12,0
+Dylan Sampson,RB,3,24,8.0,19,0
+Dean Connors,RB,8,24,3.0,7,1
+Clevester Hines,CB,2,24,12.0,14,0
+Alec Sinkfield,RB,4,23,5.8,16,0
+Demarcus Gregory,WR,3,23,7.7,13,0
+Connor Bazelak,QB,1,23,23.0,23,0
+Trey Potts,RB,3,23,7.7,14,0
+Jamontez Woods,RB,3,23,7.7,11,0
+Keyvone Lee,RB,3,23,7.7,10,1
+TJ McDaniel,RB,8,23,2.9,13,0
+Will Swanson,TE,2,23,11.5,18,0
+Brandon Hayes,WR,1,23,23.0,23,0
+Zyell Griffin,WR,2,23,11.5,14,1
+Connor Witthoft,TE,3,23,7.7,12,0
+Al-Shadee Salaam,RB,9,23,2.6,10,0
+Marquis Shoulders,WR,3,23,7.7,11,1
+Chance Black,RB,3,23,7.7,20,0
+Peter Kikwata,WR,1,23,23.0,23,0
+Dre'lyn Washington,RB,4,23,5.8,10,0
+Larry Stephens,WR,2,23,11.5,21,0
+Steven McBride,WR,2,23,11.5,16,0
+Caleb Fauria,TE,3,23,7.7,15,0
+Hunter Rogers,LS,1,23,23.0,23,1
+Dallan Hayden,RB,4,23,5.8,10,0
+Kaydin Pope,WR,3,23,7.7,14,0
+Calvin Johnson II,WR,2,23,11.5,23,0
+Jake Boust,TE,5,23,4.6,7,0
+Chase Sowell,WR,2,23,11.5,14,0
+Tre Siggers,RB,5,22,4.4,9,0
+Will Wallace,TE,4,22,5.5,15,0
+Michael Bollinger,TE,3,22,7.3,14,1
+Lorenzo Lingard,RB,2,22,11.0,15,0
+Luke Baker,TE,2,22,11.0,17,0
+Velton Gardner,RB,8,22,2.8,9,0
+Kelvin Dean,RB,2,22,11.0,14,0
+Duane Martin,TE,1,22,22.0,22,0
+James Bomba,TE,5,22,4.4,8,0
+Nick Kallerup,TE,2,22,11.0,16,1
+DeAndre Hughes,WR,1,22,22.0,22,0
+Dan Villari,TE,1,22,22.0,22,0
+Javon Gipson,WR,2,22,11.0,13,0
+Chris Lewis,WR,2,22,11.0,20,1
+Darrell Harding Jr.,WR,3,21,7.0,8,0
+Doug Emilien,WR,2,21,10.5,11,1
+Jacob Hopper,TE,2,21,10.5,13,0
+Kaevion Mack,WR,2,21,10.5,12,0
+Kahlil Brantley,TE,4,21,5.3,8,1
+Kaleo Ballungay,TE,3,21,7.0,10,0
+Cameron Ross,WR,2,21,10.5,12,0
+Jake Orlando,TE,3,21,7.0,17,0
+Erik Olsen,TE,5,21,4.2,7,0
+George Pettaway,RB,5,21,4.2,11,0
+Kaden Saunders,WR,2,21,10.5,13,0
+Luke Soto,TE,1,21,21.0,21,0
+Zach Marsh Wojan,TE,1,21,21.0,21,1
+Greg Garner,RB,4,21,5.3,8,0
+Christian Brown,RB,2,21,10.5,12,0
+John Michael Gyllenborg,TE,3,21,7.0,10,0
+Griffin Waiss,TE,1,21,21.0,21,0
+A.J. Turner,RB,4,21,5.3,24,1
+DK Billingsley,RB,4,20,5.0,9,0
+Donta Anthony Jr.,TE,4,20,5.0,9,0
+Bryson Jackson,WR,2,20,10.0,12,0
+Matt Bjorson,TE,1,20,20.0,20,0
+Jimmy Calloway,WR,2,20,10.0,17,0
+Caleb Coombs,WR,3,20,6.7,9,0
+Cameron Hite,TE,2,20,10.0,17,1
+Leon Franklin,RB,1,20,20.0,20,1
+Zach Fryar,TE,2,20,10.0,15,0
+Ben Furtney,TE,1,20,20.0,20,0
+Trevor Evans,WR,2,20,10.0,14,0
+Dallas Payne,TE,3,20,6.7,13,0
+Dyson Frank,TE,2,20,10.0,16,0
+Braxton Burmeister,QB,1,19,19.0,19,0
+Randall St. Felix,WR,3,19,6.3,8,0
+Mitch Rossi,TE,2,19,9.5,16,1
+Jarett Garner,WR,2,19,9.5,10,0
+Austin Osborne,WR,2,19,9.5,10,0
+Chevan Cordeiro,QB,1,19,19.0,19,0
+Tony Mathis Jr.,RB,7,19,2.7,9,0
+Treshaun Ward,RB,6,19,3.2,7,0
+Jaylon Barden,WR,3,19,6.3,17,0
+Armoni Goodwin,RB,4,19,4.8,14,0
+Jackson McDonald,TE,2,19,9.5,12,0
+Malick Meiga,WR,3,19,6.3,7,0
+Dean Tate,WR,3,19,6.3,8,0
+Terence Fall,WR,1,19,19.0,19,0
+Irone Jackson,WR,3,19,6.3,12,0
+Josh McCray,RB,4,19,4.8,9,0
+Cade Klubnik,QB,1,19,19.0,19,0
+Drew Cassens,TE,3,19,6.3,13,1
+Brandon Thomas,RB,3,19,6.3,9,0
+Brandon Frazier,TE,2,19,9.5,12,0
+Austin Erickson,WR,2,19,9.5,12,0
+DJ Riles,QB,4,19,4.8,14,0
+Alex Perry,WR,2,19,9.5,15,0
+Tyler Harrell,WR,2,18,9.0,12,0
+Wyatt Liewer,WR,2,18,9.0,13,0
+Malcolm Epps,TE,3,18,6.0,10,2
+DeCarlos Brooks,RB,8,18,2.3,7,0
+Luca Diamont,WR,1,18,18.0,18,0
+Munir McClain,WR,2,18,9.0,12,0
+Dajon Harrison,WR,6,18,3.0,9,0
+Aaron Young,RB,1,18,18.0,18,1
+Christian Jourdain,WR,2,18,9.0,10,0
+Dane Olson,WR,2,18,9.0,15,0
+Donnie Gray,WR,1,18,18.0,18,0
+Anderson Castle,RB,1,18,18.0,18,1
+August Drews,TE,1,18,18.0,18,0
+Kamdyn Benjamin,WR,3,18,6.0,9,0
+Malik Bowen-Sims,WR,2,18,9.0,12,0
+Jordan Brown,WR,3,18,6.0,10,0
+Junior Vandeross III,WR,1,18,18.0,18,0
+Tucker Holloway,WR,3,18,6.0,8,0
+Luke Besh,WR,2,18,9.0,13,0
+Miles Kitselman,TE,2,18,9.0,13,0
+Dante Capolungo,WR,1,18,18.0,18,0
+Tyhier Tyler,QB,2,17,8.5,11,0
+Luke Bolden,TE,1,17,17.0,17,1
+Casey Kelly,TE,3,17,5.7,13,1
+Griffin Moore,TE,1,17,17.0,17,0
+Kurtis Rourke,QB,1,17,17.0,17,0
+Sage Ennis,TE,2,17,8.5,13,0
+Christian Fitzpatrick,WR,2,17,8.5,11,0
+Silas Starr,WR,3,17,5.7,7,0
+Griffin Little,TE,2,17,8.5,13,0
+Brandon Niemenski,TE,3,17,5.7,11,1
+Tajay Ahmed,RB,2,17,8.5,11,0
+Victor Konopka,TE,1,17,17.0,17,0
+Taniela Pututau,TE,2,17,8.5,13,0
+Samuel Brown V,RB,4,17,4.3,9,0
+Jack Reynolds,WR,3,17,5.7,17,0
+J.J. Jernighan,RB,5,17,3.4,11,1
+Ben Jefferson,WR,1,17,17.0,17,0
+Ty Washington,TE,1,17,17.0,17,1
+Jacob Kibodi,RB,3,16,5.3,8,0
+Dominic Gicinto,WR,2,16,8.0,9,0
+Mike Roussos,WR,2,16,8.0,16,0
+Nathan Bax,TE,3,16,5.3,11,0
+John Rhys Plumlee,QB,1,16,16.0,16,0
+Arik Gilbert,TE,2,16,8.0,12,1
+Ze'Vian Capers,WR,1,16,16.0,16,0
+Tonka Hemingway,DT,1,16,16.0,16,0
+Harlan Dixon,RB,1,16,16.0,16,0
+Clay Millen,QB,1,16,16.0,16,0
+Jadon Jackson,WR,2,16,8.0,10,0
+Kendric Blake Jr.,WR,1,16,16.0,16,0
+Jake Schultz,FB,2,16,8.0,13,0
+Elelyon Noa,RB,2,16,8.0,9,0
+Isaiah Davis,WR,1,16,16.0,16,0
+Zhighlil McMillan,WR,1,16,16.0,16,0
+Marcus Harris,WR,2,16,8.0,13,0
+Javonte Sherman,WR,1,16,16.0,16,0
+Tariq Sims,RB,4,16,4.0,6,0
+Jamal Johnson,RB,5,16,3.2,7,0
+Will Taylor,WR,5,16,3.2,20,1
+Reggie Love III,RB,4,16,4.0,7,0
+Jasaiah Gathings,WR,1,16,16.0,16,0
+Marcus Young,TE,3,16,5.3,10,0
+Tyler Holzworth,RB,2,16,8.0,9,0
+Reed Tyler,TE,4,15,3.8,6,1
+Deshaun Fenwick,RB,4,15,3.8,11,0
+Caleb Chapman,WR,1,15,15.0,15,0
+Spencer Rattler,QB,1,15,15.0,15,0
+Gary Bryant Jr.,WR,2,15,7.5,8,0
+Matthew Hibner,TE,2,15,7.5,10,0
+Taji Hudson,WR,1,15,15.0,15,0
+Cole Snyder,QB,1,15,15.0,15,0
+Todd Justice,TE,1,15,15.0,15,0
+Jackson Hensley,WR,1,15,15.0,15,0
+Bryan Robinson,WR,1,15,15.0,15,0
+Mekhi Fox,WR,1,15,15.0,15,0
+CJ Stokes,RB,1,15,15.0,15,0
+Donovan Smith,QB,1,15,15.0,15,1
+Preston Daniel,TE,3,15,5.0,7,1
+Denzel Boston,WR,2,15,7.5,10,0
+Landon Ibieta,WR,2,15,7.5,10,0
+Amari Niblack,TE,1,15,15.0,15,1
+Victor Rosa,RB,5,15,3.0,12,0
+Nick Ragano,WR,3,15,5.0,6,0
+Brennan Holmes,WR,1,15,15.0,15,0
+Nasjzae Bryant-Lelei,RB,3,15,5.0,8,0
+Jaylen Anderson,RB,1,15,15.0,15,0
+Zayin West,DE,1,14,14.0,14,0
+Trey Blount,WR,3,14,4.7,7,0
+Drake De Iuliis,TE,3,14,4.7,7,0
+John Hassell,TE,3,14,4.7,8,0
+Holton Ahlers,QB,1,14,14.0,14,0
+Evan Francioni,WR,1,14,14.0,14,0
+Marquel Tinsley,WR,3,14,4.7,10,0
+Jaden Dottin,WR,2,14,7.0,9,0
+Chip Trayanum,RB,1,14,14.0,14,0
+Nay'Quan Wright,RB,1,14,14.0,14,0
+Terrion Avery,RB,1,14,14.0,14,0
+Payton Hunter,WR,1,14,14.0,14,0
+Emmanuel Henderson Jr.,WR,1,14,14.0,14,0
+Nick Mosley,RB,2,14,7.0,7,0
+Garret Reynolds,WR,2,14,7.0,7,0
+Ethan Erickson,TE,1,14,14.0,14,1
+Camden Sirmon,WR,1,14,14.0,14,0
+Will Rogers,QB,1,13,13.0,13,0
+Trey Sanders,RB,2,13,6.5,10,0
+Tommy DeVito,QB,0,13,0.0,13,0
+Dennis Robinson,WR,3,13,4.3,10,0
+Sol Rascon,WR,1,13,13.0,13,0
+Jovany Ruiz-Navarro,WR,2,13,6.5,8,0
+Beau Coberley,WR,2,13,6.5,9,0
+Aaron Jackson,TE,4,13,3.3,10,1
+Matt Alaimo,TE,2,13,6.5,8,0
+Dillon Gabriel,QB,1,13,13.0,13,0
+Gerald Green,RB,3,13,4.3,9,0
+J.J. Hester,WR,1,13,13.0,13,0
+Kejon Owens,RB,4,13,3.3,9,0
+Isaiah Holiness,WR,1,13,13.0,13,0
+Hunter Salmon,TE,2,13,6.5,9,0
+Francis Sherman,TE,1,13,13.0,13,0
+Charlie Norman,RB,1,13,13.0,13,0
+Trey Blair,RB,2,13,6.5,12,0
+Braylon Braxton,QB,1,13,13.0,13,0
+Cameron Bonner,WR,1,13,13.0,13,0
+Damari Alston,RB,1,13,13.0,13,0
+Tiyon Evans,RB,6,13,2.2,8,0
+Iverson Hooks,WR,1,13,13.0,13,0
+Denzil Alleyne,DB,2,13,6.5,8,0
+TJ Harden,RB,4,13,3.3,10,0
+Chase Hayden,RB,2,12,6.0,8,0
+Frank Harris,QB,2,12,6.0,9,0
+Nigel Fitzgerald,WR,2,12,6.0,7,0
+Anthony Queeley,WR,1,12,12.0,12,0
+Gunner Britton,OL,1,12,12.0,12,0
+Josh Delgado,WR,1,12,12.0,12,0
+Micah Hilts,TE,1,12,12.0,12,0
+Cross Patton,RB,1,12,12.0,12,0
+Preston Terrell,WR,2,12,6.0,6,0
+Levi Gazarek,TE,3,12,4.0,5,0
+Jack Mashburn,TE,2,12,6.0,10,0
+Daniel Carter,RB,3,12,4.0,8,0
+Jameson Geers,TE,2,12,6.0,8,0
+Jonzell Norrils,RB,2,12,6.0,8,0
+Eni Falayi,TE,2,12,6.0,7,0
+Zion Turner,QB,2,12,6.0,7,1
+Ben Buechel,TE,1,12,12.0,12,0
+Michael Harrison,TE,2,12,6.0,9,0
+Jaylen Sargent,WR,2,12,6.0,7,0
+Jayden Gibson,WR,1,12,12.0,12,0
+Brian Courtney,LB,1,12,12.0,12,0
+Reis Stocksdale,WR,1,12,12.0,12,0
+Ayo Adeyi,RB,2,12,6.0,9,0
+Cole Speer,WR,1,12,12.0,12,0
+Kroy Myers,WR,1,12,12.0,12,0
+Isaiah Sategna,WR,2,12,6.0,10,0
+Percy Agyei-Obese,RB,2,11,5.5,8,0
+Miles Joiner,TE,1,11,11.0,11,0
+Isaac Martin,TE,2,11,5.5,10,1
+Adrian Martinez,QB,1,11,11.0,11,0
+Jackson Marcotte,TE,3,11,3.7,7,0
+Kaleb Carter,WR,2,11,5.5,6,0
+Isaiah Newell,RB,1,11,11.0,11,0
+Bralon Brown,WR,1,11,11.0,11,0
+Payten Singletary,TE,1,11,11.0,11,0
+Omari Walker,WR,2,11,5.5,6,0
+Nick Miles,TE,1,11,11.0,11,0
+Keagan Johnson,WR,2,11,5.5,7,0
+Wesley Kommer,RB,2,11,5.5,9,0
+Holden Staes,TE,1,11,11.0,11,0
+Deondre Jackson,RB,2,11,5.5,10,0
+Jayden de Laura,QB,1,11,11.0,11,0
+Drew Hocutt,WR,1,11,11.0,11,0
+Lawrence Dixon,WR,1,11,11.0,11,0
+Maxwell James,WR,2,11,5.5,7,0
+Cash Jones,RB,2,11,5.5,9,0
+Chris Brazzell II,WR,1,11,11.0,11,0
+Justice Dingle II,FB,1,10,10.0,10,0
+Gabe Sulser,WR,2,10,5.0,6,0
+McCall Ray,WR,1,10,10.0,10,0
+DeWayne McBride,RB,2,10,5.0,6,0
+Jalen Coit,WR,1,10,10.0,10,1
+Hans Lillis,TE,1,10,10.0,10,0
+Marcayll Jones,WR,2,10,5.0,7,0
+Joe Royer,TE,2,10,5.0,9,0
+James Della Pesca,TE,1,10,10.0,10,0
+Taj Butts,RB,1,10,10.0,10,0
+Cam Davis,RB,4,10,2.5,6,0
+Keyan Burnett,TE,3,10,3.3,5,0
+Armani Winfield,WR,1,10,10.0,10,0
+Harper Cole,WR,1,10,10.0,10,0
+Tyler Huff,TE,5,10,2.0,7,0
+Rasheen Ali,RB,2,10,5.0,5,1
+Cooper Shults,TE,2,10,5.0,6,0
+Gavin Yates,TE,1,10,10.0,10,0
+Tre'Von Bradley,WR,1,9,9.0,9,0
+Chris Carter,TE,3,9,3.0,6,1
+Taj Harris,WR,1,9,9.0,9,0
+Cameron Rising,QB,1,9,9.0,9,0
+Praise Okorie,WR,3,9,3.0,6,0
+Ajou Ajou,WR,2,9,4.5,5,0
+Troy Omeire,WR,1,9,9.0,9,0
+Jay Rudolph,TE,1,9,9.0,9,0
+Josh Lifson,TE,1,9,9.0,9,1
+Lonyatta Alexander Jr.,WR,1,9,9.0,9,0
+Logan Mauldin,TE,1,9,9.0,9,0
+Parker Buchanan,TE,2,9,4.5,6,0
+Phillippe Wesley II,WR,1,9,9.0,9,0
+Jacurri Brown,QB,1,9,9.0,9,0
+Brad Roberts,RB,1,9,9.0,9,0
+Dazure Paggett,WR,1,9,9.0,9,0
+Otto Tia,WR,1,9,9.0,9,0
+Dami'on Thompson,WR,1,9,9.0,9,0
+Michael Lavergne,WR,1,9,9.0,9,0
+Ajay Allen,RB,1,9,9.0,9,0
+Scotty Nieman,TE,1,9,9.0,9,0
+Mekhi Mews,WR,2,9,4.5,6,0
+Kenyon Clay,RB,2,9,4.5,6,0
+Miller McCrumby,TE,1,9,9.0,9,0
+Sean Brown,WR,1,9,9.0,9,0
+Jordan Ferguson,DE,1,8,8.0,8,1
+Pat McSweeney,TE,1,8,8.0,8,0
+Kamryn Babb,WR,1,8,8.0,8,1
+Keni-H Lovely,CB,1,8,8.0,8,0
+Makiya Tongue,LB,1,8,8.0,8,0
+Dazalin Worsham,WR,1,8,8.0,8,0
+Malik Hornsby,QB,2,8,4.0,9,0
+Dez Melton,TE,1,8,8.0,8,0
+Dacari Collins,WR,1,8,8.0,8,0
+Alex Lines,TE,1,8,8.0,8,0
+William Kakavitsas,WR,1,8,8.0,8,0
+Hunter Neff,TE,1,8,8.0,8,0
+Gabe Ervin Jr.,RB,1,8,8.0,8,0
+Jakolbe Baldwin,WR,1,8,8.0,8,0
+Jimmy Valsin III,WR,1,8,8.0,8,0
+Jaylen Wright,RB,2,8,4.0,5,0
+Willie Shaw III,RB,1,8,8.0,8,0
+Le'Veon Moss,RB,1,8,8.0,8,0
+Gavin Sawchuk,RB,1,8,8.0,8,0
+Tevin White,RB,1,8,8.0,8,0
+Justin Rodriguez,RB,1,8,8.0,8,0
+Ja'Quinden Jackson,RB,1,8,8.0,8,0
+Peyton Stevenson,S,1,8,8.0,8,0
+Lucas Desjardins,WR,1,8,8.0,8,0
+Chase Gillespie,RB,1,8,8.0,8,0
+Sam Hicks,RB,1,8,8.0,8,0
+Evan Boozer,TE,1,7,7.0,7,0
+Gunnar Watson,QB,1,7,7.0,7,1
+Uriah West,RB,1,7,7.0,7,0
+Xavier Williams,WR,1,7,7.0,7,0
+Seth Porter,WR,1,7,7.0,7,0
+Kay'Ron Adams,RB,2,7,3.5,5,0
+Elijah Downing,WR,1,7,7.0,7,0
+Rahmir Johnson,RB,1,7,7.0,7,0
+Darius Boone Jr.,RB,1,7,7.0,7,0
+Agiye Hall,WR,1,7,7.0,7,0
+Hamp Greene,WR,2,7,3.5,6,0
+AJ Brown,RB,3,7,2.3,7,0
+Bayne Tryon,TE,1,7,7.0,7,0
+Cole Caterbone,WR,1,7,7.0,7,0
+Chase Jackson,WR,2,7,3.5,5,0
+Darrius Clemons,WR,1,7,7.0,7,0
+Antario Brown,RB,1,7,7.0,7,0
+James Bryant,TE,1,7,7.0,7,0
+Ethan Davies,WR,1,7,7.0,7,0
+Nick Lampert,WR,1,7,7.0,7,0
+Haydon Wiginton,WR,1,7,7.0,7,0
+Percy Courtney Jr.,LB,1,7,7.0,7,0
+Tawee Walker,RB,1,7,7.0,7,0
+CJ Nelson,WR,2,7,3.5,4,0
+Ezechiel Tieide,WR,2,6,3.0,6,0
+Dennis Smith,WR,1,6,6.0,6,0
+Aaron Jarman,TE,1,6,6.0,6,0
+Damarius Good,RB,1,6,6.0,6,0
+DJ Uiagalelei,QB,1,6,6.0,6,0
+Collin Sullivan,WR,1,6,6.0,6,0
+Nathaniel Jones,RB,4,6,1.5,4,0
+Nasir Montgomery,WR,1,6,6.0,6,0
+Keyon Mozee,RB,2,6,3.0,4,0
+Grey Ihu,WR,1,6,6.0,6,0
+Christian Leary,WR,1,6,6.0,6,0
+Khiyon Wafer,WR,1,6,6.0,6,0
+Max Patterson,WR,2,6,3.0,3,0
+Dante Reynolds,WR,2,6,3.0,6,0
+Drew Biber,TE,1,6,6.0,6,0
+Xavier Coleman,RB,3,6,2.0,5,0
+Isaiah Horton,WR,1,6,6.0,6,0
+Jordan James,RB,1,6,6.0,6,0
+Stacey Marshall Jr.,TE,1,6,6.0,6,0
+Matt Greenwald,WR,1,6,6.0,6,0
+Jaren Randle,WR,1,6,6.0,6,0
+Rhett Guidry,TE,1,6,6.0,6,0
+Kelly Mitchell,TE,1,6,6.0,6,0
+Jaylon Glover,RB,1,6,6.0,6,0
+Caleb Merritt,WR,1,6,6.0,6,0
+Tyler King,WR,1,6,6.0,6,0
+Addison Ostrenga,TE,1,6,6.0,6,0
+Bo Estes,TE,1,6,6.0,6,0
+CJ Hayes,WR,1,5,5.0,5,0
+Jayden Daniels,QB,1,5,5.0,5,1
+Luke Wentz,WR,1,5,5.0,5,0
+Thaiu Jones-Bell,WR,1,5,5.0,5,0
+Andy Alfieri,TE,1,5,5.0,5,0
+Trey Boll,TE,1,5,5.0,5,1
+Tavierre Dunlap,RB,1,5,5.0,5,0
+Aaron Greene,TE,1,5,5.0,5,0
+Phat Watts,WR,1,5,5.0,5,0
+Kaleb Brown,WR,1,5,5.0,5,0
+Chad Johnson Jr.,WR,1,5,5.0,5,0
+Josh Meredith,WR,1,5,5.0,5,0
+Zach Schmit,PK,2,5,2.5,3,1
+Nate Johnson,QB,1,5,5.0,5,0
+Brock Spalding,WR,1,5,5.0,5,0
+Jah'Mar Sanders,WR,2,5,2.5,3,0
+Bobby Golden,WR,1,5,5.0,5,0
+Micah Barnett,FB,2,5,2.5,6,0
+D.J. Mack Jr.,QB,1,4,4.0,4,0
+Jordan Pouncey,WR,2,4,2.0,6,0
+Grant Frerking,WR,1,4,4.0,4,0
+Jakari Norwood,RB,2,4,2.0,4,0
+Carlos Sandy,WR,2,4,2.0,3,0
+Dillon Doyle,LB,2,4,2.0,3,1
+Ulysses Bentley IV,RB,1,4,4.0,4,0
+Justin Olson,WR,1,4,4.0,4,0
+Sevaughn Clark,RB,1,4,4.0,4,0
+Christian Moore,TE,1,4,4.0,4,0
+Kamarro Edmonds,RB,1,4,4.0,4,0
+Tye Herbstreit,WR,1,4,4.0,4,0
+Bula Schmidt,OL,1,4,4.0,4,0
+Drake Owen,WR,1,4,4.0,4,0
+Kaden Dudley,RB,1,4,4.0,4,0
+Myles Montgomery,RB,1,4,4.0,4,0
+Zamar Wise,WR,1,4,4.0,4,0
+Josh Conerly Jr.,OL,1,4,4.0,4,1
+Billy Dozier,WR,3,4,1.3,3,0
+Carter Campbell,WR,1,4,4.0,4,0
+Amorion Walker,DB,1,4,4.0,4,0
+Camron Cooper,TE,1,4,4.0,4,0
+Jordan Nabors,WR,1,4,4.0,4,0
+Zavion Thomas,WR,2,4,2.0,5,0
+Kyler Kasper,WR,1,4,4.0,4,0
+Kaden Helms,TE,1,4,4.0,4,0
+Austin Smith,TE,1,4,4.0,4,1
+John Lee Eldridge III,RB,1,4,4.0,4,0
+Jay Barry Jr.,WR,1,4,4.0,4,0
+Taharin Sudderth,WR,1,4,4.0,4,0
+Connor Welsh,TE,1,4,4.0,4,0
+Peyton O'Leary,WR,1,4,4.0,4,0
+Aubry Payne,TE,1,3,3.0,3,0
+Kyle Vantrease,QB,1,3,3.0,3,0
+Luke Price,TE,1,3,3.0,3,1
+Keenan Orr,TE,1,3,3.0,3,0
+Jake Neatherton,RB,1,3,3.0,3,0
+Ryan Jacoby,OL,1,3,3.0,3,0
+Kyi Wright,TE,1,3,3.0,3,0
+Teddy Knox,WR,4,3,0.8,8,0
+Corey Wren,RB,3,3,1.0,2,0
+Nick Rempert,WR,1,3,3.0,3,0
+John Jackson III,WR,1,3,3.0,3,0
+Julius Davis,RB,1,3,3.0,3,0
+Chandler Rogers,QB,1,3,3.0,3,1
+Christian Dremel,WR,1,3,3.0,3,0
+Onuma Dieke,WR,1,3,3.0,3,0
+Fred Seabrough Jr.,TE,1,3,3.0,3,0
+MJ Morris,QB,0,3,0.0,3,0
+JT Seagreaves,TE,1,3,3.0,3,0
+CJ Campbell Jr.,RB,1,3,3.0,3,0
+Kendrick Rucker,WR,1,3,3.0,3,0
+Keegan Holles,RB,2,3,1.5,3,0
+Kade Zimmerman,WR,1,3,3.0,3,0
+Bennett Galloway,RB,1,3,3.0,3,0
+Kurt Rafdal,TE,1,2,2.0,2,0
+Jordan Travis,QB,1,2,2.0,2,1
+Spencer Sanders,QB,1,2,2.0,2,0
+Quinton Stewart,TE,1,2,2.0,2,1
+Corey Kiner,RB,2,2,1.0,1,0
+DJ Lundy,LB,1,2,2.0,2,1
+Kyrese Rowan,WR,1,2,2.0,2,0
+De'Javion Stepney,DB,1,2,2.0,2,0
+Bill Jackson,RB,1,2,2.0,2,0
+Tank Smith,RB,1,2,2.0,2,0
+Greg Gaines III,WR,1,2,2.0,2,0
+Jake Johnson,TE,1,2,2.0,2,0
+Jayle Stacks,RB,1,2,2.0,2,0
+Kyion Grayes,WR,1,2,2.0,2,0
+Tyson Riley,RB,1,2,2.0,2,0
+Branson Robinson,RB,1,2,2.0,2,0
+Jaron Glover,WR,1,2,2.0,2,0
+Qua Davis,WR,1,2,2.0,2,0
+Javen Nicholas,WR,1,2,2.0,2,0
+L.T. Sanders,RB,1,2,2.0,2,0
+Sheldon Canley II,RB,1,2,2.0,2,0
+Frank Fillip,OL,1,1,1.0,1,1
+Brady Schipper,RB,1,1,1.0,1,0
+Scott Matlock,DT,1,1,1.0,1,1
+Malik Caper,RB,2,1,0.5,5,0
+Max Duggan,QB,1,1,1.0,1,0
+Shea Whiting,WR,3,1,0.3,2,0
+Jeff Sims,QB,1,1,1.0,1,0
+JJ Pegues,DT,1,1,1.0,1,1
+Kilohana Haasenritter,RB,1,1,1.0,1,0
+Chad Alexander,RB,1,1,1.0,1,0
+Caleb Driskill,FB,1,1,1.0,1,0
+O'Mega Blake,WR,1,1,1.0,1,0
+Blake Smith,TE,2,1,0.5,2,0
+Rayshon Luke,RB,1,1,1.0,1,0
+Marquez Dortch,WR,1,1,1.0,1,0
+Qualon Farrar,RB,1,1,1.0,1,0
+Amari Daniels,RB,2,1,0.5,4,0
+Jaziun Patterson,RB,1,1,1.0,1,0
+Victor Snow,WR,1,1,1.0,1,0
+Cameron Zeidler,TE,1,1,1.0,1,0
+Chase Cunningham,QB,1,-1,-1.0,0,0
+David Bailey,RB,3,-1,-0.3,8,0
+Jack Conley,OL,1,-1,-1.0,-1,0
+Jam Miller,RB,1,-1,-1.0,0,0
+Austin Groeschel,TE,2,-1,-0.5,1,0
+Cam Barfield,RB,3,-1,-0.3,3,0
+Tim Gans,RB,1,-1,-1.0,0,0
+Antonio Patterson,RB,1,-1,-1.0,0,0
+Matt McDonald,QB,1,-2,-2.0,0,0
+James Blackman,QB,0,-2,0.0,0,0
+Dominic Mammarelli,TE,1,-2,-2.0,-2,0
+Caleb Williams,QB,0,-2,0.0,0,0
+Trey Urwiler,WR,1,-2,-2.0,-2,0
+Zahir Abdus-Salaam,RB,1,-2,-2.0,0,0
+Rashad Rochelle,WR,1,-2,-2.0,0,0
+Kelan Walker,RB,2,-3,-1.5,0,0
+Spencer Petras,QB,0,-3,0.0,0,0
+Christian Wortham,WR,1,-3,-3.0,0,0
+Jerry Johnson III,FB,1,-3,-3.0,0,0
+Kristen Hoskins,WR,1,-3,-3.0,-3,0
+T.Y. Harding,WR,1,-3,-3.0,0,0
+Harold Joiner III,DB,1,-4,-4.0,0,0
+Nick DeJong,OL,1,-4,-4.0,-4,0
+Kai Horton,QB,1,-4,-4.0,0,0
+Tyler Toledo,RB,1,-4,-4.0,0,0
+Jack Chambers,QB,1,-5,-5.0,0,0
+Zack Martin,RB,1,-5,-5.0,0,0
+Ricky Stromberg,C,0,-5,0.0,-5,0
+Demond Claiborne,RB,1,-5,-5.0,0,0
+Mike Sharpe II,RB,1,-5,-5.0,0,0
+Robert Armes,RB,1,-5,-5.0,0,0
+Marcus Minor,G,1,-10,-10.0,-10,0
+Mike Wright,QB,1,-11,-11.0,0,0
+Justin Holaday,QB,1,-11,-11.0,0,0
+Cameron Ward,QB,1,-13,-13.0,0,0
+Collin Schlee,QB,1,-16,-16.0,0,0
+Josh Farr,WR,1,-16,-16.0,-16,0

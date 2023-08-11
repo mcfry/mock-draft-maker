@@ -9,6 +9,7 @@ class Player < ApplicationRecord
     has_one :passing, dependent: :destroy
     has_one :rushing, dependent: :destroy
     has_one :receiving, dependent: :destroy
+    has_one :defense, dependent: :destroy
 
     attr_accessor :full_name, :total
 

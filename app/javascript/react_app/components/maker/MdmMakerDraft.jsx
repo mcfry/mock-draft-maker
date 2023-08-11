@@ -184,8 +184,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
 
   const filterPlayers = (setCollection = false) => {
     // Edit csv and reseed, remove erroneous from positionalData
-    // EDGE/DE/OLB -> EDGE
-    // LT/RT/G/C/OL -> OL
+    // G/C/OL -> OL
     //
     let newPlayers = players
     if (positionSelect !== "All") {
@@ -215,6 +214,8 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   }
 
   // Lifecycle Hooks
+  // TODO: Because this is larger now, should load it earlier
+  // in nonblocking way
   useEffect(() => {
     const url = "/api/v1/players/index"
     fetch(url)
@@ -225,8 +226,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
         throw new Error("Network response was not ok.")
       })
       .then(res => {
-        console.log(res)
-        setPlayersLoaded(false)
+        setPlayersLoaded(true)
         setPlayers(res)
       })
       .catch(() => navigate("/"))
@@ -269,8 +269,6 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
   const currentRound = parseInt(currentPickIndex / 32)
   const roundStart = viewRound * 32
   const roundEnd = Math.min(roundStart + 32, 256)
-
-  console.log(selected, orderedPicks)
 
   return (
     <>
@@ -523,6 +521,7 @@ function MdmMakerDraft({ pickData, setPickData, orderedPicks, setStage }) {
           {tab === "draft" && (
             <MdmDraftTab
               localPlayers={localPlayers}
+              playersLoaded={playersLoaded}
               preselectedPick={preselectedPick}
               setPreselectedPick={setPreselectedPick}
               userPicking={userPicking}
