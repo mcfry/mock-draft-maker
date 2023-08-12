@@ -174,7 +174,7 @@ function MdmMakerDraft({
 
         pickPlayer(possiblePositional[curPick][0], total)
       }
-    }, 1000 / (speed / 10))
+    }, 1000 / (speed / 2))
 
   const startOrPauseDraft = () => {
     setDraftRunning(prev => !prev)

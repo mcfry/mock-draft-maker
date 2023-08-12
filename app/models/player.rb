@@ -31,4 +31,6 @@ class Player < ApplicationRecord
             total = nil
         end
     end
+
+    
 end

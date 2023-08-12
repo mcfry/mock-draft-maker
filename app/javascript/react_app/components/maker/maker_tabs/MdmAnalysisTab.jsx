@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import axios from "axios"
 
 import MdmTab from "../../helpers/MdmTab"
 import NoPlayerData from "../../helpers/NoPlayerData"
@@ -31,6 +32,31 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   useEffect(() => {
     if (playerInAnalysis) {
       setTab(positionToDefaultTab[playerInAnalysis.position])
+
+      // cache this, will be shared between players
+      if (playerInAnalysis?.passing) {
+        axios.get("/api/v1/passings/statistics").then(res => {
+          console.log(res)
+        })
+      }
+
+      if (playerInAnalysis?.rushing) {
+        axios.get("/api/v1/rushings/statistics").then(res => {
+          console.log(res)
+        })
+      }
+
+      if (playerInAnalysis?.receiving) {
+        axios.get("/api/v1/receivings/statistics").then(res => {
+          console.log(res)
+        })
+      }
+
+      if (playerInAnalysis?.defense) {
+        axios.get("/api/v1/defenses/statistics").then(res => {
+          console.log(res)
+        })
+      }
     }
   }, [])
 

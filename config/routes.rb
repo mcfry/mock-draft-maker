@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       delete 'teams/destroy'
       post 'draft_records/create'
       get 'draft_records/show/:uuid', to: 'draft_records#show'
+      get 'passings/statistics', to: 'passings#statistics'
+      get 'rushings/statistics', to: 'rushings#statistics'
+      get 'receivings/statistics', to: 'receivings#statistics'
+      get 'defenses/statistics', to: 'defenses#statistics'
     end
   end
 

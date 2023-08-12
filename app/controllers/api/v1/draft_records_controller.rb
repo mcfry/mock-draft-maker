@@ -24,7 +24,6 @@ class Api::V1::DraftRecordsController < ApplicationController
   end
 
   def show
-    puts params
     draft_record = DraftRecord.where({id: params[:uuid]}).first
 
     if draft_record
