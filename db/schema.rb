@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_151625) do
     t.index ["player_id"], name: "index_defenses_on_player_id"
   end
 
-  create_table "draft_records", primary_key: "uuid", id: :string, force: :cascade do |t|
+  create_table "draft_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.json "draft_picks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

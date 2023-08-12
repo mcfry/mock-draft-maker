@@ -28,7 +28,7 @@ function MdmMakerShare() {
         }
       })
         .then(res => {
-          navigate(`/share_draft/${res?.data?.uuid}`)
+          navigate(`/share_draft/${res?.data?.id}`)
         })
         .catch(_ => {
           addAlert({
