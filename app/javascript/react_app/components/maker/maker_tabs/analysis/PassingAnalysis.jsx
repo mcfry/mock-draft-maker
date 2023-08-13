@@ -18,6 +18,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={285}
             data={[
@@ -53,6 +54,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={250}
             data={[
@@ -83,6 +85,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={200}
             data={[
@@ -99,6 +102,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           <MdmRadarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={500}
             data={[

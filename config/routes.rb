@@ -23,6 +23,10 @@ Rails.application.routes.draw do
       get 'rushings/statistics', to: 'rushings#statistics'
       get 'receivings/statistics', to: 'receivings#statistics'
       get 'defenses/statistics', to: 'defenses#statistics'
+      get 'passings/statistics/:position', to: 'passings#statistics_by_position'
+      get 'rushings/statistics/:position', to: 'rushings#statistics_by_position'
+      get 'receivings/statistics/:position', to: 'receivings#statistics_by_position'
+      get 'defenses/statistics/:position', to: 'defenses#statistics_by_position'
     end
   end
 

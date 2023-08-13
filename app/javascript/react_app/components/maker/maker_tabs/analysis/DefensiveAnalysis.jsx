@@ -18,6 +18,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={285}
             data={[
@@ -47,7 +48,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
                 "Top 20": defStats.top_20_sack_yards
               },
               {
-                name: "PD",
+                name: "Pd",
                 [playerInAnalysis.last]:
                   playerInAnalysis.defense.passes_deflected,
                 "Top 20": defStats.top_20_passes_deflected
@@ -58,6 +59,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={250}
             data={[
@@ -77,7 +79,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
                 "Top 20": defStats.top_20_int_long
               },
               {
-                name: "TDs",
+                name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.defense.touchdowns,
                 "Top 20": defStats.top_20_tds
               }
@@ -87,6 +89,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={200}
             data={[
@@ -104,6 +107,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
           <MdmRadarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={500}
             data={[
@@ -133,7 +137,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
                 "Top 20": defStats.top_20_sack_yards
               },
               {
-                name: "PD",
+                name: "Pd",
                 [playerInAnalysis.last]:
                   playerInAnalysis.defense.passes_deflected,
                 "Top 20": defStats.top_20_passes_deflected
@@ -154,7 +158,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
                 "Top 20": defStats.top_20_int_long
               },
               {
-                name: "TDs",
+                name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.defense.touchdowns,
                 "Top 20": defStats.top_20_tds
               },

@@ -10,7 +10,7 @@ import {
   Cell
 } from "recharts"
 
-function CustomTooltip({ active, payload, label, data }) {
+function CustomTooltip({ active, payload, label, data, position }) {
   const labelDisplayLookup = useMemo(() => {
     return {
       Int: "Interceptions",
@@ -29,9 +29,9 @@ function CustomTooltip({ active, payload, label, data }) {
       Asst: "Assisted Tackles",
       Total: "Total Tackles",
       "Sck Yds": "Sack Yards",
-      PD: "Passes Deflected",
+      Pd: "Passes Deflected",
       "Int Yds": "Interception Yards",
-      "Int Long": "Interception Long",
+      "Int Lng": "Interception Long",
       FF: "Forced Fumbles"
     }
   }, [])
@@ -41,7 +41,7 @@ function CustomTooltip({ active, payload, label, data }) {
 
     return (
       <div className="flex flex-col justify-left bg-gray-100 shadow p-2 space-y-2">
-        <span className="font-bold min-w-[8rem]">
+        <span className="font-bold min-w-[9rem]">
           {labelDisplayLookup[label]}
         </span>
         {payload.map((pld, index) => (
@@ -51,7 +51,8 @@ function CustomTooltip({ active, payload, label, data }) {
                 pld.dataKey === "Top 20" ? "text-accent" : "text-success"
               )}
             >
-              {pld.dataKey}:&nbsp;
+              {pld.dataKey === "Top 20" ? `Top 20 ${position}s` : pld.dataKey}
+              :&nbsp;
             </span>
             <span>{currentData[payload[index].dataKey]}</span>
           </div>
@@ -63,7 +64,7 @@ function CustomTooltip({ active, payload, label, data }) {
   return null
 }
 
-function MdmBarChart({ data, dataKey, dataKeyTwo, height, width }) {
+function MdmBarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
   const [barOpacity, setBarOpacity] = useState({})
 
   const handleOpacityChange = (bop, index) => {
@@ -86,7 +87,7 @@ function MdmBarChart({ data, dataKey, dataKeyTwo, height, width }) {
         <YAxis stroke="#0d0d0d" />
         <Tooltip
           cursor={{ fill: "transparent" }}
-          content={<CustomTooltip data={data} />}
+          content={<CustomTooltip data={data} position={position} />}
         />
         <Bar dataKey={dataKey}>
           {data.map((entry, index) => {

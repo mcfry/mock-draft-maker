@@ -9,7 +9,7 @@ import {
 } from "recharts"
 
 // Pass data prop in, rest is handled by rechart
-function CustomTooltip({ active, payload, label, data }) {
+function CustomTooltip({ active, payload, label, data, position }) {
   const labelDisplayLookup = useMemo(() => {
     return {
       Int: "Interceptions",
@@ -28,9 +28,9 @@ function CustomTooltip({ active, payload, label, data }) {
       Asst: "Assisted Tackles",
       Total: "Total Tackles",
       "Sck Yds": "Sack Yards",
-      PD: "Passes Deflected",
+      Pd: "Passes Deflected",
       "Int Yds": "Interception Yards",
-      "Int Long": "Interception Long",
+      "Int Lng": "Interception Long",
       FF: "Forced Fumbles"
     }
   }, [])
@@ -40,12 +40,15 @@ function CustomTooltip({ active, payload, label, data }) {
 
     return (
       <div className="flex flex-col justify-left bg-gray-100 shadow p-2 space-y-2">
-        <span className="font-bold min-w-[8rem]">
+        <span className="font-bold min-w-[9rem]">
           {labelDisplayLookup[label]}
         </span>
         {payload.map((pld, index) => (
           <div className="flex justify-between" key={index}>
-            <span style={{ color: pld.fill }}>{pld.dataKey}:&nbsp;</span>
+            <span style={{ color: pld.fill }}>
+              {pld.dataKey === "Top 20" ? `Top 20 ${position}s` : pld.dataKey}
+              :&nbsp;
+            </span>
             <span>{currentData[payload[index].dataKey]}</span>
           </div>
         ))}
@@ -56,7 +59,7 @@ function CustomTooltip({ active, payload, label, data }) {
   return null
 }
 
-function MdmRadarChart({ data, dataKey, dataKeyTwo, height, width }) {
+function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
   const [scaledData, setScaledData] = useState([])
 
   const scaleData = () => {
@@ -106,7 +109,7 @@ function MdmRadarChart({ data, dataKey, dataKeyTwo, height, width }) {
           fillOpacity={0.4}
         />
         <Legend />
-        <Tooltip content={<CustomTooltip data={data} />} />
+        <Tooltip content={<CustomTooltip data={data} position={position} />} />
       </RadarChart>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
+import axiosClient from "../../../other/axiosClient"
 
 import MdmTab from "../../helpers/MdmTab"
 import NoPlayerData from "../../helpers/NoPlayerData"
@@ -42,29 +42,36 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     if (playerInAnalysis) {
       setTab(positionToDefaultTab[playerInAnalysis.position])
 
-      // cache this, will be shared between players
       if (playerInAnalysis?.passing) {
-        axios.get("/api/v1/passings/statistics").then(res => {
-          setPassStats(res?.data)
-        })
+        axiosClient
+          .get(`/api/v1/passings/statistics/${playerInAnalysis.position}`)
+          .then(res => {
+            setPassStats(res?.data)
+          })
       }
 
       if (playerInAnalysis?.rushing) {
-        axios.get("/api/v1/rushings/statistics").then(res => {
-          setRushStats(res?.data)
-        })
+        axiosClient
+          .get(`/api/v1/rushings/statistics/${playerInAnalysis.position}`)
+          .then(res => {
+            setRushStats(res?.data)
+          })
       }
 
       if (playerInAnalysis?.receiving) {
-        axios.get("/api/v1/receivings/statistics").then(res => {
-          setRecStats(res?.data)
-        })
+        axiosClient
+          .get(`/api/v1/receivings/statistics/${playerInAnalysis.position}`)
+          .then(res => {
+            setRecStats(res?.data)
+          })
       }
 
       if (playerInAnalysis?.defense) {
-        axios.get("/api/v1/defenses/statistics").then(res => {
-          setDefStats(res?.data)
-        })
+        axiosClient
+          .get(`/api/v1/defenses/statistics/${playerInAnalysis.position}`)
+          .then(res => {
+            setDefStats(res?.data)
+          })
       }
     }
   }, [])

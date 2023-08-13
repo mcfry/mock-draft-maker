@@ -18,6 +18,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={265}
             data={[
@@ -37,6 +38,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={265}
             data={[
@@ -56,6 +58,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={200}
             data={[
@@ -72,6 +75,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
           <MdmRadarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
+            position={playerInAnalysis.position}
             height={305}
             width={500}
             data={[
