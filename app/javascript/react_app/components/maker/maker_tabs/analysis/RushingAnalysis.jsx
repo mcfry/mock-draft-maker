@@ -45,7 +45,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.rushing.touchdowns,
-                "Top 20": rushStats.top_20_tds
+                "Top 20": rushStats.top_20_touchdowns
               },
               {
                 name: "Avg",
@@ -97,7 +97,7 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.rushing.touchdowns,
-                "Top 20": rushStats.top_20_tds
+                "Top 20": rushStats.top_20_touchdowns
               },
               {
                 name: "Lng",

@@ -81,7 +81,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.defense.touchdowns,
-                "Top 20": defStats.top_20_tds
+                "Top 20": defStats.top_20_touchdowns
               }
             ]}
           />
@@ -160,7 +160,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.defense.touchdowns,
-                "Top 20": defStats.top_20_tds
+                "Top 20": defStats.top_20_touchdowns
               },
               {
                 name: "FF",

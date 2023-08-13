@@ -5,7 +5,7 @@ class Api::V1::PassingsController < ApplicationController
             statistics_hash[:top_20_attempts] = Passing.top_20_attempts
             statistics_hash[:top_20_completions] = Passing.top_20_completions
             statistics_hash[:top_20_yards] = Passing.top_20_yards
-            statistics_hash[:top_20_tds] = Passing.top_20_tds
+            statistics_hash[:top_20_touchdowns] = Passing.top_20_touchdowns
             statistics_hash[:top_20_long] = Passing.top_20_long
             statistics_hash[:top_20_rating] = Passing.top_20_rating
             statistics_hash[:top_20_interceptions] = Passing.top_20_interceptions
@@ -28,7 +28,7 @@ class Api::V1::PassingsController < ApplicationController
                 statistics_hash[:top_20_attempts] = Passing.top_20_attempts(position)
                 statistics_hash[:top_20_completions] = Passing.top_20_completions(position)
                 statistics_hash[:top_20_yards] = Passing.top_20_yards(position)
-                statistics_hash[:top_20_tds] = Passing.top_20_tds(position)
+                statistics_hash[:top_20_touchdowns] = Passing.top_20_touchdowns(position)
                 statistics_hash[:top_20_long] = Passing.top_20_long(position)
                 statistics_hash[:top_20_rating] = Passing.top_20_rating(position)
                 statistics_hash[:top_20_interceptions] = Passing.top_20_interceptions(position)

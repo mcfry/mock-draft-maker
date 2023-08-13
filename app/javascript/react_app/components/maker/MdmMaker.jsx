@@ -1,6 +1,6 @@
-import axios from "axios"
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import axiosClient from "../../other/axiosClient"
 
 import MdmMakerSettings from "./MdmMakerSettings"
 import MdmMakerDraft from "./MdmMakerDraft"
@@ -33,7 +33,7 @@ function MdmMaker() {
   // Lifecycle Hooks
   useEffect(() => {
     const url = "/api/v1/teams/index"
-    axios
+    axiosClient
       .get(url)
       .then(res => {
         if (res.data.length > 0) {

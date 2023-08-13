@@ -3,7 +3,7 @@ class Api::V1::RushingsController < ApplicationController
         stats = Rails.cache.fetch('rushing_statistics', expires_in: 12.hours) do 
             statistics_hash = Hash.new
             statistics_hash[:top_20_yards] = Rushing.top_20_yards
-            statistics_hash[:top_20_tds] = Rushing.top_20_tds
+            statistics_hash[:top_20_touchdowns] = Rushing.top_20_touchdowns
             statistics_hash[:top_20_long] = Rushing.top_20_long
             statistics_hash[:top_20_attempts] = Rushing.top_20_attempts
             statistics_hash[:top_20_average] = Rushing.top_20_average
@@ -21,7 +21,7 @@ class Api::V1::RushingsController < ApplicationController
             stats = Rails.cache.fetch("rushing_statistics_#{position}", expires_in: 12.hours) do 
                 statistics_hash = Hash.new
                 statistics_hash[:top_20_yards] = Rushing.top_20_yards(position)
-                statistics_hash[:top_20_tds] = Rushing.top_20_tds(position)
+                statistics_hash[:top_20_touchdowns] = Rushing.top_20_touchdowns(position)
                 statistics_hash[:top_20_long] = Rushing.top_20_long(position)
                 statistics_hash[:top_20_attempts] = Rushing.top_20_attempts(position)
                 statistics_hash[:top_20_average] = Rushing.top_20_average(position)

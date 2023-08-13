@@ -3,7 +3,7 @@ class Api::V1::ReceivingsController < ApplicationController
         stats = Rails.cache.fetch('receiving_statistics', expires_in: 12.hours) do 
             statistics_hash = Hash.new
             statistics_hash[:top_20_yards] = Receiving.top_20_yards
-            statistics_hash[:top_20_tds] = Receiving.top_20_tds
+            statistics_hash[:top_20_touchdowns] = Receiving.top_20_touchdowns
             statistics_hash[:top_20_long] = Receiving.top_20_long
             statistics_hash[:top_20_receptions] = Receiving.top_20_receptions
             statistics_hash[:top_20_average] = Receiving.top_20_average
@@ -21,7 +21,7 @@ class Api::V1::ReceivingsController < ApplicationController
             stats = Rails.cache.fetch("receiving_statistics_#{position}", expires_in: 12.hours) do 
                 statistics_hash = Hash.new
                 statistics_hash[:top_20_yards] = Receiving.top_20_yards(position)
-                statistics_hash[:top_20_tds] = Receiving.top_20_tds(position)
+                statistics_hash[:top_20_touchdowns] = Receiving.top_20_touchdowns(position)
                 statistics_hash[:top_20_long] = Receiving.top_20_long(position)
                 statistics_hash[:top_20_receptions] = Receiving.top_20_receptions(position)
                 statistics_hash[:top_20_average] = Receiving.top_20_average(position)

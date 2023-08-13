@@ -25,7 +25,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
-                "Top 20": passStats.top_20_tds
+                "Top 20": passStats.top_20_touchdowns
               },
               {
                 name: "Int",
@@ -109,7 +109,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
-                "Top 20": passStats.top_20_tds
+                "Top 20": passStats.top_20_touchdowns
               },
               {
                 name: "Int",

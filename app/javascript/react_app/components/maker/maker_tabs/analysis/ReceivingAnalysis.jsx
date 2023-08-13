@@ -45,7 +45,7 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.receiving.touchdowns,
-                "Top 20": recStats.top_20_tds
+                "Top 20": recStats.top_20_touchdowns
               },
               {
                 name: "Avg",
@@ -97,7 +97,7 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
               {
                 name: "Tds",
                 [playerInAnalysis.last]: playerInAnalysis.receiving.touchdowns,
-                "Top 20": recStats.top_20_tds
+                "Top 20": recStats.top_20_touchdowns
               },
               {
                 name: "Lng",
