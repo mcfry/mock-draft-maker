@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
 import Fuse from "fuse.js"
 import clsx from "clsx"
 
@@ -23,8 +22,6 @@ function MdmMakerDraft({
   setPlayers,
   playersLoaded
 }) {
-  const navigate = useNavigate()
-
   // Local State
   const [tab, setTab] = useState("trade")
   const [draftRunning, setDraftRunning] = useState(false)
@@ -363,7 +360,7 @@ function MdmMakerDraft({
 
       {/* Trade Stuff + PInfo */}
       <section className="flex flex-col h-full">
-        <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between">
+        <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between h-[4.5rem]">
           <div className="navbar w-max">
             {!userPicking && (
               <button

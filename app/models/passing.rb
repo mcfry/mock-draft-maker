@@ -11,6 +11,14 @@ class Passing < ApplicationRecord
         (yards.to_f / attempts.to_f).round(2)
     end
 
+    def self.top_20_attempts
+        sum_and_average_20(all.order(attempts: :desc).limit(20).pluck(:attempts))
+    end
+
+    def self.top_20_completions
+        sum_and_average_20(all.order(completions: :desc).limit(20).pluck(:completions))
+    end
+
     def self.top_20_yards
         sum_and_average_20(all.order(yards: :desc).limit(20).pluck(:yards))
     end

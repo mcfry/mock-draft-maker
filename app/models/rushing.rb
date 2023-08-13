@@ -27,7 +27,6 @@ class Rushing < ApplicationRecord
         sum_and_average_20(where("attempts > ?", 100).sort_by{|rush| rush.average}.reverse.take(20).map{|rush| rush.average})
     end
 
-
     def as_json(options = {})
         super(options).merge(average: average)
     end

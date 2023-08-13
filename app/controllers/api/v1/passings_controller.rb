@@ -2,6 +2,8 @@ class Api::V1::PassingsController < ApplicationController
     def statistics
         stats = Rails.cache.fetch('passing_statistics') do 
             statistics_hash = Hash.new
+            statistics_hash[:top_20_attempts] = Passing.top_20_attempts
+            statistics_hash[:top_20_completions] = Passing.top_20_completions
             statistics_hash[:top_20_yards] = Passing.top_20_yards
             statistics_hash[:top_20_tds] = Passing.top_20_tds
             statistics_hash[:top_20_long] = Passing.top_20_long

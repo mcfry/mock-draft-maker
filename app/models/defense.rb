@@ -39,7 +39,7 @@ class Defense < ApplicationRecord
         sum_and_average_20(all.order(int_long: :desc).limit(20).pluck(:int_long))
     end
 
-    def self.top_20_touchdowns
+    def self.top_20_tds
         sum_and_average_20(all.order(touchdowns: :desc).limit(20).pluck(:touchdowns))
     end
 

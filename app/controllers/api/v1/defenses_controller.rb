@@ -10,7 +10,7 @@ class Api::V1::DefensesController < ApplicationController
             statistics_hash[:top_20_interceptions] = Defense.top_20_interceptions
             statistics_hash[:top_20_int_yards] = Defense.top_20_int_yards
             statistics_hash[:top_20_int_long] = Defense.top_20_int_long
-            statistics_hash[:top_20_touchdowns] = Defense.top_20_touchdowns
+            statistics_hash[:top_20_tds] = Defense.top_20_tds
             statistics_hash[:top_20_forced_fumbles] = Defense.top_20_forced_fumbles
             statistics_hash[:top_20_total] = Defense.top_20_total
 
