@@ -33,6 +33,11 @@ const createDraftSlice = set => ({
   setSelected: selected =>
     set(_ => ({
       selected: { ...selected }
+    })),
+  outerTab: "trade",
+  setOuterTab: tab =>
+    set(state => ({
+      outerTab: tab || state.outerTab
     }))
 })
 

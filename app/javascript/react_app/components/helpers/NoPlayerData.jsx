@@ -1,11 +1,27 @@
 import React from "react"
+import clsx from "clsx"
+
+import useStore from "../../store/store"
 
 function NoPlayerData() {
+  const setOuterTab = useStore(state => state.setOuterTab)
+
   return (
-    <div className="flex flex-col items-center justify-center w-[54rem] h-full">
+    <div className="flex flex-col items-center justify-center w-[54rem] h-full space-y-3">
       <span className="font-semibold">
         No player selected, or no meaningful data.
       </span>
+      <button
+        type="button"
+        className={clsx(
+          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+        )}
+        onClick={_ => {
+          setOuterTab("draft")
+        }}
+      >
+        Back to Draft
+      </button>
     </div>
   )
 }

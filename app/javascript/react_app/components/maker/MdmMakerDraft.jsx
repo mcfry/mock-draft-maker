@@ -23,7 +23,6 @@ function MdmMakerDraft({
   playersLoaded
 }) {
   // Local State
-  const [tab, setTab] = useState("trade")
   const [draftRunning, setDraftRunning] = useState(false)
   const [draftState, setDraftState] = useState({})
   const [userPicking, setUserPicking] = useState(false)
@@ -36,6 +35,10 @@ function MdmMakerDraft({
   const [positionSelect, setPositionSelect] = useState("All")
 
   // Store State
+  const [outerTab, setOuterTab] = useStore(state => [
+    state.outerTab,
+    state.setOuterTab
+  ])
   const teams = useStore(state => state.teams)
   const selected = useStore(state => state.selected)
   const speed = useStore(state => state.speed)
@@ -231,7 +234,7 @@ function MdmMakerDraft({
         setUserPicking(_ => false)
       } else if (draftRunning === true) {
         setUserPicking(_ => true)
-        setTab("draft")
+        setOuterTab("draft")
       }
 
       setViewRound(parseInt(total / 32))
@@ -259,7 +262,7 @@ function MdmMakerDraft({
   return (
     <>
       {/* PMenu */}
-      <section className="overflow-x-hidden overflow-y-auto border-r-2">
+      <section className="overflow-x-hidden overflow-y-auto">
         <menu
           onFocus={() => setIsMouseOverPicks(true)}
           onBlur={() => setIsMouseOverPicks(false)}
@@ -272,7 +275,7 @@ function MdmMakerDraft({
             <button
               type="button"
               tabIndex={0}
-              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100"
+              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100 border-t-0 border-l-0 border-r-0 border-b-2"
             >
               Round {viewRound + 1}
               <DownArrowSvg />
@@ -362,7 +365,7 @@ function MdmMakerDraft({
       <section className="flex flex-col h-full">
         <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between h-[4.5rem]">
           <div className="navbar w-max">
-            {!userPicking && (
+            {!userPicking ? (
               <button
                 type="button"
                 onClick={e => {
@@ -378,6 +381,18 @@ function MdmMakerDraft({
                   <>{draftRunning ? "Pause" : "Start"}</>
                 )}
               </button>
+            ) : (
+              <>
+                {preselectedPick && outerTab === "analysis" && (
+                  <button
+                    type="button"
+                    onClick={_ => pickPlayer(preselectedPick, undefined, true)}
+                    className="btn rounded-none"
+                  >
+                    Draft
+                  </button>
+                )}
+              </>
             )}
 
             <div>&nbsp;&nbsp;&nbsp;</div>
@@ -429,7 +444,7 @@ function MdmMakerDraft({
               <input
                 value={search}
                 onChange={e => {
-                  setTab("draft")
+                  setOuterTab("draft")
                   setSearch(e.target.value)
                 }}
                 name="search"
@@ -447,19 +462,19 @@ function MdmMakerDraft({
         >
           <MdmTab
             handleClick={e => handleClick(e, "trade")}
-            currentTab={tab}
+            currentTab={outerTab}
             tabName="trade"
             displayText="Trade"
           />
           <MdmTab
             handleClick={e => handleClick(e, "draft")}
-            currentTab={tab}
+            currentTab={outerTab}
             tabName="draft"
             displayText="Draft a Player"
           />
           <MdmTab
             handleClick={e => handleClick(e, "analysis")}
-            currentTab={tab}
+            currentTab={outerTab}
             tabName="analysis"
             displayText={
               <>
@@ -476,14 +491,14 @@ function MdmMakerDraft({
           />
           <MdmTab
             handleClick={e => handleClick(e, "your-picks")}
-            currentTab={tab}
+            currentTab={outerTab}
             tabName="your-picks"
             displayText="Your Picks"
           />
         </div>
 
         <section className="flex justify-evenly w-[54rem] h-full">
-          {tab === "trade" && (
+          {outerTab === "trade" && (
             <MdmTradeTab
               startOrPauseDraft={startOrPauseDraft}
               teams={teams}
@@ -499,7 +514,7 @@ function MdmMakerDraft({
               forceNewIntervalAndContinue={forceNewIntervalAndContinue}
             />
           )}
-          {tab === "draft" && (
+          {outerTab === "draft" && (
             <MdmDraftTab
               localPlayers={localPlayers}
               playersLoaded={playersLoaded}
@@ -511,10 +526,12 @@ function MdmMakerDraft({
               handleAnalyzeClick={handleAnalyzeClick}
             />
           )}
-          {tab === "analysis" && (
+          {outerTab === "analysis" && (
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
-          {tab === "your-picks" && <MdmYourPicksTab yourPicks={yourPicks} />}
+          {outerTab === "your-picks" && (
+            <MdmYourPicksTab yourPicks={yourPicks} />
+          )}
         </section>
       </section>
     </>
@@ -524,7 +541,7 @@ function MdmMakerDraft({
   function handleClick(event, type) {
     event.preventDefault()
 
-    setTab(type)
+    setOuterTab(type)
   }
 
   function handleAnalyzeClick(event, player) {
@@ -532,7 +549,7 @@ function MdmMakerDraft({
     event.stopPropagation()
 
     setPlayerInAnalysis(player)
-    setTab("analysis")
+    setOuterTab("analysis")
   }
 
   function handleChange(event) {
@@ -540,7 +557,7 @@ function MdmMakerDraft({
 
     if (pos) {
       setPositionSelect(pos)
-      setTab("draft")
+      setOuterTab("draft")
     }
   }
 }
