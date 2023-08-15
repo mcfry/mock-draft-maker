@@ -254,6 +254,11 @@ function MdmTradeTab({
 
       setActiveTrades(_ => ({}))
       setTradeValue(_ => 0)
+
+      addAlert({
+        type: "success",
+        message: "Trade completed."
+      })
     }
   }
 }

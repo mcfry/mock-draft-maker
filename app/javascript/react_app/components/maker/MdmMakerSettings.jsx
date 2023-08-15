@@ -114,7 +114,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           </select>
         </div>
 
-        <div className="join join-vertical pt-4 pb-4">
+        <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
             <BoltIcon className="h-5 w-5" />
             &nbsp; Speed
@@ -130,7 +130,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           />
         </div>
 
-        <div className="join join-vertical pt-4 pb-4">
+        <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="flex justify-between join-item text-sm pb-2">
             <div className="flex justify-items-start items-center">
               <ArrowLongLeftIcon className="h-5 w-5" />
@@ -152,7 +152,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
           />
         </div>
 
-        <div className="join join-vertical pt-4 pb-4">
+        <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
             <VariableIcon className="h-5 w-5" />
             &nbsp; Randomness

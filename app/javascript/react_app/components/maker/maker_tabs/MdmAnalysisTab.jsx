@@ -74,7 +74,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           })
       }
     }
-  }, [])
+  }, [playerInAnalysis])
 
   return (
     <>

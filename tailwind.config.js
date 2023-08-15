@@ -38,6 +38,9 @@ module.exports = {
       screens: {
         makermax: { max: "1175px" },
         makermin: { min: "1176px" }
+      },
+      fontFamily: {
+        marker: ["Permanent Marker", "system-ui", "sans-serif"]
       }
     }
   }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react"
 import Fuse from "fuse.js"
-import clsx from "clsx"
 
 import MdmTradeTab from "./maker_tabs/MdmTradeTab"
 import MdmDraftTab from "./maker_tabs/MdmDraftTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
 import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
 import MdmTab from "../helpers/MdmTab"
+import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import useStore from "../../store/store"
 
@@ -29,12 +29,15 @@ function MdmMakerDraft({
   const [search, setSearch] = useState("")
   const [localPlayers, setLocalPlayers] = useState(players)
   const [preselectedPick, setPreselectedPick] = useState(null)
-  const [viewRound, setViewRound] = useState(0)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [positionSelect, setPositionSelect] = useState("All")
 
   // Store State
+  const [viewRound, setViewRound] = useStore(state => [
+    state.viewRound,
+    state.setViewRound
+  ])
   const [outerTab, setOuterTab] = useStore(state => [
     state.outerTab,
     state.setOuterTab
@@ -305,57 +308,25 @@ function MdmMakerDraft({
             const actualIndex = roundStart + index
 
             return currentPickIndex >= actualIndex + 1 ? (
-              <li
-                id={`${team.name}_${actualIndex.toString()}`}
+              <PickMenuListItem
                 key={`${team.name}_${actualIndex.toString()}`}
-              >
-                <button
-                  type="button"
-                  className={clsx(
-                    "flex justify-center items-center dark:hover:bg-gray-700",
-                    {
-                      "dark:bg-gray-700": team.id in selected
-                    }
-                  )}
-                  onClick={e =>
-                    handleAnalyzeClick(e, draftState[actualIndex + 1])
-                  }
-                >
-                  <div
-                    className={clsx("text-sm dark:text-gray-100", {
-                      "text-accent dark:text-accent": team.id in selected
-                    })}
-                  >
-                    <span className="font-semibold">{team.name}:</span>{" "}
-                    {draftState[actualIndex + 1].full_name} (
-                    {draftState[actualIndex + 1].position})
-                  </div>
-                </button>
-              </li>
+                team={team}
+                actualIndex={actualIndex}
+                handleClick={e =>
+                  handleAnalyzeClick(e, draftState[actualIndex + 1])
+                }
+                draftState={draftState}
+                pickedYet={true}
+              />
             ) : (
-              <li
-                id={`${team.name}_${actualIndex.toString()}`}
+              <PickMenuListItem
                 key={`${team.name}_${actualIndex.toString()}`}
-              >
-                <button
-                  type="button"
-                  className={clsx(
-                    "flex justify-center items-center dark:hover:bg-gray-700",
-                    {
-                      "dark:bg-gray-700": team.id in selected
-                    }
-                  )}
-                >
-                  <div
-                    className={clsx(
-                      "text-lg dark:text-gray-100",
-                      team.id in selected ? "text-accent dark:text-accent" : ""
-                    )}
-                  >
-                    {team.name}: {actualIndex + 1}
-                  </div>
-                </button>
-              </li>
+                team={team}
+                actualIndex={actualIndex}
+                handleClick={() => {}}
+                draftState={null}
+                pickedYet={false}
+              />
             )
           })}
         </menu>
@@ -378,22 +349,16 @@ function MdmMakerDraft({
                 {playersLoaded === false ? (
                   <span className="loading loading-infinity loading-xs" />
                 ) : (
-                  <>{draftRunning ? "Pause" : "Start"}</>
+                  <>
+                    {draftRunning
+                      ? "Pause"
+                      : currentPickIndex === 0
+                      ? "Start"
+                      : "Resume"}
+                  </>
                 )}
               </button>
-            ) : (
-              <>
-                {preselectedPick && outerTab === "analysis" && (
-                  <button
-                    type="button"
-                    onClick={_ => pickPlayer(preselectedPick, undefined, true)}
-                    className="btn rounded-none"
-                  >
-                    Draft
-                  </button>
-                )}
-              </>
-            )}
+            ) : null}
 
             <div>&nbsp;&nbsp;&nbsp;</div>
 
@@ -416,7 +381,7 @@ function MdmMakerDraft({
 
           {userPicking && (
             <div className="flex justify-center items-center h-full w-full">
-              <div className="text-md font-bold text-warning whitespace-nowrap animate-pulse">
+              <div className="text-md font-bold text-warning whitespace-nowrap">
                 You are picking (
                 {orderedPicks[Object.keys(draftState).length].name})
               </div>
@@ -548,6 +513,7 @@ function MdmMakerDraft({
     event.preventDefault()
     event.stopPropagation()
 
+    setPreselectedPick(player)
     setPlayerInAnalysis(player)
     setOuterTab("analysis")
   }
