@@ -126,7 +126,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={speed}
             onChange={e => setSpeed(parseInt(e.currentTarget.value))}
-            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200 dark:[&::-ms-fill-upper]:bg-gray-200 dark:[&::-ms-fill-lower]:bg-gray-200"
+            className="range range-xs range-primary dark:range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200 dark:[&::-ms-fill-upper]:bg-gray-200 dark:[&::-ms-fill-lower]:bg-gray-200"
           />
         </div>
 
@@ -148,7 +148,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={needsVsValue}
             onChange={e => setNeedsVsValue(parseInt(e.currentTarget.value))}
-            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
+            className="range range-xs range-primary dark:range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
           />
         </div>
 
@@ -164,7 +164,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             max="100"
             value={randomness}
             onChange={e => setRandomness(parseInt(e.currentTarget.value))}
-            className="range range-xs range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
+            className="range range-xs range-primary dark:range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
           />
         </div>
 

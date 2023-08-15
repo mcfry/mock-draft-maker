@@ -139,7 +139,33 @@ if Player.all.count == 0
                 Defense.create!(defensive_hash[full_name])
             end
         rescue => e
-            puts "error: #{e.message}"
+            puts "error creating player: #{e.message}"
+        end
+    end
+
+    # Update players with projections / 40 times
+    projections_csv_path = File.expand_path("2024_projections.csv", File.dirname(__FILE__))
+    projection_data = CSV.read(projections_csv_path, liberal_parsing: true)
+    
+    index=1
+    projection_data.each do |pd|
+        pd[3] = "UConn Huskies" if pd[3] == "Connecticut"
+
+        # firstName, lastName, projection, college, forty
+        found_player = Player.where(
+            "(first ILIKE ? OR first ILIKE ?) AND last ILIKE ? AND college ILIKE ?",
+            "%#{pd[0]}%", "%#{pd[0].gsub('.', '')}%", "%#{pd[1]}%", "%#{pd[3]}%"
+          ).first
+
+        begin
+            if found_player
+                found_player.update!({projected: index, forty_time: pd[4]})
+                index += 1
+            else
+                puts "no player for #{pd[0]}, #{pd[1]}, #{pd[3]}"
+            end
+        rescue => e
+            puts "error updating player: #{e.message}"
         end
     end
 end

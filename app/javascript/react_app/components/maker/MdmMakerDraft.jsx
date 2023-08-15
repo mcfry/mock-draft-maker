@@ -177,9 +177,13 @@ function MdmMakerDraft({
 
         pickPlayer(possiblePositional[curPick][0], total)
       }
-    }, 1000 / (speed / 2))
+    }, 1000 / (speed / 4))
 
   const startOrPauseDraft = () => {
+    if (draftRunning === false) {
+      setOuterTab("trade")
+    }
+
     setDraftRunning(prev => !prev)
   }
 
@@ -278,7 +282,7 @@ function MdmMakerDraft({
             <button
               type="button"
               tabIndex={0}
-              className="btn text-2xl w-full !bg-neutral-200 hover:!bg-neutral-300 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100 border-t-0 border-l-0 border-r-0 border-b-2"
+              className="btn text-2xl w-full hover:!bg-neutral-400 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100 border-t-0 border-l-0 border-r-0 border-b-2 border-primary dark:border-gray-200"
             >
               Round {viewRound + 1}
               <DownArrowSvg />
@@ -513,7 +517,10 @@ function MdmMakerDraft({
     event.preventDefault()
     event.stopPropagation()
 
-    setPreselectedPick(player)
+    if (userPicking) {
+      setPreselectedPick(player)
+    }
+
     setPlayerInAnalysis(player)
     setOuterTab("analysis")
   }

@@ -29,17 +29,17 @@ function MdmDraftTab({
             Select {preselectedPick && preselectedPick.full_name}?
           </p>
 
-          <div className="modal-action">
+          <div className="flex modal-action">
             <button
               type="button"
-              className="btn bg-primary dark:bg-gray-900 text-primary-content dark:text-gray-100 hover:bg-primary-content dark:hover:bg-gray-100 hover:text-primary dark:hover:text-gray-900 hover:border-2 hover:border-primary dark:hover:border-gray-100"
+              className="btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
               onClick={e => handleDraftClick(e, false)}
             >
               No
             </button>
             <button
               type="button"
-              className="btn bg-primary dark:bg-gray-900 text-primary-content dark:text-gray-100 hover:bg-primary-content dark:hover:bg-gray-100 hover:text-primary dark:hover:text-gray-900 hover:border-2 hover:border-primary dark:hover:border-gray-100"
+              className="btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
               onClick={e => handleDraftClick(e, true)}
             >
               Yes
@@ -88,7 +88,7 @@ function MdmDraftTab({
                       <button
                         type="button"
                         className={clsx(
-                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600  text-primary-content text-sm"
                         )}
                         onClick={e => handleAnalyzeClick(e, player)}
                       >
@@ -96,21 +96,23 @@ function MdmDraftTab({
                       </button>
                     </td>
                     <td>
-                      {preselectedPick === player && (
-                        <button
-                          type="button"
-                          className={clsx(
-                            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
-                          )}
-                          onClick={() => {
+                      <button
+                        type="button"
+                        className={clsx(
+                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+                        )}
+                        onClick={() => {
+                          if (userPicking === true) {
+                            setPreselectedPick(player)
+
                             if (pickModal.current) {
                               pickModal.current.showModal()
                             }
-                          }}
-                        >
-                          Draft
-                        </button>
-                      )}
+                          }
+                        }}
+                      >
+                        Draft
+                      </button>
                     </td>
                   </tr>
                 ))}

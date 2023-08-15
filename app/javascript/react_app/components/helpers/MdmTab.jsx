@@ -10,9 +10,9 @@ const MdmTab = React.memo(
         type="button"
         onClick={e => handleClick(e, tabName)}
         className={clsx(
-          "tab tab-lg hover:bg-gray-400 hover:text-gray-100 dark:hover:bg-gray-500 dark:text-gray-100",
+          "tab tab-lg text-primary hover:bg-gray-200  dark:hover:bg-gray-500 dark:text-gray-100",
           {
-            "bg-gray-600 dark:bg-gray-900 border-box text-gray-100":
+            "bg-primary !text-gray-100 hover:!text-primary dark:bg-gray-900 border-box":
               currentTab === tabName
           }
         )}
