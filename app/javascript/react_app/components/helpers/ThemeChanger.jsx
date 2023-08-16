@@ -39,6 +39,7 @@ function ThemeChanger() {
         className="toggle"
         checked={localStorage?.theme === "dark"}
         onChange={e => setTheme(e.currentTarget.checked ? "dark" : "light")}
+        aria-label="checkbox"
       />
       <span className="">
         <svg

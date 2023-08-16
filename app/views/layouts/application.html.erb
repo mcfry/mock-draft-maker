@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html class="bg-gray-100">
+<html class="bg-gray-100" lang="en">
   <head>
-    <title>MockDraftMaker</title>
+    <title>Mock Draft Maker</title>
+    <meta name="description" content="A modern Mock Draft Simulator for the NFL, completely free.">
+    <meta property="og:title" content="Mock Draft Maker">
+    <meta property="og:description" content="A modern Mock Draft Simulator for the NFL, completely free.">
+    <meta property="og:image" content="<%= image_path('mdm_logo.png') %>">
+    <meta property="og:type" content="website" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker"/>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Permanent+Marker" as="style" />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>

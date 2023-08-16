@@ -58,6 +58,12 @@ Rails.application.configure do
   # Use a different cache store in production. TODO: better one
   config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
+  # Cache-control headers
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, max-age=31536000'
+  }
+
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "mock_draft_maker_production"
