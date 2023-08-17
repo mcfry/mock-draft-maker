@@ -1,6 +1,6 @@
 class Api::V1::PlayersController < ApplicationController
   def index
-    players_json = Rails.cache.fetch("all_player_info", expires_in: 12.hours) do 
+    players_json = Rails.cache.fetch("all_player_info", expires_in: 12.hours) do
       players = Player.where("projected > ?", 0).includes(:passing, :rushing, :receiving, :defense)
         .all
         .order(:projected, :last, :first)

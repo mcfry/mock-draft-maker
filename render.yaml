@@ -5,6 +5,11 @@ databases:
     plan: free
 
 services:
+  - type: redis
+    name: cache
+    ipAllowList: [] # only allow internal connections
+    plan: free
+    maxmemoryPolicy: allkeys-lfu
   - type: web
     name: mdm_maker
     plan: free
@@ -18,3 +23,8 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: cache
+          property: connectionString

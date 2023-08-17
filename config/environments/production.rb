@@ -56,9 +56,12 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production. TODO: better one
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  # config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  config.cache_store = :redis_cache_store, {
+    url: ENV['REDIS_URL']
+  }
 
-  # Cache-control headers
+  # Cache-control headers (NOTE: don't need CDN for now)
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
     'Cache-Control' => 'public, max-age=31536000'
