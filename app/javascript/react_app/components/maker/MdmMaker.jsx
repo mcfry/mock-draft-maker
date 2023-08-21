@@ -1,7 +1,10 @@
+// External
 import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axiosClient from "../../other/axiosClient"
 
+// Internal
+import HorizontalAd from "../helpers/HorizontalAd"
 import MdmMakerSettings from "./MdmMakerSettings"
 import MdmMakerDraft from "./MdmMakerDraft"
 import MdmMakerShare from "./MdmMakerShare"
@@ -109,6 +112,7 @@ function MdmMaker() {
   return (
     <>
       <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-base-300 dark:to-gray-100 makermax:hidden">
+        <HorizontalAd />
         <MdmAlerts />
 
         {teamsLoaded === false ? (

@@ -1,4 +1,5 @@
 import React from "react"
+
 import MdmLogo from "../../images/mdm_logo.png"
 
 function About() {

@@ -11,8 +11,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker" />
+    <%# Stylesheets %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker" media="print" onload="this.media='all'"  />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%# Scripts %>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3604764545265406"
+     crossorigin="anonymous"></script>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
