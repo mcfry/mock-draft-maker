@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 import axiosClient from "../../other/axiosClient"
 
 // Internal
-import HorizontalAd from "../helpers/HorizontalAd"
 import MdmMakerSettings from "./MdmMakerSettings"
 import MdmMakerDraft from "./MdmMakerDraft"
 import MdmMakerShare from "./MdmMakerShare"
@@ -14,6 +13,7 @@ import ArrowSvg from "../helpers/svgs/ArrowSvg"
 import useStore from "../../store/store"
 import ROUTES from "../../constants/routes"
 
+// Json
 import data from "./maker_static_data/picks_2024.json"
 
 function MdmMaker() {
@@ -112,7 +112,6 @@ function MdmMaker() {
   return (
     <>
       <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-base-300 dark:to-gray-100 makermax:hidden">
-        <HorizontalAd />
         <MdmAlerts />
 
         {teamsLoaded === false ? (

@@ -1,9 +1,11 @@
+// External
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from "@headlessui/react"
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
+import { HiBars3, HiXMark } from "react-icons/hi2"
 
+// Internal
 import MdmLogo from "../../images/mdm_logo.png"
 import ThemeChanger from "../helpers/ThemeChanger"
 
@@ -70,16 +72,20 @@ function Navbar() {
                 </div>
 
                 {/* Theme Changer */}
-                <ThemeChanger />
+                <div className="hidden md:block">
+                  <ThemeChanger />
+                </div>
 
                 {/* Mobile menu button */}
-                <div className="-mr-2 flex md:hidden">
+                <div className="-mr-2 flex space-x-6 md:hidden">
+                  <ThemeChanger />
+
                   <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-primary-content focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                      <HiXMark className="block h-6 w-6" aria-hidden="true" />
                     ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                      <HiBars3 className="block h-6 w-6" aria-hidden="true" />
                     )}
                   </Disclosure.Button>
                 </div>

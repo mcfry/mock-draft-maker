@@ -1,7 +1,9 @@
+// External
 import React from "react"
 import clsx from "clsx"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
+import { RiDraggable } from "react-icons/ri"
 
 function SortableTeam({ id, team, pick, isSelected, handleClick }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -26,8 +28,11 @@ function SortableTeam({ id, team, pick, isSelected, handleClick }) {
       )}
       onClick={e => handleClick(e, "teamClick")}
     >
-      <span className="text-xs">
-        {pick}: {team.full_name}
+      <span className="flex items-center w-full">
+        <RiDraggable className="flex-[1]" />
+        <span className="text-xs flex justify-start flex-[6]">
+          {pick}: {team.full_name}
+        </span>
       </span>
     </button>
   )

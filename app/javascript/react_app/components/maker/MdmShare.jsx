@@ -1,13 +1,18 @@
+// External
 import React, { useState, useEffect, Fragment } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { FaCheck, FaCopy } from "react-icons/fa"
 
+// Internal
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
 
 function MdmShare() {
   const { draft_uuid } = useParams()
   const [draftRecord, setDraftRecord] = useState({})
   const [draftLoaded, setDraftLoaded] = useState(false)
+  const [copied, setCopied] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -31,11 +36,31 @@ function MdmShare() {
             <p>No draft record found.</p>
           ) : (
             <>
+              {copied && (
+                <span className="flex items-center font-bold">
+                  <FaCheck />
+                  &nbsp;Copied
+                </span>
+              )}
               <div className="card shadow-xl rounded bg-base-100 p-2 z-30 dark:bg-gray-500">
-                <span className="p-1 dark:text-gray-100">
-                  Your share link:&nbsp;&nbsp;
+                <span className="flex space-x-3 items-center p-1 dark:text-gray-100">
+                  <span>Your share link:</span>
                   <span className="bg-base-200 dark:text-gray-900 font-bold p-1">
                     {window.location.href}
+                  </span>
+                  <span>
+                    <CopyToClipboard
+                      text={window.location.href}
+                      onCopy={() => setCopied(true)}
+                    >
+                      <button
+                        type="button"
+                        className="flex justify-center items-center"
+                      >
+                        <FaCopy />
+                        &nbsp;Copy
+                      </button>
+                    </CopyToClipboard>
                   </span>
                 </span>
               </div>

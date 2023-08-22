@@ -1,9 +1,14 @@
+// External
 import React, { useState, useEffect } from "react"
+import { GrPauseFill } from "react-icons/gr"
 
+// Internal
 import PickGrid from "../../helpers/PickGrid"
 import useStore from "../../../store/store"
-import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
 import TradeValue from "../../helpers/TradeValue"
+
+// Json
+import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
 
 // Extrapolate so don't have to manually enter everything
 for (let i = 17; i < 257; i += 1) {
@@ -87,7 +92,8 @@ function MdmTradeTab({
             className="btn btn-lg rounded-none"
             onClick={() => startOrPauseDraft()}
           >
-            Pause
+            <GrPauseFill />
+            &nbsp;Pause
           </button>
         </div>
       ) : (

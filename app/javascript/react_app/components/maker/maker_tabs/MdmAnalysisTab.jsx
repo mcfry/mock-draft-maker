@@ -1,6 +1,8 @@
+// External
 import React, { useState, useEffect } from "react"
 import axiosClient from "../../../other/axiosClient"
 
+// Internal
 import MdmTab from "../../helpers/MdmTab"
 import NoPlayerData from "../../helpers/NoPlayerData"
 import AnalysisTable from "./analysis/AnalysisTable"

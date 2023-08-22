@@ -1,6 +1,9 @@
+// External
 import React, { useState } from "react"
 import clsx from "clsx"
+import { AiOutlineRadarChart, AiOutlineBarChart } from "react-icons/ai"
 
+// Internal
 import MdmRadarChart from "../../../helpers/MdmRadarChart"
 import MdmBarChart from "../../../helpers/MdmBarChart"
 
@@ -171,7 +174,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           )}
           onClick={() => handleClick(0)}
         >
-          Bars
+          <AiOutlineBarChart /> Bars
         </button>
         <button
           type="button"
@@ -180,7 +183,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
           )}
           onClick={() => handleClick(1)}
         >
-          Radar
+          <AiOutlineRadarChart /> Radar
         </button>
       </div>
     </div>

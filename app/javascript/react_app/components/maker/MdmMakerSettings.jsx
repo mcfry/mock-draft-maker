@@ -1,3 +1,4 @@
+// External
 import React from "react"
 import {
   DndContext,
@@ -13,13 +14,14 @@ import {
   sortableKeyboardCoordinates
 } from "@dnd-kit/sortable"
 import {
-  ArrowLongLeftIcon,
-  ArrowLongRightIcon,
-  BoltIcon,
-  VariableIcon
-} from "@heroicons/react/20/solid"
-import SortableTeam from "../helpers/SortableTeam"
+  HiArrowLongLeft,
+  HiArrowLongRight,
+  HiBolt,
+  HiVariable
+} from "react-icons/hi2"
 
+// Internal
+import SortableTeam from "../helpers/SortableTeam"
 import useStore from "../../store/store"
 
 function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
@@ -116,7 +118,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
 
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
-            <BoltIcon className="h-5 w-5" />
+            <HiBolt className="h-5 w-5" />
             &nbsp; Speed
           </div>
           <input
@@ -133,12 +135,12 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="flex justify-between join-item text-sm pb-2">
             <div className="flex justify-items-start items-center">
-              <ArrowLongLeftIcon className="h-5 w-5" />
+              <HiArrowLongLeft className="h-5 w-5" />
               Needs
             </div>
             <div className="flex justify-items-end items-center">
               Positional Value
-              <ArrowLongRightIcon className="h-5 w-5" />
+              <HiArrowLongRight className="h-5 w-5" />
             </div>
           </div>
           <input
@@ -154,7 +156,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
 
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
-            <VariableIcon className="h-5 w-5" />
+            <HiVariable className="h-5 w-5" />
             &nbsp; Randomness
           </div>
           <input
@@ -175,7 +177,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
             onClick={e => handleClick(e, "stageClick")}
             className="btn rounded-none"
           >
-            Start
+            Go to Draft
           </button>
         </div>
       </section>

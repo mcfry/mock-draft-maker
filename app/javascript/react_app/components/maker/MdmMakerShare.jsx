@@ -1,7 +1,10 @@
+// External
 import React, { Fragment } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { MdSaveAlt } from "react-icons/md"
 
+// Internal
 import useStore from "../../store/store"
 import getCsrfToken from "../../other/getCsrfToken"
 
@@ -54,7 +57,8 @@ function MdmMakerShare() {
               className="btn btn-primary dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"
               onClick={handleSubmit}
             >
-              Save and Share!
+              <MdSaveAlt />
+              &nbsp;Save and Share!
             </button>
             <div className="flex items-center justify-center w-full">
               <table className="table">

@@ -1,13 +1,13 @@
+// External
 import React, { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
-
 import clsx from "clsx"
 import {
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  InformationCircleIcon,
-  XMarkIcon
-} from "@heroicons/react/20/solid"
+  HiCheckCircle,
+  HiExclamationCircle,
+  HiInformationCircle,
+  HiXMark
+} from "react-icons/hi2"
 
 function Alert({ id, type, message, time, removeAlert }) {
   const timerId = useRef(null)
@@ -15,11 +15,11 @@ function Alert({ id, type, message, time, removeAlert }) {
   const alertIcon = iconType => {
     switch (iconType) {
       case "success":
-        return <CheckCircleIcon className="h-6 w-6" />
+        return <HiCheckCircle className="h-6 w-6" />
       case "error":
-        return <ExclamationCircleIcon className="h-6 w-6" />
+        return <HiExclamationCircle className="h-6 w-6" />
       default:
-        return <InformationCircleIcon className="h-6 w-6" />
+        return <HiInformationCircle className="h-6 w-6" />
     }
   }
 
@@ -56,7 +56,7 @@ function Alert({ id, type, message, time, removeAlert }) {
           <span>{message}</span>
         </div>
 
-        <XMarkIcon
+        <HiXMark
           className="h-6 w-6 cursor-pointer"
           onClick={() => removeAlert(id)}
         />

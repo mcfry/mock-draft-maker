@@ -1,6 +1,13 @@
+// External
 import React, { useState, useEffect, useRef } from "react"
 import Fuse from "fuse.js"
+import { IoMdSwap } from "react-icons/io"
+import { TbAnalyze } from "react-icons/tb"
+import { GiAmericanFootballPlayer } from "react-icons/gi"
+import { PiUsersThree } from "react-icons/pi"
+import { GrPauseFill, GrResume, GrPlayFill } from "react-icons/gr"
 
+// Internal
 import MdmTradeTab from "./maker_tabs/MdmTradeTab"
 import MdmDraftTab from "./maker_tabs/MdmDraftTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
@@ -10,6 +17,7 @@ import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import useStore from "../../store/store"
 
+// Json
 import needsData from "./maker_static_data/needs_2024.json"
 import positionalData from "./maker_static_data/positional_value.json"
 
@@ -354,11 +362,22 @@ function MdmMakerDraft({
                   <span className="loading loading-infinity loading-xs" />
                 ) : (
                   <>
-                    {draftRunning
-                      ? "Pause"
-                      : currentPickIndex === 0
-                      ? "Start"
-                      : "Resume"}
+                    {draftRunning ? (
+                      <>
+                        <GrPauseFill />
+                        &nbsp;Pause
+                      </>
+                    ) : currentPickIndex === 0 ? (
+                      <>
+                        <GrPlayFill />
+                        &nbsp;Start
+                      </>
+                    ) : (
+                      <>
+                        <GrResume />
+                        &nbsp;Resume
+                      </>
+                    )}
                   </>
                 )}
               </button>
@@ -433,13 +452,23 @@ function MdmMakerDraft({
             handleClick={e => handleClick(e, "trade")}
             currentTab={outerTab}
             tabName="trade"
-            displayText="Trade"
+            displayText={
+              <>
+                <IoMdSwap />
+                &nbsp;Trade
+              </>
+            }
           />
           <MdmTab
             handleClick={e => handleClick(e, "draft")}
             currentTab={outerTab}
             tabName="draft"
-            displayText="Draft a Player"
+            displayText={
+              <>
+                <GiAmericanFootballPlayer />
+                &nbsp;Draft a Player
+              </>
+            }
           />
           <MdmTab
             handleClick={e => handleClick(e, "analysis")}
@@ -447,7 +476,8 @@ function MdmMakerDraft({
             tabName="analysis"
             displayText={
               <>
-                Analysis
+                <TbAnalyze />
+                &nbsp;Analysis
                 {playerInAnalysis?.full_name ? (
                   <span className="font-semibold">
                     &nbsp;({playerInAnalysis.full_name})
@@ -462,7 +492,12 @@ function MdmMakerDraft({
             handleClick={e => handleClick(e, "your-picks")}
             currentTab={outerTab}
             tabName="your-picks"
-            displayText="Your Picks"
+            displayText={
+              <>
+                <PiUsersThree />
+                &nbsp;Your Picks
+              </>
+            }
           />
         </div>
 
