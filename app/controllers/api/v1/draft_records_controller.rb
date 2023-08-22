@@ -8,7 +8,10 @@ class Api::V1::DraftRecordsController < ApplicationController
     if draft_create_params[:draft_picks].present?
       draft_record = DraftRecord.create({
         id: SecureRandom.uuid,
-        draft_picks: draft_create_params[:draft_picks]
+        draft_picks: draft_create_params[:draft_picks],
+        speed: draft_create_params[:speed],
+        needs_vs_value: draft_create_params[:needsVsValue],
+        randomness: draft_create_params[:randomness]
       })
 
       if draft_record

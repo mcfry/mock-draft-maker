@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FaCheck, FaCopy } from "react-icons/fa"
+import { HiBolt, HiVariable } from "react-icons/hi2"
+import { AiFillSetting } from "react-icons/ai"
 
 // Internal
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
@@ -11,6 +13,9 @@ import MdmMakerSkeleton from "./MdmMakerSkeleton"
 function MdmShare() {
   const { draft_uuid } = useParams()
   const [draftRecord, setDraftRecord] = useState({})
+  const [speed, setSpeed] = useState(null)
+  const [needsVsValue, setNeedsVsValue] = useState(null)
+  const [randomness, setRandomness] = useState(null)
   const [draftLoaded, setDraftLoaded] = useState(false)
   const [copied, setCopied] = useState(false)
   const [error, setError] = useState(null)
@@ -19,6 +24,9 @@ function MdmShare() {
     axios(`/api/v1/draft_records/show/${draft_uuid}`)
       .then(res => {
         setDraftRecord(res?.data?.draft_picks)
+        setSpeed(res?.data?.speed)
+        setNeedsVsValue(res?.data?.needs_vs_value)
+        setRandomness(res?.data?.randomness)
         setDraftLoaded(true)
       })
       .catch(err => {
@@ -67,8 +75,8 @@ function MdmShare() {
 
               <div className="flex flex-row card w-[74rem] shadow-xl rounded bg-base-100 dark:bg-gray-300 dark:text-gray-900 z-30">
                 <div className="overflow-x-auto">
-                  <div className="flex flex-col w-[74rem]">
-                    <div className="flex items-center justify-center w-full">
+                  <div className="flex items-center justify-center flex-col w-[74rem]">
+                    <div className="border-b-2 border-black dark:border-gray-900 w-full">
                       <table className="table">
                         <tbody>
                           {Object.entries(draftRecord).map(
@@ -119,6 +127,25 @@ function MdmShare() {
                         </tbody>
                       </table>
                     </div>
+
+                    <span className="flex items-center justify-between w-4/5 p-10">
+                      <span className="flex items-center justify-center">
+                        <HiBolt />
+                        &nbsp;Speed: {speed === null ? "N/A" : speed}
+                      </span>
+
+                      <span className="flex items-center justify-center">
+                        <AiFillSetting />
+                        &nbsp;NeedsVsValue:{" "}
+                        {needsVsValue === null ? "N/A" : needsVsValue}
+                      </span>
+
+                      <span className="flex items-center justify-center">
+                        <HiVariable />
+                        &nbsp;Randomness:{" "}
+                        {randomness === null ? "N/A" : randomness}
+                      </span>
+                    </span>
                   </div>
                 </div>
               </div>
