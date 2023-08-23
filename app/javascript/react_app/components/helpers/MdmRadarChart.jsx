@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react"
+import clsx from "clsx"
 import {
   RadarChart,
   PolarGrid,
@@ -85,32 +86,44 @@ function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <RadarChart
-        width={width}
-        height={height}
-        data={scaledData}
-        margin={{ top: 10, right: 5, bottom: 10, left: 5 }}
-        overflow="visible"
-      >
-        <PolarGrid />
-        <PolarAngleAxis dataKey="name" />
-        <Radar
-          name={dataKey}
-          dataKey={dataKey}
-          stroke="#21ca51"
-          fill="#21ca51"
-          fillOpacity={1}
-        />
-        <Radar
-          name={dataKeyTwo}
-          dataKey={dataKeyTwo}
-          stroke="#dc2626"
-          fill="#dc2626"
-          fillOpacity={0.4}
-        />
-        <Legend />
-        <Tooltip content={<CustomTooltip data={data} position={position} />} />
-      </RadarChart>
+      {data === undefined || data === null ? (
+        <div role="status" className="animate-pulse w-full flex flex-col p-6">
+          <div
+            className={clsx(`bg-gray-200 rounded-full dark:bg-gray-700`)}
+            style={{ height: `${height - 40}px`, width: `${height - 40}px` }}
+          />
+          <span className="sr-only">Loading...</span>
+        </div>
+      ) : (
+        <RadarChart
+          width={width}
+          height={height}
+          data={scaledData}
+          margin={{ top: 10, right: 5, bottom: 10, left: 5 }}
+          overflow="visible"
+        >
+          <PolarGrid />
+          <PolarAngleAxis dataKey="name" />
+          <Radar
+            name={dataKey}
+            dataKey={dataKey}
+            stroke="#21ca51"
+            fill="#21ca51"
+            fillOpacity={1}
+          />
+          <Radar
+            name={dataKeyTwo}
+            dataKey={dataKeyTwo}
+            stroke="#dc2626"
+            fill="#dc2626"
+            fillOpacity={0.4}
+          />
+          <Legend />
+          <Tooltip
+            content={<CustomTooltip data={data} position={position} />}
+          />
+        </RadarChart>
+      )}
     </div>
   )
 }

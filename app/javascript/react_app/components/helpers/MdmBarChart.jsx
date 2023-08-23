@@ -75,49 +75,79 @@ function MdmBarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
 
   return (
     <div className="flex flex-col justify-center items-center mr-8">
-      <BarChart
-        width={width}
-        height={height}
-        data={data}
-        margin={{ top: 10, right: 5, bottom: 10, left: 5 }}
-        overflow="visible"
-      >
-        <CartesianGrid stroke="#6b7280" strokeDasharray="10 10" />
-        <XAxis dataKey="name" stroke="#0d0d0d" />
-        <YAxis stroke="#0d0d0d" />
-        <Tooltip
-          cursor={{ fill: "transparent" }}
-          content={<CustomTooltip data={data} position={position} />}
-        />
-        <Bar dataKey={dataKey}>
-          {data.map((entry, index) => {
-            return (
-              <Cell
-                key={`cell-${index}`}
-                fill="#21ca51"
-                stroke="#21ca51"
-                onMouseEnter={() => handleOpacityChange(0.9, `bar1-${index}`)}
-                onMouseLeave={() => handleOpacityChange(0.3, `bar1-${index}`)}
-                fillOpacity={barOpacity[`bar1-${index}`] || 0.3}
-              />
-            )
-          })}
-        </Bar>
-        <Bar dataKey={dataKeyTwo}>
-          {data.map((entry, index) => {
-            return (
-              <Cell
-                key={`cell-${index}`}
-                fill="#dc2626"
-                stroke="#dc2626"
-                onMouseEnter={() => handleOpacityChange(0.9, `bar2-${index}`)}
-                onMouseLeave={() => handleOpacityChange(0.3, `bar2-${index}`)}
-                fillOpacity={barOpacity[`bar2-${index}`] || 0.3}
-              />
-            )
-          })}
-        </Bar>
-      </BarChart>
+      {data === undefined || data === null ? (
+        <div
+          role="status"
+          className="animate-pulse flex justify-center items-end space-x-3 py-4"
+          style={{ width: `${width}px` }}
+        >
+          <div
+            className={clsx(`bg-gray-200 rounded-none dark:bg-gray-700`)}
+            style={{ height: `${height - 180}px`, width: "30px" }}
+          />
+          <div
+            className={clsx(`bg-gray-200 rounded-none dark:bg-gray-700`)}
+            style={{ height: `${height - 120}px`, width: "30px" }}
+          />
+          <div
+            className={clsx(`bg-gray-200 rounded-none dark:bg-gray-700`)}
+            style={{ height: `${height - 160}px`, width: "30px" }}
+          />
+          <div
+            className={clsx(`bg-gray-200 rounded-none dark:bg-gray-700`)}
+            style={{ height: `${height - 50}px`, width: "30px" }}
+          />
+          <div
+            className={clsx(`bg-gray-200 rounded-none dark:bg-gray-700`)}
+            style={{ height: `${height - 95}px`, width: "30px" }}
+          />
+          <span className="sr-only">Loading...</span>
+        </div>
+      ) : (
+        <BarChart
+          width={width}
+          height={height}
+          data={data}
+          margin={{ top: 10, right: 5, bottom: 10, left: 5 }}
+          overflow="visible"
+        >
+          <CartesianGrid stroke="#6b7280" strokeDasharray="10 10" />
+          <XAxis dataKey="name" stroke="#0d0d0d" />
+          <YAxis stroke="#0d0d0d" />
+          <Tooltip
+            cursor={{ fill: "transparent" }}
+            content={<CustomTooltip data={data} position={position} />}
+          />
+          <Bar dataKey={dataKey}>
+            {data.map((entry, index) => {
+              return (
+                <Cell
+                  key={`cell-${index}`}
+                  fill="#21ca51"
+                  stroke="#21ca51"
+                  onMouseEnter={() => handleOpacityChange(0.9, `bar1-${index}`)}
+                  onMouseLeave={() => handleOpacityChange(0.3, `bar1-${index}`)}
+                  fillOpacity={barOpacity[`bar1-${index}`] || 0.3}
+                />
+              )
+            })}
+          </Bar>
+          <Bar dataKey={dataKeyTwo}>
+            {data.map((entry, index) => {
+              return (
+                <Cell
+                  key={`cell-${index}`}
+                  fill="#dc2626"
+                  stroke="#dc2626"
+                  onMouseEnter={() => handleOpacityChange(0.9, `bar2-${index}`)}
+                  onMouseLeave={() => handleOpacityChange(0.3, `bar2-${index}`)}
+                  fillOpacity={barOpacity[`bar2-${index}`] || 0.3}
+                />
+              )
+            })}
+          </Bar>
+        </BarChart>
+      )}
     </div>
   )
 }

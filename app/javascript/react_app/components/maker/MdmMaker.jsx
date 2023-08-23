@@ -1,5 +1,5 @@
 // External
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import axiosClient from "../../other/axiosClient"
 
@@ -12,6 +12,46 @@ import MdmMakerSkeleton from "./MdmMakerSkeleton"
 import ArrowSvg from "../helpers/svgs/ArrowSvg"
 import useStore from "../../store/store"
 import ROUTES from "../../constants/routes"
+
+import arizona_cardinals from "../../images/arizona_cardinals.png"
+import atlanta_falcons from "../../images/atlanta_falcons.png"
+import baltimore_ravens from "../../images/baltimore_ravens.png"
+import buffalo_bills from "../../images/buffalo_bills.png"
+
+import carolina_panthers from "../../images/carolina_panthers.png"
+import chicago_bears from "../../images/chicago_bears.png"
+import cincinnati_bengals from "../../images/cincinnati_bengals.png"
+import cleveland_browns from "../../images/cleveland_browns.png"
+
+import dallas_cowboys from "../../images/dallas_cowboys.png"
+import denver_broncos from "../../images/denver_broncos.png"
+import detroit_lions from "../../images/detroit_lions.png"
+import green_bay_packers from "../../images/green_bay_packers.png"
+
+import houston_texans from "../../images/houston_texans.png"
+import indianapolis_colts from "../../images/indianapolis_colts.png"
+import jacksonville_jaguars from "../../images/jacksonville_jaguars.png"
+import kansas_city_chiefs from "../../images/kansas_city_chiefs.png"
+
+import las_vegas_raiders from "../../images/las_vegas_raiders.png"
+import los_angeles_chargers from "../../images/los_angeles_chargers.png"
+import los_angeles_rams from "../../images/los_angeles_rams.png"
+import miami_dolphins from "../../images/miami_dolphins.png"
+
+import minnesota_vikings from "../../images/minnesota_vikings.png"
+import new_england_patriots from "../../images/new_england_patriots.png"
+import new_orleans_saints from "../../images/new_orleans_saints.png"
+import new_york_giants from "../../images/new_york_giants.png"
+
+import new_york_jets from "../../images/new_york_jets.png"
+import philadelphia_eagles from "../../images/philadelphia_eagles.png"
+import pittsburgh_steelers from "../../images/pittsburgh_steelers.png"
+import san_francisco_49ers from "../../images/san_francisco_49ers.png"
+
+import seattle_seahawks from "../../images/seattle_seahawks.png"
+import tampa_bay_buccaneers from "../../images/tampa_bay_buccaneers.png"
+import tennessee_titans from "../../images/tennessee_titans.png"
+import washington_commanders from "../../images/washington_commanders.png"
 
 // Json
 import data from "./maker_static_data/picks_2024.json"
@@ -32,6 +72,52 @@ function MdmMaker() {
   // Store State
   const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
   const addAlert = useStore(state => state.addAlert)
+
+  // Have to do it like this because of Rails asset bullshit
+  const teamToImage = useMemo(
+    () => ({
+      arizona_cardinals,
+      atlanta_falcons,
+      baltimore_ravens,
+      buffalo_bills,
+
+      carolina_panthers,
+      chicago_bears,
+      cincinnati_bengals,
+      cleveland_browns,
+
+      dallas_cowboys,
+      denver_broncos,
+      detroit_lions,
+      green_bay_packers,
+
+      houston_texans,
+      indianapolis_colts,
+      jacksonville_jaguars,
+      kansas_city_chiefs,
+
+      las_vegas_raiders,
+      los_angeles_chargers,
+      los_angeles_rams,
+      miami_dolphins,
+
+      minnesota_vikings,
+      new_england_patriots,
+      new_orleans_saints,
+      new_york_giants,
+
+      new_york_jets,
+      philadelphia_eagles,
+      pittsburgh_steelers,
+      san_francisco_49ers,
+
+      seattle_seahawks,
+      tampa_bay_buccaneers,
+      tennessee_titans,
+      washington_commanders
+    }),
+    []
+  )
 
   // Lifecycle Hooks
   useEffect(() => {
@@ -136,6 +222,7 @@ function MdmMaker() {
                     setStage={setStage}
                     pickData={pickData}
                     setPickData={setPickData}
+                    teamToImage={teamToImage}
                   />
                 </section>
               </>

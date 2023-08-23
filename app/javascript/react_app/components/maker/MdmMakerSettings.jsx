@@ -13,18 +13,21 @@ import {
   SortableContext,
   sortableKeyboardCoordinates
 } from "@dnd-kit/sortable"
-import {
-  HiArrowLongLeft,
-  HiArrowLongRight,
-  HiBolt,
-  HiVariable
-} from "react-icons/hi2"
+import { CgArrowLongLeftL, CgArrowLongRightL } from "react-icons/cg"
+import { HiBolt } from "react-icons/hi2"
+import { HiVariable } from "react-icons/hi"
 
 // Internal
 import SortableTeam from "../helpers/SortableTeam"
 import useStore from "../../store/store"
 
-function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
+function MdmMakerSettings({
+  teamsMapping,
+  setStage,
+  pickData,
+  setPickData,
+  teamToImage
+}) {
   // Store State
   const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
   const [selected, setSelected] = useStore(state => [
@@ -86,6 +89,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
                   pick={team.first_pick || index + 1}
                   isSelected={team.id in selected}
                   handleClick={handleClick}
+                  teamToImage={teamToImage}
                 />
               ))}
             </SortableContext>
@@ -119,7 +123,7 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
             <HiBolt className="h-5 w-5" />
-            &nbsp; Speed
+            <span className="font-bold">&nbsp;Speed</span>
           </div>
           <input
             data-testid="speed"
@@ -135,12 +139,12 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="flex justify-between join-item text-sm pb-2">
             <div className="flex justify-items-start items-center">
-              <HiArrowLongLeft className="h-5 w-5" />
-              Needs
+              <CgArrowLongLeftL className="h-5 w-5" />
+              <span className="font-bold">&nbsp;Needs</span>
             </div>
             <div className="flex justify-items-end items-center">
-              Positional Value
-              <HiArrowLongRight className="h-5 w-5" />
+              <span className="font-bold">Positional Value&nbsp;</span>
+              <CgArrowLongRightL className="h-5 w-5" />
             </div>
           </div>
           <input
@@ -156,8 +160,8 @@ function MdmMakerSettings({ teamsMapping, setStage, pickData, setPickData }) {
 
         <div className="join join-vertical pt-4 pb-4 w-9/12">
           <div className="join-item flex items-center text-sm pb-2">
-            <HiVariable className="h-5 w-5" />
-            &nbsp; Randomness
+            <HiVariable className="h-6 w-6 pt-0.5" />
+            <span className="font-bold">&nbsp;Randomness</span>
           </div>
           <input
             data-testid="randomness"

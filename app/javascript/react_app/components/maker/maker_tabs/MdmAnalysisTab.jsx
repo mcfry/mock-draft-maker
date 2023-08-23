@@ -1,5 +1,6 @@
 // External
 import React, { useState, useEffect } from "react"
+import { GiRun, GiThrowingBall, GiCatch } from "react-icons/gi"
 import axiosClient from "../../../other/axiosClient"
 
 // Internal
@@ -91,7 +92,12 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "passing")}
                   currentTab={tab}
                   tabName="passing"
-                  displayText="Passing"
+                  displayText={
+                    <>
+                      <GiThrowingBall />
+                      &nbsp;Passing
+                    </>
+                  }
                 />
               )}
               {playerInAnalysis?.rushing && (
@@ -99,7 +105,12 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "rushing")}
                   currentTab={tab}
                   tabName="rushing"
-                  displayText="Rushing"
+                  displayText={
+                    <>
+                      <GiRun />
+                      &nbsp;Rushing
+                    </>
+                  }
                 />
               )}
               {playerInAnalysis?.receiving && (
@@ -107,7 +118,12 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "receiving")}
                   currentTab={tab}
                   tabName="receiving"
-                  displayText="Receiving"
+                  displayText={
+                    <>
+                      <GiCatch />
+                      &nbsp;Receiving
+                    </>
+                  }
                 />
               )}
               {playerInAnalysis?.defense && (

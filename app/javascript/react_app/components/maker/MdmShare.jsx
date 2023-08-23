@@ -1,17 +1,21 @@
 // External
 import React, { useState, useEffect, Fragment } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import axios from "axios"
+import Confetti from "react-confetti"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FaCheck, FaCopy } from "react-icons/fa"
-import { HiBolt, HiVariable } from "react-icons/hi2"
+import { HiVariable } from "react-icons/hi"
+import { HiBolt } from "react-icons/hi2"
 import { AiFillSetting } from "react-icons/ai"
 
 // Internal
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
 
 function MdmShare() {
+  const location = useLocation()
   const { draft_uuid } = useParams()
+
   const [draftRecord, setDraftRecord] = useState({})
   const [speed, setSpeed] = useState(null)
   const [needsVsValue, setNeedsVsValue] = useState(null)
@@ -34,8 +38,10 @@ function MdmShare() {
       })
   }, [])
 
+  const queryParams = new URLSearchParams(location.search)
+
   return (
-    <section className="flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 p-10">
+    <section className="relative flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 p-10">
       {draftLoaded === false ? (
         <>{error ? <p>Error: {error?.message}</p> : <MdmMakerSkeleton />}</>
       ) : (
@@ -44,21 +50,33 @@ function MdmShare() {
             <p>No draft record found.</p>
           ) : (
             <>
-              {copied && (
-                <span className="flex items-center font-bold">
-                  <FaCheck />
-                  &nbsp;Copied
-                </span>
+              {queryParams?.has("new") && (
+                <Confetti
+                  width={window.innerWidth}
+                  height={window.innerHeight}
+                  numberOfPieces={800}
+                  recycle={false}
+                  style={{ zIndex: 35 }}
+                />
               )}
-              <div className="card shadow-xl rounded bg-base-100 p-2 z-30 dark:bg-gray-500">
+              <div className="relative card shadow-xl rounded bg-base-100 p-2 z-30 dark:bg-gray-500">
+                <div className="flex items-center justify-center">
+                  {copied && (
+                    <span className="absolute flex items-center font-bold -top-10">
+                      <FaCheck />
+                      &nbsp;Copied
+                    </span>
+                  )}
+                </div>
+
                 <span className="flex space-x-3 items-center p-1 dark:text-gray-100">
                   <span>Your share link:</span>
                   <span className="bg-base-200 dark:text-gray-900 font-bold p-1">
-                    {window.location.href}
+                    {window.location.href.split("?")[0]}
                   </span>
                   <span>
                     <CopyToClipboard
-                      text={window.location.href}
+                      text={window.location.href.split("?")[0]}
                       onCopy={() => setCopied(true)}
                     >
                       <button
@@ -128,7 +146,7 @@ function MdmShare() {
                       </table>
                     </div>
 
-                    <span className="flex items-center justify-between w-4/5 p-10">
+                    <span className="flex items-center justify-between w-4/5 p-10 font-semibold">
                       <span className="flex items-center justify-center">
                         <HiBolt />
                         &nbsp;Speed: {speed === null ? "N/A" : speed}
@@ -141,7 +159,7 @@ function MdmShare() {
                       </span>
 
                       <span className="flex items-center justify-center">
-                        <HiVariable />
+                        <HiVariable size="1.35em" />
                         &nbsp;Randomness:{" "}
                         {randomness === null ? "N/A" : randomness}
                       </span>

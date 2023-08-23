@@ -41,7 +41,7 @@ function MdmMakerShare() {
         }
       })
         .then(res => {
-          navigate(`/share_draft/${res?.data?.id}`)
+          navigate(`/share_draft/${res?.data?.id}?new=true`)
         })
         .catch(_ => {
           addAlert({
