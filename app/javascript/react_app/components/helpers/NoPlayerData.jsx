@@ -14,7 +14,7 @@ function NoPlayerData() {
       <button
         type="button"
         className={clsx(
-          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
         )}
         onClick={_ => {
           setOuterTab("draft")

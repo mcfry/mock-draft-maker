@@ -22,7 +22,11 @@ function SortableTeam({
   }
 
   const convertToSnakeCase = inputString => {
-    return inputString.toLowerCase().replace(/\s+/g, "_")
+    if (inputString) {
+      return inputString.toLowerCase().replace(/\s+/g, "_")
+    }
+
+    return ""
   }
 
   return (
@@ -40,7 +44,7 @@ function SortableTeam({
       onClick={e => handleClick(e, "teamClick")}
     >
       <span className="flex items-center w-full">
-        <RiDraggable className="flex-[1]" />
+        <RiDraggable className="flex-[1] mr-1.5" />
         <span className="text-xs flex flex-col justify-center flex-[6]">
           <span className="text-lg">Pick {pick}</span>
           <span>{team.full_name}</span>
@@ -48,7 +52,7 @@ function SortableTeam({
         <img
           src={teamToImage[convertToSnakeCase(team.full_name)]}
           alt={team.full_name}
-          className="flex-[1] h-7 w-7 mr-1"
+          className="flex-[1] h-7 w-7 mr-1.5"
         />
       </span>
     </button>

@@ -54,14 +54,14 @@ function MdmTradeTab({
   const [localTeams, setLocalTeams] = useState(
     teams.filter(team => !(team.id in selected))
   )
-  const [tradePartner, setTradePartner] = useState(teams[0].full_name)
+  const [tradePartner, setTradePartner] = useState(localTeams[0].full_name)
   const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].full_name)
   const [activeTrades, setActiveTrades] = useState({})
   const [tradeValue, setTradeValue] = useState(0)
 
   const addAlert = useStore(state => state.addAlert)
 
-  const findAndSetTradeValue = (tp, ct, newActiveTrades) => {
+  const findAndSetTradeValue = (tp, ct, newActiveTrades = activeTrades) => {
     let pvd = 0
     if (tp in newActiveTrades)
       newActiveTrades[tp].forEach(value => {

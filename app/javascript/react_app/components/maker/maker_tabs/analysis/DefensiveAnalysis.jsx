@@ -16,7 +16,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
 
   return (
     <div className="flex flex-col h-[24.25rem]">
-      {chartType === 0 ? (
+      {chartType === 1 ? (
         <div className="flex justify-between items-center">
           <MdmBarChart
             dataKey={playerInAnalysis.last}

@@ -16,7 +16,7 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
 
   return (
     <div className="flex flex-col justify-evenly h-[24.25rem]">
-      {chartType === 0 ? (
+      {chartType === 1 ? (
         <div className="flex justify-between items-center">
           <MdmBarChart
             dataKey={playerInAnalysis.last}

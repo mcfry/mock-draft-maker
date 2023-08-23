@@ -18,8 +18,6 @@ function PickMenuListItem({
     return inputString.toLowerCase().replace(/\s+/g, "_")
   }
 
-  console.log(lastPick)
-
   return (
     <li
       id={`${team.name}_${actualIndex.toString()}`}

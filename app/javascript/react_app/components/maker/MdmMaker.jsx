@@ -180,10 +180,12 @@ function MdmMaker() {
         if (seen.size < 32) {
           if (!seen.has(op.full_name)) {
             seen.add(op.full_name)
+            // set the 'display pick' (first_pick)
+            // then use teamsMap as a reference for updating it
             op.first_pick = parseInt(i) + 1
             newTeams.push(op)
-            teamsMap.push(op.first_pick)
           }
+          teamsMap.push(op.full_name)
         } else {
           break
         }
@@ -219,6 +221,7 @@ function MdmMaker() {
                 <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerSettings
                     teamsMapping={teamsMapping}
+                    setTeamsMapping={setTeamsMapping}
                     setStage={setStage}
                     pickData={pickData}
                     setPickData={setPickData}

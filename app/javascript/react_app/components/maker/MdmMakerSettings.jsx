@@ -23,6 +23,7 @@ import useStore from "../../store/store"
 
 function MdmMakerSettings({
   teamsMapping,
+  setTeamsMapping,
   setStage,
   pickData,
   setPickData,
@@ -195,8 +196,26 @@ function MdmMakerSettings({
       const oldIdx = findIndex(active.id, teams)
       const newIdx = findIndex(over.id, teams)
 
-      // Swap teams in teams array and set the returned array
-      setTeams(arrayMove(teams, oldIdx, newIdx))
+      const mapOldIdx = teams[oldIdx].first_pick - 1
+      const mapNewIdx = teams[newIdx].first_pick - 1
+
+      // Get new order for teams and picks map
+      const newTeams = arrayMove(teams, oldIdx, newIdx)
+      const newTeamsMapping = arrayMove(teamsMapping, mapOldIdx, mapNewIdx)
+
+      const seen = {}
+      let j = 0
+      for (const [i, team] of newTeamsMapping.entries()) {
+        // set the 'display pick' to first found in new pick map
+        if (!(team in seen)) {
+          seen[team] = true
+          newTeams[j].first_pick = i + 1
+          j += 1
+        }
+      }
+
+      setTeams(newTeams)
+      setTeamsMapping(_ => newTeamsMapping)
     }
   }
 
@@ -220,8 +239,19 @@ function MdmMakerSettings({
       }
     } else if (type === "stageClick") {
       if (Object.keys(selected).length > 0) {
-        for (const [i, team] of Object.entries(teams)) {
-          pickDataCopy[team.full_name][0] = teamsMapping[i]
+        const newFirstPicks = {}
+        for (const [i, team] of teamsMapping.entries()) {
+          if (team in newFirstPicks) {
+            newFirstPicks[team].push(i + 1)
+          } else {
+            newFirstPicks[team] = [i + 1]
+          }
+        }
+
+        for (const [team, firstPicks] of Object.entries(newFirstPicks)) {
+          pickDataCopy[team] = firstPicks.concat(
+            pickDataCopy[team].slice(firstPicks.length)
+          )
         }
 
         setStage(2)
