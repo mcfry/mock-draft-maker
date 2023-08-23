@@ -81,7 +81,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
 
   return (
     <>
-      <div className="flex flex-col overflow-x-auto w-[54rem] h-full dark:bg-gray-300 dark:text-gray-900">
+      <div className="flex flex-col overflow-x-auto w-[62rem] h-full dark:bg-gray-300 dark:text-gray-900">
         {tab === "none" || playerInAnalysis === null ? (
           <NoPlayerData />
         ) : (

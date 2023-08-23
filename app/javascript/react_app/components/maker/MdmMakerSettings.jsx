@@ -78,7 +78,7 @@ function MdmMakerSettings({
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
       >
-        <div className="pl-4 pt-8 pb-0 pr-0 w-[54rem] h-full">
+        <div className="pl-4 pt-8 pb-0 pr-0 w-[62rem] h-full">
           <div className="grid gap-4 grid-cols-4 grid-row-8">
             <SortableContext items={teams}>
               {teams.map((team, index) => (

@@ -49,7 +49,7 @@ function MdmDraftTab({
       </dialog>
 
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
-        <div className="overflow-x-auto w-[54rem] h-[31.73rem]">
+        <div className="overflow-x-auto w-[62rem] h-[34.75rem]">
           {playersLoaded === false ? (
             <div className="flex flex-col justify-center items-center h-full">
               <span>Loading Players...</span>
@@ -58,7 +58,7 @@ function MdmDraftTab({
           ) : (
             <table className="table rounded-none">
               <thead>
-                <tr className="font-bold">
+                <tr className="text-sm font-bold text-black dark:text-gray-900">
                   <th className="w-1/12">Projected</th>
                   <th className="w-3/12">Name</th>
                   <th className="w-1/12">Position</th>

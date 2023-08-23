@@ -15,14 +15,14 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-[24.25rem]">
       {chartType === 0 ? (
         <div className="flex justify-between items-center">
           <MdmBarChart
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
-            height={305}
+            height={315}
             width={285}
             data={[
               {
@@ -63,7 +63,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
-            height={305}
+            height={315}
             width={250}
             data={[
               {
@@ -93,7 +93,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
-            height={305}
+            height={315}
             width={200}
             data={[
               {
@@ -111,7 +111,7 @@ function DefensiveAnalysis({ playerInAnalysis, defStats }) {
             dataKey={playerInAnalysis.last}
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
-            height={305}
+            height={315}
             width={500}
             data={[
               {

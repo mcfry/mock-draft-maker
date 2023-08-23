@@ -28,7 +28,8 @@ function MdmMakerDraft({
   setStage,
   players,
   setPlayers,
-  playersLoaded
+  playersLoaded,
+  teamToImage
 }) {
   // Local State
   const [draftRunning, setDraftRunning] = useState(false)
@@ -329,6 +330,8 @@ function MdmMakerDraft({
                 }
                 draftState={draftState}
                 pickedYet={true}
+                lastPick={currentPickIndex === actualIndex + 1}
+                teamToImage={teamToImage}
               />
             ) : (
               <PickMenuListItem
@@ -338,6 +341,7 @@ function MdmMakerDraft({
                 handleClick={() => {}}
                 draftState={null}
                 pickedYet={false}
+                teamToImage={teamToImage}
               />
             )
           })}
@@ -501,7 +505,7 @@ function MdmMakerDraft({
           />
         </div>
 
-        <section className="flex justify-evenly w-[54rem] h-full">
+        <section className="flex justify-evenly w-[62rem] h-full">
           {outerTab === "trade" && (
             <MdmTradeTab
               startOrPauseDraft={startOrPauseDraft}

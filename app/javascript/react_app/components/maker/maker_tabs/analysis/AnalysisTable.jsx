@@ -5,7 +5,7 @@ function AnalysisTable({ tab, playerInAnalysis }) {
     <table className="table rounded-none">
       {/* head */}
       <thead>
-        <tr className="font-bold">
+        <tr className="font-bold text-black dark:text-gray-900">
           {playerInAnalysis?.passing && (
             <>
               {tab === "passing" && (

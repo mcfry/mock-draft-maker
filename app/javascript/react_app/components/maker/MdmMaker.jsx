@@ -216,7 +216,7 @@ function MdmMaker() {
                 </div>
 
                 {/* Mdm Settings */}
-                <section className="flex flex-row mb-14 card w-[74rem] h-[39rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerSettings
                     teamsMapping={teamsMapping}
                     setStage={setStage}
@@ -231,7 +231,7 @@ function MdmMaker() {
             {stage === 2 && (
               <>
                 {/* Mdm Draft */}
-                <section className="flex flex-row mb-14 card w-[74rem] h-[39rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
                     pickData={pickData}
@@ -240,6 +240,7 @@ function MdmMaker() {
                     players={players}
                     setPlayers={setPlayers}
                     playersLoaded={playersLoaded}
+                    teamToImage={teamToImage}
                   />
                 </section>
               </>
@@ -248,7 +249,7 @@ function MdmMaker() {
             {stage === 3 && (
               <>
                 {/* Mdm Share */}
-                <section className="flex flex-row mb-14 card w-[74rem] h-[39rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerShare />
                 </section>
               </>

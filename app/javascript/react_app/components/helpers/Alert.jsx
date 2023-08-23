@@ -47,7 +47,7 @@ function Alert({ id, type, message, time, removeAlert }) {
     >
       <div
         className={clsx(
-          "alert w-[74rem] flex justify-between z-30 absolute mb-12",
+          "alert w-[82rem] flex justify-between z-30 absolute mb-12",
           alertTypes[type]
         )}
       >

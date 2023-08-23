@@ -36,8 +36,8 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        makermax: { max: "1175px" },
-        makermin: { min: "1176px" }
+        makermax: { max: "1310px" },
+        makermin: { min: "1311px" }
       },
       fontFamily: {
         marker: ["Permanent Marker", "system-ui", "sans-serif"]

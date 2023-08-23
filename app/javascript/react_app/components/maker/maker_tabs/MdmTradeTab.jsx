@@ -83,7 +83,7 @@ function MdmTradeTab({
   return (
     <>
       {draftRunning && !userPicking ? (
-        <div className="flex flex-col justify-center items-center w-[54rem] space-y-8">
+        <div className="flex flex-col justify-center items-center w-[62rem] space-y-8">
           <span className="text-info text-5xl whitespace-nowrap">
             Can&apos;t trade while draft is running.
           </span>
@@ -98,7 +98,7 @@ function MdmTradeTab({
         </div>
       ) : (
         <>
-          <div className="flex flex-col items-center border-r-2 w-[27rem]">
+          <div className="flex flex-col items-center border-r-2 w-[31rem]">
             <div className="pt-6">
               <select
                 data-testid="tradePartner"
@@ -125,7 +125,7 @@ function MdmTradeTab({
               handleTradeClick={handleTradeClick}
             />
           </div>
-          <div className="flex flex-col items-center w-[27rem]">
+          <div className="flex flex-col items-center w-[31rem]">
             <div className="pt-6">
               <select
                 data-testid="currentTeam"

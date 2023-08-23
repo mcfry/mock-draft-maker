@@ -61,7 +61,7 @@ function MdmMakerShare() {
     <>
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         <div className="overflow-x-auto">
-          <div className="flex flex-col w-[74rem]">
+          <div className="flex flex-col w-[82rem]">
             <button
               type="button"
               className="btn btn-primary dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"

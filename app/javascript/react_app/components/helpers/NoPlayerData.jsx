@@ -7,7 +7,7 @@ function NoPlayerData() {
   const setOuterTab = useStore(state => state.setOuterTab)
 
   return (
-    <div className="flex flex-col items-center justify-center w-[54rem] h-full space-y-3">
+    <div className="flex flex-col items-center justify-center w-[62rem] h-full space-y-3">
       <span className="font-semibold">
         No player selected, or no meaningful data.
       </span>
