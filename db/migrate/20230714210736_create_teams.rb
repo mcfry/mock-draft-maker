@@ -1,6 +1,6 @@
 class CreateTeams < ActiveRecord::Migration[7.0]
   def change
-    create_table :teams do |t|
+    create_table :teams, id: :uuid do |t|
       t.string :name, null: false
       t.string :city, null: false
       t.string :abbreviation, null: false

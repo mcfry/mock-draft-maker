@@ -3,7 +3,7 @@
 # Table name: draft_records
 #
 #  id             :uuid             not null, primary key
-#  draft_picks    :json
+#  year           :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  speed          :integer
@@ -11,4 +11,7 @@
 #  randomness     :integer
 #
 class DraftRecord < ApplicationRecord
+
+    has_many :draft_record_teams
+
 end

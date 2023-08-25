@@ -10,6 +10,8 @@ import { AiFillSetting } from "react-icons/ai"
 import useStore from "../../store/store"
 import getCsrfToken from "../../other/getCsrfToken"
 
+const CURRENT_YEAR = 2024
+
 function MdmMakerShare() {
   const navigate = useNavigate()
 
@@ -32,7 +34,8 @@ function MdmMakerShare() {
           draft_picks: yourPicks,
           speed,
           needsVsValue,
-          randomness
+          randomness,
+          year: CURRENT_YEAR
         },
         headers: {
           Accept: "Application/json",

@@ -9,6 +9,7 @@ class CreatePlayers < ActiveRecord::Migration[7.0]
       t.string :player_class
       t.string :college
       t.integer :projected, null: false
+      t.float :forty_time
 
       t.timestamps
     end

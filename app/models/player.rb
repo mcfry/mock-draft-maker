@@ -25,7 +25,6 @@ class Player < ApplicationRecord
     validates :projected, presence: true
 
     has_many :picks
-    has_many :teams, through: :picks
     has_one :passing, dependent: :destroy
     has_one :rushing, dependent: :destroy
     has_one :receiving, dependent: :destroy

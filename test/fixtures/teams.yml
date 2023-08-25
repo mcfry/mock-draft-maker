@@ -2,7 +2,7 @@
 #
 # Table name: teams
 #
-#  id           :bigint           not null, primary key
+#  id           :uuid             not null, primary key
 #  name         :string           not null
 #  city         :string           not null
 #  abbreviation :string           not null

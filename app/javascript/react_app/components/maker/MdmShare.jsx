@@ -16,7 +16,7 @@ function MdmShare() {
   const location = useLocation()
   const { draft_uuid } = useParams()
 
-  const [draftRecord, setDraftRecord] = useState({})
+  const [draftRecordTeams, setDraftRecordTeams] = useState({})
   const [speed, setSpeed] = useState(null)
   const [needsVsValue, setNeedsVsValue] = useState(null)
   const [randomness, setRandomness] = useState(null)
@@ -27,7 +27,7 @@ function MdmShare() {
   useEffect(() => {
     axios(`/api/v1/draft_records/show/${draft_uuid}`)
       .then(res => {
-        setDraftRecord(res?.data?.draft_picks)
+        setDraftRecordTeams(res?.data?.draft_record_teams)
         setSpeed(res?.data?.speed)
         setNeedsVsValue(res?.data?.needs_vs_value)
         setRandomness(res?.data?.randomness)
@@ -46,7 +46,7 @@ function MdmShare() {
         <>{error ? <p>Error: {error?.message}</p> : <MdmMakerSkeleton />}</>
       ) : (
         <>
-          {Object.entries(draftRecord).length === 0 ? (
+          {Object.entries(draftRecordTeams).length === 0 ? (
             <p>No draft record found.</p>
           ) : (
             <>
@@ -97,51 +97,47 @@ function MdmShare() {
                     <div className="border-b-2 border-black dark:border-gray-900 w-full">
                       <table className="table">
                         <tbody>
-                          {Object.entries(draftRecord).map(
-                            ([team, players]) => (
-                              <Fragment key={`yp_${team}`}>
-                                <tr className="bg-primary dark:bg-gray-900 text-white dark:text-gray-100">
-                                  <th className="w-2/12">{team}</th>
-                                  <th>&nbsp;</th>
-                                  <th>&nbsp;</th>
-                                  <th>&nbsp;</th>
-                                  <th>&nbsp;</th>
+                          {draftRecordTeams.map(({ team, picks }) => (
+                            <Fragment key={`yp_${team.city}_${team.name}`}>
+                              <tr className="bg-primary dark:bg-gray-900 text-white dark:text-gray-100">
+                                <th className="w-2/12">
+                                  {team.city}&nbsp;{team.name}
+                                </th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                              </tr>
+                              <tr>
+                                <th className="w-1/12 text-center">Pick</th>
+                                <th className="w-2/12 text-center">
+                                  Projection
+                                </th>
+                                <th className="w-3/12 text-center">Player</th>
+                                <th className="w-1/12 text-center">Position</th>
+                                <th className="w-5/12 text-center">College</th>
+                              </tr>
+                              {picks.map(({ pick_number, player }) => (
+                                <tr key={`yps_${player.id.toString()}`}>
+                                  <td className="w-1/12 text-center">
+                                    Pick: {pick_number}
+                                  </td>
+                                  <td className="w-2/12 text-center">
+                                    Projection: {player.projected}
+                                  </td>
+                                  <td className="w-3/12 text-center">
+                                    {player.first}&nbsp;{player.last}
+                                  </td>
+                                  <td className="w-1/12 text-center">
+                                    {player.position}
+                                  </td>
+                                  <td className="w-5/12 text-center">
+                                    {player.college}
+                                  </td>
                                 </tr>
-                                <tr>
-                                  <th className="w-1/12 text-center">Pick</th>
-                                  <th className="w-2/12 text-center">
-                                    Projection
-                                  </th>
-                                  <th className="w-3/12 text-center">Player</th>
-                                  <th className="w-1/12 text-center">
-                                    Position
-                                  </th>
-                                  <th className="w-5/12 text-center">
-                                    College
-                                  </th>
-                                </tr>
-                                {players.map(player => (
-                                  <tr key={`yps_${player.id.toString()}`}>
-                                    <td className="w-1/12 text-center">
-                                      Pick: {player.pickedAt}
-                                    </td>
-                                    <td className="w-2/12 text-center">
-                                      Projection: {player.projected}
-                                    </td>
-                                    <td className="w-3/12 text-center">
-                                      {player.full_name}
-                                    </td>
-                                    <td className="w-1/12 text-center">
-                                      {player.position}
-                                    </td>
-                                    <td className="w-5/12 text-center">
-                                      {player.college}
-                                    </td>
-                                  </tr>
-                                ))}
-                              </Fragment>
-                            )
-                          )}
+                              ))}
+                            </Fragment>
+                          ))}
                         </tbody>
                       </table>
                     </div>

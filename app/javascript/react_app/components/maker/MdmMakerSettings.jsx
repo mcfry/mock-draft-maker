@@ -223,7 +223,7 @@ function MdmMakerSettings({
     const pickDataCopy = pickData
 
     if (type === "teamClick") {
-      const idx = parseInt(event.currentTarget.id)
+      const idx = event.currentTarget.id
 
       if (idx !== -1) {
         if (idx in selected) {

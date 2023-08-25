@@ -1,6 +1,5 @@
 // External
 import React from "react"
-import clsx from "clsx"
 
 // Internal
 import ButtonTwo from "../../helpers/ButtonTwo"

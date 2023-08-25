@@ -1,9 +1,9 @@
 // External
 import React, { useState, useEffect, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
-import axiosClient from "../../other/axiosClient"
 
 // Internal
+import axiosClient from "../../other/axiosClient"
 import MdmMakerSettings from "./MdmMakerSettings"
 import MdmMakerDraft from "./MdmMakerDraft"
 import MdmMakerShare from "./MdmMakerShare"

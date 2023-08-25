@@ -7,9 +7,9 @@ import {
   GiDefensiveWall,
   GiAmericanFootballBall
 } from "react-icons/gi"
-import axiosClient from "../../../other/axiosClient"
 
 // Internal
+import axiosClient from "../../../other/axiosClient"
 import MdmTab from "../../helpers/MdmTab"
 import NoPlayerData from "../../helpers/NoPlayerData"
 import AnalysisTable from "./analysis/AnalysisTable"
@@ -59,6 +59,9 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           .then(res => {
             setPassStats(res?.data)
           })
+          .catch(_ => {
+            setPassStats({})
+          })
       }
 
       if (playerInAnalysis?.rushing) {
@@ -66,6 +69,9 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           .get(`/api/v1/rushings/statistics/${playerInAnalysis.position}`)
           .then(res => {
             setRushStats(res?.data)
+          })
+          .catch(_ => {
+            setRushStats({})
           })
       }
 
@@ -75,6 +81,9 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           .then(res => {
             setRecStats(res?.data)
           })
+          .catch(_ => {
+            setRecStats({})
+          })
       }
 
       if (playerInAnalysis?.defense) {
@@ -83,6 +92,9 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           .then(res => {
             setDefStats(res?.data)
           })
+          .catch(_ => {
+            setDefStats({})
+          })
       }
 
       if (playerInAnalysis) {
@@ -90,6 +102,9 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
           .get(`/api/v1/players/statistics/${playerInAnalysis.position}`)
           .then(res => {
             setOtherStats(res?.data)
+          })
+          .catch(_ => {
+            setOtherStats({})
           })
       }
     }
