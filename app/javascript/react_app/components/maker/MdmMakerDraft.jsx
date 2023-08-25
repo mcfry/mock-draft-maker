@@ -13,6 +13,7 @@ import MdmDraftTab from "./maker_tabs/MdmDraftTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
 import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
 import MdmTab from "../helpers/MdmTab"
+import ButtonOne from "../helpers/ButtonOne"
 import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import useStore from "../../store/store"
@@ -353,14 +354,12 @@ function MdmMakerDraft({
         <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between h-[4.5rem]">
           <div className="navbar w-max">
             {!userPicking ? (
-              <button
-                type="button"
-                onClick={e => {
+              <ButtonOne
+                handleClick={e => {
                   if (playersLoaded === true) {
                     startOrPauseDraft(e)
                   }
                 }}
-                className="btn rounded-none"
               >
                 {playersLoaded === false ? (
                   <span className="loading loading-infinity loading-xs" />
@@ -384,7 +383,7 @@ function MdmMakerDraft({
                     )}
                   </>
                 )}
-              </button>
+              </ButtonOne>
             ) : null}
 
             <div>&nbsp;&nbsp;&nbsp;</div>

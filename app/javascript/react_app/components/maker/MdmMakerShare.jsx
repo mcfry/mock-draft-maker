@@ -64,7 +64,7 @@ function MdmMakerShare() {
           <div className="flex flex-col w-[82rem]">
             <button
               type="button"
-              className="btn btn-primary dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"
+              className="btn btn-primary hover:bg-white hover:text-black dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"
               onClick={handleSubmit}
             >
               <MdSaveAlt />

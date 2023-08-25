@@ -1,18 +1,13 @@
 // External
 import React, { useState } from "react"
-import clsx from "clsx"
-import { AiOutlineRadarChart, AiOutlineBarChart } from "react-icons/ai"
 
 // Internal
 import MdmRadarChart from "../../../helpers/MdmRadarChart"
 import MdmBarChart from "../../../helpers/MdmBarChart"
+import ChartButtons from "../../../helpers/ChartButtons"
 
 function PassingAnalysis({ playerInAnalysis, passStats }) {
   const [chartType, setChartType] = useState(0)
-
-  const handleClick = (type = 0) => {
-    setChartType(type)
-  }
 
   return (
     <div className="flex flex-col justify-evenly h-[24.25rem]">
@@ -176,28 +171,14 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
         </div>
       )}
 
-      <div className="flex justify-center items-center space-x-5">
-        <button
-          type="button"
-          className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
-          )}
-          onClick={() => handleClick(1)}
-        >
-          <AiOutlineBarChart /> Bars
-        </button>
-        <button
-          type="button"
-          className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
-          )}
-          onClick={() => handleClick(0)}
-        >
-          <AiOutlineRadarChart /> Radar
-        </button>
-      </div>
+      <ChartButtons handleClick={handleClick} />
     </div>
   )
+
+  // Handlers
+  function handleClick(type = 0) {
+    setChartType(type)
+  }
 }
 
 export default PassingAnalysis

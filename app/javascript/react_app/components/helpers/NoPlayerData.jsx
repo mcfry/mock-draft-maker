@@ -1,7 +1,9 @@
+// External
 import React from "react"
-import clsx from "clsx"
 
+// Internal
 import useStore from "../../store/store"
+import ButtonTwo from "./ButtonTwo"
 
 function NoPlayerData() {
   const setOuterTab = useStore(state => state.setOuterTab)
@@ -11,17 +13,13 @@ function NoPlayerData() {
       <span className="font-semibold">
         No player selected, or no meaningful data.
       </span>
-      <button
-        type="button"
-        className={clsx(
-          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
-        )}
-        onClick={_ => {
+      <ButtonTwo
+        handleClick={_ => {
           setOuterTab("draft")
         }}
       >
         Back to Draft
-      </button>
+      </ButtonTwo>
     </div>
   )
 }

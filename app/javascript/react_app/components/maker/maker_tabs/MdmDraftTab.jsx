@@ -1,6 +1,9 @@
+// External
 import React from "react"
 import clsx from "clsx"
 
+// Internal
+import ButtonTwo from "../../helpers/ButtonTwo"
 import useStore from "../../../store/store"
 
 function MdmDraftTab({
@@ -30,20 +33,12 @@ function MdmDraftTab({
           </p>
 
           <div className="flex modal-action">
-            <button
-              type="button"
-              className="btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
-              onClick={e => handleDraftClick(e, false)}
-            >
+            <ButtonTwo handleClick={e => handleDraftClick(e, false)}>
               No
-            </button>
-            <button
-              type="button"
-              className="btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
-              onClick={e => handleDraftClick(e, true)}
-            >
+            </ButtonTwo>
+            <ButtonTwo handleClick={e => handleDraftClick(e, true)}>
               Yes
-            </button>
+            </ButtonTwo>
           </div>
         </form>
       </dialog>
@@ -85,23 +80,15 @@ function MdmDraftTab({
                     <td>{player.position}</td>
                     <td>{player.college}</td>
                     <td>
-                      <button
-                        type="button"
-                        className={clsx(
-                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600  text-primary-content text-sm"
-                        )}
-                        onClick={e => handleAnalyzeClick(e, player)}
+                      <ButtonTwo
+                        handleClick={e => handleAnalyzeClick(e, player)}
                       >
                         Analyze
-                      </button>
+                      </ButtonTwo>
                     </td>
                     <td>
-                      <button
-                        type="button"
-                        className={clsx(
-                          "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a]  dark:bg-gray-600 text-primary-content text-sm"
-                        )}
-                        onClick={() => {
+                      <ButtonTwo
+                        handleClick={() => {
                           if (userPicking === true) {
                             setPreselectedPick(player)
 
@@ -112,7 +99,7 @@ function MdmDraftTab({
                         }}
                       >
                         Draft
-                      </button>
+                      </ButtonTwo>
                     </td>
                   </tr>
                 ))}

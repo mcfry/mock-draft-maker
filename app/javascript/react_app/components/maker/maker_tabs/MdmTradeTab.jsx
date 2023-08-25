@@ -6,6 +6,7 @@ import { GrPauseFill } from "react-icons/gr"
 import PickGrid from "../../helpers/PickGrid"
 import useStore from "../../../store/store"
 import TradeValue from "../../helpers/TradeValue"
+import ButtonOne from "../../helpers/ButtonOne"
 
 // Json
 import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
@@ -166,15 +167,11 @@ function MdmTradeTab({
                     : "Difference Too Big"}
                 </div>
               )}
-              <button
-                type="button"
-                onClick={handleTradeSubmitClick}
-                className="btn rounded-none"
-              >
+              <ButtonOne handleClick={handleTradeSubmitClick}>
                 {tradeValue <= 10 && tradeValue >= -10
                   ? "Make Trade"
                   : "Force Trade Anyway"}
-              </button>
+              </ButtonOne>
             </div>
           </div>
         </>

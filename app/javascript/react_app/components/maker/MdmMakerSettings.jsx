@@ -18,6 +18,7 @@ import { HiBolt } from "react-icons/hi2"
 import { HiVariable } from "react-icons/hi"
 
 // Internal
+import ButtonOne from "../helpers/ButtonOne"
 import SortableTeam from "../helpers/SortableTeam"
 import useStore from "../../store/store"
 
@@ -176,14 +177,12 @@ function MdmMakerSettings({
         </div>
 
         <div className="mt-auto pb-12">
-          <button
+          <ButtonOne
             data-testid="start-button"
-            type="button"
             onClick={e => handleClick(e, "stageClick")}
-            className="btn rounded-none"
           >
             Go to Draft
-          </button>
+          </ButtonOne>
         </div>
       </section>
     </>
