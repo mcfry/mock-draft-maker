@@ -24,34 +24,37 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={285}
-            data={[
-              {
-                name: "Tds",
-                [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
-                "Top 20": passStats.top_20_touchdowns
-              },
-              {
-                name: "Int",
-                [playerInAnalysis.last]: playerInAnalysis.passing.interceptions,
-                "Top 20": passStats.top_20_interceptions
-              },
-              {
-                name: "Sckd",
-                [playerInAnalysis.last]: playerInAnalysis.passing.sacked,
-                "Top 20": passStats.top_20_sacked
-              },
-              {
-                name: "Lng",
-                [playerInAnalysis.last]: playerInAnalysis.passing.long,
-                "Top 20": passStats.top_20_long
-              },
-              {
-                name: "Y/A",
-                [playerInAnalysis.last]:
-                  playerInAnalysis.passing.yards_per_attempt,
-                "Top 20": passStats.top_20_yards_per_attempt
-              }
-            ]}
+            data={
+              passStats && [
+                {
+                  name: "Tds",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
+                  "Top 20": passStats.top_20_touchdowns
+                },
+                {
+                  name: "Int",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.interceptions,
+                  "Top 20": passStats.top_20_interceptions
+                },
+                {
+                  name: "Sckd",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.sacked,
+                  "Top 20": passStats.top_20_sacked
+                },
+                {
+                  name: "Lng",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.long,
+                  "Top 20": passStats.top_20_long
+                },
+                {
+                  name: "Y/A",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.yards_per_attempt,
+                  "Top 20": passStats.top_20_yards_per_attempt
+                }
+              ]
+            }
           />
 
           <MdmBarChart
@@ -60,29 +63,31 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={250}
-            data={[
-              {
-                name: "Att",
-                [playerInAnalysis.last]: playerInAnalysis.passing.attempts,
-                "Top 20": passStats.top_20_attempts
-              },
-              {
-                name: "Cmp",
-                [playerInAnalysis.last]: playerInAnalysis.passing.completions,
-                "Top 20": passStats.top_20_completions
-              },
-              {
-                name: "Cmp%",
-                [playerInAnalysis.last]:
-                  playerInAnalysis.passing.completion_percent * 100,
-                "Top 20": passStats.top_20_completion_percent * 100
-              },
-              {
-                name: "Rtg",
-                [playerInAnalysis.last]: playerInAnalysis.passing.rating,
-                "Top 20": passStats.top_20_rating
-              }
-            ]}
+            data={
+              passStats && [
+                {
+                  name: "Att",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.attempts,
+                  "Top 20": passStats.top_20_attempts
+                },
+                {
+                  name: "Cmp",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.completions,
+                  "Top 20": passStats.top_20_completions
+                },
+                {
+                  name: "Cmp%",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.completion_percent * 100,
+                  "Top 20": passStats.top_20_completion_percent * 100
+                },
+                {
+                  name: "Rtg",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.rating,
+                  "Top 20": passStats.top_20_rating
+                }
+              ]
+            }
           />
 
           <MdmBarChart
@@ -91,13 +96,15 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={200}
-            data={[
-              {
-                name: "Yards",
-                [playerInAnalysis.last]: playerInAnalysis.passing.yards,
-                "Top 20": passStats.top_20_yards
-              }
-            ]}
+            data={
+              passStats && [
+                {
+                  name: "Yards",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.yards,
+                  "Top 20": passStats.top_20_yards
+                }
+              ]
+            }
           />
         </div>
       ) : (
@@ -108,60 +115,63 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={500}
-            data={[
-              {
-                name: "Tds",
-                [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
-                "Top 20": passStats.top_20_touchdowns
-              },
-              {
-                name: "Int",
-                [playerInAnalysis.last]: playerInAnalysis.passing.interceptions,
-                "Top 20": passStats.top_20_interceptions
-              },
-              {
-                name: "Sckd",
-                [playerInAnalysis.last]: playerInAnalysis.passing.sacked,
-                "Top 20": passStats.top_20_sacked
-              },
-              {
-                name: "Lng",
-                [playerInAnalysis.last]: playerInAnalysis.passing.long,
-                "Top 20": passStats.top_20_long
-              },
-              {
-                name: "Y/A",
-                [playerInAnalysis.last]:
-                  playerInAnalysis.passing.yards_per_attempt,
-                "Top 20": passStats.top_20_yards_per_attempt
-              },
-              {
-                name: "Yards",
-                [playerInAnalysis.last]: playerInAnalysis.passing.yards,
-                "Top 20": passStats.top_20_yards
-              },
-              {
-                name: "Att",
-                [playerInAnalysis.last]: playerInAnalysis.passing.attempts,
-                "Top 20": passStats.top_20_attempts
-              },
-              {
-                name: "Cmp",
-                [playerInAnalysis.last]: playerInAnalysis.passing.completions,
-                "Top 20": passStats.top_20_completions
-              },
-              {
-                name: "Cmp%",
-                [playerInAnalysis.last]:
-                  playerInAnalysis.passing.completion_percent * 100,
-                "Top 20": passStats.top_20_completion_percent * 100
-              },
-              {
-                name: "Rtg",
-                [playerInAnalysis.last]: playerInAnalysis.passing.rating,
-                "Top 20": passStats.top_20_rating
-              }
-            ]}
+            data={
+              passStats && [
+                {
+                  name: "Tds",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.touchdowns,
+                  "Top 20": passStats.top_20_touchdowns
+                },
+                {
+                  name: "Int",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.interceptions,
+                  "Top 20": passStats.top_20_interceptions
+                },
+                {
+                  name: "Sckd",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.sacked,
+                  "Top 20": passStats.top_20_sacked
+                },
+                {
+                  name: "Lng",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.long,
+                  "Top 20": passStats.top_20_long
+                },
+                {
+                  name: "Y/A",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.yards_per_attempt,
+                  "Top 20": passStats.top_20_yards_per_attempt
+                },
+                {
+                  name: "Yards",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.yards,
+                  "Top 20": passStats.top_20_yards
+                },
+                {
+                  name: "Att",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.attempts,
+                  "Top 20": passStats.top_20_attempts
+                },
+                {
+                  name: "Cmp",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.completions,
+                  "Top 20": passStats.top_20_completions
+                },
+                {
+                  name: "Cmp%",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.passing.completion_percent * 100,
+                  "Top 20": passStats.top_20_completion_percent * 100
+                },
+                {
+                  name: "Rtg",
+                  [playerInAnalysis.last]: playerInAnalysis.passing.rating,
+                  "Top 20": passStats.top_20_rating
+                }
+              ]
+            }
           />
         </div>
       )}
@@ -170,18 +180,18 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
         <button
           type="button"
           className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
           )}
-          onClick={() => handleClick(0)}
+          onClick={() => handleClick(1)}
         >
           <AiOutlineBarChart /> Bars
         </button>
         <button
           type="button"
           className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
           )}
-          onClick={() => handleClick(1)}
+          onClick={() => handleClick(0)}
         >
           <AiOutlineRadarChart /> Radar
         </button>

@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: rushings
+#
+#  id         :uuid             not null, primary key
+#  player_id  :bigint
+#  year       :integer
+#  attempts   :integer
+#  yards      :integer
+#  long       :integer
+#  touchdowns :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Rushing < ApplicationRecord
     include Top20Creator
 
@@ -8,7 +22,12 @@ class Rushing < ApplicationRecord
     attr_accessor :average, :top_20_yards, :top_20_tds, :top_20_long, :top_20_attempts, :top_20_average
 
     # from Top20Creator - true for plural
-    create_top_20(yards: true, touchdowns: true, long: false, attempts: true)
+    create_top_20(
+        yards: { pluralize: true, order_asc: false },
+        touchdowns: { pluralize: true, order_asc: false },
+        long: { pluralize: false, order_asc: false },
+        attempts: { pluralize: true, order_asc: false }
+    )
 
     def average
         (yards.to_f / attempts.to_f).round(2)

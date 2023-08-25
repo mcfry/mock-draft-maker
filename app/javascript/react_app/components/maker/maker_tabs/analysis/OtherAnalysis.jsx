@@ -7,7 +7,7 @@ import { AiOutlineRadarChart, AiOutlineBarChart } from "react-icons/ai"
 import MdmBarChart from "../../../helpers/MdmBarChart"
 import MdmRadarChart from "../../../helpers/MdmRadarChart"
 
-function RushingAnalysis({ playerInAnalysis, rushStats }) {
+function OtherAnalysis({ playerInAnalysis, otherStats }) {
   const [chartType, setChartType] = useState(0)
 
   const handleClick = (type = 0) => {
@@ -23,18 +23,13 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
             height={315}
-            width={265}
+            width={243}
             data={
-              rushStats && [
+              otherStats && [
                 {
-                  name: "Lng",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.long,
-                  "Top 20": rushStats.top_20_long
-                },
-                {
-                  name: "Att",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.attempts,
-                  "Top 20": rushStats.top_20_attempts
+                  name: "Height",
+                  [playerInAnalysis.last]: playerInAnalysis.height,
+                  "Top 20": otherStats.top_20_height
                 }
               ]
             }
@@ -45,18 +40,13 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
             height={315}
-            width={265}
+            width={243}
             data={
-              rushStats && [
+              otherStats && [
                 {
-                  name: "Tds",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.touchdowns,
-                  "Top 20": rushStats.top_20_touchdowns
-                },
-                {
-                  name: "Avg",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.average,
-                  "Top 20": rushStats.top_20_average
+                  name: "Weight",
+                  [playerInAnalysis.last]: playerInAnalysis.weight,
+                  "Top 20": otherStats.top_20_weight
                 }
               ]
             }
@@ -67,13 +57,13 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
             dataKeyTwo="Top 20"
             position={playerInAnalysis.position}
             height={315}
-            width={200}
+            width={243}
             data={
-              rushStats && [
+              otherStats && [
                 {
-                  name: "Yards",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.yards,
-                  "Top 20": rushStats.top_20_yards
+                  name: "40 Time",
+                  [playerInAnalysis.last]: playerInAnalysis.forty_time,
+                  "Top 20": otherStats.top_20_forty_time
                 }
               ]
             }
@@ -88,31 +78,21 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
             height={315}
             width={500}
             data={
-              rushStats && [
+              otherStats && [
                 {
-                  name: "Att",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.attempts,
-                  "Top 20": rushStats.top_20_attempts
+                  name: "Height",
+                  [playerInAnalysis.last]: playerInAnalysis.height,
+                  "Top 20": otherStats.top_20_height
                 },
                 {
-                  name: "Yards",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.yards,
-                  "Top 20": rushStats.top_20_yards
+                  name: "Weight",
+                  [playerInAnalysis.last]: playerInAnalysis.weight,
+                  "Top 20": otherStats.top_20_weight
                 },
                 {
-                  name: "Avg",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.average,
-                  "Top 20": rushStats.top_20_average
-                },
-                {
-                  name: "Tds",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.touchdowns,
-                  "Top 20": rushStats.top_20_touchdowns
-                },
-                {
-                  name: "Lng",
-                  [playerInAnalysis.last]: playerInAnalysis.rushing.long,
-                  "Top 20": rushStats.top_20_long
+                  name: "40 Time",
+                  [playerInAnalysis.last]: playerInAnalysis.forty_time,
+                  "Top 20": otherStats.top_20_forty_time
                 }
               ]
             }
@@ -144,4 +124,4 @@ function RushingAnalysis({ playerInAnalysis, rushStats }) {
   )
 }
 
-export default RushingAnalysis
+export default OtherAnalysis

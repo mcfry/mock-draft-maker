@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: passings
+#
+#  id            :uuid             not null, primary key
+#  player_id     :bigint
+#  year          :integer
+#  attempts      :integer
+#  completions   :integer
+#  long          :integer
+#  yards         :integer
+#  touchdowns    :integer
+#  interceptions :integer
+#  sacked        :integer
+#  rating        :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 class Passing < ApplicationRecord
     include Top20Creator
 
@@ -8,7 +26,16 @@ class Passing < ApplicationRecord
     attr_accessor :completion_percent, :yards_per_attempt
 
     # from Top20Creator - true for plural
-    create_top_20(yards: true, touchdowns: true, long: false, attempts: true, completions: true, rating: false, interceptions: true, sacked: false)
+    create_top_20(
+        yards: { pluralize: true, order_asc: false },
+        touchdowns: { pluralize: true, order_asc: false },
+        long: { pluralize: false, order_asc: false },
+        attempts: { pluralize: true, order_asc: false },
+        completions: { pluralize: true, order_asc: false },
+        rating: { pluralize: false, order_asc: false },
+        interceptions: { pluralize: true, order_asc: false },
+        sacked: { pluralize: false, order_asc: false }
+    )
 
     def completion_percent
         (completions.to_f / attempts.to_f).round(2)
@@ -68,7 +95,7 @@ class Passing < ApplicationRecord
     private
 
     def self.sum_and_average_20(array)
-        (array.inject(0){ |total, cur| 
+        (array.inject(0){ |total, cur|
             total + cur
         }.to_f / 20).round(2)
     end

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'rushings/statistics/:position', to: 'rushings#statistics_by_position'
       get 'receivings/statistics/:position', to: 'receivings#statistics_by_position'
       get 'defenses/statistics/:position', to: 'defenses#statistics_by_position'
+      get 'players/statistics/:position', to: 'players#statistics_by_position'
     end
   end
 

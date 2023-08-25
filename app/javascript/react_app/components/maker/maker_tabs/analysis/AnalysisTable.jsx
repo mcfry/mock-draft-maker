@@ -69,6 +69,17 @@ function AnalysisTable({ tab, playerInAnalysis }) {
               )}
             </>
           )}
+          {playerInAnalysis && (
+            <>
+              {tab === "other" && (
+                <>
+                  <td>Height (in)</td>
+                  <td>Weight (lbs)</td>
+                  <td>40 Time</td>
+                </>
+              )}
+            </>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -132,6 +143,17 @@ function AnalysisTable({ tab, playerInAnalysis }) {
                   <td>{playerInAnalysis.defense?.int_long}</td>
                   <td>{playerInAnalysis.defense?.touchdowns}</td>
                   <td>{playerInAnalysis.defense?.forced_fumbles}</td>
+                </>
+              )}
+            </>
+          )}
+          {playerInAnalysis && (
+            <>
+              {tab === "other" && (
+                <>
+                  <td>{playerInAnalysis.height}</td>
+                  <td>{playerInAnalysis.weight}</td>
+                  <td>{playerInAnalysis.forty_time}</td>
                 </>
               )}
             </>

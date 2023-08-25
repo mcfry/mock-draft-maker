@@ -1,6 +1,12 @@
 // External
 import React, { useState, useEffect } from "react"
-import { GiRun, GiThrowingBall, GiCatch } from "react-icons/gi"
+import {
+  GiRun,
+  GiThrowingBall,
+  GiCatch,
+  GiDefensiveWall,
+  GiAmericanFootballBall
+} from "react-icons/gi"
 import axiosClient from "../../../other/axiosClient"
 
 // Internal
@@ -11,6 +17,7 @@ import RushingAnalysis from "./analysis/RushingAnalysis"
 import PassingAnalysis from "./analysis/PassingAnalysis"
 import ReceivingAnalysis from "./analysis/ReceivingAnalysis"
 import DefensiveAnalysis from "./analysis/DefensiveAnalysis"
+import OtherAnalysis from "./analysis/OtherAnalysis"
 
 const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   const [tab, setTab] = useState("passing")
@@ -18,6 +25,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   const [rushStats, setRushStats] = useState(null)
   const [recStats, setRecStats] = useState(null)
   const [defStats, setDefStats] = useState(null)
+  const [otherStats, setOtherStats] = useState(null)
 
   const positionToDefaultTab = {
     QB: "passing",
@@ -76,6 +84,14 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
             setDefStats(res?.data)
           })
       }
+
+      if (playerInAnalysis) {
+        axiosClient
+          .get(`/api/v1/players/statistics/${playerInAnalysis.position}`)
+          .then(res => {
+            setOtherStats(res?.data)
+          })
+      }
     }
   }, [playerInAnalysis])
 
@@ -131,7 +147,25 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "defense")}
                   currentTab={tab}
                   tabName="defense"
-                  displayText="Defensive"
+                  displayText={
+                    <>
+                      <GiDefensiveWall />
+                      &nbsp;Defense
+                    </>
+                  }
+                />
+              )}
+              {playerInAnalysis && (
+                <MdmTab
+                  handleClick={e => handleClick(e, "other")}
+                  currentTab={tab}
+                  tabName="other"
+                  displayText={
+                    <>
+                      <GiAmericanFootballBall />
+                      &nbsp;Other
+                    </>
+                  }
                 />
               )}
             </div>
@@ -153,41 +187,40 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                 <AnalysisTable tab={tab} playerInAnalysis={playerInAnalysis} />
 
                 <div className="p-4">
-                  {tab === "passing" &&
-                    playerInAnalysis?.passing &&
-                    passStats !== null && (
-                      <PassingAnalysis
-                        playerInAnalysis={playerInAnalysis}
-                        passStats={passStats}
-                      />
-                    )}
+                  {tab === "passing" && playerInAnalysis?.passing && (
+                    <PassingAnalysis
+                      playerInAnalysis={playerInAnalysis}
+                      passStats={passStats}
+                    />
+                  )}
 
-                  {tab === "rushing" &&
-                    playerInAnalysis?.rushing &&
-                    rushStats !== null && (
-                      <RushingAnalysis
-                        playerInAnalysis={playerInAnalysis}
-                        rushStats={rushStats}
-                      />
-                    )}
+                  {tab === "rushing" && playerInAnalysis?.rushing && (
+                    <RushingAnalysis
+                      playerInAnalysis={playerInAnalysis}
+                      rushStats={rushStats}
+                    />
+                  )}
 
-                  {tab === "receiving" &&
-                    playerInAnalysis?.receiving &&
-                    recStats !== null && (
-                      <ReceivingAnalysis
-                        playerInAnalysis={playerInAnalysis}
-                        recStats={recStats}
-                      />
-                    )}
+                  {tab === "receiving" && playerInAnalysis?.receiving && (
+                    <ReceivingAnalysis
+                      playerInAnalysis={playerInAnalysis}
+                      recStats={recStats}
+                    />
+                  )}
 
-                  {tab === "defense" &&
-                    playerInAnalysis?.defense &&
-                    defStats !== null && (
-                      <DefensiveAnalysis
-                        playerInAnalysis={playerInAnalysis}
-                        defStats={defStats}
-                      />
-                    )}
+                  {tab === "defense" && playerInAnalysis?.defense && (
+                    <DefensiveAnalysis
+                      playerInAnalysis={playerInAnalysis}
+                      defStats={defStats}
+                    />
+                  )}
+
+                  {tab === "other" && playerInAnalysis && (
+                    <OtherAnalysis
+                      playerInAnalysis={playerInAnalysis}
+                      otherStats={otherStats}
+                    />
+                  )}
                 </div>
               </div>
             </div>

@@ -15,7 +15,7 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
   }
 
   return (
-    <div className="flex flex-col h-[24.25rem]">
+    <div className="flex flex-col justify-evenly h-[24.25rem]">
       {chartType === 1 ? (
         <div className="flex justify-between items-center">
           <MdmBarChart
@@ -24,18 +24,21 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={265}
-            data={[
-              {
-                name: "Lng",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.long,
-                "Top 20": recStats.top_20_long
-              },
-              {
-                name: "Rec",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.receptions,
-                "Top 20": recStats.top_20_receptions
-              }
-            ]}
+            data={
+              recStats && [
+                {
+                  name: "Lng",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.long,
+                  "Top 20": recStats.top_20_long
+                },
+                {
+                  name: "Rec",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.receiving.receptions,
+                  "Top 20": recStats.top_20_receptions
+                }
+              ]
+            }
           />
 
           <MdmBarChart
@@ -44,18 +47,21 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={265}
-            data={[
-              {
-                name: "Tds",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.touchdowns,
-                "Top 20": recStats.top_20_touchdowns
-              },
-              {
-                name: "Avg",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.average,
-                "Top 20": recStats.top_20_average
-              }
-            ]}
+            data={
+              recStats && [
+                {
+                  name: "Tds",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.receiving.touchdowns,
+                  "Top 20": recStats.top_20_touchdowns
+                },
+                {
+                  name: "Avg",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.average,
+                  "Top 20": recStats.top_20_average
+                }
+              ]
+            }
           />
 
           <MdmBarChart
@@ -64,13 +70,15 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={200}
-            data={[
-              {
-                name: "Yards",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.yards,
-                "Top 20": recStats.top_20_yards
-              }
-            ]}
+            data={
+              recStats && [
+                {
+                  name: "Yards",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.yards,
+                  "Top 20": recStats.top_20_yards
+                }
+              ]
+            }
           />
         </div>
       ) : (
@@ -81,33 +89,37 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
             position={playerInAnalysis.position}
             height={315}
             width={500}
-            data={[
-              {
-                name: "Att",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.receptions,
-                "Top 20": recStats.top_20_receptions
-              },
-              {
-                name: "Yards",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.yards,
-                "Top 20": recStats.top_20_yards
-              },
-              {
-                name: "Avg",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.average,
-                "Top 20": recStats.top_20_average
-              },
-              {
-                name: "Tds",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.touchdowns,
-                "Top 20": recStats.top_20_touchdowns
-              },
-              {
-                name: "Lng",
-                [playerInAnalysis.last]: playerInAnalysis.receiving.long,
-                "Top 20": recStats.top_20_long
-              }
-            ]}
+            data={
+              recStats && [
+                {
+                  name: "Att",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.receiving.receptions,
+                  "Top 20": recStats.top_20_receptions
+                },
+                {
+                  name: "Yards",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.yards,
+                  "Top 20": recStats.top_20_yards
+                },
+                {
+                  name: "Avg",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.average,
+                  "Top 20": recStats.top_20_average
+                },
+                {
+                  name: "Tds",
+                  [playerInAnalysis.last]:
+                    playerInAnalysis.receiving.touchdowns,
+                  "Top 20": recStats.top_20_touchdowns
+                },
+                {
+                  name: "Lng",
+                  [playerInAnalysis.last]: playerInAnalysis.receiving.long,
+                  "Top 20": recStats.top_20_long
+                }
+              ]
+            }
           />
         </div>
       )}
@@ -116,18 +128,18 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
         <button
           type="button"
           className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
           )}
-          onClick={() => handleClick(0)}
+          onClick={() => handleClick(1)}
         >
           <AiOutlineBarChart /> Bars
         </button>
         <button
           type="button"
           className={clsx(
-            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-gray-600 text-primary-content text-sm"
+            "btn btn-sm hover:bg-white hover:text-primary rounded-none border-primary bg-[#0e0c0a] dark:bg-gray-600 text-primary-content text-sm"
           )}
-          onClick={() => handleClick(1)}
+          onClick={() => handleClick(0)}
         >
           <AiOutlineRadarChart /> Radar
         </button>

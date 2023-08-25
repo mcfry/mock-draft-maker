@@ -64,20 +64,24 @@ function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
   const [scaledData, setScaledData] = useState([])
 
   const scaleData = () => {
-    const scaled = []
-    for (const entry of data) {
-      const localMax = Math.max(entry[dataKey], entry[dataKeyTwo])
-      const scaleFactor = 100 / localMax
-      scaled.push({
-        ...entry,
-        [dataKey]:
-          entry[dataKey] === localMax ? 100 : entry[dataKey] * scaleFactor,
-        [dataKeyTwo]:
-          entry[dataKeyTwo] === localMax ? 100 : entry[dataKeyTwo] * scaleFactor
-      })
-    }
+    if (data) {
+      const scaled = []
+      for (const entry of data) {
+        const localMax = Math.max(entry[dataKey], entry[dataKeyTwo])
+        const scaleFactor = 100 / localMax
+        scaled.push({
+          ...entry,
+          [dataKey]:
+            entry[dataKey] === localMax ? 100 : entry[dataKey] * scaleFactor,
+          [dataKeyTwo]:
+            entry[dataKeyTwo] === localMax
+              ? 100
+              : entry[dataKeyTwo] * scaleFactor
+        })
+      }
 
-    setScaledData(scaled)
+      setScaledData(scaled)
+    }
   }
 
   useEffect(() => {
