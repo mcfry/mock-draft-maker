@@ -13,5 +13,6 @@ class DraftRecordTeam < ApplicationRecord
     belongs_to :draft_record
     belongs_to :team
     has_many :picks
-    
+    has_many :players, through: :picks
+
 end

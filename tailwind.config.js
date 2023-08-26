@@ -41,6 +41,9 @@ module.exports = {
       },
       fontFamily: {
         marker: ["Permanent Marker", "system-ui", "sans-serif"]
+      },
+      colors: {
+        "accent-back": "#a85959"
       }
     }
   }

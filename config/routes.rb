@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'receivings/statistics/:position', to: 'receivings#statistics_by_position'
       get 'defenses/statistics/:position', to: 'defenses#statistics_by_position'
       get 'players/statistics/:position', to: 'players#statistics_by_position'
+      get 'draft_record_teams/statistics/:team_id', to: 'draft_record_teams#statistics'
     end
   end
 

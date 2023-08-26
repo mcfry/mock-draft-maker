@@ -14,4 +14,5 @@ class Pick < ApplicationRecord
 
     belongs_to :player
     belongs_to :draft_record_team
+    has_one :team, through: :draft_record_team
 end

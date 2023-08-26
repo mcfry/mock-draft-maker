@@ -123,6 +123,10 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "passing")}
                   currentTab={tab}
                   tabName="passing"
+                  mainTab={
+                    positionToDefaultTab[playerInAnalysis.position] ===
+                    "passing"
+                  }
                   displayText={
                     <>
                       <GiThrowingBall />
@@ -136,6 +140,10 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "rushing")}
                   currentTab={tab}
                   tabName="rushing"
+                  mainTab={
+                    positionToDefaultTab[playerInAnalysis.position] ===
+                    "rushing"
+                  }
                   displayText={
                     <>
                       <GiRun />
@@ -149,6 +157,10 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "receiving")}
                   currentTab={tab}
                   tabName="receiving"
+                  mainTab={
+                    positionToDefaultTab[playerInAnalysis.position] ===
+                    "receiving"
+                  }
                   displayText={
                     <>
                       <GiCatch />
@@ -162,6 +174,10 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
                   handleClick={e => handleClick(e, "defense")}
                   currentTab={tab}
                   tabName="defense"
+                  mainTab={
+                    positionToDefaultTab[playerInAnalysis.position] ===
+                    "defense"
+                  }
                   displayText={
                     <>
                       <GiDefensiveWall />

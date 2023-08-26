@@ -47,6 +47,7 @@ class Api::V1::DraftRecordsController < ApplicationController
   def show
     draft_record = DraftRecord.where({id: params[:uuid]}).includes(draft_record_teams: [:team, :picks]).first
 
+    # NOTE: can refactor this to send less data, doesn't matter too much
     if draft_record
       render json: draft_record.as_json(include: { 
           draft_record_teams: { 

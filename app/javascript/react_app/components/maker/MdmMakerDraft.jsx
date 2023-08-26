@@ -10,6 +10,7 @@ import { GrPauseFill, GrResume, GrPlayFill } from "react-icons/gr"
 // Internal
 import MdmTradeTab from "./maker_tabs/MdmTradeTab"
 import MdmDraftTab from "./maker_tabs/MdmDraftTab"
+import MdmPickStatsTab from "./maker_tabs/MdmPickStatsTab"
 import MdmAnalysisTab from "./maker_tabs/MdmAnalysisTab"
 import MdmYourPicksTab from "./maker_tabs/MdmYourPicksTab"
 import MdmTab from "../helpers/MdmTab"
@@ -40,6 +41,7 @@ function MdmMakerDraft({
   const [localPlayers, setLocalPlayers] = useState(players)
   const [preselectedPick, setPreselectedPick] = useState(null)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
+  const [pickStatsTeam, setPickStatsTeam] = useState(null)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [positionSelect, setPositionSelect] = useState("All")
 
@@ -99,6 +101,9 @@ function MdmMakerDraft({
       ...prev,
       [total + 1]: playerToAdd
     }))
+
+    // Set analysis team automatically
+    setPickStatsTeam(orderedPicks[total + 1])
 
     // Remove from possible picks
     removePlayer(playerToAdd)
@@ -339,7 +344,7 @@ function MdmMakerDraft({
                 key={`${team.name}_${actualIndex.toString()}`}
                 team={team}
                 actualIndex={actualIndex}
-                handleClick={() => {}}
+                handleClick={e => handlePickStatsClick(e, team)}
                 draftState={null}
                 pickedYet={false}
                 teamToImage={teamToImage}
@@ -466,10 +471,38 @@ function MdmMakerDraft({
             handleClick={e => handleClick(e, "draft")}
             currentTab={outerTab}
             tabName="draft"
+            mainTab={true}
             displayText={
               <>
                 <GiAmericanFootballPlayer />
-                &nbsp;Draft a Player
+                &nbsp;Draft
+              </>
+            }
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "your-picks")}
+            currentTab={outerTab}
+            tabName="your-picks"
+            displayText={
+              <>
+                <PiUsersThree />
+                &nbsp;Your Picks
+              </>
+            }
+          />
+          <MdmTab
+            handleClick={e => handleClick(e, "pick_stats")}
+            currentTab={outerTab}
+            tabName="pick_stats"
+            displayText={
+              <>
+                <TbAnalyze />
+                &nbsp;Team Stats
+                {pickStatsTeam && (
+                  <span className="font-semibold">
+                    &nbsp;({pickStatsTeam.name})
+                  </span>
+                )}
               </>
             }
           />
@@ -488,17 +521,6 @@ function MdmMakerDraft({
                 ) : (
                   ""
                 )}
-              </>
-            }
-          />
-          <MdmTab
-            handleClick={e => handleClick(e, "your-picks")}
-            currentTab={outerTab}
-            tabName="your-picks"
-            displayText={
-              <>
-                <PiUsersThree />
-                &nbsp;Your Picks
               </>
             }
           />
@@ -536,6 +558,9 @@ function MdmMakerDraft({
           {outerTab === "analysis" && (
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
+          {outerTab === "pick_stats" && (
+            <MdmPickStatsTab team={pickStatsTeam} />
+          )}
           {outerTab === "your-picks" && (
             <MdmYourPicksTab yourPicks={yourPicks} />
           )}
@@ -561,6 +586,14 @@ function MdmMakerDraft({
 
     setPlayerInAnalysis(player)
     setOuterTab("analysis")
+  }
+
+  function handlePickStatsClick(event, team) {
+    event.preventDefault()
+    event.stopPropagation()
+
+    setPickStatsTeam(team)
+    setOuterTab("pick_stats")
   }
 
   function handleChange(event) {
