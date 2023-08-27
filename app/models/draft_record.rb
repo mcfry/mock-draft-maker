@@ -12,6 +12,6 @@
 #
 class DraftRecord < ApplicationRecord
 
-    has_many :draft_record_teams
+    has_many :draft_record_teams, dependent: :destroy
 
 end

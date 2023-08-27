@@ -84,8 +84,8 @@ function MdmMakerShare() {
                         </tr>
                         {players.map(player => (
                           <tr key={`yps_${player.id.toString()}`}>
-                            <td>Projection: {player.projected}</td>
                             <td>Pick: {player.pickedAt}</td>
+                            <td>Projection: {player.projected}</td>
                             <td>{player.full_name}</td>
                             <td>{player.position}</td>
                             <td>{player.college}</td>

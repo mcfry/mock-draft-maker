@@ -42,6 +42,7 @@ function MdmMakerDraft({
   const [preselectedPick, setPreselectedPick] = useState(null)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
   const [pickStatsTeam, setPickStatsTeam] = useState(null)
+  const [pickStatsTeamIndex, setPickStatsTeamIndex] = useState(null)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [positionSelect, setPositionSelect] = useState("All")
 
@@ -104,6 +105,7 @@ function MdmMakerDraft({
 
     // Set analysis team automatically
     setPickStatsTeam(orderedPicks[total + 1])
+    setPickStatsTeamIndex(total + 1)
 
     // Remove from possible picks
     removePlayer(playerToAdd)
@@ -344,7 +346,9 @@ function MdmMakerDraft({
                 key={`${team.name}_${actualIndex.toString()}`}
                 team={team}
                 actualIndex={actualIndex}
-                handleClick={e => handlePickStatsClick(e, team)}
+                handleClick={e =>
+                  handlePickStatsClick(e, team, currentPickIndex)
+                }
                 draftState={null}
                 pickedYet={false}
                 teamToImage={teamToImage}
@@ -559,7 +563,10 @@ function MdmMakerDraft({
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
           {outerTab === "pick_stats" && (
-            <MdmPickStatsTab team={pickStatsTeam} />
+            <MdmPickStatsTab
+              team={pickStatsTeam}
+              pickLocale={pickStatsTeamIndex}
+            />
           )}
           {outerTab === "your-picks" && (
             <MdmYourPicksTab yourPicks={yourPicks} />
@@ -588,11 +595,12 @@ function MdmMakerDraft({
     setOuterTab("analysis")
   }
 
-  function handlePickStatsClick(event, team) {
+  function handlePickStatsClick(event, team, teamIndex) {
     event.preventDefault()
     event.stopPropagation()
 
     setPickStatsTeam(team)
+    setPickStatsTeamIndex(teamIndex)
     setOuterTab("pick_stats")
   }
 

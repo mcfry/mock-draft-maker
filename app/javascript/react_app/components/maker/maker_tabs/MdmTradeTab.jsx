@@ -1,6 +1,8 @@
 // External
 import React, { useState, useEffect } from "react"
+import clsx from "clsx"
 import { GrPauseFill } from "react-icons/gr"
+import { MdInfo } from "react-icons/md"
 
 // Internal
 import PickGrid from "../../helpers/PickGrid"
@@ -11,26 +13,33 @@ import ButtonOne from "../../helpers/ButtonOne"
 // Json
 import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
 
-// Extrapolate so don't have to manually enter everything
-for (let i = 17; i < 257; i += 1) {
-  let diff = 0
-  if (i <= 20) {
-    diff = 9
-  } else if (i <= 24) {
-    diff = 8
-  } else if (i <= 32) {
-    diff = 7
-  } else if (i <= 35) {
-    diff = 5
-  } else if (i <= 47) {
-    diff = 4
-  } else if (i <= 56) {
-    diff = 3
-  } else if (i <= 68) {
-    diff = 2
-  } else {
-    diff = 1
-  }
+// NOTE: reality, future pick value is dependent on many factors
+//       - number of picks in future draft (can maybe use avg # in each round)
+//       - team outlook (can use projections, or previous year as indicator,
+//         or even average over a smaller segment like 1-8 instead of 1-32
+//         where 32 is the max in the current round)
+//       - can't use it for a year, less value
+//
+// Ideally: algo is something like slot=(team_rank / 8)
+//                                 num_in_slot=(round_picks/8)
+//                                 avg(values(slot*num_in_slot...(slot
+//                                     +1)*num_in_slot))
+//                                 * wait_time_value_percent (0.9?)
+//
+// NOTE: uncomment to find averages for future picks
+// comp picks start round 3
+// based on 8 comp picks avg =
+// for (let i = 1; i < 264; i += i < 64 ? 32 : 40) {
+//   let avg = 0
+//   for (let j = i; j < i + (i < 64 ? 32 : 40); j += 1) {
+//     avg += j in pickValueData ? pickValueData[j] : 1
+//   }
+//   console.log(avg / (i < 64 ? 32 : 40))
+// }
+
+// Extrapolate to fill remaining
+for (let i = 225; i < 257; i += 1) {
+  const diff = 1
 
   const pickValueDataVal =
     pickValueData[i - 1] - diff > 0 ? pickValueData[i - 1] - diff : 1
@@ -115,7 +124,10 @@ function MdmTradeTab({
               </select>
             </div>
 
-            <TradeValue tradeValue={tradeValue} />
+            <TradeValue
+              tradeValue={tradeValue}
+              zeroOverride={Object.keys(activeTrades).length > 0}
+            />
 
             <PickGrid
               year={2024}
@@ -142,7 +154,10 @@ function MdmTradeTab({
               </select>
             </div>
 
-            <TradeValue tradeValue={-tradeValue} />
+            <TradeValue
+              tradeValue={-tradeValue}
+              zeroOverride={Object.keys(activeTrades).length > 0}
+            />
 
             <PickGrid
               year={2024}
@@ -153,18 +168,27 @@ function MdmTradeTab({
               handleTradeClick={handleTradeClick}
             />
 
-            <div className="flex flex-col justify-center items-center mt-auto pb-12">
-              {tradeValue !== 0 && (
+            <div className="flex flex-col justify-center items-center space-y-1 mt-auto pb-12">
+              {(tradeValue !== 0 || Object.keys(activeTrades).length > 0) && (
                 <div
-                  className={
+                  className={clsx(
+                    "flex justify-center items-center space-x-2",
                     tradeValue <= 10 && tradeValue >= -10
                       ? "text-success"
                       : "text-error"
-                  }
+                  )}
                 >
-                  {tradeValue <= 10 && tradeValue >= -10
-                    ? "Accepted"
-                    : "Difference Too Big"}
+                  <div
+                    className="tooltip"
+                    data-tip="Trade values are based on the 2024 Rich Hill model."
+                  >
+                    <MdInfo className="h-5 w-5" />
+                  </div>
+                  <span>
+                    {tradeValue <= 10 && tradeValue >= -10
+                      ? "Accepted"
+                      : "Difference Too Big"}
+                  </span>
                 </div>
               )}
               <ButtonOne handleClick={handleTradeSubmitClick}>
@@ -207,6 +231,11 @@ function MdmTradeTab({
     const newActiveTrades = { ...activeTrades }
     if (k in activeTrades && activeTrades[k].includes(pickInt)) {
       newActiveTrades[k] = newActiveTrades[k].filter(x => x !== pickInt)
+
+      // So that we can show a trade value message at 0
+      if (newActiveTrades[k].length === 0) {
+        delete newActiveTrades[k]
+      }
     } else if (k in newActiveTrades) {
       newActiveTrades[k].push(pickInt)
     } else {

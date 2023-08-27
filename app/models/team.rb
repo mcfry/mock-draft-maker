@@ -17,7 +17,7 @@ class Team < ApplicationRecord
     validates :city, presence: true
     validates :icon, presence: true
 
-    has_many :draft_record_teams
+    has_many :draft_record_teams, dependent: :destroy
 
     attr_accessor :full_name
 

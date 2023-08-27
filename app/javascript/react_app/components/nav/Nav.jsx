@@ -1,6 +1,6 @@
 // External
 import React from "react"
-import { Link, useLocation } from "react-router-dom"
+import { NavLink, Link, useLocation } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from "@headlessui/react"
 import { HiBars3, HiXMark } from "react-icons/hi2"
@@ -43,7 +43,7 @@ function Navbar() {
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map(item => (
-                        <Link
+                        <NavLink
                           key={item.name}
                           to={item.link}
                           className={clsx(
@@ -65,7 +65,7 @@ function Navbar() {
                           >
                             {item.name}
                           </div>
-                        </Link>
+                        </NavLink>
                       ))}
                     </div>
                   </div>

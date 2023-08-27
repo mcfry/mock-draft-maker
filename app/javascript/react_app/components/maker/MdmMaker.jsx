@@ -71,6 +71,7 @@ function MdmMaker() {
 
   // Store State
   const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
+  const resetDraftSlice = useStore(state => state.resetDraftSlice)
   const addAlert = useStore(state => state.addAlert)
 
   // Have to do it like this because of Rails asset bullshit
@@ -120,6 +121,10 @@ function MdmMaker() {
   )
 
   // Lifecycle Hooks
+  useEffect(() => {
+    resetDraftSlice()
+  }, [])
+
   useEffect(() => {
     const url = "/api/v1/teams/index"
     axiosClient

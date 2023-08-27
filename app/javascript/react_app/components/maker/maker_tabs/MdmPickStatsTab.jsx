@@ -4,14 +4,18 @@ import React, { useState, useEffect } from "react"
 // Internal
 import axiosClient from "../../../other/axiosClient"
 
-export default function MdmPickStatsTab({ team }) {
+export default function MdmPickStatsTab({ team, pickLocale }) {
   const [pickData, setPickData] = useState(null)
   const [totalCount, setTotalCount] = useState(null)
 
   useEffect(() => {
     if (team) {
       axiosClient
-        .get(`/api/v1/draft_record_teams/statistics/${team.id}`)
+        .get(
+          `/api/v1/draft_record_teams/statistics/${team.id}?pick=${
+            pickLocale + 1
+          }`
+        )
         .then(res => {
           setPickData(res?.data?.picks)
           setTotalCount(res?.data?.total_count)
@@ -23,8 +27,10 @@ export default function MdmPickStatsTab({ team }) {
     <div className="flex flex-col items-center space-y-20 p-10 w-full h-full dark:bg-gray-300 dark:text-gray-900">
       {totalCount && totalCount > 0 ? (
         <>
-          <span className="text-2xl font-bold">
-            Most frequent players selected by {team.name} fans:
+          <span className="text-xl font-bold">
+            {`Most frequent players selected by ${team.name} fans around pick ${
+              pickLocale + 1
+            }:`}
           </span>
           <div className="grid grid-cols-3 grid-rows-3 gap-8">
             {pickData.map(({ player, count }) => {

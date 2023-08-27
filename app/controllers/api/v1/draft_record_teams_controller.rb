@@ -1,7 +1,10 @@
 class Api::V1::DraftRecordTeamsController < ApplicationController
 
   def statistics
-    base_query = Pick.joins(:team).where(team: {id: params[:team_id]})
+    minPick = params[:pick] ? [params[:pick].to_i-8, 0].max : 0
+    maxPick = params[:pick] ? [params[:pick].to_i+8, 264].min : 264
+
+    base_query = Pick.joins(:team, :player).where(team: {id: params[:team_id]}).where(player: {projected: minPick..maxPick})
     team_picks = base_query.group(:player).order('count_all DESC').limit(9).count
     total_count = base_query.count()
 
