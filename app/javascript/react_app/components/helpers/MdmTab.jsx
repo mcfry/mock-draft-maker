@@ -16,7 +16,7 @@ const MdmTab = React.memo(
               currentTab === tabName
           },
           {
-            "!bg-accent-back hover:!bg-accent": mainTab
+            "bg-accent-back hover:!bg-accent": mainTab
           },
           {
             "!bg-accent": mainTab && currentTab === tabName

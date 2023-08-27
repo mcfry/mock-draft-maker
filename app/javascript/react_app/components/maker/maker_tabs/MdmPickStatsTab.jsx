@@ -50,9 +50,11 @@ export default function MdmPickStatsTab({ team }) {
           </div>
         </>
       ) : (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-full">
           <span className="font-bold">
-            {team ? "Team has no data." : "No team selected."}
+            {team
+              ? "Team has no data."
+              : "No team is selected. You can select a team by clicking a pick in the left menu."}
           </span>
         </div>
       )}
