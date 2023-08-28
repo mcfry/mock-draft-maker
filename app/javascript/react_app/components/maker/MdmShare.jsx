@@ -1,5 +1,5 @@
 // External
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useRef, useEffect, Fragment } from "react"
 import { useParams, useLocation } from "react-router-dom"
 import axios from "axios"
 import Confetti from "react-confetti"
@@ -15,6 +15,8 @@ import MdmMakerSkeleton from "./MdmMakerSkeleton"
 function MdmShare() {
   const location = useLocation()
   const { draft_uuid } = useParams()
+
+  const sectionRef = useRef()
 
   const [draftRecordTeams, setDraftRecordTeams] = useState({})
   const [speed, setSpeed] = useState(null)
@@ -41,7 +43,10 @@ function MdmShare() {
   const queryParams = new URLSearchParams(location.search)
 
   return (
-    <section className="relative flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 p-10">
+    <section
+      ref={sectionRef}
+      className="relative flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 p-10"
+    >
       {draftLoaded === false ? (
         <>{error ? <p>Error: {error?.message}</p> : <MdmMakerSkeleton />}</>
       ) : (
@@ -53,7 +58,7 @@ function MdmShare() {
               {queryParams?.has("new") && (
                 <Confetti
                   width={window.innerWidth}
-                  height={window.innerHeight}
+                  height={sectionRef.current.clientHeight}
                   numberOfPieces={800}
                   recycle={false}
                   style={{ zIndex: 35 }}

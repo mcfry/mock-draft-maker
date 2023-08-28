@@ -123,9 +123,7 @@ function MdmMaker() {
   // Lifecycle Hooks
   useEffect(() => {
     resetDraftSlice()
-  }, [])
 
-  useEffect(() => {
     const url = "/api/v1/teams/index"
     axiosClient
       .get(url)
@@ -138,11 +136,9 @@ function MdmMaker() {
         }
       })
       .catch(() => navigate(ROUTES.HOME))
-  }, [])
 
-  useEffect(() => {
-    const url = "/api/v1/players/index"
-    fetch(url)
+    const url2 = "/api/v1/players/index"
+    fetch(url2)
       .then(res => {
         if (res.ok) {
           return res.json()
@@ -153,7 +149,7 @@ function MdmMaker() {
         setPlayersLoaded(true)
         setPlayers(res)
       })
-      .catch(() => navigate("/"))
+      .catch(() => navigate(ROUTES.HOME))
   }, [])
 
   useEffect(() => {

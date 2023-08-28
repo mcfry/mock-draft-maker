@@ -33,13 +33,13 @@ const createDraftSlice = set => ({
     set(_ => ({
       yourPicks: { ...picks }
     })),
-  setTeams: teams =>
+  setTeams: newTeams =>
     set(_ => ({
-      teams: [...teams]
+      teams: [...newTeams]
     })),
-  setSelected: selected =>
+  setSelected: newSelected =>
     set(_ => ({
-      selected: { ...selected }
+      selected: { ...newSelected }
     })),
   setOuterTab: tab =>
     set(state => ({

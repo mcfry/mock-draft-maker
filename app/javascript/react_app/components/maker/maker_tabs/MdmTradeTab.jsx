@@ -278,9 +278,16 @@ function MdmTradeTab({
         [currentTeam]: newCt
       }))
 
+      console.log(userPicking)
+      console.log(newCt, currentPickIndex)
+
       if (userPicking && oldCt[0] !== newCt[0]) {
         forceNewIntervalAndContinue()
-      } else if (!userPicking && newCt[0] === currentPickIndex + 1) {
+      } else if (
+        draftRunning &&
+        !userPicking &&
+        newCt[0] === currentPickIndex + 1
+      ) {
         setUserPicking(_ => true)
       }
 

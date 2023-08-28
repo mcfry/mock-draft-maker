@@ -220,7 +220,7 @@ function MdmMakerSettings({
 
   function handleClick(event, type) {
     event.preventDefault()
-    const pickDataCopy = pickData
+    const pickDataCopy = { ...pickData }
 
     if (type === "teamClick") {
       const idx = event.currentTarget.id
