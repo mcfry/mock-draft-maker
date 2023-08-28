@@ -1,7 +1,6 @@
 // External
 import React, { useState, useEffect } from "react"
 import clsx from "clsx"
-import { GrPauseFill } from "react-icons/gr"
 import { MdInfo } from "react-icons/md"
 
 // Internal
@@ -9,6 +8,7 @@ import PickGrid from "../../helpers/PickGrid"
 import useStore from "../../../store/store"
 import TradeValue from "../../helpers/TradeValue"
 import ButtonOne from "../../helpers/ButtonOne"
+import CurrentlyPicking from "../../helpers/CurrentlyPicking"
 
 // Json
 import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
@@ -91,21 +91,9 @@ function MdmTradeTab({
   }, [selected])
 
   return (
-    <>
+    <div className="flex dark:bg-gray-300 dark:text-gray-900 w-full">
       {draftRunning && !userPicking ? (
-        <div className="flex flex-col justify-center items-center w-[62rem] space-y-8">
-          <span className="text-info text-5xl whitespace-nowrap">
-            Can&apos;t trade while draft is running.
-          </span>
-          <button
-            type="button"
-            className="btn btn-lg rounded-none"
-            onClick={() => startOrPauseDraft()}
-          >
-            <GrPauseFill />
-            &nbsp;Pause
-          </button>
-        </div>
+        <CurrentlyPicking startOrPauseDraft={startOrPauseDraft} />
       ) : (
         <>
           <div className="flex flex-col items-center border-r-2 w-[31rem]">
@@ -200,7 +188,7 @@ function MdmTradeTab({
           </div>
         </>
       )}
-    </>
+    </div>
   )
 
   // Handlers
@@ -277,9 +265,6 @@ function MdmTradeTab({
         [tradePartner]: newTp,
         [currentTeam]: newCt
       }))
-
-      console.log(userPicking)
-      console.log(newCt, currentPickIndex)
 
       if (userPicking && oldCt[0] !== newCt[0]) {
         forceNewIntervalAndContinue()

@@ -11,7 +11,7 @@ import {
 // Internal
 import axiosClient from "../../../other/axiosClient"
 import MdmTab from "../../helpers/MdmTab"
-import NoPlayerData from "../../helpers/NoPlayerData"
+import NoData from "../../helpers/NoData"
 import AnalysisTable from "./analysis/AnalysisTable"
 import RushingAnalysis from "./analysis/RushingAnalysis"
 import PassingAnalysis from "./analysis/PassingAnalysis"
@@ -114,7 +114,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     <>
       <div className="flex flex-col overflow-x-auto w-[62rem] h-full dark:bg-gray-300 dark:text-gray-900">
         {tab === "none" || playerInAnalysis === null ? (
-          <NoPlayerData />
+          <NoData message="No player selected, or no meaningful data." />
         ) : (
           <>
             <div className="tabs border-b-2 dark:bg-gray-700">
@@ -202,16 +202,24 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
             </div>
             <div className="h-full">
               {tab === "passing" && !playerInAnalysis?.passing && (
-                <NoPlayerData />
+                <NoData
+                  message="No player selected, or no meaningful data."
+                />
               )}
               {tab === "rushing" && !playerInAnalysis?.rushing && (
-                <NoPlayerData />
+                <NoData
+                  message="No player selected, or no meaningful data."
+                />
               )}
               {tab === "receiving" && !playerInAnalysis?.receiving && (
-                <NoPlayerData />
+                <NoData
+                  message="No player selected, or no meaningful data."
+                />
               )}
               {tab === "defense" && !playerInAnalysis?.defense && (
-                <NoPlayerData />
+                <NoData
+                  message="No player selected, or no meaningful data."
+                />
               )}
 
               <div className="flex flex-col">

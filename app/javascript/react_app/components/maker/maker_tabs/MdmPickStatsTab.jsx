@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 
 // Internal
 import axiosClient from "../../../other/axiosClient"
+import NoData from "../../helpers/NoData"
 
 export default function MdmPickStatsTab({ team, pickLocale }) {
   const [pickData, setPickData] = useState(null)
@@ -56,13 +57,13 @@ export default function MdmPickStatsTab({ team, pickLocale }) {
           </div>
         </>
       ) : (
-        <div className="flex justify-center items-center h-full">
-          <span className="font-bold">
-            {team
-              ? "Team has no data."
-              : "No team is selected. You can select a team by clicking a pick in the left menu."}
-          </span>
-        </div>
+        <>
+          {team ? (
+            <NoData message="Team doesn't have enough data yet." />
+          ) : (
+            <NoData message="No team is selected. You can select a team by clicking a pick in the left menu." />
+          )}
+        </>
       )}
     </div>
   )

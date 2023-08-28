@@ -1,6 +1,9 @@
 // External
 import React, { Fragment } from "react"
 
+// Internal
+import NoData from "../../helpers/NoData"
+
 function MdmYourPicksTab({ yourPicks }) {
   return (
     <>
@@ -29,11 +32,7 @@ function MdmYourPicksTab({ yourPicks }) {
             </table>
           </div>
         ) : (
-          <div className="flex flex-col justify-center items-center w-[62rem] h-[31rem]">
-            <p className="font-semibold">
-              You haven&apos;t picked any players yet.
-            </p>
-          </div>
+          <NoData message={"You haven't picked any players yet."} />
         )}
       </div>
     </>

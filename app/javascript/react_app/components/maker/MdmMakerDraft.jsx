@@ -346,9 +346,7 @@ function MdmMakerDraft({
                 key={`${team.name}_${actualIndex.toString()}`}
                 team={team}
                 actualIndex={actualIndex}
-                handleClick={e =>
-                  handlePickStatsClick(e, team, currentPickIndex)
-                }
+                handleClick={e => handlePickStatsClick(e, team, actualIndex)}
                 draftState={null}
                 pickedYet={false}
                 teamToImage={teamToImage}
@@ -549,10 +547,12 @@ function MdmMakerDraft({
           )}
           {outerTab === "draft" && (
             <MdmDraftTab
+              startOrPauseDraft={startOrPauseDraft}
               localPlayers={localPlayers}
               playersLoaded={playersLoaded}
               preselectedPick={preselectedPick}
               setPreselectedPick={setPreselectedPick}
+              draftRunning={draftRunning}
               userPicking={userPicking}
               pickModal={pickModal}
               pickPlayer={pickPlayer}
@@ -598,6 +598,8 @@ function MdmMakerDraft({
   function handlePickStatsClick(event, team, teamIndex) {
     event.preventDefault()
     event.stopPropagation()
+
+    console.log(teamIndex)
 
     setPickStatsTeam(team)
     setPickStatsTeamIndex(teamIndex)
