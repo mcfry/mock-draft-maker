@@ -19,6 +19,36 @@
   background: #555;
 }
 
+#arrow-line1 {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: draw 2s linear forwards;
+}
+
+#arrow-line2 {
+  stroke-dasharray: 450;
+  stroke-dashoffset: 450;
+  animation: draw 2s linear forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.reveal {
+  opacity: 0%;
+  animation: reveal 0.25s linear forwards;
+}
+
+@keyframes reveal {
+  to {
+    opacity: 100%;
+  }
+}
+
 .tab-ml {
   height: 2.5rem;
   font-size: 1rem;

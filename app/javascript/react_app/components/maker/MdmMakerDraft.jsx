@@ -86,16 +86,17 @@ function MdmMakerDraft({
     manualPick = false
   ) => {
     if (manualPick === true) {
-      if (!(orderedPicks[total].full_name in yourPicks))
-        yourPicks[orderedPicks[total].full_name] = []
+      const newYourPicks = { ...yourPicks }
+      if (!(orderedPicks[total].full_name in newYourPicks))
+        newYourPicks[orderedPicks[total].full_name] = []
 
       const playerToAddCopy = {
         ...playerToAdd
       }
       playerToAddCopy.pickedAt = total + 1
-      yourPicks[orderedPicks[total].full_name].push(playerToAddCopy)
+      newYourPicks[orderedPicks[total].full_name].push(playerToAddCopy)
 
-      setYourPicks(yourPicks)
+      setYourPicks(newYourPicks)
     }
 
     setDraftState(prev => ({

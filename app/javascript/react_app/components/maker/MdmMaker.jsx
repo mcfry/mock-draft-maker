@@ -213,7 +213,7 @@ function MdmMaker() {
                   <div className="absolute z-40 right-20">
                     <ArrowSvg />
                   </div>
-                  <span className="absolute z-40 -left-[4.5rem] -top-[0.5rem] w-48 text-xl font-semibold font-marker">
+                  <span className="absolute z-40 -left-[4.5rem] -top-[0.5rem] w-48 text-xl font-semibold font-marker reveal">
                     Drag to reorder
                   </span>
                 </div>
@@ -253,7 +253,7 @@ function MdmMaker() {
             {stage === 3 && (
               <>
                 {/* Mdm Share */}
-                <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
+                <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] rounded-none z-30">
                   <MdmMakerShare />
                 </section>
               </>

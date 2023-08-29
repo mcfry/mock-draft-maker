@@ -9,8 +9,7 @@ import { AiFillSetting } from "react-icons/ai"
 // Internal
 import useStore from "../../store/store"
 import getCsrfToken from "../../other/getCsrfToken"
-
-const CURRENT_YEAR = 2024
+import { CURRENT_YEAR } from "../../constants/current"
 
 function MdmMakerShare() {
   const navigate = useNavigate()
@@ -61,34 +60,58 @@ function MdmMakerShare() {
   }
 
   return (
-    <>
-      <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
+    <div className="flex flex-col justify-center items-center space-y-4">
+      <button
+        type="button"
+        className="btn btn-primary w-80 hover:bg-white hover:text-black dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"
+        onClick={handleSubmit}
+      >
+        <MdSaveAlt />
+        &nbsp;Save and Share!
+      </button>
+
+      <div className="flex flex-col bg-base-100 dark:bg-gray-300 dark:text-gray-900 shadow-xl">
         <div className="overflow-x-auto">
           <div className="flex flex-col w-[82rem]">
-            <button
-              type="button"
-              className="btn btn-primary hover:bg-white hover:text-black dark:bg-gray-900 dark:border-gray-900 dark:text-gray-100 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none"
-              onClick={handleSubmit}
-            >
-              <MdSaveAlt />
-              &nbsp;Save and Share!
-            </button>
             <div className="flex flex-col items-center justify-center w-full">
               <div className="w-full border-b-2 border-black dark:border-gray-900">
                 <table className="table">
                   <tbody>
                     {Object.entries(yourPicks).map(([team, players]) => (
                       <Fragment key={`yp_${team}`}>
+                        <tr className="bg-primary dark:bg-gray-900 text-white dark:text-gray-100">
+                          <th className="w-2/12">
+                            <span>{team}</span>
+                          </th>
+                          <th>&nbsp;</th>
+                          <th>&nbsp;</th>
+                          <th>&nbsp;</th>
+                          <th className="text-right">{CURRENT_YEAR}</th>
+                        </tr>
                         <tr>
-                          <th>{team}</th>
+                          <th className="w-1/12 text-center">Pick</th>
+                          <th className="w-2/12 text-center">Projection</th>
+                          <th className="w-3/12 text-center">Player</th>
+                          <th className="w-1/12 text-center">Position</th>
+                          <th className="w-5/12 text-center">College</th>
                         </tr>
                         {players.map(player => (
                           <tr key={`yps_${player.id.toString()}`}>
-                            <td>Pick: {player.pickedAt}</td>
-                            <td>Projection: {player.projected}</td>
-                            <td>{player.full_name}</td>
-                            <td>{player.position}</td>
-                            <td>{player.college}</td>
+                            <td className="w-1/12 text-center">
+                              Pick: {player.pickedAt}
+                            </td>
+                            <td className="w-2/12 text-center">
+                              Projection: {player.projected}
+                            </td>
+                            <td className="w-3/12 text-center">
+                              {player.full_name}
+                            </td>
+                            <td className="w-1/12 text-center">
+                              {player.position}
+                            </td>
+                            <td className="w-5/12 text-center">
+                              {player.college}
+                            </td>
                           </tr>
                         ))}
                       </Fragment>
@@ -96,27 +119,29 @@ function MdmMakerShare() {
                   </tbody>
                 </table>
               </div>
-              <span className="flex items-center justify-between w-4/5 p-10">
+
+              <span className="flex items-center justify-between w-4/5 p-10 font-semibold">
                 <span className="flex items-center justify-center">
                   <HiBolt />
-                  &nbsp;Speed: {speed}
+                  &nbsp;Speed: {speed === null ? "N/A" : speed}
                 </span>
 
                 <span className="flex items-center justify-center">
                   <AiFillSetting />
-                  &nbsp;NeedsVsValue: {needsVsValue}
+                  &nbsp;NeedsVsValue:{" "}
+                  {needsVsValue === null ? "N/A" : needsVsValue}
                 </span>
 
                 <span className="flex items-center justify-center">
-                  <HiVariable />
-                  &nbsp;Randomness: {randomness}
+                  <HiVariable size="1.35em" />
+                  &nbsp;Randomness: {randomness === null ? "N/A" : randomness}
                 </span>
               </span>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -9,6 +9,7 @@ import useStore from "../../../store/store"
 import TradeValue from "../../helpers/TradeValue"
 import ButtonOne from "../../helpers/ButtonOne"
 import CurrentlyPicking from "../../helpers/CurrentlyPicking"
+import { CURRENT_YEAR } from "../../../constants/current"
 
 // Json
 import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
@@ -118,7 +119,7 @@ function MdmTradeTab({
             />
 
             <PickGrid
-              year={2024}
+              year={CURRENT_YEAR}
               pickData={pickData}
               team={tradePartner}
               isCt={false}
@@ -148,7 +149,7 @@ function MdmTradeTab({
             />
 
             <PickGrid
-              year={2024}
+              year={CURRENT_YEAR}
               pickData={pickData}
               team={currentTeam}
               isCt={true}

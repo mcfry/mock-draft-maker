@@ -11,6 +11,7 @@ import { AiFillSetting } from "react-icons/ai"
 
 // Internal
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
+import { CURRENT_YEAR } from "../../constants/current"
 
 function MdmShare() {
   const location = useLocation()
@@ -106,12 +107,15 @@ function MdmShare() {
                             <Fragment key={`yp_${team.city}_${team.name}`}>
                               <tr className="bg-primary dark:bg-gray-900 text-white dark:text-gray-100">
                                 <th className="w-2/12">
-                                  {team.city}&nbsp;{team.name}
+                                  <span>
+                                    {team.city}&nbsp;
+                                    {team.name}
+                                  </span>
                                 </th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
                                 <th>&nbsp;</th>
-                                <th>&nbsp;</th>
+                                <th className="text-right">{CURRENT_YEAR}</th>
                               </tr>
                               <tr>
                                 <th className="w-1/12 text-center">Pick</th>
