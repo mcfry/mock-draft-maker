@@ -18,4 +18,5 @@ bundle exec rake assets:clean
 
 bundle exec rake db:migrate
 bundle exec rake custom:unseed_db
+bundle exec rake custom:clear_cache
 bundle exec rake db:seed

@@ -29,24 +29,24 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
 
   const positionToDefaultTab = {
     QB: "passing",
-    OT: "none",
+    OT: "other",
     DE: "defense",
-    OL: "none",
+    OL: "other",
     WR: "receiving",
     DT: "defense",
     DL: "defense",
-    C: "none",
+    C: "other",
     CB: "defense",
     DB: "defense",
-    G: "none",
+    G: "other",
     S: "defense",
     TE: "receiving",
     LB: "defense",
     RB: "rushing",
-    PK: "none",
+    PK: "other",
     FB: "rushing",
-    P: "none",
-    LS: "none"
+    P: "other",
+    LS: "other"
   }
 
   useEffect(() => {
@@ -202,24 +202,16 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
             </div>
             <div className="h-full">
               {tab === "passing" && !playerInAnalysis?.passing && (
-                <NoData
-                  message="No player selected, or no meaningful data."
-                />
+                <NoData message="No player selected, or no meaningful data." />
               )}
               {tab === "rushing" && !playerInAnalysis?.rushing && (
-                <NoData
-                  message="No player selected, or no meaningful data."
-                />
+                <NoData message="No player selected, or no meaningful data." />
               )}
               {tab === "receiving" && !playerInAnalysis?.receiving && (
-                <NoData
-                  message="No player selected, or no meaningful data."
-                />
+                <NoData message="No player selected, or no meaningful data." />
               )}
               {tab === "defense" && !playerInAnalysis?.defense && (
-                <NoData
-                  message="No player selected, or no meaningful data."
-                />
+                <NoData message="No player selected, or no meaningful data." />
               )}
 
               <div className="flex flex-col">
