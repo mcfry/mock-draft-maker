@@ -11,8 +11,11 @@ set -o errexit
 bundle install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
+
+# uncomment to delete db on push
 # DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop
 # bundle exec rake db:create
+
 bundle exec rake db:migrate
 bundle exec rake custom:unseed_db
 bundle exec rake db:seed

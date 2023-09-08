@@ -38,8 +38,11 @@ function SortableTeam({
       {...attributes}
       {...listeners}
       className={clsx(
-        { "border-accent": isSelected === true },
-        "flex justify-center items-center card w-full h-[3.85rem] border-solid border-2 rounded-sm bg-base-100 font-semibold dark:bg-gray-500 dark:text-gray-100 glass"
+        "flex justify-center items-center card w-full h-[3.85rem] border-solid border-3 rounded-sm bg-base-100 font-semibold dark:bg-gray-500 dark:text-gray-100 glass shadow-none",
+        {
+          "border-accent bg-red-200 dark:bg-red-200 dark:text-gray-900":
+            isSelected === true
+        }
       )}
       onClick={e => handleClick(e, "teamClick")}
     >

@@ -44,7 +44,7 @@ function MdmMakerDraft({
   const [pickStatsTeam, setPickStatsTeam] = useState(null)
   const [pickStatsTeamIndex, setPickStatsTeamIndex] = useState(null)
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
-  const [positionSelect, setPositionSelect] = useState("All")
+  const [positionSelect, setPositionSelect] = useState("default")
 
   // Store State
   const [viewRound, setViewRound] = useStore(state => [
@@ -219,7 +219,7 @@ function MdmMakerDraft({
     // G/C/OL -> OL
     //
     let newPlayers = players
-    if (positionSelect !== "All") {
+    if (positionSelect !== "ALL" && positionSelect !== "default") {
       newPlayers = players.filter(player => player.position === positionSelect)
     }
 
@@ -428,9 +428,10 @@ function MdmMakerDraft({
                 data-testid="positionFilter"
                 value={positionSelect}
                 onChange={handleChange}
-                className="select select-bordered rounded-none w-[6rem] text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100"
+                className="select select-bordered rounded-none text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100"
               >
-                <option value="All">ALL</option>
+                <option value="default">Select a position</option>
+                <option value="ALL">ALL</option>
                 {Object.keys(positionalData).map(position => (
                   <option key={position} value={position}>
                     {position}
@@ -448,10 +449,14 @@ function MdmMakerDraft({
                 }}
                 name="search"
                 type="text"
-                placeholder="Search"
-                className="input input-bordered rounded-none w-24 font-semibold text-primary md:w-auto dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
+                placeholder="Search Player"
+                className="input input-bordered rounded-none w-24 text-primary md:w-auto dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
               />
             </div>
+
+            <ButtonOne classNames="btn-md" onClick={handleResetFiltersClick}>
+              Reset
+            </ButtonOne>
           </div>
         </div>
 
@@ -600,11 +605,14 @@ function MdmMakerDraft({
     event.preventDefault()
     event.stopPropagation()
 
-    console.log(teamIndex)
-
     setPickStatsTeam(team)
     setPickStatsTeamIndex(teamIndex)
     setOuterTab("pick_stats")
+  }
+
+  function handleResetFiltersClick() {
+    setSearch("")
+    setPositionSelect("default")
   }
 
   function handleChange(event) {

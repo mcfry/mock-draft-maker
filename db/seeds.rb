@@ -99,6 +99,24 @@ if Player.all.count == 0
         defensive_hash[dd[0]] = temp_hash
     end
 
+    def positionNormalize(position)
+        pos = position.upcase
+        case pos
+        when "OT"
+            return "OL"
+        when "DT"
+            return "DL"
+        when "C"
+            return "OL"
+        when "G"
+            return "OL"
+        when "CB"
+            return "DB"
+        else
+            return pos
+        end
+    end
+
     players_csv_path = File.expand_path("2023_players.csv", File.dirname(__FILE__))
     player_data = CSV.read(players_csv_path, liberal_parsing: true)
     player_data.each do |pd|
@@ -107,7 +125,7 @@ if Player.all.count == 0
         player_hash = {
             first: first,
             last: last.join(" "),
-            position: pd[1] == "--" ? nil : pd[1],
+            position: pd[1] == "--" ? nil : positionNormalize(pd[1]),
             height: pd[2] == "--" ? nil : feet[0].to_i*12 + inches[0].to_i,
             weight: pd[3] == "--" ? nil : pd[3].split(" ")[0].to_i,
             player_class: pd[4] == "--" ? nil : pd[4],

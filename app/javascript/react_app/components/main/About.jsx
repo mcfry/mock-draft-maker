@@ -16,6 +16,20 @@ function About() {
             <br />
             Served via Render.
           </p>
+
+          <span className="font-bold text-xl mt-10">Like my work?</span>
+          <a
+            href="https://www.buymeacoffee.com/mockdraftmaker"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2"
+          >
+            <img
+              src="https://cdn.buymeacoffee.com/buttons/v2/default-red.png"
+              alt="Buy Me A Coffee"
+              className="h-[60px] w-[217px] cursor-pointer"
+            />
+          </a>
         </div>
       </div>
     </section>

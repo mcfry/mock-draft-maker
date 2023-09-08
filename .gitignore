@@ -37,3 +37,4 @@
 
 /node_modules
 /app/javascript/react_app/components/main/todo.txt
+/app/javascript/react_app/components/maker/maker_static_data/positional_value_not_using.json
