@@ -6,6 +6,7 @@ import { TbAnalyze } from "react-icons/tb"
 import { GiAmericanFootballPlayer } from "react-icons/gi"
 import { PiUsersThree } from "react-icons/pi"
 import { GrPauseFill, GrResume, GrPlayFill } from "react-icons/gr"
+import { driver } from "driver.js"
 
 // Internal
 import MdmTradeTab from "./maker_tabs/MdmTradeTab"
@@ -33,7 +34,9 @@ function MdmMakerDraft({
   playersLoaded,
   teamToImage
 }) {
-  // Local State
+  // ---------------
+  // - Local State -
+  // ---------------
   const [draftRunning, setDraftRunning] = useState(false)
   const [draftState, setDraftState] = useState({})
   const [userPicking, setUserPicking] = useState(false)
@@ -46,7 +49,9 @@ function MdmMakerDraft({
   const [playerInAnalysis, setPlayerInAnalysis] = useState(null)
   const [positionSelect, setPositionSelect] = useState("default")
 
-  // Store State
+  // ---------------
+  // - Store State -
+  // ---------------
   const [viewRound, setViewRound] = useStore(state => [
     state.viewRound,
     state.setViewRound
@@ -80,6 +85,9 @@ function MdmMakerDraft({
     })
   )
 
+  // -----------
+  // - Helpers -
+  // -----------
   const pickPlayer = (
     playerToAdd,
     total = Object.keys(draftState).length,
@@ -241,11 +249,130 @@ function MdmMakerDraft({
     }
   }
 
+  const guidedTutorial = () => {
+    const driverObj = driver({
+      showProgress: true,
+      steps: [
+        {
+          element: "#main-draft-nav__draft-info",
+          popover: {
+            title: "Main Draft Controls",
+            description:
+              "From here you can start and pause the draft, as well as obtain real-time information on the current draft round and pick number.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#main-draft-nav__draft-filters",
+          popover: {
+            title: "Draft Filters",
+            description:
+              "Here, you can effortlessly filter players by their positions and conduct quick searches by their names.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#draft-tabs__trade",
+          popover: {
+            title: "Trade Tab",
+            description:
+              "From here you can trade picks from your selected teams to any other team.\nTrade values are based on the 2024 Rich Hill model. If you think the trade values suck, at least shoot him first.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#draft-tabs__draft",
+          popover: {
+            title: "Draft Tab",
+            description: "The primo tab. Draft players here.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#draft-tabs__your-picks",
+          popover: {
+            title: "Your Picks Tab",
+            description:
+              "Here you can view your amazing draft that everybody, and I mean everybody, should copy.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#draft-tabs__pick-stats",
+          popover: {
+            title: "Team Stats Tab",
+            description:
+              "Here you can view what all the less-intelligent fans are picking.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#draft-tabs__analysis",
+          popover: {
+            title: "Analysis Tab",
+            description:
+              "Here, you can access comprehensive player statistics to help you make your choice.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#picks-menu",
+          popover: {
+            title: "Picks menu",
+            description:
+              "Here, you'll find a comprehensive, clickable list of every team and their associated draft picks.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#picks-menu__round-select",
+          popover: {
+            title: "Round select",
+            description:
+              "To reveal upcoming rounds, simply click here, or click back to view players chosen in previous rounds.\nRest assured, this feature will seamlessly update as the draft unfolds.",
+            side: "left",
+            align: "start"
+          }
+        }
+      ],
+      onHighlightStarted: (_, step) => {
+        if (step.element === "#draft-tabs__trade") {
+          setOuterTab("trade")
+        } else if (step.element === "#draft-tabs__draft") {
+          setOuterTab("draft")
+        } else if (step.element === "#draft-tabs__your-picks") {
+          setOuterTab("your-picks")
+        } else if (step.element === "#draft-tabs__pick-stats") {
+          setOuterTab("pick-stats")
+        } else if (step.element === "#draft-tabs__analysis") {
+          setOuterTab("analysis")
+        }
+      },
+      onDestroyStarted: () => {
+        localStorage.setItem("draftTourCompleted", "true")
+        setOuterTab("draft")
+        driverObj.destroy()
+      }
+    })
+
+    driverObj.drive()
+  }
+
   const searchPlayers = () => {
     return fuse.current.search(search).map(searchItem => searchItem.item)
   }
 
-  // Lifecycle Hooks
+  // -------------
+  // - Lifecycle -
+  // -------------
   useEffect(() => {
     const total = Object.keys(draftState).length
 
@@ -278,6 +405,10 @@ function MdmMakerDraft({
     filterPlayers(true)
   }, [players, positionSelect])
 
+  useEffect(() => {
+    if (!localStorage.getItem("draftTourCompleted")) guidedTutorial()
+  }, [])
+
   // not 32 picks in each round
   const currentPickIndex = Object.keys(draftState).length
   const currentRound = parseInt(currentPickIndex / 32)
@@ -286,8 +417,7 @@ function MdmMakerDraft({
 
   return (
     <>
-      {/* PMenu */}
-      <section className="overflow-x-hidden overflow-y-auto">
+      <section id="picks-menu" className="overflow-x-hidden overflow-y-auto">
         <menu
           onFocus={() => setIsMouseOverPicks(true)}
           onBlur={() => setIsMouseOverPicks(false)}
@@ -298,6 +428,7 @@ function MdmMakerDraft({
           {/* Dropdown */}
           <li className="dropdown dropdown-bottom sticky top-0 z-50">
             <button
+              id="picks-menu__round-select"
               type="button"
               tabIndex={0}
               className="btn text-2xl w-full hover:!bg-neutral-400 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100 border-t-0 border-l-0 border-r-0 border-b-2 border-primary dark:border-gray-200"
@@ -360,7 +491,7 @@ function MdmMakerDraft({
       {/* Trade Stuff + PInfo */}
       <section className="flex flex-col h-full">
         <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between h-[4.5rem]">
-          <div className="navbar w-max">
+          <div id="main-draft-nav__draft-info" className="navbar w-max">
             {!userPicking ? (
               <ButtonOne
                 handleClick={e => {
@@ -422,9 +553,14 @@ function MdmMakerDraft({
             </div>
           )}
 
-          <div className="flex justify-between space-x-2" role="search">
+          <div
+            id="main-draft-nav__draft-filters"
+            className="flex justify-between space-x-2"
+            role="search"
+          >
             <div className="flex justify-center">
               <select
+                id="main-draft-nav__position-filter"
                 data-testid="positionFilter"
                 value={positionSelect}
                 onChange={handleChange}
@@ -442,6 +578,7 @@ function MdmMakerDraft({
 
             <div className="flex justify-center">
               <input
+                id="main-draft-nav__search-filter"
                 value={search}
                 onChange={e => {
                   setOuterTab("draft")
@@ -465,6 +602,7 @@ function MdmMakerDraft({
           aria-label="Draft management"
         >
           <MdmTab
+            id="draft-tabs__trade"
             handleClick={e => handleClick(e, "trade")}
             currentTab={outerTab}
             tabName="trade"
@@ -476,6 +614,7 @@ function MdmMakerDraft({
             }
           />
           <MdmTab
+            id="draft-tabs__draft"
             handleClick={e => handleClick(e, "draft")}
             currentTab={outerTab}
             tabName="draft"
@@ -488,6 +627,7 @@ function MdmMakerDraft({
             }
           />
           <MdmTab
+            id="draft-tabs__your-picks"
             handleClick={e => handleClick(e, "your-picks")}
             currentTab={outerTab}
             tabName="your-picks"
@@ -499,9 +639,10 @@ function MdmMakerDraft({
             }
           />
           <MdmTab
-            handleClick={e => handleClick(e, "pick_stats")}
+            id="draft-tabs__pick-stats"
+            handleClick={e => handleClick(e, "pick-stats")}
             currentTab={outerTab}
-            tabName="pick_stats"
+            tabName="pick-stats"
             displayText={
               <>
                 <TbAnalyze />
@@ -515,6 +656,7 @@ function MdmMakerDraft({
             }
           />
           <MdmTab
+            id="draft-tabs__analysis"
             handleClick={e => handleClick(e, "analysis")}
             currentTab={outerTab}
             tabName="analysis"
@@ -568,7 +710,7 @@ function MdmMakerDraft({
           {outerTab === "analysis" && (
             <MdmAnalysisTab playerInAnalysis={playerInAnalysis} />
           )}
-          {outerTab === "pick_stats" && (
+          {outerTab === "pick-stats" && (
             <MdmPickStatsTab
               team={pickStatsTeam}
               pickLocale={pickStatsTeamIndex}
@@ -582,7 +724,9 @@ function MdmMakerDraft({
     </>
   )
 
-  // Handlers
+  // ------------
+  // - Handlers -
+  // ------------
   function handleClick(event, type) {
     event.preventDefault()
 
@@ -607,7 +751,7 @@ function MdmMakerDraft({
 
     setPickStatsTeam(team)
     setPickStatsTeamIndex(teamIndex)
-    setOuterTab("pick_stats")
+    setOuterTab("pick-stats")
   }
 
   function handleResetFiltersClick() {

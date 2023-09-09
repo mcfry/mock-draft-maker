@@ -98,7 +98,8 @@ function MdmTradeTab({
       ) : (
         <>
           <div className="flex flex-col items-center border-r-2 w-[31rem]">
-            <div className="pt-6">
+            <div className="pt-6 font-bold">Teams you can trade with</div>
+            <div className="pt-2">
               <select
                 data-testid="tradePartner"
                 value={tradePartner}
@@ -128,7 +129,10 @@ function MdmTradeTab({
             />
           </div>
           <div className="flex flex-col items-center w-[31rem]">
-            <div className="pt-6">
+            <div className="pt-6 font-bold">
+              {selectedTeams.length > 1 ? "Your teams" : "Your team"}
+            </div>
+            <div className="pt-2">
               <select
                 data-testid="currentTeam"
                 value={currentTeam}

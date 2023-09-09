@@ -16,6 +16,7 @@
     "axios-cache-interceptor": "^1.2.0",
     "clsx": "^2.0.0",
     "daisyui": "^3.2.1",
+    "driver.js": "^1.3.0",
     "esbuild": "^0.18.12",
     "fuse.js": "^6.6.2",
     "postcss": "^8.4.26",

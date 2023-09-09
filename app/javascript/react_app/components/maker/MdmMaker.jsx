@@ -210,11 +210,11 @@ function MdmMaker() {
             {stage === 1 && (
               <>
                 <div className="relative -top-6">
-                  <div className="absolute z-40 right-20">
+                  <div className="absolute z-40 right-28">
                     <ArrowSvg />
                   </div>
-                  <span className="absolute z-40 -left-[4.5rem] -top-[0.5rem] w-48 text-xl font-semibold font-marker reveal">
-                    Drag to reorder
+                  <span className="absolute z-40 -left-[6.5rem] -top-[0.5rem] w-[24rem] text-xl font-semibold font-marker reveal">
+                    click to select, drag to reorder
                   </span>
                 </div>
 

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import clsx from "clsx"
 
 const MdmTab = React.memo(
-  ({ handleClick, currentTab, tabName, mainTab, displayText }) => {
+  ({ handleClick, currentTab, tabName, mainTab, displayText, ...props }) => {
     return (
       <button
         type="button"
@@ -22,6 +22,7 @@ const MdmTab = React.memo(
             "!bg-accent": mainTab && currentTab === tabName
           }
         )}
+        {...props}
       >
         {displayText}
       </button>

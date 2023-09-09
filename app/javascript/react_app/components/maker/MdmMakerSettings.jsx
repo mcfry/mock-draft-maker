@@ -1,5 +1,5 @@
 // External
-import React from "react"
+import React, { useEffect } from "react"
 import {
   DndContext,
   closestCenter,
@@ -16,6 +16,8 @@ import {
 import { CgArrowLongLeftL, CgArrowLongRightL } from "react-icons/cg"
 import { HiBolt } from "react-icons/hi2"
 import { HiVariable } from "react-icons/hi"
+import { IoMdHelp } from "react-icons/io"
+import { driver } from "driver.js"
 
 // Internal
 import ButtonOne from "../helpers/ButtonOne"
@@ -30,7 +32,9 @@ function MdmMakerSettings({
   setPickData,
   teamToImage
 }) {
-  // Store State
+  // ---------------
+  // - Store State -
+  // ---------------
   const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
   const [selected, setSelected] = useStore(state => [
     state.selected,
@@ -51,6 +55,9 @@ function MdmMakerSettings({
   ])
   const addAlert = useStore(state => state.addAlert)
 
+  // -----------
+  // - Helpers -
+  // -----------
   const findIndex = (id, arr) => {
     for (const [index, val] of arr.entries()) {
       if (val.id === id) {
@@ -72,6 +79,85 @@ function MdmMakerSettings({
     })
   )
 
+  const guidedTutorial = () => {
+    const driverObj = driver({
+      showProgress: true,
+      steps: [
+        {
+          element: "#teamlist__draggables",
+          popover: {
+            title: "Team Selection",
+            description:
+              "Click on each team you wish to control in the draft. Teams you don't select will be handled with AI.\nYou can also drag teams around to rearrange their first pick draft order.",
+            side: "left",
+            align: "start"
+          }
+        },
+        {
+          element: "#settings__number-of-rounds",
+          popover: {
+            title: "Number of Rounds",
+            description: "Choose the number of rounds in the mock draft.",
+            side: "top",
+            align: "start"
+          }
+        },
+        {
+          element: "#settings__speed",
+          popover: {
+            title: "Speed",
+            description: "Choose how fast the AI will select players.",
+            side: "top",
+            align: "start"
+          }
+        },
+        {
+          element: "#settings__needs-vs-value",
+          popover: {
+            title: "Needs vs Value",
+            description:
+              "Choose whether the AI should put emphasis on teams drafting for their current needs, or whether it should put emphasis on teams drafting for positional value.\nFor example, QBs are more valuable than other positions, but a team may not need a QB.",
+            side: "top",
+            align: "start"
+          }
+        },
+        {
+          element: "#settings__randomness",
+          popover: {
+            title: "Randomness",
+            description:
+              "Choose how much randomness the AI should invoke in its draft. Increase to add chaos.\nNo draft goes as expected.",
+            side: "top",
+            align: "start"
+          }
+        },
+        {
+          element: "#settings__start",
+          popover: {
+            title: "Start Draft",
+            description:
+              "Lastly, start the draft once you've picked your team(s) and your settings.",
+            side: "top",
+            align: "start"
+          }
+        }
+      ],
+      onDestroyStarted: () => {
+        localStorage.setItem("settingsTourCompleted", "true")
+        driverObj.destroy()
+      }
+    })
+
+    driverObj.drive()
+  }
+
+  // -------------
+  // - Lifecycle -
+  // -------------
+  useEffect(() => {
+    if (!localStorage.getItem("settingsTourCompleted")) guidedTutorial()
+  }, [])
+
   return (
     <>
       {/* Team Area */}
@@ -81,7 +167,10 @@ function MdmMakerSettings({
         onDragEnd={handleDragEnd}
       >
         <div className="pl-4 pt-8 pb-0 pr-0 w-[62rem] h-full">
-          <div className="grid gap-4 grid-cols-4 grid-row-8">
+          <div
+            id="teamlist__draggables"
+            className="grid gap-4 grid-cols-4 grid-row-8"
+          >
             <SortableContext items={teams}>
               {teams.map((team, index) => (
                 <SortableTeam
@@ -102,11 +191,20 @@ function MdmMakerSettings({
       <div className="divider divider-horizontal dark:before:bg-gray-100 dark:after:bg-gray-100" />
 
       {/* Options Area */}
-      <section className="flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full dark:text-gray-100">
+      <section className="relative flex flex-col items-center pt-2 pb-2 pr-8 w-[20rem] h-full dark:text-gray-100">
+        <ButtonOne
+          className="absolute btn btn-sm text-xs font-normal rounded-none top-0 right-0 p-2 border-2 border-white dark:border-gray-700 hover:border-white hover:dark:border-gray-700"
+          handleClick={() => guidedTutorial()}
+        >
+          <IoMdHelp />
+        </ButtonOne>
         <div className="text-md pt-4">Settings</div>
         <div className="divider dark:before:bg-gray-100 dark:after:bg-gray-100" />
 
-        <div className="join join-vertical pt-4 pb-4">
+        <div
+          id="settings__number-of-rounds"
+          className="join join-vertical pt-4 pb-4"
+        >
           <div className="join-item text-sm pb-2">Number of Rounds</div>
           <select
             data-testid="numRounds"
@@ -122,7 +220,10 @@ function MdmMakerSettings({
           </select>
         </div>
 
-        <div className="join join-vertical pt-4 pb-4 w-9/12">
+        <div
+          id="settings__speed"
+          className="join join-vertical pt-4 pb-4 w-9/12"
+        >
           <div className="join-item flex items-center text-sm pb-2">
             <HiBolt className="h-5 w-5" />
             <span className="font-bold">&nbsp;Speed</span>
@@ -138,7 +239,10 @@ function MdmMakerSettings({
           />
         </div>
 
-        <div className="join join-vertical pt-4 pb-4 w-9/12">
+        <div
+          id="settings__needs-vs-value"
+          className="join join-vertical pt-4 pb-4 w-9/12"
+        >
           <div className="flex justify-between join-item text-sm pb-2">
             <div className="flex justify-items-start items-center">
               <CgArrowLongLeftL className="h-5 w-5" />
@@ -160,7 +264,10 @@ function MdmMakerSettings({
           />
         </div>
 
-        <div className="join join-vertical pt-4 pb-4 w-9/12">
+        <div
+          id="settings__randomness"
+          className="join join-vertical pt-4 pb-4 w-9/12"
+        >
           <div className="join-item flex items-center text-sm pb-2">
             <HiVariable className="h-6 w-6 pt-0.5" />
             <span className="font-bold">&nbsp;Randomness</span>
@@ -178,6 +285,7 @@ function MdmMakerSettings({
 
         <div className="mt-auto pb-12">
           <ButtonOne
+            id="settings__start"
             data-testid="start-button"
             onClick={e => handleClick(e, "stageClick")}
           >
@@ -188,7 +296,9 @@ function MdmMakerSettings({
     </>
   )
 
-  // Handlers
+  // ------------
+  // - Handlers -
+  // ------------
   function handleDragEnd(event) {
     const { active, over } = event
     if (over && active && active.id !== over.id) {

@@ -10,10 +10,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <%= favicon_link_tag image_path('mdm_logo.png') %>
 
     <%# Stylesheets %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Permanent+Marker" media="print" onload="this.media='all'"  />
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "driver.css", "data-turbo-track": "reload" %>
 
     <%# Scripts %>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3604764545265406"

@@ -1,6 +1,6 @@
 const inititalState = {
   draftRounds: 3,
-  speed: 80,
+  speed: 50,
   needsVsValue: 50,
   randomness: 10,
   yourPicks: {},

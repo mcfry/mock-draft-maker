@@ -14,7 +14,7 @@ function PickGrid({
   return (
     <>
       <div className="flex justify-center border-b-2 pt-2 dark:text-gray-900 dark:border-b-gray-900">
-        {year}
+        {year} Draft Picks
       </div>
 
       <div className="flex justify-center pt-2 w-[24rem]">
