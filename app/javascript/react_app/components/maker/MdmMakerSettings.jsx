@@ -88,7 +88,7 @@ function MdmMakerSettings({
           popover: {
             title: "Team Selection",
             description:
-              "Click on each team you wish to control in the draft. Teams you don't select will be handled with AI.\nYou can also drag teams around to rearrange their first pick draft order.",
+              "Click on each team you wish to control in the draft.<br/><br/>You can also drag teams around to rearrange their first-round draft order.",
             side: "left",
             align: "start"
           }
@@ -116,7 +116,7 @@ function MdmMakerSettings({
           popover: {
             title: "Needs vs Value",
             description:
-              "Choose whether the AI should put emphasis on teams drafting for their current needs, or whether it should put emphasis on teams drafting for positional value.\nFor example, QBs are more valuable than other positions, but a team may not need a QB.",
+              "Choose whether the AI should put emphasis on teams drafting for current needs or positional value.<br/><br/>For example, QBs are more <b>valuable</b> than other positions, but a team may not <b>need</b> a QB.",
             side: "top",
             align: "start"
           }
@@ -126,7 +126,7 @@ function MdmMakerSettings({
           popover: {
             title: "Randomness",
             description:
-              "Choose how much randomness the AI should invoke in its draft. Increase to add chaos.\nNo draft goes as expected.",
+              "Choose how much randomness the AI should invoke in its draft. Increase to add chaos.<br/><br/>No draft goes as expected.",
             side: "top",
             align: "start"
           }

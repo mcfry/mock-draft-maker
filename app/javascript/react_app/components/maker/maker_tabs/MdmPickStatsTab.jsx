@@ -60,7 +60,9 @@ export default function MdmPickStatsTab({ team, pickLocale }) {
         <>
           {team ? (
             <NoData
-              message={`Team doesn't have enough data around pick ${pickLocale} yet.`}
+              message={`Team doesn't have enough data around pick ${
+                pickLocale + 1
+              } yet.`}
             />
           ) : (
             <NoData message="No team is selected. You can select a team by clicking a pick in the left menu." />

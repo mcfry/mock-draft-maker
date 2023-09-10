@@ -258,7 +258,7 @@ function MdmMakerDraft({
           popover: {
             title: "Main Draft Controls",
             description:
-              "From here you can start and pause the draft, as well as obtain real-time information on the current draft round and pick number.",
+              "Here you can start and pause the draft, as well as obtain information on the current round and pick number.",
             side: "left",
             align: "start"
           }
@@ -268,66 +268,76 @@ function MdmMakerDraft({
           popover: {
             title: "Draft Filters",
             description:
-              "Here, you can effortlessly filter players by their positions and conduct quick searches by their names.",
+              "Here you can filter players by their positions and conduct searches by their names.",
             side: "left",
             align: "start"
           }
         },
         {
-          element: "#draft-tabs__trade",
+          element: "#draft-tabs",
           popover: {
-            title: "Trade Tab",
+            title: "Draft Management",
             description:
-              "From here you can trade picks from your selected teams to any other team.\nTrade values are based on the 2024 Rich Hill model. If you think the trade values suck, at least shoot him first.",
+              "Use these tabs to trade and draft players, analyze their stats, and analyze common team picks.",
             side: "left",
             align: "start"
           }
         },
-        {
-          element: "#draft-tabs__draft",
-          popover: {
-            title: "Draft Tab",
-            description: "The primo tab. Draft players here.",
-            side: "left",
-            align: "start"
-          }
-        },
-        {
-          element: "#draft-tabs__your-picks",
-          popover: {
-            title: "Your Picks Tab",
-            description:
-              "Here you can view your amazing draft that everybody, and I mean everybody, should copy.",
-            side: "left",
-            align: "start"
-          }
-        },
-        {
-          element: "#draft-tabs__pick-stats",
-          popover: {
-            title: "Team Stats Tab",
-            description:
-              "Here you can view what all the less-intelligent fans are picking.",
-            side: "left",
-            align: "start"
-          }
-        },
-        {
-          element: "#draft-tabs__analysis",
-          popover: {
-            title: "Analysis Tab",
-            description:
-              "Here, you can access comprehensive player statistics to help you make your choice.",
-            side: "left",
-            align: "start"
-          }
-        },
+        // {
+        //   element: "#draft-tabs__trade",
+        //   popover: {
+        //     title: "Trade Tab",
+        //     description:
+        //       "Here you can trade picks from your selected teams to any other team.<br/><br/>Trade values are based on the 2024 Rich Hill model. If you think the trade values suck, at least shoot him first.",
+        //     side: "left",
+        //     align: "start"
+        //   }
+        // },
+        // {
+        //   element: "#draft-tabs__draft",
+        //   popover: {
+        //     title: "Draft Tab",
+        //     description: "The primo tab. Draft players here.",
+        //     side: "left",
+        //     align: "start"
+        //   }
+        // },
+        // {
+        //   element: "#draft-tabs__your-picks",
+        //   popover: {
+        //     title: "Your Picks Tab",
+        //     description:
+        //       "Here you can view your amazing draft that everybody, and I mean everybody, should copy.",
+        //     side: "left",
+        //     align: "start"
+        //   }
+        // },
+        // {
+        //   element: "#draft-tabs__pick-stats",
+        //   popover: {
+        //     title: "Team Stats Tab",
+        //     description:
+        //       "Here you can view what all the less-intelligent fans are picking.",
+        //     side: "left",
+        //     align: "start"
+        //   }
+        // },
+        // {
+        //   element: "#draft-tabs__analysis",
+        //   popover: {
+        //     title: "Analysis Tab",
+        //     description:
+        //       "Here you can access comprehensive player statistics to help you make your choice.",
+        //     side: "left",
+        //     align: "start"
+        //   }
+        // },
         {
           element: "#picks-menu",
           popover: {
             title: "Picks menu",
             description:
-              "Here, you'll find a comprehensive, clickable list of every team and their associated draft picks.",
+              "Here you'll find a comprehensive, clickable list of every team and their associated draft picks.",
             side: "left",
             align: "start"
           }
@@ -337,7 +347,7 @@ function MdmMakerDraft({
           popover: {
             title: "Round select",
             description:
-              "To reveal upcoming rounds, simply click here, or click back to view players chosen in previous rounds.\nRest assured, this feature will seamlessly update as the draft unfolds.",
+              "To reveal upcoming rounds, simply click here, or click back to view players chosen in previous rounds.<br/><br/>Rest assured, this feature will seamlessly update as the draft unfolds.",
             side: "left",
             align: "start"
           }
@@ -491,41 +501,56 @@ function MdmMakerDraft({
       {/* Trade Stuff + PInfo */}
       <section className="flex flex-col h-full">
         <div className="navbar bg-primary dark:bg-gray-900 text-primary-content justify-between h-[4.5rem]">
-          <div id="main-draft-nav__draft-info" className="navbar w-max">
+          <div
+            id="main-draft-nav__draft-info"
+            className="navbar w-max mr-0 pr-0"
+          >
             {!userPicking ? (
-              <ButtonOne
-                handleClick={e => {
-                  if (playersLoaded === true) {
-                    startOrPauseDraft(e)
-                  }
-                }}
-              >
-                {playersLoaded === false ? (
-                  <span className="loading loading-infinity loading-xs" />
-                ) : (
-                  <>
-                    {draftRunning ? (
-                      <>
-                        <GrPauseFill />
-                        &nbsp;Pause
-                      </>
-                    ) : currentPickIndex === 0 ? (
-                      <>
-                        <GrPlayFill />
-                        &nbsp;Start
-                      </>
-                    ) : (
-                      <>
-                        <GrResume />
-                        &nbsp;Resume
-                      </>
-                    )}
-                  </>
-                )}
-              </ButtonOne>
-            ) : null}
-
-            <div>&nbsp;&nbsp;&nbsp;</div>
+              <>
+                <ButtonOne
+                  classNames="mr-3"
+                  handleClick={e => {
+                    if (playersLoaded === true) {
+                      startOrPauseDraft(e)
+                    }
+                  }}
+                >
+                  {playersLoaded === false ? (
+                    <span className="loading loading-infinity loading-xs" />
+                  ) : (
+                    <>
+                      {draftRunning ? (
+                        <>
+                          <GrPauseFill />
+                          &nbsp;Pause
+                        </>
+                      ) : currentPickIndex === 0 ? (
+                        <>
+                          <GrPlayFill />
+                          &nbsp;Start
+                        </>
+                      ) : (
+                        <>
+                          <GrResume />
+                          &nbsp;Resume
+                        </>
+                      )}
+                    </>
+                  )}
+                </ButtonOne>
+              </>
+            ) : (
+              <>
+                {outerTab !== "draft" ? (
+                  <ButtonOne
+                    classNames="mr-3"
+                    onClick={() => setOuterTab("draft")}
+                  >
+                    Back
+                  </ButtonOne>
+                ) : null}
+              </>
+            )}
 
             <div className="flex flex-col p-2 bg-base-100 rounded text-primary dark:bg-gray-700 dark:text-gray-100">
               <span className="countdown font-mono text-xl">
@@ -547,8 +572,8 @@ function MdmMakerDraft({
           {userPicking && (
             <div className="flex justify-center items-center h-full w-full">
               <div className="text-md font-bold text-warning whitespace-nowrap">
-                You are picking (
-                {orderedPicks[Object.keys(draftState).length].name})
+                You are picking
+                {/* ({orderedPicks[Object.keys(draftState).length].name}) */}
               </div>
             </div>
           )}
@@ -598,7 +623,8 @@ function MdmMakerDraft({
         </div>
 
         <div
-          className="tabs border-b-2 border-t-2"
+          id="draft-tabs"
+          className="tabs border-b-2 border-t-2 relative"
           aria-label="Draft management"
         >
           <MdmTab
@@ -638,7 +664,7 @@ function MdmMakerDraft({
               </>
             }
           />
-          <MdmTab
+          {/* <MdmTab
             id="draft-tabs__pick-stats"
             handleClick={e => handleClick(e, "pick-stats")}
             currentTab={outerTab}
@@ -654,7 +680,7 @@ function MdmMakerDraft({
                 )}
               </>
             }
-          />
+          /> */}
           <MdmTab
             id="draft-tabs__analysis"
             handleClick={e => handleClick(e, "analysis")}
