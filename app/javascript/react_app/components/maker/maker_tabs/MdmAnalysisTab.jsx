@@ -53,48 +53,61 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     if (playerInAnalysis) {
       setTab(positionToDefaultTab[playerInAnalysis.position])
 
+      const statRequests = []
       if (playerInAnalysis?.passing) {
-        axiosClient
-          .get(`/api/v1/passings/statistics/${playerInAnalysis.position}`)
-          .then(res => {
-            setPassStats(res?.data)
-          })
-          .catch(_ => {
-            setPassStats({})
-          })
+        statRequests.push(
+          axiosClient
+            .get(`/api/v1/passings/statistics/${playerInAnalysis.position}`)
+            .then(res => {
+              setPassStats(res?.data)
+              return true
+            })
+            .catch(_ => {
+              setPassStats({})
+            })
+        )
       }
 
       if (playerInAnalysis?.rushing) {
-        axiosClient
-          .get(`/api/v1/rushings/statistics/${playerInAnalysis.position}`)
-          .then(res => {
-            setRushStats(res?.data)
-          })
-          .catch(_ => {
-            setRushStats({})
-          })
+        statRequests.push(
+          axiosClient
+            .get(`/api/v1/rushings/statistics/${playerInAnalysis.position}`)
+            .then(res => {
+              setRushStats(res?.data)
+              return true
+            })
+            .catch(_ => {
+              setRushStats({})
+            })
+        )
       }
 
       if (playerInAnalysis?.receiving) {
-        axiosClient
-          .get(`/api/v1/receivings/statistics/${playerInAnalysis.position}`)
-          .then(res => {
-            setRecStats(res?.data)
-          })
-          .catch(_ => {
-            setRecStats({})
-          })
+        statRequests.push(
+          axiosClient
+            .get(`/api/v1/receivings/statistics/${playerInAnalysis.position}`)
+            .then(res => {
+              setRecStats(res?.data)
+              return true
+            })
+            .catch(_ => {
+              setRecStats({})
+            })
+        )
       }
 
       if (playerInAnalysis?.defense) {
-        axiosClient
-          .get(`/api/v1/defenses/statistics/${playerInAnalysis.position}`)
-          .then(res => {
-            setDefStats(res?.data)
-          })
-          .catch(_ => {
-            setDefStats({})
-          })
+        statRequests.push(
+          axiosClient
+            .get(`/api/v1/defenses/statistics/${playerInAnalysis.position}`)
+            .then(res => {
+              setDefStats(res?.data)
+              return true
+            })
+            .catch(_ => {
+              setDefStats({})
+            })
+        )
       }
 
       if (playerInAnalysis) {
@@ -107,6 +120,12 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
             setOtherStats({})
           })
       }
+
+      Promise.all(statRequests).then(test => {
+        if (test.every(val => !val)) {
+          setTab("other")
+        }
+      })
     }
   }, [playerInAnalysis])
 

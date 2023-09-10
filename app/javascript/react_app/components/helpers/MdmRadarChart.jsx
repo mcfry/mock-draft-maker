@@ -32,25 +32,65 @@ function CustomTooltip({ active, payload, label, data, position }) {
       Pd: "Passes Deflected",
       "Int Yds": "Interception Yards",
       "Int Lng": "Interception Long",
-      FF: "Forced Fumbles"
+      FF: "Forced Fumbles",
+      Height: "Height",
+      "40 Time": "40 Time",
+      Weight: "Weight"
     }
   }, [])
+
+  const top20DisplayLoookup = () => {
+    if (label === "Weight") {
+      return `Top 20 Heaviest ${position}s`
+    }
+    if (label === "Height") {
+      return `Top 20 Tallest ${position}s`
+    }
+    if (label === "40 Time") {
+      return `Top 20 Fastest ${position}s`
+    }
+    if (label === "Int" && position === "QB") {
+      return `Top 20 ${position}s (Fewest)`
+    }
+    if (label === "Sckd") {
+      return `Top 20 ${position}s (Fewest)`
+    }
+
+    return `Top 20 ${position}s`
+  }
+
+  const unitLabelLookup = dataPoint => {
+    if (label === "Weight") {
+      return `${parseInt(dataPoint)} lbs`
+    }
+    if (label === "Height") {
+      return `${parseInt(dataPoint / 12)}' ${parseInt(dataPoint % 12)}"`
+    }
+    if (label === "40 Time") {
+      return `${dataPoint}s`
+    }
+    if (label === "Y/A" || label === "Cmp%" || label === "Avg") {
+      return `${dataPoint}`
+    }
+
+    return parseInt(dataPoint)
+  }
 
   if (active && payload && payload.length) {
     const currentData = data.filter(obj => obj.name === label)[0]
 
     return (
       <div className="flex flex-col justify-left bg-gray-100 shadow p-2 space-y-2">
-        <span className="font-bold min-w-[9rem]">
+        <span className="font-bold min-w-[15rem]">
           {labelDisplayLookup[label]}
         </span>
         {payload.map((pld, index) => (
           <div className="flex justify-between" key={index}>
             <span style={{ color: pld.fill }}>
-              {pld.dataKey === "Top 20" ? `Top 20 ${position}s` : pld.dataKey}
+              {pld.dataKey === "Top 20" ? top20DisplayLoookup() : pld.dataKey}
               :&nbsp;
             </span>
-            <span>{currentData[payload[index].dataKey]}</span>
+            <span>{unitLabelLookup(currentData[payload[index].dataKey])}</span>
           </div>
         ))}
       </div>
@@ -67,17 +107,29 @@ function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
     if (data) {
       const scaled = []
       for (const entry of data) {
-        const localMax = Math.max(entry[dataKey], entry[dataKeyTwo])
-        const scaleFactor = 100 / localMax
-        scaled.push({
-          ...entry,
-          [dataKey]:
-            entry[dataKey] === localMax ? 100 : entry[dataKey] * scaleFactor,
-          [dataKeyTwo]:
-            entry[dataKeyTwo] === localMax
-              ? 100
-              : entry[dataKeyTwo] * scaleFactor
-        })
+        if ("inverse" in entry) {
+          const localMin = Math.min(entry[dataKey], entry[dataKeyTwo])
+          const localMax = Math.max(entry[dataKey], entry[dataKeyTwo])
+          const scaleFactor = localMin / localMax
+          scaled.push({
+            ...entry,
+            [dataKey]: entry[dataKey] === localMin ? 100 : 100 * scaleFactor,
+            [dataKeyTwo]:
+              entry[dataKeyTwo] === localMin ? 100 : 100 * scaleFactor
+          })
+        } else {
+          const localMax = Math.max(entry[dataKey], entry[dataKeyTwo])
+          const scaleFactor = 100 / localMax
+          scaled.push({
+            ...entry,
+            [dataKey]:
+              entry[dataKey] === localMax ? 100 : entry[dataKey] * scaleFactor,
+            [dataKeyTwo]:
+              entry[dataKeyTwo] === localMax
+                ? 100
+                : entry[dataKeyTwo] * scaleFactor
+          })
+        }
       }
 
       setScaledData(scaled)

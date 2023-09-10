@@ -1,6 +1,10 @@
-import React from "react"
+import React, { useMemo } from "react"
 
 function AnalysisTable({ tab, playerInAnalysis }) {
+  const inchesToFeetString = inches => {
+    return `${parseInt(inches / 12)}' ${parseInt(inches % 12)}"`
+  }
+
   return (
     <table className="table rounded-none">
       {/* head */}
@@ -151,7 +155,7 @@ function AnalysisTable({ tab, playerInAnalysis }) {
             <>
               {tab === "other" && (
                 <>
-                  <td>{playerInAnalysis.height}</td>
+                  <td>{inchesToFeetString(playerInAnalysis.height)}</td>
                   <td>{playerInAnalysis.weight}</td>
                   <td>{playerInAnalysis.forty_time}</td>
                 </>

@@ -131,12 +131,14 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
                       name: "Int",
                       [playerInAnalysis.last]:
                         playerInAnalysis.passing.interceptions,
-                      "Top 20": passStats.top_20_interceptions
+                      "Top 20": passStats.top_20_interceptions,
+                      inverse: true
                     },
                     {
                       name: "Sckd",
                       [playerInAnalysis.last]: playerInAnalysis.passing.sacked,
-                      "Top 20": passStats.top_20_sacked
+                      "Top 20": passStats.top_20_sacked,
+                      inverse: true
                     },
                     {
                       name: "Lng",

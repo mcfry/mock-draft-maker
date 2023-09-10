@@ -93,7 +93,8 @@ function OtherAnalysis({ playerInAnalysis, otherStats }) {
                     {
                       name: "40 Time",
                       [playerInAnalysis.last]: playerInAnalysis.forty_time,
-                      "Top 20": otherStats.top_20_forty_time
+                      "Top 20": otherStats.top_20_forty_time,
+                      inverse: true
                     }
                   ]
                 }
