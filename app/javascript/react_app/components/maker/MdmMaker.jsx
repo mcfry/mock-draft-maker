@@ -53,26 +53,41 @@ import tampa_bay_buccaneers from "../../images/tampa_bay_buccaneers.png"
 import tennessee_titans from "../../images/tennessee_titans.png"
 import washington_commanders from "../../images/washington_commanders.png"
 
-// Json
-import data from "./maker_static_data/picks_2024.json"
-
 function MdmMaker() {
+  // ---------------------
+  // - Other State/Hooks -
+  // ---------------------
   const navigate = useNavigate()
 
-  // Local State
-  // map the dnd reordering for each team's first first-round pick
-  const [teamsMapping, setTeamsMapping] = useState([])
-  const [teamsLoaded, setTeamsLoaded] = useState(false)
-  const [players, setPlayers] = useState([])
-  const [playersLoaded, setPlayersLoaded] = useState(false)
-  const [stage, setStage] = useState(1)
-  const [pickData, setPickData] = useState(data)
-  const [orderedPicks, setOrderedPicks] = useState(new Array(256).fill(""))
-
-  // Store State
-  const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
+  // ---------------
+  // - Store State -
+  // ---------------
+  const pickData = useStore(state => state.pickData)
+  const [playersLoaded, setPlayers] = useStore(state => [
+    state.playersLoaded,
+    state.setPlayers
+  ])
+  const [teams, teamsLoaded, setTeams, setTeamsMapping] = useStore(state => [
+    state.teams,
+    state.teamsLoaded,
+    state.setTeams,
+    state.setTeamsMapping
+  ])
+  const [orderedPicks, setOrderedPicks] = useStore(state => [
+    state.orderedPicks,
+    state.setOrderedPicks
+  ])
   const resetDraftSlice = useStore(state => state.resetDraftSlice)
   const addAlert = useStore(state => state.addAlert)
+
+  // ---------------
+  // - Local State -
+  // ---------------
+  const [stage, setStage] = useState(1)
+
+  // -----------
+  // - Helpers -
+  // -----------
 
   // Have to do it like this because of Rails asset bullshit
   const teamToImage = useMemo(
@@ -120,7 +135,9 @@ function MdmMaker() {
     []
   )
 
-  // Lifecycle Hooks
+  // -------------
+  // - Lifecycle -
+  // -------------
   useEffect(() => {
     resetDraftSlice()
 
@@ -130,7 +147,6 @@ function MdmMaker() {
       .then(res => {
         if (res.data.length > 0) {
           setTeams(res.data)
-          setTeamsLoaded(true)
         } else {
           console.log("No teams")
         }
@@ -146,7 +162,6 @@ function MdmMaker() {
         throw new Error("Network response was not ok.")
       })
       .then(res => {
-        setPlayersLoaded(true)
         setPlayers(res)
       })
       .catch(() => navigate(ROUTES.HOME))
@@ -159,16 +174,17 @@ function MdmMaker() {
         teamsHash[team.full_name] = team
       }
 
+      const newOrderedPicks = orderedPicks
       for (const [k, v] of Object.entries(pickData)) {
         for (const pick of v) {
-          orderedPicks[pick - 1] = teamsHash[k]
+          newOrderedPicks[pick - 1] = teamsHash[k]
         }
       }
 
       const teamsMap = []
       const newTeams = []
       const seen = new Set()
-      for (const [i, op] of Object.entries(orderedPicks)) {
+      for (const [i, op] of Object.entries(newOrderedPicks)) {
         if (op === undefined) {
           addAlert({
             message: "Bad team data, not every team has an associated pick",
@@ -193,8 +209,8 @@ function MdmMaker() {
       }
 
       setTeams(newTeams)
-      setTeamsMapping(_ => teamsMap)
-      setOrderedPicks(_ => orderedPicks)
+      setTeamsMapping(teamsMap)
+      setOrderedPicks(newOrderedPicks)
     }
   }, [pickData, teamsLoaded])
 
@@ -218,14 +234,9 @@ function MdmMaker() {
                   </span>
                 </div>
 
-                {/* Mdm Settings */}
                 <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerSettings
-                    teamsMapping={teamsMapping}
-                    setTeamsMapping={setTeamsMapping}
                     setStage={setStage}
-                    pickData={pickData}
-                    setPickData={setPickData}
                     teamToImage={teamToImage}
                   />
                 </section>
@@ -234,15 +245,9 @@ function MdmMaker() {
 
             {stage === 2 && (
               <>
-                {/* Mdm Draft */}
                 <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
-                    pickData={pickData}
-                    setPickData={setPickData}
-                    orderedPicks={orderedPicks}
-                    players={players}
-                    setPlayers={setPlayers}
                     playersLoaded={playersLoaded}
                     teamToImage={teamToImage}
                   />
@@ -252,7 +257,6 @@ function MdmMaker() {
 
             {stage === 3 && (
               <>
-                {/* Mdm Share */}
                 <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] rounded-none z-30">
                   <MdmMakerShare />
                 </section>

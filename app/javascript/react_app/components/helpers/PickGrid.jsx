@@ -1,16 +1,17 @@
+// External
 import React from "react"
 import PropTypes from "prop-types"
-
 import clsx from "clsx"
 
-function PickGrid({
-  year,
-  pickData,
-  team,
-  isCt,
-  activeTrades,
-  handleTradeClick
-}) {
+// Internal
+import useStore from "../../store/store"
+
+function PickGrid({ year, team, isCt, activeTrades, handleTradeClick }) {
+  // ---------------
+  // - Store State -
+  // ---------------
+  const pickData = useStore(state => state.pickData)
+
   return (
     <>
       <div className="flex justify-center border-b-2 pt-2 dark:text-gray-900 dark:border-b-gray-900">
@@ -54,7 +55,6 @@ function PickGrid({
 }
 
 PickGrid.propTypes = {
-  pickData: PropTypes.object.isRequired,
   team: PropTypes.string.isRequired,
   isCt: PropTypes.bool.isRequired,
   activeTrades: PropTypes.object.isRequired,

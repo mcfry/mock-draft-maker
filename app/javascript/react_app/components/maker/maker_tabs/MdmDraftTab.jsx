@@ -12,13 +12,16 @@ function MdmDraftTab({
   playersLoaded,
   preselectedPick,
   setPreselectedPick,
-  draftRunning,
-  userPicking,
   pickModal,
   pickPlayer,
   handleAnalyzeClick
 }) {
+  // ---------------
+  // - Store State -
+  // ---------------
   const addAlert = useStore(state => state.addAlert)
+  const draftRunning = useStore(state => state.draftRunning)
+  const userPicking = useStore(state => state.userPicking)
 
   const selectPlayer = () => {
     if (preselectedPick && userPicking) {

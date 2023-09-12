@@ -35,7 +35,8 @@ function CustomTooltip({ active, payload, label, data, position }) {
       FF: "Forced Fumbles",
       Height: "Height",
       "40 Time": "40 Time",
-      Weight: "Weight"
+      Weight: "Weight",
+      Rec: "Receptions"
     }
   }, [])
 

@@ -24,18 +24,20 @@ import ButtonOne from "../helpers/ButtonOne"
 import SortableTeam from "../helpers/SortableTeam"
 import useStore from "../../store/store"
 
-function MdmMakerSettings({
-  teamsMapping,
-  setTeamsMapping,
-  setStage,
-  pickData,
-  setPickData,
-  teamToImage
-}) {
+function MdmMakerSettings({ setStage, teamToImage }) {
   // ---------------
   // - Store State -
   // ---------------
-  const [teams, setTeams] = useStore(state => [state.teams, state.setTeams])
+  const [pickData, setPickData] = useStore(state => [
+    state.pickData,
+    state.setPickData
+  ])
+  const [teams, setTeams, teamsMapping, setTeamsMapping] = useStore(state => [
+    state.teams,
+    state.setTeams,
+    state.teamsMapping,
+    state.setTeamsMapping
+  ])
   const [selected, setSelected] = useStore(state => [
     state.selected,
     state.setSelected
@@ -324,7 +326,7 @@ function MdmMakerSettings({
       }
 
       setTeams(newTeams)
-      setTeamsMapping(_ => newTeamsMapping)
+      setTeamsMapping(newTeamsMapping)
     }
   }
 
@@ -364,9 +366,9 @@ function MdmMakerSettings({
         }
 
         setStage(2)
-        setPickData(_ => ({
+        setPickData({
           ...pickDataCopy
-        }))
+        })
       } else {
         addAlert({
           type: "error",

@@ -94,7 +94,7 @@ function ReceivingAnalysis({ playerInAnalysis, recStats }) {
                 data={
                   recStats && [
                     {
-                      name: "Att",
+                      name: "Rec",
                       [playerInAnalysis.last]:
                         playerInAnalysis.receiving.receptions,
                       "Top 20": recStats.top_20_receptions

@@ -7,12 +7,12 @@ function PickMenuListItem({
   team,
   actualIndex,
   handleClick,
-  draftState,
   pickedYet,
   lastPick,
   teamToImage
 }) {
   const selected = useStore(state => state.selected)
+  const draftState = useStore(state => state.draftState)
 
   const convertToSnakeCase = inputString => {
     return inputString.toLowerCase().replace(/\s+/g, "_")

@@ -24,24 +24,11 @@ import useStore from "../../store/store"
 import needsData from "./maker_static_data/needs_2024.json"
 import positionalData from "./maker_static_data/positional_value.json"
 
-function MdmMakerDraft({
-  pickData,
-  setPickData,
-  orderedPicks,
-  setStage,
-  players,
-  setPlayers,
-  playersLoaded,
-  teamToImage
-}) {
+function MdmMakerDraft({ setStage, teamToImage }) {
   // ---------------
   // - Local State -
   // ---------------
-  const [draftRunning, setDraftRunning] = useState(false)
-  const [draftState, setDraftState] = useState({})
-  const [userPicking, setUserPicking] = useState(false)
   const [search, setSearch] = useState("")
-  const [localPlayers, setLocalPlayers] = useState(players)
   const [preselectedPick, setPreselectedPick] = useState(null)
   const [isMouseOverPicks, setIsMouseOverPicks] = useState(false)
   const [pickStatsTeam, setPickStatsTeam] = useState(null)
@@ -52,9 +39,39 @@ function MdmMakerDraft({
   // ---------------
   // - Store State -
   // ---------------
+  const [draftState, draftRunning, setDraftState, setDraftRunning] = useStore(
+    state => [
+      state.draftState,
+      state.draftRunning,
+      state.setDraftState,
+      state.setDraftRunning
+    ]
+  )
   const [viewRound, setViewRound] = useStore(state => [
     state.viewRound,
     state.setViewRound
+  ])
+  const [
+    orderedPicks,
+    pickData,
+    yourPicks,
+    userPicking,
+    setPickData,
+    setYourPicks,
+    setUserPicking
+  ] = useStore(state => [
+    state.orderedPicks,
+    state.pickData,
+    state.yourPicks,
+    state.userPicking,
+    state.setPickData,
+    state.setYourPicks,
+    state.setUserPicking
+  ])
+  const [players, playersLoaded, setPlayers] = useStore(state => [
+    state.players,
+    state.playersLoaded,
+    state.setPlayers
   ])
   const [outerTab, setOuterTab] = useStore(state => [
     state.outerTab,
@@ -66,16 +83,15 @@ function MdmMakerDraft({
   const needsVsValue = useStore(state => state.needsVsValue)
   const randomness = useStore(state => state.randomness)
   const draftRounds = useStore(state => state.draftRounds)
-  const [yourPicks, setYourPicks] = useStore(state => [
-    state.yourPicks,
-    state.setYourPicks
-  ])
   const addAlert = useStore(state => state.addAlert)
 
+  // ---------------
+  // - Other State -
+  // ---------------
   const [selectedTeams, setSelectedTeams] = useState(
     teams.filter(team => team.id in selected)
   )
-
+  const [localPlayers, setLocalPlayers] = useState(players)
   const pickModal = useRef(null)
   const draftInterval = useRef(undefined)
   const fuse = useRef(
@@ -107,16 +123,20 @@ function MdmMakerDraft({
       setYourPicks(newYourPicks)
     }
 
-    setDraftState(prev => ({
-      ...prev,
+    setDraftState({
+      ...draftState,
       [total + 1]: playerToAdd
-    }))
+    })
 
     // Set analysis team automatically
     setPickStatsTeam(orderedPicks[total + 1])
     setPickStatsTeamIndex(total + 1)
 
     // Remove from possible picks
+    if (playerToAdd === playerInAnalysis) {
+      setPlayerInAnalysis(null)
+    }
+
     removePlayer(playerToAdd)
 
     // Reset preselected
@@ -124,10 +144,10 @@ function MdmMakerDraft({
 
     // Remove pick data (trades)
     const oldPd = pickData[orderedPicks[total].full_name]
-    setPickData(prev => ({
-      ...prev,
+    setPickData({
+      ...pickData,
       [orderedPicks[total].full_name]: oldPd.slice(1)
-    }))
+    })
 
     setViewRound(parseInt(total / 32))
 
@@ -138,7 +158,7 @@ function MdmMakerDraft({
 
   const removePlayer = playerToRemove => {
     const idx = players.indexOf(playerToRemove)
-    setPlayers(_ => players.slice(0, idx).concat(players.slice(idx + 1)))
+    setPlayers(players.slice(0, idx).concat(players.slice(idx + 1)))
   }
 
   const createDraftInterval = () =>
@@ -210,22 +230,19 @@ function MdmMakerDraft({
       setOuterTab("trade")
     }
 
-    setDraftRunning(prev => !prev)
+    setDraftRunning(!draftRunning)
   }
 
   const forceNewIntervalAndContinue = () => {
     draftInterval.current = createDraftInterval()
-    setUserPicking(_ => false)
-    setDraftRunning(_ => true)
+    setUserPicking(false)
+    setDraftRunning(true)
     setViewRound(parseInt(Object.keys(draftState).length / 32))
 
     return () => clearInterval(draftInterval.current)
   }
 
   const filterPlayers = (setCollection = false) => {
-    // Edit csv and reseed, remove erroneous from positionalData
-    // G/C/OL -> OL
-    //
     let newPlayers = players
     if (positionSelect !== "ALL" && positionSelect !== "default") {
       newPlayers = players.filter(player => player.position === positionSelect)
@@ -283,55 +300,6 @@ function MdmMakerDraft({
             align: "start"
           }
         },
-        // {
-        //   element: "#draft-tabs__trade",
-        //   popover: {
-        //     title: "Trade Tab",
-        //     description:
-        //       "Here you can trade picks from your selected teams to any other team.<br/><br/>Trade values are based on the 2024 Rich Hill model. If you think the trade values suck, at least shoot him first.",
-        //     side: "left",
-        //     align: "start"
-        //   }
-        // },
-        // {
-        //   element: "#draft-tabs__draft",
-        //   popover: {
-        //     title: "Draft Tab",
-        //     description: "The primo tab. Draft players here.",
-        //     side: "left",
-        //     align: "start"
-        //   }
-        // },
-        // {
-        //   element: "#draft-tabs__your-picks",
-        //   popover: {
-        //     title: "Your Picks Tab",
-        //     description:
-        //       "Here you can view your amazing draft that everybody, and I mean everybody, should copy.",
-        //     side: "left",
-        //     align: "start"
-        //   }
-        // },
-        // {
-        //   element: "#draft-tabs__pick-stats",
-        //   popover: {
-        //     title: "Team Stats Tab",
-        //     description:
-        //       "Here you can view what all the less-intelligent fans are picking.",
-        //     side: "left",
-        //     align: "start"
-        //   }
-        // },
-        // {
-        //   element: "#draft-tabs__analysis",
-        //   popover: {
-        //     title: "Analysis Tab",
-        //     description:
-        //       "Here you can access comprehensive player statistics to help you make your choice.",
-        //     side: "left",
-        //     align: "start"
-        //   }
-        // },
         {
           element: "#picks-menu",
           popover: {
@@ -393,9 +361,9 @@ function MdmMakerDraft({
       const picking = orderedPicks[total]
       if (draftRunning === true && !selectedTeams.includes(picking)) {
         draftInterval.current = createDraftInterval()
-        setUserPicking(_ => false)
+        setUserPicking(false)
       } else if (draftRunning === true) {
-        setUserPicking(_ => true)
+        setUserPicking(true)
         setOuterTab("draft")
       }
 
@@ -478,7 +446,6 @@ function MdmMakerDraft({
                 handleClick={e =>
                   handleAnalyzeClick(e, draftState[actualIndex + 1])
                 }
-                draftState={draftState}
                 pickedYet={true}
                 lastPick={currentPickIndex === actualIndex + 1}
                 teamToImage={teamToImage}
@@ -489,7 +456,6 @@ function MdmMakerDraft({
                 team={team}
                 actualIndex={actualIndex}
                 handleClick={e => handlePickStatsClick(e, team, actualIndex)}
-                draftState={null}
                 pickedYet={false}
                 teamToImage={teamToImage}
               />
@@ -591,7 +557,9 @@ function MdmMakerDraft({
                 onChange={handleChange}
                 className="select select-bordered rounded-none text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100"
               >
-                <option value="default">Select a position</option>
+                <option value="default" disabled>
+                  Select a position
+                </option>
                 <option value="ALL">ALL</option>
                 {Object.keys(positionalData).map(position => (
                   <option key={position} value={position}>
@@ -710,11 +678,6 @@ function MdmMakerDraft({
               selected={selected}
               selectedTeams={selectedTeams}
               setSelectedTeams={setSelectedTeams}
-              pickData={pickData}
-              setPickData={setPickData}
-              draftRunning={draftRunning}
-              userPicking={userPicking}
-              setUserPicking={setUserPicking}
               currentPickIndex={currentPickIndex}
               forceNewIntervalAndContinue={forceNewIntervalAndContinue}
             />
@@ -726,8 +689,6 @@ function MdmMakerDraft({
               playersLoaded={playersLoaded}
               preselectedPick={preselectedPick}
               setPreselectedPick={setPreselectedPick}
-              draftRunning={draftRunning}
-              userPicking={userPicking}
               pickModal={pickModal}
               pickPlayer={pickPlayer}
               handleAnalyzeClick={handleAnalyzeClick}
@@ -783,6 +744,7 @@ function MdmMakerDraft({
   function handleResetFiltersClick() {
     setSearch("")
     setPositionSelect("default")
+    setPlayerInAnalysis(null)
   }
 
   function handleChange(event) {

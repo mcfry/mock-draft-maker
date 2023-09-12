@@ -35,7 +35,8 @@ function CustomTooltip({ active, payload, label, data, position }) {
       FF: "Forced Fumbles",
       Height: "Height",
       "40 Time": "40 Time",
-      Weight: "Weight"
+      Weight: "Weight",
+      Rec: "Receptions"
     }
   }, [])
 
@@ -81,7 +82,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
 
     return (
       <div className="flex flex-col justify-left bg-gray-100 shadow p-2 space-y-2">
-        <span className="font-bold min-w-[9rem]">
+        <span className="font-bold min-w-[15rem]">
           {labelDisplayLookup[label]}
         </span>
         {payload.map((pld, index) => (

@@ -32,7 +32,6 @@ class Passing < ApplicationRecord
         long: { pluralize: false, order_asc: false },
         attempts: { pluralize: true, order_asc: false },
         completions: { pluralize: true, order_asc: false },
-        rating: { pluralize: false, order_asc: false },
         interceptions: { pluralize: true, order_asc: false },
         sacked: { pluralize: false, order_asc: false }
     )
@@ -46,6 +45,27 @@ class Passing < ApplicationRecord
     end
 
     # Non Standard Top 20s
+    def self.top_20_rating(position = nil)
+        if position.nil?
+            sum_and_average_20(where("completions > ?", 100).sort_by{|passing|
+                passing.rating.nan? ? 0.0 : passing.rating
+            }.reverse.take(20).map{ |passing| 
+                passing.rating
+            })
+        else
+            completionsFilter = 1
+            if position == "QB"
+                completionsFilter = 100
+            end
+
+            sum_and_average_20(by_position(position).where("completions > ?", completionsFilter).sort_by{|passing|
+                passing.rating ? 0 : passing.rating
+            }.reverse.take(20).map{ |passing| 
+                passing.rating
+            })
+        end
+    end
+
     def self.top_20_yards_per_attempt(position = nil)
         if position.nil?
             sum_and_average_20(where("completions > ?", 100).sort_by{|passing|

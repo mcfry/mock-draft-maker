@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React from "react"
 
 function AnalysisTable({ tab, playerInAnalysis }) {
   const inchesToFeetString = inches => {

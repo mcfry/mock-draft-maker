@@ -6,7 +6,7 @@ import MdmRadarChart from "../../../helpers/MdmRadarChart"
 import MdmBarChart from "../../../helpers/MdmBarChart"
 import ChartButtons from "../../../helpers/ChartButtons"
 
-function PassingAnalysis({ playerInAnalysis, passStats }) {
+const PassingAnalysis = React.memo(({ playerInAnalysis, passStats }) => {
   const [chartType, setChartType] = useState(0)
 
   return (
@@ -195,6 +195,6 @@ function PassingAnalysis({ playerInAnalysis, passStats }) {
   function handleClick(type = 0) {
     setChartType(type)
   }
-}
+})
 
 export default PassingAnalysis

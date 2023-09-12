@@ -30,7 +30,7 @@ class Receiving < ApplicationRecord
     )
 
     def average
-        (yards.to_f / receptions.to_f).round(2)
+        receptions > 0 ? (yards.to_f / receptions.to_f).round(2) : 0
     end
 
     # Non Standard Top 20s

@@ -30,7 +30,7 @@ class Rushing < ApplicationRecord
     )
 
     def average
-        (yards.to_f / attempts.to_f).round(2)
+        attempts > 0 ? (yards.to_f / attempts.to_f).round(2) : 0
     end
 
     # Non Standard Top 20s

@@ -26,10 +26,9 @@ import pickValueData from "../maker_static_data/pick_value_rich_hill.json"
 //                                 avg(values(slot*num_in_slot...(slot
 //                                     +1)*num_in_slot))
 //                                 * wait_time_value_percent (0.9?)
-//
+
 // NOTE: uncomment to find averages for future picks
-// comp picks start round 3
-// based on 8 comp picks avg =
+// NOTE: comp picks start round 3 (avg 8)
 // for (let i = 1; i < 264; i += i < 64 ? 32 : 40) {
 //   let avg = 0
 //   for (let j = i; j < i + (i < 64 ? 32 : 40); j += 1) {
@@ -52,16 +51,28 @@ function MdmTradeTab({
   startOrPauseDraft,
   teams,
   selected,
-  pickData,
-  setPickData,
   selectedTeams,
   setSelectedTeams,
-  draftRunning,
-  userPicking,
-  setUserPicking,
   currentPickIndex,
   forceNewIntervalAndContinue
 }) {
+  // ---------------
+  // - Store State -
+  // ---------------
+  const addAlert = useStore(state => state.addAlert)
+  const [userPicking, pickData, setUserPicking, setPickData] = useStore(
+    state => [
+      state.userPicking,
+      state.pickData,
+      state.setUserPicking,
+      state.setPickData
+    ]
+  )
+  const draftRunning = useStore(state => state.draftRunning)
+
+  // ---------------
+  // - Local State -
+  // ---------------
   const [localTeams, setLocalTeams] = useState(
     teams.filter(team => !(team.id in selected))
   )
@@ -69,8 +80,6 @@ function MdmTradeTab({
   const [currentTeam, setCurrentTeam] = useState(selectedTeams[0].full_name)
   const [activeTrades, setActiveTrades] = useState({})
   const [tradeValue, setTradeValue] = useState(0)
-
-  const addAlert = useStore(state => state.addAlert)
 
   const findAndSetTradeValue = (tp, ct, newActiveTrades = activeTrades) => {
     let pvd = 0
@@ -121,7 +130,6 @@ function MdmTradeTab({
 
             <PickGrid
               year={CURRENT_YEAR}
-              pickData={pickData}
               team={tradePartner}
               isCt={false}
               activeTrades={activeTrades}
@@ -154,7 +162,6 @@ function MdmTradeTab({
 
             <PickGrid
               year={CURRENT_YEAR}
-              pickData={pickData}
               team={currentTeam}
               isCt={true}
               activeTrades={activeTrades}
@@ -265,11 +272,11 @@ function MdmTradeTab({
         .concat(activeTp)
         .sort((a, b) => a - b)
 
-      setPickData(prev => ({
-        ...prev,
+      setPickData({
+        ...pickData,
         [tradePartner]: newTp,
         [currentTeam]: newCt
-      }))
+      })
 
       if (userPicking && oldCt[0] !== newCt[0]) {
         forceNewIntervalAndContinue()
@@ -278,7 +285,7 @@ function MdmTradeTab({
         !userPicking &&
         newCt[0] === currentPickIndex + 1
       ) {
-        setUserPicking(_ => true)
+        setUserPicking(true)
       }
 
       setActiveTrades(_ => ({}))
