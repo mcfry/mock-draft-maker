@@ -20,10 +20,6 @@ import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import useStore from "../../store/store"
 
-// Json
-import needsData from "./maker_static_data/needs_2024.json"
-import positionalData from "./maker_static_data/positional_value.json"
-
 function MdmMakerDraft({ setStage, teamToImage }) {
   // ---------------
   // - Local State -
@@ -77,6 +73,8 @@ function MdmMakerDraft({ setStage, teamToImage }) {
     state.outerTab,
     state.setOuterTab
   ])
+  const needsData = useStore(state => state.needsData)
+  const positionalData = useStore(state => state.positionalData)
   const teams = useStore(state => state.teams)
   const selected = useStore(state => state.selected)
   const speed = useStore(state => state.speed)
@@ -369,6 +367,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
 
       setViewRound(parseInt(total / 32))
     } else {
+      clearInterval(draftInterval.current)
       setStage(3)
     }
 
@@ -395,7 +394,11 @@ function MdmMakerDraft({ setStage, teamToImage }) {
 
   return (
     <>
-      <section id="picks-menu" className="overflow-x-hidden overflow-y-auto">
+      <section
+        id="picks-menu"
+        className="overflow-x-hidden overflow-y-auto"
+        tabIndex={-1}
+      >
         <menu
           onFocus={() => setIsMouseOverPicks(true)}
           onBlur={() => setIsMouseOverPicks(false)}
@@ -408,7 +411,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
             <button
               id="picks-menu__round-select"
               type="button"
-              tabIndex={0}
+              tabIndex={-1}
               className="btn text-2xl w-full hover:!bg-neutral-400 dark:!bg-gray-700 dark:hover:!bg-gray-900 dark:!text-gray-100 border-t-0 border-l-0 border-r-0 border-b-2 border-primary dark:border-gray-200"
             >
               Round {viewRound + 1}
@@ -418,7 +421,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
               {[...Array(draftRounds)].map((_, index) => (
                 <li key={`dr_${index.toString()}`}>
                   <button
-                    tabIndex={0}
+                    tabIndex={-1}
                     type="button"
                     onClick={e => {
                       document.activeElement?.blur()
@@ -520,7 +523,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
 
             <div className="flex flex-col p-2 bg-base-100 rounded text-primary dark:bg-gray-700 dark:text-gray-100">
               <span className="countdown font-mono text-xl">
-                <span style={{ "--value": currentRound + 1 }} />
+                <span style={{ "--value": currentRound + 1 }} tabIndex={-1} />
               </span>
               <span className="text-xs">Round</span>
             </div>
@@ -528,7 +531,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
             <div>&nbsp;&nbsp;</div>
 
             <div className="flex flex-col p-2 bg-base-100 rounded text-primary dark:bg-gray-700 dark:text-gray-100">
-              <span className="countdown font-mono text-xl">
+              <span className="countdown font-mono text-xl" tabIndex={-1}>
                 {currentPickIndex + 1}
               </span>
               <span className="text-xs">Pick</span>
@@ -555,7 +558,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
                 data-testid="positionFilter"
                 value={positionSelect}
                 onChange={handleChange}
-                className="select select-bordered rounded-none text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100"
+                className="select select-bordered rounded-none text-primary dark:text-gray-100 dark:bg-gray-500 dark:border-gray-100 focus:outline-accent"
               >
                 <option value="default" disabled>
                   Select a position
@@ -580,7 +583,7 @@ function MdmMakerDraft({ setStage, teamToImage }) {
                 name="search"
                 type="text"
                 placeholder="Search Player"
-                className="input input-bordered rounded-none w-24 text-primary md:w-auto dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100"
+                className="input input-bordered rounded-none w-24 text-primary md:w-auto dark:text-gray-100 dark:placeholder-gray-200 dark:bg-gray-500 dark:border-gray-100 focus:outline-accent"
               />
             </div>
 

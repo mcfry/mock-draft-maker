@@ -1,5 +1,39 @@
 // Json
 import data from "./static_data/picks_2024.json"
+import needsData from "./static_data/needs_2024.json"
+import positionalData from "./static_data/positional_value.json"
+import pickValueData from "./static_data/pick_value_rich_hill.json"
+
+// Extrapolate to fill remaining
+for (let i = 225; i < 257; i += 1) {
+  const diff = 1
+  const pickValueDataVal =
+    pickValueData[i - 1] - diff > 0 ? pickValueData[i - 1] - diff : 1
+  pickValueData[i] = pickValueDataVal
+}
+
+// NOTE: reality, future pick value is dependent on many factors
+//       - number of picks in future draft (can maybe use avg # in each round)
+//       - team outlook (can use projections, or previous year as indicator,
+//         or even average over a smaller segment like 1-8 instead of 1-32
+//         where 32 is the max in the current round)
+//       - can't use it for a year, less value
+//
+// Ideally: algo is something like slot=(team_rank / 8)
+//                                 num_in_slot=(round_picks/8)
+//                                 avg(values(slot*num_in_slot...(slot
+//                                     +1)*num_in_slot))
+//                                 * wait_time_value_percent (0.9?)
+
+// NOTE: uncomment to find averages for future picks
+// NOTE: comp picks start round 3 (avg 8)
+// for (let i = 1; i < 264; i += i < 64 ? 32 : 40) {
+//   let avg = 0
+//   for (let j = i; j < i + (i < 64 ? 32 : 40); j += 1) {
+//     avg += j in pickValueData ? pickValueData[j] : 1
+//   }
+//   console.log(avg / (i < 64 ? 32 : 40))
+// }
 
 const inititalState = {
   draftState: {},
@@ -19,7 +53,10 @@ const inititalState = {
   teamsMapping: [],
   selected: {},
   players: [],
-  playersLoaded: false
+  playersLoaded: false,
+  needsData,
+  positionalData,
+  pickValueData
 }
 
 const createDraftSlice = set => ({

@@ -31,22 +31,24 @@ function MdmDraftTab({
 
   return (
     <>
-      <dialog ref={pickModal} id="my_modal_2" className="modal">
-        <form method="dialog" className="modal-box dark:bg-gray-700">
-          <p className="py-4 dark:text-gray-100">
-            Select {preselectedPick && preselectedPick.full_name}?
-          </p>
+      {userPicking && (
+        <dialog ref={pickModal} id="my_modal_2" className="modal">
+          <form method="dialog" className="modal-box dark:bg-gray-700">
+            <p className="py-4 dark:text-gray-100">
+              Select {preselectedPick && preselectedPick.full_name}?
+            </p>
 
-          <div className="flex modal-action">
-            <ButtonTwo handleClick={e => handleDraftClick(e, false)}>
-              No
-            </ButtonTwo>
-            <ButtonTwo handleClick={e => handleDraftClick(e, true)}>
-              Yes
-            </ButtonTwo>
-          </div>
-        </form>
-      </dialog>
+            <div className="flex modal-action">
+              <ButtonTwo handleClick={e => handleDraftClick(e, false)}>
+                No
+              </ButtonTwo>
+              <ButtonTwo handleClick={e => handleDraftClick(e, true)}>
+                Yes
+              </ButtonTwo>
+            </div>
+          </form>
+        </dialog>
+      )}
 
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         <div className="overflow-x-auto w-[62rem] h-[34.75rem]">
@@ -60,7 +62,7 @@ function MdmDraftTab({
               {!userPicking && draftRunning ? (
                 <CurrentlyPicking startOrPauseDraft={startOrPauseDraft} />
               ) : (
-                <table className="table rounded-none">
+                <table className="table rounded-none" tabIndex={-1}>
                   <thead>
                     <tr className="text-sm font-bold text-black dark:text-gray-900">
                       <th className="w-1/12">Projected</th>
@@ -80,7 +82,6 @@ function MdmDraftTab({
                             ? "bg-success"
                             : "hover cursor-pointer"
                         }
-                        onClick={e => handleClick(e, player)}
                       >
                         <th>
                           {player.projected === -1 ? "N/A" : player.projected}
@@ -98,12 +99,20 @@ function MdmDraftTab({
                         <td>
                           <ButtonTwo
                             handleClick={() => {
+                              console.log("test")
+
                               if (userPicking === true) {
                                 setPreselectedPick(player)
 
                                 if (pickModal.current) {
                                   pickModal.current.showModal()
                                 }
+                              } else {
+                                addAlert({
+                                  type: "error",
+                                  message: "It's not your turn to pick!",
+                                  time: 4000
+                                })
                               }
                             }}
                           >
@@ -123,19 +132,19 @@ function MdmDraftTab({
   )
 
   // Handlers
-  function handleClick(e, player) {
-    e.preventDefault()
+  // function handleClick(e, player) {
+  //   e.preventDefault()
 
-    if (player && userPicking) {
-      setPreselectedPick(player)
-    } else {
-      addAlert({
-        type: "error",
-        message: "It's not your turn to pick!",
-        time: 4000
-      })
-    }
-  }
+  //   if (player && userPicking) {
+  //     setPreselectedPick(player)
+  //   } else {
+  //     addAlert({
+  //       type: "error",
+  //       message: "It's not your turn to pick!",
+  //       time: 4000
+  //     })
+  //   }
+  // }
 
   function handleDraftClick(e, isSure) {
     e.preventDefault()

@@ -34,6 +34,7 @@ function PickMenuListItem({
           }
         )}
         onClick={handleClick}
+        tabIndex={-1}
       >
         {pickedYet ? (
           <div

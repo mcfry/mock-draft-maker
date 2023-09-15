@@ -45,6 +45,7 @@ function SortableTeam({
         }
       )}
       onClick={e => handleClick(e, "teamClick")}
+      onKeyDown={handleKeyDown}
     >
       <span className="flex items-center w-full">
         <RiDraggable className="flex-[1] mr-1.5" />
@@ -60,6 +61,12 @@ function SortableTeam({
       </span>
     </button>
   )
+
+  function handleKeyDown(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      handleClick(e, "teamClick")
+    }
+  }
 }
 
 export default SortableTeam

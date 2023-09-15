@@ -157,7 +157,11 @@ function MdmMakerSettings({ setStage, teamToImage }) {
   // - Lifecycle -
   // -------------
   useEffect(() => {
-    if (!localStorage.getItem("settingsTourCompleted")) guidedTutorial()
+    if (
+      !localStorage.getItem("settingsTourCompleted") &&
+      window.innerWidth > 1310
+    )
+      guidedTutorial()
   }, [])
 
   return (

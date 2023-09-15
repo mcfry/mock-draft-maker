@@ -12,7 +12,7 @@ export default function ButtonOne({
       type="button"
       onClick={handleClick}
       className={clsx(
-        "btn rounded-none hover:bg-gray-300 dark:hover:bg-gray-500 dark:hover:border-black",
+        "btn rounded-none hover:bg-gray-300 dark:hover:bg-gray-500 dark:hover:border-black focus:outline-accent",
         classNames
       )}
       {...props}

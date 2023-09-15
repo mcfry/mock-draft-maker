@@ -165,6 +165,9 @@ function MdmMaker() {
         setPlayers(res)
       })
       .catch(() => navigate(ROUTES.HOME))
+
+    // No longer needed, clear it
+    return () => resetDraftSlice()
   }, [])
 
   useEffect(() => {

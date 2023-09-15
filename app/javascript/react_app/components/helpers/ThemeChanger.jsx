@@ -36,7 +36,7 @@ function ThemeChanger() {
       </svg>
       <input
         type="checkbox"
-        className="toggle"
+        className="toggle focus:outline focus:outline-accent"
         checked={localStorage?.theme === "dark"}
         onChange={e => setTheme(e.currentTarget.checked ? "dark" : "light")}
         aria-label="checkbox"
