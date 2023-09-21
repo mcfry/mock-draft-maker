@@ -760,4 +760,4 @@ function MdmMakerDraft({ setStage, teamToImage }) {
   }
 }
 
-export default MdmMakerDraft
+export default React.memo(MdmMakerDraft)

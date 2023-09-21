@@ -40,7 +40,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
   }, [])
 
-  const top20DisplayLoookup = () => {
+  const top20DisplayLoookup = useMemo(() => {
     if (label === "Weight") {
       return `Top 20 Heaviest ${position}s`
     }
@@ -58,24 +58,26 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
 
     return `Top 20 ${position}s`
-  }
+  }, [position, label])
 
-  const unitLabelLookup = dataPoint => {
-    if (label === "Weight") {
-      return `${parseInt(dataPoint)} lbs`
-    }
-    if (label === "Height") {
-      return `${parseInt(dataPoint / 12)}' ${parseInt(dataPoint % 12)}"`
-    }
-    if (label === "40 Time") {
-      return `${dataPoint}s`
-    }
-    if (label === "Y/A" || label === "Cmp%" || label === "Avg") {
-      return `${dataPoint}`
-    }
+  const unitLabelLookup = useMemo(() => {
+    return dataPoint => {
+      if (label === "Weight") {
+        return `${parseInt(dataPoint)} lbs`
+      }
+      if (label === "Height") {
+        return `${parseInt(dataPoint / 12)}' ${parseInt(dataPoint % 12)}"`
+      }
+      if (label === "40 Time") {
+        return `${dataPoint}s`
+      }
+      if (label === "Y/A" || label === "Cmp%" || label === "Avg") {
+        return `${dataPoint}`
+      }
 
-    return parseInt(dataPoint)
-  }
+      return parseInt(dataPoint)
+    }
+  }, [label])
 
   if (active && payload && payload.length) {
     const currentData = data.filter(obj => obj.name === label)[0]
@@ -102,9 +104,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
 }
 
 function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
-  const [scaledData, setScaledData] = useState([])
-
-  const scaleData = () => {
+  const scaledData = useMemo(() => {
     if (data) {
       const scaled = []
       for (const entry of data) {
@@ -133,13 +133,11 @@ function MdmRadarChart({ data, dataKey, dataKeyTwo, position, height, width }) {
         }
       }
 
-      setScaledData(scaled)
+      return scaled
     }
-  }
 
-  useEffect(() => {
-    scaleData()
-  }, [data])
+    return []
+  }, [data, dataKey, dataKeyTwo])
 
   return (
     <div className="flex flex-col justify-center items-center">

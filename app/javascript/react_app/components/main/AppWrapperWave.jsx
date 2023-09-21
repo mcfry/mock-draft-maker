@@ -4,6 +4,10 @@ import { Outlet } from "react-router-dom"
 // Header/Footers
 import Navbar from "../nav/Nav"
 
+function Waves() {
+  return <canvas id="waves" />
+}
+
 function AppWrapperWave() {
   return (
     <div className="AppContent flex flex-col h-full min-h-full">
@@ -17,11 +21,8 @@ function AppWrapperWave() {
         </div>
       </header>
 
-      {/* Animation */}
-      <canvas id="waves" />
-
-      {/* First tag in outlet requires flex grow to set proper page height for circles animation */}
-      <Outlet />
+      {/* First tag in outlet requires flex grow to set proper page height for animation */}
+      <Outlet context={[Waves]} />
     </div>
   )
 }

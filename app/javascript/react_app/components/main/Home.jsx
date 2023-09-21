@@ -1,10 +1,11 @@
 import React, { useLayoutEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useOutletContext } from "react-router-dom"
 import startWave from "../../other/wave"
 import ROUTES from "../../constants/routes"
 
 function Home() {
   const navigate = useNavigate()
+  const [Waves] = useOutletContext()
 
   useLayoutEffect(() => {
     // Off for mobile
@@ -15,6 +16,9 @@ function Home() {
 
   return (
     <section className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 dark:text-gray-900 z-0">
+      {/* Place waves here to fix stacking context */}
+      <Waves />
+
       <div className="hero-content text-center z-50">
         <div className="max-w-md">
           <span className="text-5xl font-bold">Sup!</span>
@@ -25,7 +29,7 @@ function Home() {
           </p>
           <button
             type="button"
-            className="btn btn-primary dark:bg-gray-900 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none z-50"
+            className="relative btn btn-primary dark:bg-gray-900 dark:hover:bg-gray-100 dark:hover:text-gray-900 rounded-none z-50"
             onClick={() => navigate(ROUTES.MAKER)}
           >
             Get Started

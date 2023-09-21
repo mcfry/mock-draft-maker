@@ -1,12 +1,7 @@
 import React from "react"
 import clsx from "clsx"
 
-export default function ButtonOne({
-  handleClick,
-  classNames,
-  children,
-  ...props
-}) {
+function ButtonOne({ handleClick, classNames, children, ...props }) {
   return (
     <button
       type="button"
@@ -21,3 +16,5 @@ export default function ButtonOne({
     </button>
   )
 }
+
+export default React.memo(ButtonOne)

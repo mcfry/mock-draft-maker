@@ -99,8 +99,6 @@ function MdmDraftTab({
                         <td>
                           <ButtonTwo
                             handleClick={() => {
-                              console.log("test")
-
                               if (userPicking === true) {
                                 setPreselectedPick(player)
 
@@ -159,4 +157,4 @@ function MdmDraftTab({
   }
 }
 
-export default MdmDraftTab
+export default React.memo(MdmDraftTab)

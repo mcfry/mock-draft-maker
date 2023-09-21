@@ -40,7 +40,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
   }, [])
 
-  const top20DisplayLoookup = () => {
+  const top20DisplayLoookup = useMemo(() => {
     if (label === "Weight") {
       return `Top 20 Heaviest ${position}s`
     }
@@ -58,24 +58,26 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
 
     return `Top 20 ${position}s`
-  }
+  }, [label, position])
 
-  const unitLabelLookup = dataPoint => {
-    if (label === "Weight") {
-      return `${parseInt(dataPoint)} lbs`
-    }
-    if (label === "Height") {
-      return `${parseInt(dataPoint / 12)}' ${parseInt(dataPoint % 12)}"`
-    }
-    if (label === "40 Time") {
-      return `${dataPoint}s`
-    }
-    if (label === "Y/A" || label === "Cmp%" || label === "Avg") {
-      return `${dataPoint}`
-    }
+  const unitLabelLookup = useMemo(() => {
+    return dataPoint => {
+      if (label === "Weight") {
+        return `${parseInt(dataPoint)} lbs`
+      }
+      if (label === "Height") {
+        return `${parseInt(dataPoint / 12)}' ${parseInt(dataPoint % 12)}"`
+      }
+      if (label === "40 Time") {
+        return `${dataPoint}s`
+      }
+      if (label === "Y/A" || label === "Cmp%" || label === "Avg") {
+        return `${dataPoint}`
+      }
 
-    return parseInt(dataPoint)
-  }
+      return parseInt(dataPoint)
+    }
+  }, [label])
 
   if (active && payload && payload.length) {
     const currentData = data.filter(obj => obj.name === label)[0]
