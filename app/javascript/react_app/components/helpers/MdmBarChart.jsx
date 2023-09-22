@@ -40,7 +40,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
   }, [])
 
-  const top20DisplayLoookup = useMemo(() => {
+  const top20DisplayLoookup = () => {
     if (label === "Weight") {
       return `Top 20 Heaviest ${position}s`
     }
@@ -58,7 +58,7 @@ function CustomTooltip({ active, payload, label, data, position }) {
     }
 
     return `Top 20 ${position}s`
-  }, [label, position])
+  }
 
   const unitLabelLookup = useMemo(() => {
     return dataPoint => {
