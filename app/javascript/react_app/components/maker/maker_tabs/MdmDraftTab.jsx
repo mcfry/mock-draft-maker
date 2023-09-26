@@ -1,5 +1,12 @@
 // External
-import React from "react"
+import React, { useRef } from "react"
+import { useVirtualizer } from "@tanstack/react-virtual"
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable
+} from "@tanstack/react-table"
 
 // Internal
 import ButtonTwo from "../../helpers/ButtonTwo"
@@ -29,6 +36,78 @@ function MdmDraftTab({
     }
   }
 
+  // ---------------
+  // - Table Stuff -
+  // ---------------
+  const refForVirtualizer = useRef(null)
+  const columnHelper = createColumnHelper()
+
+  const defaultColumns = [
+    columnHelper.accessor("projected", {
+      cell: info => (info.getValue() === -1 ? "N/A" : info.getValue()),
+      header: () => "Projected"
+    }),
+    columnHelper.accessor("full_name", {
+      cell: info => info.getValue(),
+      header: () => "Name"
+    }),
+    columnHelper.accessor("position", {
+      cell: info => info.getValue(),
+      header: () => "Position"
+    }),
+    columnHelper.accessor("college", {
+      cell: info => info.getValue(),
+      header: () => "College"
+    }),
+    columnHelper.display({
+      id: "analyzeButton",
+      cell: props => (
+        <ButtonTwo handleClick={e => handleAnalyzeClick(e, props.row.original)}>
+          Analyze
+        </ButtonTwo>
+      )
+    }),
+    columnHelper.display({
+      id: "draftButton",
+      cell: props => (
+        <ButtonTwo
+          handleClick={() => {
+            if (userPicking === true) {
+              setPreselectedPick(props.row.original)
+
+              if (pickModal.current) {
+                pickModal.current.showModal()
+              }
+            } else {
+              addAlert({
+                type: "error",
+                message: "It's not your turn to pick!",
+                time: 4000
+              })
+            }
+          }}
+        >
+          Draft
+        </ButtonTwo>
+      )
+    })
+  ]
+
+  const table = useReactTable({
+    data: localPlayers,
+    columns: defaultColumns,
+    getCoreRowModel: getCoreRowModel()
+  })
+
+  const { rows } = table.getRowModel()
+
+  const virtualizer = useVirtualizer({
+    count: rows.length,
+    getScrollElement: () => refForVirtualizer.current,
+    estimateSize: () => 65,
+    overscan: 20
+  })
+
   return (
     <>
       {userPicking && (
@@ -51,7 +130,10 @@ function MdmDraftTab({
       )}
 
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
-        <div className="overflow-x-auto w-[62rem] h-[34.75rem]">
+        <div
+          className="overflow-x-auto w-[62rem] h-[34.75rem]"
+          ref={refForVirtualizer}
+        >
           {playersLoaded === false ? (
             <div className="flex flex-col justify-center items-center h-full">
               <span>Loading Players...</span>
@@ -64,61 +146,58 @@ function MdmDraftTab({
               ) : (
                 <table className="table rounded-none" tabIndex={-1}>
                   <thead>
-                    <tr className="text-sm font-bold text-black dark:text-gray-900">
-                      <th className="w-1/12">Projected</th>
-                      <th className="w-3/12">Name</th>
-                      <th className="w-1/12">Position</th>
-                      <th className="w-3/12">College</th>
-                      <th className="w-2/12">&nbsp;</th>
-                      <th className="w-2/12">&nbsp;</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {localPlayers.slice(0, 400).map(player => (
+                    {table.getHeaderGroups().map(headerGroup => (
                       <tr
-                        key={player.id}
-                        className={
-                          preselectedPick && preselectedPick.id === player.id
-                            ? "bg-success"
-                            : "hover cursor-pointer"
-                        }
+                        key={headerGroup.id}
+                        className="text-sm font-bold text-black dark:text-gray-900"
                       >
-                        <th>
-                          {player.projected === -1 ? "N/A" : player.projected}
-                        </th>
-                        <td>{player.full_name}</td>
-                        <td>{player.position}</td>
-                        <td>{player.college}</td>
-                        <td>
-                          <ButtonTwo
-                            handleClick={e => handleAnalyzeClick(e, player)}
-                          >
-                            Analyze
-                          </ButtonTwo>
-                        </td>
-                        <td>
-                          <ButtonTwo
-                            handleClick={() => {
-                              if (userPicking === true) {
-                                setPreselectedPick(player)
-
-                                if (pickModal.current) {
-                                  pickModal.current.showModal()
-                                }
-                              } else {
-                                addAlert({
-                                  type: "error",
-                                  message: "It's not your turn to pick!",
-                                  time: 4000
-                                })
-                              }
-                            }}
-                          >
-                            Draft
-                          </ButtonTwo>
-                        </td>
+                        {headerGroup.headers.map(header => (
+                          <th key={header.id} className="w-2/12">
+                            {header.isPlaceholder ? null : (
+                              <div>
+                                {flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                              </div>
+                            )}
+                          </th>
+                        ))}
                       </tr>
                     ))}
+                  </thead>
+                  <tbody>
+                    {virtualizer.getVirtualItems().map((virtRow, rowIndex) => {
+                      const row = rows[virtRow.index]
+
+                      return (
+                        <tr
+                          key={row.id}
+                          className={
+                            preselectedPick && preselectedPick.id === row.id
+                              ? "bg-success"
+                              : "hover cursor-pointer"
+                          }
+                          style={{
+                            height: `${virtRow.size}px`,
+                            transform: `translateY(${
+                              virtRow.start - rowIndex * virtRow.size
+                            }px)`
+                          }}
+                        >
+                          {row.getVisibleCells().map(cell => {
+                            return (
+                              <td key={cell.id}>
+                                {flexRender(
+                                  cell.column.columnDef.cell,
+                                  cell.getContext()
+                                )}
+                              </td>
+                            )
+                          })}
+                        </tr>
+                      )
+                    })}
                   </tbody>
                 </table>
               )}

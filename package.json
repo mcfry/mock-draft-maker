@@ -11,6 +11,8 @@
     "@dnd-kit/utilities": "^3.2.1",
     "@headlessui/react": "^1.7.15",
     "@hotwired/turbo-rails": "^7.3.0",
+    "@tanstack/react-table": "^8.10.3",
+    "@tanstack/react-virtual": "^3.0.0-beta.61",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "axios-cache-interceptor": "^1.2.0",
