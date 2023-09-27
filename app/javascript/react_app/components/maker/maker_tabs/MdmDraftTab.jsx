@@ -44,8 +44,13 @@ function MdmDraftTab({
 
   const defaultColumns = [
     columnHelper.accessor("projected", {
-      cell: info => (info.getValue() === -1 ? "N/A" : info.getValue()),
-      header: () => "Projected"
+      cell: info =>
+        info.getValue() === -1 ? (
+          <center>N/A</center>
+        ) : (
+          <center>{info.getValue()}</center>
+        ),
+      header: () => <center>Projected</center>
     }),
     columnHelper.accessor("full_name", {
       cell: info => info.getValue(),
@@ -104,9 +109,22 @@ function MdmDraftTab({
   const virtualizer = useVirtualizer({
     count: rows.length,
     getScrollElement: () => refForVirtualizer.current,
-    estimateSize: () => 65,
+    estimateSize: () => 70,
     overscan: 20
   })
+
+  const tableItems = virtualizer.getVirtualItems()
+
+  const [paddingTop, paddingBottom] =
+    tableItems.length > 0
+      ? [
+          Math.max(0, tableItems[0].start - virtualizer.options.scrollMargin),
+          Math.max(
+            0,
+            virtualizer.getTotalSize() - tableItems[tableItems.length - 1].end
+          )
+        ]
+      : [0, 0]
 
   return (
     <>
@@ -134,75 +152,78 @@ function MdmDraftTab({
           className="overflow-x-auto w-[62rem] h-[34.75rem]"
           ref={refForVirtualizer}
         >
-          {playersLoaded === false ? (
-            <div className="flex flex-col justify-center items-center h-full">
-              <span>Loading Players...</span>
-              <span className="loading loading-spinner loading-lg" />
-            </div>
-          ) : (
-            <>
-              {!userPicking && draftRunning ? (
-                <CurrentlyPicking startOrPauseDraft={startOrPauseDraft} />
-              ) : (
-                <table className="table rounded-none" tabIndex={-1}>
-                  <thead>
-                    {table.getHeaderGroups().map(headerGroup => (
-                      <tr
-                        key={headerGroup.id}
-                        className="text-sm font-bold text-black dark:text-gray-900"
-                      >
-                        {headerGroup.headers.map(header => (
-                          <th key={header.id} className="w-2/12">
-                            {header.isPlaceholder ? null : (
-                              <div>
-                                {flexRender(
-                                  header.column.columnDef.header,
-                                  header.getContext()
-                                )}
-                              </div>
-                            )}
-                          </th>
-                        ))}
-                      </tr>
-                    ))}
-                  </thead>
-                  <tbody>
-                    {virtualizer.getVirtualItems().map((virtRow, rowIndex) => {
-                      const row = rows[virtRow.index]
-
-                      return (
+          <div
+            style={{
+              paddingTop,
+              paddingBottom
+            }}
+          >
+            {playersLoaded === false ? (
+              <div className="flex flex-col justify-center items-center h-full">
+                <span>Loading Players...</span>
+                <span className="loading loading-spinner loading-lg" />
+              </div>
+            ) : (
+              <>
+                {!userPicking && draftRunning ? (
+                  <CurrentlyPicking startOrPauseDraft={startOrPauseDraft} />
+                ) : (
+                  <table className="table rounded-none" tabIndex={-1}>
+                    <thead>
+                      {table.getHeaderGroups().map(headerGroup => (
                         <tr
-                          key={row.id}
-                          className={
-                            preselectedPick && preselectedPick.id === row.id
-                              ? "bg-success"
-                              : "hover cursor-pointer"
-                          }
-                          style={{
-                            height: `${virtRow.size}px`,
-                            transform: `translateY(${
-                              virtRow.start - rowIndex * virtRow.size
-                            }px)`
-                          }}
+                          key={headerGroup.id}
+                          className="text-sm font-bold text-black dark:text-gray-900"
                         >
-                          {row.getVisibleCells().map(cell => {
-                            return (
-                              <td key={cell.id}>
-                                {flexRender(
-                                  cell.column.columnDef.cell,
-                                  cell.getContext()
-                                )}
-                              </td>
-                            )
-                          })}
+                          {headerGroup.headers.map(header => (
+                            <th key={header.id} className="w-2/12">
+                              {header.isPlaceholder ? null : (
+                                <div>
+                                  {flexRender(
+                                    header.column.columnDef.header,
+                                    header.getContext()
+                                  )}
+                                </div>
+                              )}
+                            </th>
+                          ))}
                         </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
-              )}
-            </>
-          )}
+                      ))}
+                    </thead>
+                    <tbody>
+                      {tableItems.map(virtRow => {
+                        const row = rows[virtRow.index]
+
+                        return (
+                          <tr
+                            key={row.id}
+                            data-index={virtRow.index}
+                            className={
+                              preselectedPick && preselectedPick.id === row.id
+                                ? "bg-success"
+                                : "hover cursor-pointer border-b-2"
+                            }
+                            ref={virtualizer.measureElement}
+                          >
+                            {row.getVisibleCells().map(cell => {
+                              return (
+                                <td key={cell.id}>
+                                  {flexRender(
+                                    cell.column.columnDef.cell,
+                                    cell.getContext()
+                                  )}
+                                </td>
+                              )
+                            })}
+                          </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
