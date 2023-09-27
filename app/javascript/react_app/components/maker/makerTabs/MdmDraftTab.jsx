@@ -153,10 +153,15 @@ function MdmDraftTab({
           ref={refForVirtualizer}
         >
           <div
-            style={{
-              paddingTop,
-              paddingBottom
-            }}
+            className={draftRunning && !userPicking ? "h-full" : ""}
+            style={
+              !draftRunning
+                ? {
+                    paddingTop,
+                    paddingBottom
+                  }
+                : null
+            }
           >
             {playersLoaded === false ? (
               <div className="flex flex-col justify-center items-center h-full">
