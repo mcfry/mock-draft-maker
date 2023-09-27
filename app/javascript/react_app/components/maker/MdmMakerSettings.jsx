@@ -22,6 +22,7 @@ import { driver } from "driver.js"
 // Internal
 import ButtonOne from "../helpers/ButtonOne"
 import SortableTeam from "../helpers/SortableTeam"
+import makerSettingsTutorial from "./guidedTutorials/makerSettingsTutorial"
 import useStore from "../../store/store"
 
 function MdmMakerSettings({ setStage, teamToImage }) {
@@ -83,67 +84,7 @@ function MdmMakerSettings({ setStage, teamToImage }) {
 
   const guidedTutorial = () => {
     const driverObj = driver({
-      showProgress: true,
-      steps: [
-        {
-          element: "#teamlist__draggables",
-          popover: {
-            title: "Team Selection",
-            description:
-              "Click on each team you wish to control in the draft.<br/><br/>You can also drag teams around to rearrange their first-round draft order.",
-            side: "left",
-            align: "start"
-          }
-        },
-        {
-          element: "#settings__number-of-rounds",
-          popover: {
-            title: "Number of Rounds",
-            description: "Choose the number of rounds in the mock draft.",
-            side: "top",
-            align: "start"
-          }
-        },
-        {
-          element: "#settings__speed",
-          popover: {
-            title: "Speed",
-            description: "Choose how fast the AI will select players.",
-            side: "top",
-            align: "start"
-          }
-        },
-        {
-          element: "#settings__needs-vs-value",
-          popover: {
-            title: "Needs vs Value",
-            description:
-              "Choose whether the AI should put emphasis on teams drafting for current needs or positional value.<br/><br/>For example, QBs are more <b>valuable</b> than other positions, but a team may not <b>need</b> a QB.",
-            side: "top",
-            align: "start"
-          }
-        },
-        {
-          element: "#settings__randomness",
-          popover: {
-            title: "Randomness",
-            description:
-              "Choose how much randomness the AI should invoke in its draft. Increase to add chaos.<br/><br/>No draft goes as expected.",
-            side: "top",
-            align: "start"
-          }
-        },
-        {
-          element: "#settings__start",
-          popover: {
-            title: "Start Draft",
-            description:
-              "Lastly, start the draft once you've picked your team(s) and your settings.",
-            side: "top",
-            align: "start"
-          }
-        }
-      ],
+      ...makerSettingsTutorial,
       onDestroyStarted: () => {
         localStorage.setItem("settingsTourCompleted", "true")
         driverObj.destroy()

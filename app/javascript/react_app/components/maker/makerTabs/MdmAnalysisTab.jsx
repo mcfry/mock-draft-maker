@@ -53,6 +53,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     if (playerInAnalysis) {
       setTab(positionToDefaultTab[playerInAnalysis.position])
 
+      // Fetch Top 20 for each desired statistic
       const statRequests = []
       if (playerInAnalysis?.passing) {
         statRequests.push(
