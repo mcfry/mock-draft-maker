@@ -1,6 +1,6 @@
 // External
 import React from "react"
-import { NavLink, Link, useLocation } from "react-router-dom"
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from "@headlessui/react"
 import { HiBars3, HiXMark } from "react-icons/hi2"
@@ -25,6 +25,17 @@ const linkActive = (link, pathname) => {
 
 function Navbar() {
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const navigateWithTransition = path => {
+    if (!document?.startViewTransition) {
+      navigate(path)
+    } else {
+      document.startViewTransition(() => {
+        navigate(path)
+      })
+    }
+  }
 
   return (
     <>
@@ -34,18 +45,29 @@ function Navbar() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="flex h-16 items-center justify-between">
                 <div className="flex items-center justify-center">
-                  <Link to="/" className="flex items-center justify-center">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (location.pathname !== "/") navigateWithTransition("/")
+                    }}
+                    className="flex items-center justify-center"
+                  >
                     <span className="text-accent text-2xl font-bold">MDM</span>
                     <div className="flex-shrink-0">
                       <img className="h-14 w-14" src={MdmLogo} alt="mdm logo" />
                     </div>
-                  </Link>
+                  </button>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map(item => (
-                        <NavLink
+                        <button
                           key={item.name}
-                          to={item.link}
+                          type="button"
+                          onClick={() => {
+                            if (!linkActive(item.link, location.pathname)) {
+                              navigateWithTransition(item.link)
+                            }
+                          }}
                           className={clsx(
                             linkActive(item.link, location.pathname)
                               ? "text-primary-content border-b-2 border-accent"
@@ -65,7 +87,7 @@ function Navbar() {
                           >
                             {item.name}
                           </div>
-                        </NavLink>
+                        </button>
                       ))}
                     </div>
                   </div>
