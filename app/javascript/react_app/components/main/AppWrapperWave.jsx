@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../nav/Nav"
 
 function Waves() {
-  return <canvas id="waves" className="mb-36" />
+  return <canvas id="waves" className="mb-[8.5rem]" />
 }
 
 function AppWrapperWave() {

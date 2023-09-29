@@ -1,6 +1,7 @@
 // External
 import React from "react"
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom"
+import { flushSync } from "react-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import clsx from "clsx"
 import { Disclosure } from "@headlessui/react"
 import { HiBars3, HiXMark } from "react-icons/hi2"
@@ -32,14 +33,19 @@ function Navbar() {
       navigate(path)
     } else {
       document.startViewTransition(() => {
-        navigate(path)
+        flushSync(() => {
+          navigate(path)
+        })
       })
     }
   }
 
   return (
     <>
-      <Disclosure as="nav" className="bg-primary dark:bg-gray-900 z-50">
+      <Disclosure
+        as="nav"
+        className="bg-primary dark:bg-gray-900 z-50 simple-view-transition"
+      >
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

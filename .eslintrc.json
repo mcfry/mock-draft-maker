@@ -37,6 +37,6 @@
     "no-param-reassign": "off",
     "arrow-body-style": "off",
     "react/no-unstable-nested-components": "off",
-    "elintreact/no-unknown-property": "off"
+    "react/no-unknown-property": "off"
   }
 }

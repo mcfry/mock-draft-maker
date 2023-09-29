@@ -169,7 +169,7 @@ startWave = function () {
   function resizeCanvas() {
     canvasWidth = document.documentElement.clientWidth
     canvasHeight = document.documentElement.clientHeight
-    canvas.setAttribute("width", canvasWidth)
+    canvas.setAttribute("width", canvasWidth - 20)
     canvas.setAttribute("height", canvasHeight)
     startY = canvasHeight / 2
   }
