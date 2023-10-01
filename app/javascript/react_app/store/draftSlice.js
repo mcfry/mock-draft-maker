@@ -49,11 +49,9 @@ const inititalState = {
   orderedPicks: new Array(256).fill(""),
   yourPicks: {},
   teams: [],
-  teamsLoaded: false,
   teamsMapping: [],
   selected: {},
   players: [],
-  playersLoaded: false,
   needsData,
   positionalData,
   pickValueData
@@ -96,8 +94,7 @@ const createDraftSlice = set => ({
     })),
   setTeams: newTeams =>
     set(_ => ({
-      teams: [...newTeams],
-      teamsLoaded: true
+      teams: [...newTeams]
     })),
   // map the dnd reordering for each team's first first-round pick
   setTeamsMapping: newTeamsMapping =>
@@ -122,8 +119,7 @@ const createDraftSlice = set => ({
     })),
   setPlayers: players =>
     set(_ => ({
-      players: [...players],
-      playersLoaded: true
+      players: [...players]
     })),
   setPickData: newPickData =>
     set(_ => ({

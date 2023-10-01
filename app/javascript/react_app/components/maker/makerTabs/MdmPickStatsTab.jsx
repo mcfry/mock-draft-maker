@@ -1,32 +1,36 @@
 // External
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
+import { useQuery } from "react-query"
 
 // Internal
-import axiosClient from "../../../other/axiosClient"
+import { getPickStatistics } from "../../../api/apiRoutes"
 import NoData from "../../helpers/NoData"
 
 export default function MdmPickStatsTab({ team, pickLocale }) {
-  const [pickData, setPickData] = useState(null)
-  const [totalCount, setTotalCount] = useState(null)
+  const TWO_MINUTES = 2 * 60 * 1000
+  const { data, status, refetch, isStale } = useQuery(
+    ["pickStatistics", team.id, pickLocale + 1],
+    () => getPickStatistics(team.id, pickLocale + 1),
+    {
+      staleTime: TWO_MINUTES
+    }
+  )
 
   useEffect(() => {
-    if (team) {
-      axiosClient
-        .get(
-          `/api/v1/draft_record_teams/statistics/${team.id}?pick=${
-            pickLocale + 1
-          }`
-        )
-        .then(res => {
-          setPickData(res?.data?.picks)
-          setTotalCount(res?.data?.total_count)
-        })
-    }
+    if (isStale) refetch()
   }, [team])
+
+  if (status === "loading") {
+    return (
+      <div className="flex flex-col items-center justify-center w-full h-full dark:bg-gray-300 dark:text-gray-900">
+        <span className="loading loading-spinner loading-lg" />
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col items-center space-y-20 p-10 w-full h-full dark:bg-gray-300 dark:text-gray-900">
-      {totalCount && totalCount > 0 ? (
+      {status === "success" && data.total_count > 0 ? (
         <>
           <span className="text-xl font-bold">
             {`Most frequent players selected by ${team.name} fans around pick ${
@@ -34,8 +38,8 @@ export default function MdmPickStatsTab({ team, pickLocale }) {
             }:`}
           </span>
           <div className="grid grid-cols-3 grid-rows-3 gap-8">
-            {pickData.map(({ player, count }) => {
-              const percentDrafted = (count / totalCount) * 100.0
+            {data.picks.map(({ player, count }) => {
+              const percentDrafted = (count / data.total_count) * 100.0
 
               return (
                 <div

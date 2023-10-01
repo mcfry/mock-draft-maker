@@ -20,34 +20,35 @@ function PickGrid({ year, team, isCt, activeTrades, handleTradeClick }) {
 
       <div className="flex justify-center pt-2 w-[24rem]">
         <div className="grid grid-cols-7 gap-2">
-          {pickData[team].map((pick, index) => {
-            let active = false
-            if (team in activeTrades && activeTrades[team].includes(pick)) {
-              active = true
-            }
+          {team in pickData &&
+            pickData[team].map((pick, index) => {
+              let active = false
+              if (team in activeTrades && activeTrades[team].includes(pick)) {
+                active = true
+              }
 
-            return (
-              <button
-                data-testid={`${
-                  isCt ? "currentTeam" : "tradePartner"
-                }_pick_${index}`}
-                type="button"
-                key={`2024_tp_${pick.toString()}`}
-                onClick={e =>
-                  handleTradeClick(e, isCt ? "currentTeam" : "tradePartner")
-                }
-                className={clsx(
-                  "flex justify-center items-center cursor-pointer bg-base-100 dark:bg-gray-100 border-neutral border-solid p-2 border-2 hover:bg-primary dark:hover:bg-gray-900 hover:text-base-100",
-                  {
-                    "bg-primary dark:bg-gray-900 border-base-300 text-primary-content":
-                      active
+              return (
+                <button
+                  data-testid={`${
+                    isCt ? "currentTeam" : "tradePartner"
+                  }_pick_${index}`}
+                  type="button"
+                  key={`2024_tp_${pick.toString()}`}
+                  onClick={e =>
+                    handleTradeClick(e, isCt ? "currentTeam" : "tradePartner")
                   }
-                )}
-              >
-                {pick}
-              </button>
-            )
-          })}
+                  className={clsx(
+                    "flex justify-center items-center cursor-pointer bg-base-100 dark:bg-gray-100 border-neutral border-solid p-2 border-2 hover:bg-primary dark:hover:bg-gray-900 hover:text-base-100",
+                    {
+                      "bg-primary dark:bg-gray-900 border-base-300 text-primary-content":
+                        active
+                    }
+                  )}
+                >
+                  {pick}
+                </button>
+              )
+            })}
         </div>
       </div>
     </>

@@ -1,9 +1,9 @@
 // External
 import React, { useState, useEffect, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
+import { useQuery } from "react-query"
 
 // Internal
-import axiosClient from "../../other/axiosClient"
 import MdmMakerSettings from "./MdmMakerSettings"
 import MdmMakerDraft from "./MdmMakerDraft"
 import MdmMakerShare from "./MdmMakerShare"
@@ -12,6 +12,7 @@ import MdmMakerSkeleton from "./MdmMakerSkeleton"
 import ArrowSvg from "../helpers/svgs/ArrowSvg"
 import useStore from "../../store/store"
 import ROUTES from "../../constants/routes"
+import { getTeams, getPlayers } from "../../api/apiRoutes"
 
 import arizona_cardinals from "../../images/arizona_cardinals.png"
 import atlanta_falcons from "../../images/atlanta_falcons.png"
@@ -63,13 +64,8 @@ function MdmMaker() {
   // - Store State -
   // ---------------
   const pickData = useStore(state => state.pickData)
-  const [playersLoaded, setPlayers] = useStore(state => [
-    state.playersLoaded,
-    state.setPlayers
-  ])
-  const [teams, teamsLoaded, setTeams, setTeamsMapping] = useStore(state => [
-    state.teams,
-    state.teamsLoaded,
+  const [setPlayers] = useStore(state => [state.setPlayers])
+  const [setTeams, setTeamsMapping] = useStore(state => [
     state.setTeams,
     state.setTeamsMapping
   ])
@@ -135,45 +131,52 @@ function MdmMaker() {
     []
   )
 
+  // ---------------
+  // - Query State -
+  // ---------------
+  const ONE_DAY = 24 * 60 * 60 * 1000
+  const teamsQuery = useQuery("teams", getTeams, {
+    staleTime: ONE_DAY
+  })
+
+  if (teamsQuery.isError) {
+    navigate(ROUTES.HOME)
+  }
+
+  const playersQuery = useQuery("players", getPlayers, {
+    staleTime: ONE_DAY
+  })
+
+  if (playersQuery.isError) {
+    navigate(ROUTES.HOME)
+  }
+
   // -------------
   // - Lifecycle -
   // -------------
   useEffect(() => {
     resetDraftSlice()
 
-    const url = "/api/v1/teams/index"
-    axiosClient
-      .get(url)
-      .then(res => {
-        if (res.data.length > 0) {
-          setTeams(res.data)
-        } else {
-          console.log("No teams")
-        }
-      })
-      .catch(() => navigate(ROUTES.HOME))
-
-    const url2 = "/api/v1/players/index"
-    fetch(url2)
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        }
-        throw new Error("Network response was not ok.")
-      })
-      .then(res => {
-        setPlayers(res)
-      })
-      .catch(() => navigate(ROUTES.HOME))
-
     // No longer needed, clear it
     return () => resetDraftSlice()
   }, [])
 
   useEffect(() => {
-    if (teamsLoaded === true && pickData !== undefined) {
+    if (teamsQuery.status === "success") {
+      setTeams(teamsQuery.data)
+    }
+  }, [teamsQuery.status, teamsQuery.data])
+
+  useEffect(() => {
+    if (playersQuery.status === "success") {
+      setPlayers(playersQuery.data)
+    }
+  }, [playersQuery.status, playersQuery.data])
+
+  useEffect(() => {
+    if (teamsQuery.status === "success" && pickData !== undefined) {
       const teamsHash = {}
-      for (const team of teams) {
+      for (const team of teamsQuery.data) {
         teamsHash[team.full_name] = team
       }
 
@@ -191,7 +194,7 @@ function MdmMaker() {
         if (op === undefined) {
           addAlert({
             message: "Bad team data, not every team has an associated pick",
-            type: "Error"
+            type: "error"
           })
 
           return
@@ -215,14 +218,14 @@ function MdmMaker() {
       setTeamsMapping(teamsMap)
       setOrderedPicks(newOrderedPicks)
     }
-  }, [pickData, teamsLoaded])
+  }, [pickData, teamsQuery.status, teamsQuery.data])
 
   return (
     <>
       <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-base-300 dark:to-gray-100 makermax:hidden">
         <MdmAlerts />
 
-        {teamsLoaded === false ? (
+        {teamsQuery.status === "loading" ? (
           <MdmMakerSkeleton />
         ) : (
           <>
@@ -251,7 +254,7 @@ function MdmMaker() {
                 <section className="flex flex-row mb-14 card w-[82rem] h-[42rem] shadow-xl rounded-none bg-base-100 dark:bg-gray-700 z-30">
                   <MdmMakerDraft
                     setStage={setStage}
-                    playersLoaded={playersLoaded}
+                    playersLoaded={playersQuery.status}
                     teamToImage={teamToImage}
                   />
                 </section>

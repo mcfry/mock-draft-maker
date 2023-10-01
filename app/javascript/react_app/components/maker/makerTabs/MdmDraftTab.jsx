@@ -39,6 +39,14 @@ function MdmDraftTab({
   // ---------------
   // - Table Stuff -
   // ---------------
+  const headerWidths = {
+    projected: "w-1/12",
+    full_name: "w-[20.833%]",
+    position: "w-1/12",
+    college: "w-[29.167%]",
+    analyzeButton: "w-2/12",
+    draftButton: "w-2/12"
+  }
   const refForVirtualizer = useRef(null)
   const columnHelper = createColumnHelper()
 
@@ -110,7 +118,7 @@ function MdmDraftTab({
     count: rows.length,
     getScrollElement: () => refForVirtualizer.current,
     estimateSize: () => 70,
-    overscan: 20
+    overscan: 2
   })
 
   const tableItems = virtualizer.getVirtualItems()
@@ -155,7 +163,7 @@ function MdmDraftTab({
           <div
             className={draftRunning && !userPicking ? "h-full" : ""}
             style={
-              !draftRunning
+              !draftRunning || userPicking
                 ? {
                     paddingTop,
                     paddingBottom
@@ -163,7 +171,7 @@ function MdmDraftTab({
                 : null
             }
           >
-            {playersLoaded === false ? (
+            {playersLoaded === "loading" ? (
               <div className="flex flex-col justify-center items-center h-full">
                 <span>Loading Players...</span>
                 <span className="loading loading-spinner loading-lg" />
@@ -181,7 +189,11 @@ function MdmDraftTab({
                           className="text-sm font-bold text-black dark:text-gray-900"
                         >
                           {headerGroup.headers.map(header => (
-                            <th key={header.id} className="w-2/12">
+                            <th
+                              id={header.id}
+                              key={header.id}
+                              className={headerWidths[header.id]}
+                            >
                               {header.isPlaceholder ? null : (
                                 <div>
                                   {flexRender(

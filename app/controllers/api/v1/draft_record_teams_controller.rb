@@ -6,7 +6,7 @@ class Api::V1::DraftRecordTeamsController < ApplicationController
 
     base_query = Pick.joins(:team, :player).where(team: {id: params[:team_id]}).where(player: {projected: minPick..maxPick})
     team_picks = base_query.group(:player).order('count_all DESC').limit(9).count
-    total_count = base_query.count()
+    total_count = base_query.count
 
     team_name = Team.where(id: params[:team_id]).first.name
 

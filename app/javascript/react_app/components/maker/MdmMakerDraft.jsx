@@ -7,6 +7,7 @@ import { GiAmericanFootballPlayer } from "react-icons/gi"
 import { PiUsersThree } from "react-icons/pi"
 import { GrPauseFill, GrResume, GrPlayFill } from "react-icons/gr"
 import { driver } from "driver.js"
+import clsx from "clsx"
 
 // Internal
 import MdmTradeTab from "./makerTabs/MdmTradeTab"
@@ -21,7 +22,7 @@ import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import makerDraftTutorial from "./guidedTutorials/makerDraftTutorial"
 import useStore from "../../store/store"
 
-function MdmMakerDraft({ setStage, teamToImage }) {
+function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   // ---------------
   // - Local State -
   // ---------------
@@ -65,9 +66,8 @@ function MdmMakerDraft({ setStage, teamToImage }) {
     state.setYourPicks,
     state.setUserPicking
   ])
-  const [players, playersLoaded, setPlayers] = useStore(state => [
+  const [players, setPlayers] = useStore(state => [
     state.players,
-    state.playersLoaded,
     state.setPlayers
   ])
   const [outerTab, setOuterTab] = useStore(state => [
@@ -426,14 +426,19 @@ function MdmMakerDraft({ setStage, teamToImage }) {
             {!userPicking ? (
               <>
                 <ButtonOne
-                  classNames="mr-3"
+                  classNames={clsx("mr-3", {
+                    "animate-pulse":
+                      !draftRunning &&
+                      currentPickIndex === 0 &&
+                      localStorage.getItem("draftTourCompleted")
+                  })}
                   handleClick={e => {
-                    if (playersLoaded === true) {
+                    if (playersLoaded === "success") {
                       startOrPauseDraft(e)
                     }
                   }}
                 >
-                  {playersLoaded === false ? (
+                  {playersLoaded === "loading" ? (
                     <span className="loading loading-infinity loading-xs" />
                   ) : (
                     <>
