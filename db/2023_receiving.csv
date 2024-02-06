@@ -30,7 +30,7 @@ Malik Nabers,WR,72,1017,14.1,75,3
 C.J. Johnson,WR,67,1016,15.2,74,10
 Kris Thornton,WR,59,1015,17.2,54,7
 Sam Pinckney,WR,71,996,14.0,48,3
-Demario Douglas,WR,79,993,12.6,51,6
+DeMario Douglas,WR,79,993,12.6,51,6
 Joshua Cephus,WR,87,985,11.3,65,6
 Malik Heath,WR,60,971,16.2,53,5
 Oronde Gadsden II,TE,61,969,15.9,46,6
@@ -102,7 +102,7 @@ De'Corian Clark,WR,51,741,14.5,69,8
 Malik Knowles,WR,48,725,15.1,68,2
 Ryan O'Keefe,WR,73,725,9.9,68,5
 Luke McCaffrey,WR,58,723,12.5,66,6
-Lajohntay Wester,WR,62,719,11.6,42,8
+LaJohntay Wester,WR,62,719,11.6,42,8
 Xavier Weaver,WR,53,718,13.5,63,6
 Derwin Burgess Jr.,WR,58,717,12.4,53,7
 Lawrence Arnold,WR,44,716,16.3,60,4
@@ -215,7 +215,7 @@ Gavin Holmes,WR,26,517,19.9,56,4
 Je'Quan Burton,WR,33,517,15.7,57,4
 Brayden Willis,TE,39,514,13.2,78,7
 Myles Price,WR,51,513,10.1,54,2
-DeMeer Blankumsee,WR,41,512,12.5,41,3
+Demeer Blankumsee,WR,41,512,12.5,41,3
 Jesse Matthews,WR,45,508,11.3,31,3
 Bryson Nesbit,TE,35,507,14.5,36,4
 Deshon Stoudemire,WR,41,507,12.4,65,2
@@ -322,7 +322,7 @@ Jaray Jenkins,WR,27,404,15.0,54,6
 David Cormier,WR,15,404,26.9,80,4
 Kazmeir Allen,RB,49,403,8.2,55,2
 George Johnson III,WR,28,402,14.4,53,1
-Charles Montgomery,WR,36,402,11.2,71,1
+Chuck Montgomery,WR,36,402,11.2,71,1
 Reggie Brown,TE,4,16,4.0,5,1
 Bub Means,WR,27,401,14.9,45,2
 Sahmir Hagans,WR,31,400,12.9,41,5
@@ -402,7 +402,7 @@ Jack Westover,TE,31,342,11.0,27,1
 Keyon Lesane,WR,31,342,11.0,44,2
 Jaylen Johnson,WR,26,340,13.1,38,4
 Lorenzo Styles Jr.,CB,30,340,11.3,54,1
-Michael Brown Stephens,WR,22,338,15.4,49,0
+Michael Brown-Stephens,WR,22,338,15.4,49,0
 Marcus Rosemy-Jacksaint,WR,29,337,11.6,28,2
 Kobe Prentice,WR,31,337,10.9,47,2
 Jalen Walthall,WR,27,333,12.3,31,1
@@ -562,7 +562,7 @@ Mark Redman,TE,21,233,11.1,28,2
 Donovan Green,TE,22,233,10.6,28,2
 Monroe Young,WR,23,231,10.0,36,3
 Jaheim Bell,TE,25,231,9.2,46,2
-TJ Jones,WR,29,231,8.0,64,1
+T.J. Jones,WR,29,231,8.0,64,1
 Amir Abdur-Rahman,WR,23,229,10.0,39,1
 Eric Gray,RB,33,229,6.9,24,0
 Lincoln Pare,RB,29,229,7.9,64,1
@@ -640,7 +640,7 @@ Casey Cain,WR,8,201,25.1,49,0
 Chris Long,WR,15,200,13.3,48,1
 Donovan Edwards,RB,18,200,11.1,33,2
 Jack Bech,WR,16,200,12.5,29,1
-A.J. Barner,TE,28,199,7.1,43,3
+AJ Barner,TE,28,199,7.1,43,3
 Key'Shawn Smith,WR,13,199,15.3,39,2
 Tyrone Tracy Jr.,RB,28,198,7.1,32,0
 Caleb McMillan,WR,13,198,15.2,78,1
@@ -769,7 +769,6 @@ Tristian Brank,TE,16,153,9.6,22,1
 James Tupou,FB,12,152,12.7,24,2
 Lance LeGendre,WR,13,152,11.7,37,1
 Dean Engram,WR,13,152,11.7,37,0
-Kyron Hudson,WR,15,152,10.1,29,3
 Xavier Johnson,WR,13,151,11.6,37,2
 George Holani,RB,24,151,6.3,22,3
 Porter Rooks,WR,19,151,7.9,18,1
@@ -802,7 +801,7 @@ Chris Bellamy,WR,12,142,11.8,27,0
 Robbie Mangas,TE,16,141,8.8,23,0
 Kimani Vidal,RB,26,140,5.4,18,0
 Clyde Price III,RB,31,139,4.5,22,1
-Chris Tyree,RB,24,138,5.8,21,2
+Chris Tyree,WR,24,138,5.8,21,2
 Orion Peters,WR,13,138,10.6,27,1
 Thai Chiaokhiao-Bowman,WR,7,138,19.7,38,0
 Cody Schrader,RB,19,137,7.2,29,0
@@ -830,7 +829,7 @@ Quinshon Judkins,RB,15,132,8.8,25,1
 Darion Williamson,WR,8,131,16.4,52,0
 Kaylon Horton,WR,12,131,10.9,51,1
 Tyler Page,WR,11,130,11.8,42,2
-Christopher Toudle,WR,11,130,11.8,27,1
+Christopher Toudle,TE,11,130,11.8,27,1
 Sam Kenerson,WR,8,130,16.3,31,0
 Jacolby George,WR,13,130,10.0,24,0
 Andre Johnson,WR,15,130,8.7,28,1
@@ -871,7 +870,7 @@ Ja'Khi Douglas,WR,10,123,12.3,27,2
 Tyler Warren,TE,10,123,12.3,38,3
 Fred Farrier II,WR,11,123,11.2,20,1
 Camden Brown,WR,9,123,13.7,49,2
-Javon Swinton,WR,12,122,10.2,35,0
+Von Swinton,WR,12,122,10.2,35,0
 Tyler Lavine,RB,16,122,7.6,13,0
 Will Pauling,WR,12,122,10.2,30,0
 Johnny Richardson,RB,22,122,5.5,25,1
@@ -910,7 +909,7 @@ Sam Olson,TE,14,114,8.1,18,1
 Jaelin Carter,WR,7,113,16.1,28,2
 Jirehl Brock,RB,21,113,5.4,13,1
 Kevorian Barnes,RB,10,113,11.3,42,0
-Quaterrius Tolbert,WR,14,113,8.1,26,0
+Bud Tolbert,WR,14,113,8.1,26,0
 Yulkeith Brown,WR,6,112,18.7,66,1
 Simeon Price,RB,13,112,8.6,32,1
 Alex Bauman,TE,8,112,14.0,24,1
@@ -946,9 +945,9 @@ Chauncey Magwood,WR,7,104,14.9,26,1
 Kyle Maxwell,WR,12,104,8.7,19,0
 Charles Hall IV,WR,9,104,11.6,23,0
 Braelon Allen,RB,13,104,8.0,39,0
-Jevyon Ducker,RB,12,103,8.6,37,0
+Jay Ducker,RB,12,103,8.6,37,0
 Kendrick Law,WR,8,103,12.9,39,0
-D.J. Jones,RB,12,102,8.5,42,1
+D.J. Jones,DB,12,102,8.5,42,1
 Jaivian Lofton,WR,10,102,10.2,34,2
 Solomon Enis,WR,12,101,8.4,16,1
 Devonte Lee,RB,13,101,7.8,26,0
@@ -969,7 +968,7 @@ Tyler Hunt,TE,15,98,6.5,18,0
 Tahj Magee,WR,9,98,10.9,34,2
 Montorie Foster Jr.,WR,7,98,14.0,25,1
 DJ Giddens,RB,8,98,12.3,36,0
-Louis Brown,WR,12,98,8.2,24,0
+Louis Brown IV,WR,12,98,8.2,24,0
 Jaylen Jenkins,RB,13,98,7.5,45,2
 Raymond James,WR,13,97,7.5,14,0
 Michael Allen,RB,11,97,8.8,34,1
@@ -1025,14 +1024,14 @@ Dallin Holker,TE,9,86,9.6,19,1
 Blake Nowell,WR,6,86,14.3,44,0
 Matt Sykes,WR,6,86,14.3,27,1
 Braydon Bennett,RB,4,86,21.5,41,0
-Sean Wilson,WR,8,86,10.8,15,0
+JR Wilson,WR,8,86,10.8,15,0
 Clay Geary,WR,6,85,14.2,26,1
 Luke Benson,TE,9,85,9.4,19,0
 Jawhar Jordan,RB,10,85,8.5,15,0
 Rashod Owens,WR,6,85,14.2,41,0
 Shamar Garrett,RB,9,85,9.4,27,1
-Nicholas Singleton,RB,11,85,7.7,22,1
 Bugs Mortimer,WR,14,85,6.1,15,0
+Nicholas Singleton,RB,11,85,7.7,22,1
 Deion Smith,RB,11,84,7.6,41,0
 Cam Johnson,WR,10,84,8.4,16,0
 Jeremy Tate Jr.,WR,8,84,10.5,34,1
@@ -1203,7 +1202,7 @@ Jamire Calvin,WR,11,58,5.3,9,1
 Stephen Martin,WR,4,58,14.5,34,1
 Eric Marsh,TE,4,58,14.5,25,1
 Malachi Fields,WR,5,58,11.6,15,1
-Zay Franks,WR,1,58,58.0,58,1
+Zay Franks,CB,1,58,58.0,58,1
 Montrell Johnson Jr.,RB,12,58,4.8,18,1
 Anthony Smith,WR,2,58,29.0,40,1
 Sutton Smith,RB,4,58,14.5,24,0
@@ -1301,11 +1300,11 @@ Reagan Ealy,WR,7,46,6.6,15,0
 Gavin Freeman,WR,3,46,15.3,41,0
 Titus Lyons,TE,6,46,7.7,24,0
 Jared Rus,TE,7,45,6.4,13,0
-Kelley Joiner Jr.,RB,7,45,6.4,24,0
+Kelley Joiner,RB,7,45,6.4,24,0
 Jacquez Stuart,RB,10,45,4.5,11,0
 Al-Jay Henderson,RB,6,45,7.5,13,0
 Peter Montini,TE,2,45,22.5,25,0
-Jamir Roberts,WR,1,45,45.0,45,0
+Jamir Roberts,RB,1,45,45.0,45,0
 Evan Lester Jr.,TE,6,45,7.5,25,1
 Clayton Ollendieck,TE,6,45,7.5,11,0
 Cade Harris,WR,2,45,22.5,41,1
@@ -1352,7 +1351,7 @@ Tyler Moore,TE,4,42,10.5,25,0
 Umari Hatcher,WR,3,42,14.0,16,1
 Chance Bell,RB,5,41,8.2,13,0
 Chris Rodriguez Jr.,RB,5,41,8.2,17,0
-Thaddius Franklin Jr.,RB,5,41,8.2,12,0
+Thad Franklin Jr.,RB,5,41,8.2,12,0
 Jermaine Terry II,TE,7,41,5.9,18,0
 Demarcus Jones II,RB,5,41,8.2,25,0
 Patrick Smith,RB,8,41,5.1,14,0
@@ -1383,7 +1382,7 @@ Deon Silas,RB,9,38,4.2,8,0
 CJ Daniels,WR,3,38,12.7,25,1
 Ryan King,WR,4,38,9.5,25,0
 Jordan Johnson,RB,3,38,12.7,14,0
-Brock Lampe,RB,2,38,19.0,31,0
+Brock Lampe,FB,2,38,19.0,31,0
 Trevor Stephens,TE,2,38,19.0,20,0
 Walter Dawn Jr.,WR,7,37,5.3,15,0
 Khaleb Coleman,WR,3,37,12.3,22,1
@@ -1409,7 +1408,7 @@ Bo Nix,QB,2,36,18.0,18,1
 Erick All,TE,3,36,12.0,22,0
 Terrell McDonald,TE,7,36,5.1,12,2
 Camar Wheaton,RB,7,36,5.1,17,0
-Anthony Williams Jr.,RB,4,36,9.0,19,0
+Anthony Williams Jr.,WR,4,36,9.0,19,0
 Tavorus Jones,RB,2,36,18.0,32,0
 Jordan Williams,TE,3,36,12.0,21,1
 Malikhi Miller,WR,6,35,5.8,8,0
@@ -1449,7 +1448,7 @@ Deon Fountain,WR,1,32,32.0,32,0
 Garrett Greene,QB,4,32,8.0,12,0
 Chris Scott,WR,4,32,8.0,15,0
 Chamon Metayer,TE,1,32,32.0,32,0
-Ahmonte Watkins,CB,5,32,6.4,22,1
+Monte Watkins,RB,5,32,6.4,22,1
 Jacob Flynn,WR,5,32,6.4,10,1
 Kyle Patterson,TE,3,32,10.7,11,0
 Ryan Hoerstkamp,TE,2,32,16.0,32,1
@@ -1474,7 +1473,7 @@ Josh Falo,TE,4,30,7.5,12,2
 Adam Beale,WR,2,30,15.0,24,0
 Kavosiey Smoke,RB,3,30,10.0,14,0
 Joe Ervin,RB,8,30,3.8,14,0
-Duke Olges,DL,3,30,10.0,15,1
+Duke Olges,TE,3,30,10.0,15,1
 Tyler Crowe,RB,2,30,15.0,26,0
 Marcus Burke,WR,4,30,7.5,14,0
 David Larkins,TE,3,30,10.0,17,0
@@ -1485,7 +1484,7 @@ Caleb Rillos,TE,2,30,15.0,15,1
 Dwartney Wortham,WR,2,30,15.0,24,0
 Bryant Kieft,TE,2,30,15.0,20,0
 Jaylon Robinson,WR,5,29,5.8,16,0
-TJ Ivy Jr.,TE,2,29,14.5,25,0
+Turon Ivy Jr.,TE,2,29,14.5,25,0
 Oscar Adaway III,RB,5,29,5.8,11,1
 Marcus Carroll,RB,5,29,5.8,13,0
 Jordan Younge-Humphrey,RB,4,29,7.3,14,0
@@ -1510,7 +1509,7 @@ Alex Maxwell,WR,2,28,14.0,20,0
 La'Vell Wright,RB,6,28,4.7,13,0
 Malcolm Johnson Jr.,WR,2,28,14.0,15,0
 Kyre Duplessis,WR,2,28,14.0,20,0
-Reginald Virgil,WR,1,28,28.0,28,0
+Reggie Virgil,WR,1,28,28.0,28,0
 Jostein Clarke,WR,4,28,7.0,13,0
 Jamyest Williams,RB,4,27,6.8,20,0
 Cooper Lutz,RB,1,27,27.0,27,0
@@ -1587,7 +1586,7 @@ Jordan Ford,RB,5,24,4.8,10,2
 Jamaal Pritchett,WR,2,24,12.0,12,0
 Dylan Sampson,RB,3,24,8.0,19,0
 Dean Connors,RB,8,24,3.0,7,1
-Clevester Hines,CB,2,24,12.0,14,0
+Clevester Hines III,CB,2,24,12.0,14,0
 Alec Sinkfield,RB,4,23,5.8,16,0
 Demarcus Gregory,WR,3,23,7.7,13,0
 Connor Bazelak,QB,1,23,23.0,23,0
@@ -1808,7 +1807,7 @@ Cameron Bonner,WR,1,13,13.0,13,0
 Damari Alston,RB,1,13,13.0,13,0
 Tiyon Evans,RB,6,13,2.2,8,0
 Iverson Hooks,WR,1,13,13.0,13,0
-Denzil Alleyne,DB,2,13,6.5,8,0
+Denzil Alleyne,WR,2,13,6.5,8,0
 TJ Harden,RB,4,13,3.3,10,0
 Chase Hayden,RB,2,12,6.0,8,0
 Frank Harris,QB,2,12,6.0,9,0
@@ -1830,7 +1829,7 @@ Ben Buechel,TE,1,12,12.0,12,0
 Michael Harrison,TE,2,12,6.0,9,0
 Jaylen Sargent,WR,2,12,6.0,7,0
 Jayden Gibson,WR,1,12,12.0,12,0
-Brian Courtney,LB,1,12,12.0,12,0
+Brian Courtney,TE,1,12,12.0,12,0
 Reis Stocksdale,WR,1,12,12.0,12,0
 Ayo Adeyi,RB,2,12,6.0,9,0
 Cole Speer,WR,1,12,12.0,12,0
@@ -1910,7 +1909,7 @@ Malik Hornsby,QB,2,8,4.0,9,0
 Dez Melton,TE,1,8,8.0,8,0
 Dacari Collins,WR,1,8,8.0,8,0
 Alex Lines,TE,1,8,8.0,8,0
-William Kakavitsas,WR,1,8,8.0,8,0
+Will Kakavitsas,WR,1,8,8.0,8,0
 Hunter Neff,TE,1,8,8.0,8,0
 Gabe Ervin Jr.,RB,1,8,8.0,8,0
 Jakolbe Baldwin,WR,1,8,8.0,8,0
@@ -1931,7 +1930,7 @@ Gunnar Watson,QB,1,7,7.0,7,1
 Uriah West,RB,1,7,7.0,7,0
 Xavier Williams,WR,1,7,7.0,7,0
 Seth Porter,WR,1,7,7.0,7,0
-Kay'Ron Adams,RB,2,7,3.5,5,0
+Kay'Ron Lynch-Adams,RB,2,7,3.5,5,0
 Elijah Downing,WR,1,7,7.0,7,0
 Rahmir Johnson,RB,1,7,7.0,7,0
 Darius Boone Jr.,RB,1,7,7.0,7,0
@@ -1961,7 +1960,7 @@ Nasir Montgomery,WR,1,6,6.0,6,0
 Keyon Mozee,RB,2,6,3.0,4,0
 Grey Ihu,WR,1,6,6.0,6,0
 Christian Leary,WR,1,6,6.0,6,0
-Khiyon Wafer,WR,1,6,6.0,6,0
+Khi'Yon Wafer,WR,1,6,6.0,6,0
 Max Patterson,WR,2,6,3.0,3,0
 Dante Reynolds,WR,2,6,3.0,6,0
 Drew Biber,TE,1,6,6.0,6,0
@@ -1982,7 +1981,7 @@ CJ Hayes,WR,1,5,5.0,5,0
 Jayden Daniels,QB,1,5,5.0,5,1
 Luke Wentz,WR,1,5,5.0,5,0
 Thaiu Jones-Bell,WR,1,5,5.0,5,0
-Andy Alfieri,TE,1,5,5.0,5,0
+Andy Alfieri,FB,1,5,5.0,5,0
 Trey Boll,TE,1,5,5.0,5,1
 Tavierre Dunlap,RB,1,5,5.0,5,0
 Aaron Greene,TE,1,5,5.0,5,0
@@ -2047,7 +2046,7 @@ Fred Seabrough Jr.,TE,1,3,3.0,3,0
 MJ Morris,QB,0,3,0.0,3,0
 JT Seagreaves,TE,1,3,3.0,3,0
 CJ Campbell Jr.,RB,1,3,3.0,3,0
-Kendrick Rucker,WR,1,3,3.0,3,0
+Kendrick Rucker,TE,1,3,3.0,3,0
 Keegan Holles,RB,2,3,1.5,3,0
 Kade Zimmerman,WR,1,3,3.0,3,0
 Bennett Galloway,RB,1,3,3.0,3,0
@@ -2097,7 +2096,7 @@ David Bailey,RB,3,-1,-0.3,8,0
 Jack Conley,OL,1,-1,-1.0,-1,0
 Jam Miller,RB,1,-1,-1.0,0,0
 Austin Groeschel,TE,2,-1,-0.5,1,0
-Cam Barfield,RB,3,-1,-0.3,3,0
+Cam'ron Barfield,RB,3,-1,-0.3,3,0
 Tim Gans,RB,1,-1,-1.0,0,0
 Antonio Patterson,RB,1,-1,-1.0,0,0
 Matt McDonald,QB,1,-2,-2.0,0,0
@@ -2110,10 +2109,10 @@ Rashad Rochelle,WR,1,-2,-2.0,0,0
 Kelan Walker,RB,2,-3,-1.5,0,0
 Spencer Petras,QB,0,-3,0.0,0,0
 Christian Wortham,WR,1,-3,-3.0,0,0
-Jerry Johnson III,FB,1,-3,-3.0,0,0
+Jerry Johnson III,RB,1,-3,-3.0,0,0
 Kristen Hoskins,WR,1,-3,-3.0,-3,0
 T.Y. Harding,WR,1,-3,-3.0,0,0
-Harold Joiner III,DB,1,-4,-4.0,0,0
+Harold Joiner III,LB,1,-4,-4.0,0,0
 Nick DeJong,OL,1,-4,-4.0,-4,0
 Kai Horton,QB,1,-4,-4.0,0,0
 Tyler Toledo,RB,1,-4,-4.0,0,0

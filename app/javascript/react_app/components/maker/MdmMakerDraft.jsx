@@ -20,6 +20,7 @@ import ButtonOne from "../helpers/ButtonOne"
 import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import makerDraftTutorial from "./guidedTutorials/makerDraftTutorial"
+import { binarySearch } from "../../other/bsearch"
 import useStore from "../../store/store"
 
 function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
@@ -52,6 +53,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   const [
     orderedPicks,
     pickData,
+    roundData,
     yourPicks,
     userPicking,
     setPickData,
@@ -60,6 +62,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   ] = useStore(state => [
     state.orderedPicks,
     state.pickData,
+    state.roundData,
     state.yourPicks,
     state.userPicking,
     state.setPickData,
@@ -83,6 +86,14 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   const randomness = useStore(state => state.randomness)
   const draftRounds = useStore(state => state.draftRounds)
   const addAlert = useStore(state => state.addAlert)
+
+  const currentPickIndex = Object.keys(draftState).length
+  const currentRound = binarySearch(
+    roundData.starting_one_index,
+    currentPickIndex + 1
+  )
+  const roundStart = roundData.starting[viewRound]
+  const roundEnd = roundData.starting[viewRound + 1]
 
   // ---------------
   // - Other State -
@@ -148,7 +159,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
       [orderedPicks[total].full_name]: oldPd.slice(1)
     })
 
-    setViewRound(parseInt(total / 32))
+    setViewRound(binarySearch(roundData.starting, total))
 
     const elementId = `${orderedPicks[total].name}_${total}`
     if (!isMouseOverPicks)
@@ -236,7 +247,9 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
     draftInterval.current = createDraftInterval()
     setUserPicking(false)
     setDraftRunning(true)
-    setViewRound(parseInt(Object.keys(draftState).length / 32))
+    setViewRound(
+      binarySearch(roundData.starting, parseInt(Object.keys(draftState).length))
+    )
 
     return () => clearInterval(draftInterval.current)
   }
@@ -301,9 +314,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   useEffect(() => {
     const total = Object.keys(draftState).length
 
-    // TODO: update with actual number of picks in round (variable based on comp picks)
-    // json file with number of picks in each round
-    if (total < draftRounds * 32) {
+    if (total < roundData.starting[draftRounds]) {
       // stop on selected team, keep draft running
       const picking = orderedPicks[total]
       if (draftRunning === true && !selectedTeams.includes(picking)) {
@@ -314,7 +325,9 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
         setOuterTab("draft")
       }
 
-      setViewRound(parseInt(total / 32))
+      console.log(binarySearch(roundData.starting, total), total)
+
+      setViewRound(binarySearch(roundData.starting, total))
     } else {
       clearInterval(draftInterval.current)
       setStage(3)
@@ -334,12 +347,6 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   useEffect(() => {
     if (!localStorage.getItem("draftTourCompleted")) guidedTutorial()
   }, [])
-
-  // not 32 picks in each round
-  const currentPickIndex = Object.keys(draftState).length
-  const currentRound = parseInt(currentPickIndex / 32)
-  const roundStart = viewRound * 32
-  const roundEnd = Math.min(roundStart + 32, 256)
 
   return (
     <>

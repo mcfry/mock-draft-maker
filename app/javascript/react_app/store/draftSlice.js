@@ -1,14 +1,18 @@
 // Json
 import data from "./static_data/picks_2024.json"
+import roundData from "./static_data/picks_per_round_2024.json"
 import needsData from "./static_data/needs_2024.json"
 import positionalData from "./static_data/positional_value.json"
 import pickValueData from "./static_data/pick_value_rich_hill.json"
 
+const NUMBER_OF_PICKS = 256
+
 // Extrapolate to fill remaining
-for (let i = 225; i < 257; i += 1) {
+for (let i = 225; i <= NUMBER_OF_PICKS; i += 1) {
   const diff = 1
   const pickValueDataVal =
     pickValueData[i - 1] - diff > 0 ? pickValueData[i - 1] - diff : 1
+
   pickValueData[i] = pickValueDataVal
 }
 
@@ -46,6 +50,7 @@ const inititalState = {
   outerTab: "trade",
   viewRound: 0,
   pickData: data,
+  roundData,
   orderedPicks: new Array(256).fill(""),
   yourPicks: {},
   teams: [],

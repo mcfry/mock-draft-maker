@@ -200,6 +200,7 @@ function MdmMaker() {
           return
         }
 
+        // 32 teams
         if (seen.size < 32) {
           if (!seen.has(op.full_name)) {
             seen.add(op.full_name)
@@ -222,7 +223,7 @@ function MdmMaker() {
 
   return (
     <>
-      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-base-300 dark:to-gray-100 makermax:hidden">
+      <main className="flex flex-col grow justify-center items-center bg-gradient-to-t from-base-100 dark:from-gray-500 via-base-300 to-gray-300 dark:to-gray-100 makermax:hidden">
         <MdmAlerts />
 
         {teamsQuery.status === "loading" ? (

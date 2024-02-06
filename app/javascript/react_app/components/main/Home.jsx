@@ -15,9 +15,7 @@ function Home() {
   }, [])
 
   return (
-    <main
-      className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 dark:text-gray-900 z-0"
-    >
+    <main className="hero grow bg-gradient-to-t from-base-100 via-base-300 to-gray-300 dark:from-gray-500 dark:to-gray-100 dark:text-gray-900 z-0">
       {/* Place waves here to fix stacking context */}
       <Waves />
 

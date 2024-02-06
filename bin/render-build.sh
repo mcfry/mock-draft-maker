@@ -12,7 +12,7 @@ bundle install
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 
-# uncomment to delete db on push
+# uncomment both lines to delete db on push
 # DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop
 # bundle exec rake db:create
 

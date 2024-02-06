@@ -46,7 +46,7 @@ function MdmShare() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-base-300 dark:from-gray-500 dark:to-gray-100 p-10"
+      className="relative flex flex-col grow space-y-4 justify-center items-center bg-gradient-to-t from-base-100 via-base-300 to-gray-300 dark:from-gray-500 dark:to-gray-100 p-10"
     >
       {draftLoaded === false ? (
         <>{error ? <p>Error: {error?.message}</p> : <MdmMakerSkeleton />}</>

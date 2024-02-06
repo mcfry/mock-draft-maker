@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 require_relative '../../app/middleware/sourcemap_redirect_middleware'
 
+#NOTE: run 'bin/dev' to run the website locally
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
