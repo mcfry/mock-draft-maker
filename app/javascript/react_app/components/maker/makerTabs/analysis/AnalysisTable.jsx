@@ -6,7 +6,7 @@ function AnalysisTable({ tab, playerInAnalysis }) {
   }
 
   return (
-    <table className="table rounded-none">
+    <table className="table rounded-none font-mono text-base">
       {/* head */}
       <thead>
         <tr className="font-bold text-black dark:text-gray-900">

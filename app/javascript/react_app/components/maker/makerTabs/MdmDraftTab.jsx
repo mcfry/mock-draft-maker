@@ -75,7 +75,10 @@ function MdmDraftTab({
     columnHelper.display({
       id: "analyzeButton",
       cell: props => (
-        <ButtonTwo handleClick={e => handleAnalyzeClick(e, props.row.original)}>
+        <ButtonTwo
+          classNames="font-sans"
+          handleClick={e => handleAnalyzeClick(e, props.row.original)}
+        >
           Analyze
         </ButtonTwo>
       )
@@ -84,6 +87,7 @@ function MdmDraftTab({
       id: "draftButton",
       cell: props => (
         <ButtonTwo
+          classNames="font-sans"
           handleClick={() => {
             if (userPicking === true) {
               setPreselectedPick(props.row.original)
@@ -181,7 +185,10 @@ function MdmDraftTab({
                 {!userPicking && draftRunning ? (
                   <CurrentlyPicking startOrPauseDraft={startOrPauseDraft} />
                 ) : (
-                  <table className="table rounded-none" tabIndex={-1}>
+                  <table
+                    className="table rounded-none font-mono text-sm"
+                    tabIndex={-1}
+                  >
                     <thead>
                       {table.getHeaderGroups().map(headerGroup => (
                         <tr
@@ -218,7 +225,7 @@ function MdmDraftTab({
                             className={
                               preselectedPick && preselectedPick.id === row.id
                                 ? "bg-success"
-                                : "hover cursor-pointer border-b-2"
+                                : "bg-gradient-to-r from-white to-gray-200 hover cursor-pointer border-b-2 border-gray-300"
                             }
                             ref={virtualizer.measureElement}
                           >

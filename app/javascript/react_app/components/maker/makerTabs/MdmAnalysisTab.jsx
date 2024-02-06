@@ -130,7 +130,7 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   return (
     <>
       <div className="flex flex-col overflow-x-auto w-[62rem] h-full dark:bg-gray-300 dark:text-gray-900">
-        <div className="tabs border-b-2 dark:bg-gray-700">
+        <div className="tabs border-b-2 bg-gray-700">
           {playerInAnalysis.passing && (
             <MdmTab
               handleClick={e => handleClick(e, "passing")}

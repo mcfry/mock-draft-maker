@@ -10,7 +10,7 @@ function MdmYourPicksTab({ yourPicks }) {
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         {yourPicks && Object.keys(yourPicks).length > 0 ? (
           <div className="overflow-x-auto w-[62rem] h-[31rem]">
-            <table className="table">
+            <table className="table font-mono text-base">
               <tbody>
                 {Object.entries(yourPicks).map(([team, players]) => (
                   <Fragment key={`yp_${team}`}>

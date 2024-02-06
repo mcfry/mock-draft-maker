@@ -556,7 +556,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
 
         <div
           id="draft-tabs"
-          className="tabs border-b-2 border-t-2 relative"
+          className="tabs border-b-2 border-t-2 relative bg-gray-700"
           aria-label="Draft management"
         >
           <MdmTab
