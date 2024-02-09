@@ -21,6 +21,7 @@ import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
 import makerDraftTutorial from "./guidedTutorials/makerDraftTutorial"
 import { binarySearch } from "../../other/bsearch"
+import { mapRange } from "../../other/mapRange"
 import useStore from "../../store/store"
 
 function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
@@ -181,42 +182,53 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
         needsHash[need] = true
       }
 
+      // TODO: would be nice to have a value associated with each need
       const possibleNeeds = []
       if (needs.length > 0) {
         let i = 0
         for (const player of players) {
           if (player.position in needsHash) possibleNeeds.push(player)
-          if (possibleNeeds.length >= 5) break
+          if (possibleNeeds.length >= mapRange(randomness, 10, 100, 2, 6)) break
 
           i += 1
-          if (i >= 15) break
+          // autopick should go a max of 25 picks back
+          if (i >= mapRange(randomness, 10, 100, 5, 25)) break
         }
       }
 
-      // TODO: Allow needs to have weighted value selection
-      // i.e. if First pick wants a QB, don't hard cap them at 2 choices like
-      // in possiblePositional.
       const possiblePositional = []
       let i = 0
       for (const player of players) {
-        if (!(player.position in positionalData)) console.log(player)
-
         possiblePositional.push([player, positionalData[player.position]])
+        if (possiblePositional.length >= mapRange(randomness, 10, 100, 2, 6)) break
 
         i += 1
-        if (
-          i >= (total + 1) * 2 * (randomness / 10 / 2) ||
-          i >= 5 * (randomness / 10)
-        )
-          break
+        // autopick should go a max of 25 picks back
+        if (i >= mapRange(randomness, 10, 100, 5, 25)) break
       }
-      possiblePositional.sort((a, b) => b[1] - a[1]) // reverse
+      possiblePositional.sort((a, b) => b[1] - a[1]) // reverse, highest values first
 
       const roll = parseInt(Math.random() * 10)
-      if (possibleNeeds.length > 0 && roll * 10 < needsVsValue) {
-        const curPick = parseInt(Math.random() * possibleNeeds.length)
+      if (possibleNeeds.length > 0 && roll * 10 >= needsVsValue) {
+        const needPositionValues = []
+        for (const player of possibleNeeds) {
+          needPositionValues.push([player, positionalData[player.position]])
+        }
+        needPositionValues.sort((a, b) => b[1] - a[1]) 
 
-        pickPlayer(possibleNeeds[curPick], total)
+        // cumulative dist func to get weighted arr
+        const weighted = needPositionValues.map(
+          (
+            sum => value =>
+              (sum += value[1])
+          )(0)
+        )
+
+        const max = weighted[weighted.length - 1]
+        const weightedPick = Math.random() * max
+        const curPick = weighted.findIndex(el => el >= weightedPick)
+
+        pickPlayer(needPositionValues[curPick][0], total)
       } else {
         // cumulative dist func to get weighted arr
         const weighted = possiblePositional.map(
@@ -226,9 +238,8 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
           )(0)
         )
 
-        const min = weighted[0]
         const max = weighted[weighted.length - 1]
-        const weightedPick = Math.random() * (max - min) + min
+        const weightedPick = Math.random() * max
         const curPick = weighted.findIndex(el => el >= weightedPick)
 
         pickPlayer(possiblePositional[curPick][0], total)
@@ -324,8 +335,6 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
         setUserPicking(true)
         setOuterTab("draft")
       }
-
-      console.log(binarySearch(roundData.starting, total), total)
 
       setViewRound(binarySearch(roundData.starting, total))
     } else {

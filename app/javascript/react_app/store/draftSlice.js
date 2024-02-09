@@ -2,7 +2,7 @@
 import data from "./static_data/picks_2024.json"
 import roundData from "./static_data/picks_per_round_2024.json"
 import needsData from "./static_data/needs_2024.json"
-import positionalData from "./static_data/positional_value.json"
+import positionalData from "./static_data/positional_value_common.json"
 import pickValueData from "./static_data/pick_value_rich_hill.json"
 
 const NUMBER_OF_PICKS = 256
