@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_11_151625) do
     t.integer "speed"
     t.integer "needs_vs_value"
     t.integer "randomness"
+    t.string "value_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -11,6 +11,7 @@ class Api::V1::DraftRecordsController < ApplicationController
         year: draft_create_params[:year],
         speed: draft_create_params[:speed],
         needs_vs_value: draft_create_params[:needsVsValue],
+        value_type: draft_create_params[:valueType],
         randomness: draft_create_params[:randomness]
       })
 

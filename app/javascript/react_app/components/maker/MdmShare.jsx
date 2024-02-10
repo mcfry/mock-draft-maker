@@ -1,6 +1,6 @@
 // External
 import React, { useState, useRef, useEffect, Fragment } from "react"
-import { useParams, useLocation } from "react-router-dom"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import Confetti from "react-confetti"
 import { CopyToClipboard } from "react-copy-to-clipboard"
@@ -8,12 +8,16 @@ import { FaCheck, FaCopy } from "react-icons/fa"
 import { HiVariable } from "react-icons/hi"
 import { HiBolt } from "react-icons/hi2"
 import { AiFillSetting } from "react-icons/ai"
+import { GiAmericanFootballPlayer } from "react-icons/gi"
 
 // Internal
 import MdmMakerSkeleton from "./MdmMakerSkeleton"
 import { CURRENT_YEAR } from "../../constants/current"
+import ROUTES from "../../constants/routes"
+import ButtonTwo from "../helpers/ButtonTwo"
 
 function MdmShare() {
+  const navigate = useNavigate()
   const location = useLocation()
   const { draft_uuid } = useParams()
 
@@ -24,6 +28,7 @@ function MdmShare() {
   const [needsVsValue, setNeedsVsValue] = useState(null)
   const [randomness, setRandomness] = useState(null)
   const [draftLoaded, setDraftLoaded] = useState(false)
+  const [positionalDataType, setPositionalDataType] = useState(null)
   const [copied, setCopied] = useState(false)
   const [error, setError] = useState(null)
 
@@ -34,6 +39,7 @@ function MdmShare() {
         setSpeed(res?.data?.speed)
         setNeedsVsValue(res?.data?.needs_vs_value)
         setRandomness(res?.data?.randomness)
+        setPositionalDataType(res?.data?.value_type)
         setDraftLoaded(true)
       })
       .catch(err => {
@@ -164,6 +170,12 @@ function MdmShare() {
                       </span>
 
                       <span className="flex items-center justify-center">
+                        <GiAmericanFootballPlayer />
+                        &nbsp;Value Type:{" "}
+                        {positionalDataType === null ? "N/A" : positionalDataType}
+                      </span>
+
+                      <span className="flex items-center justify-center">
                         <HiVariable size="1.35em" />
                         &nbsp;Randomness:{" "}
                         {randomness === null ? "N/A" : randomness}
@@ -172,6 +184,14 @@ function MdmShare() {
                   </div>
                 </div>
               </div>
+
+              <ButtonTwo
+                id="draft_again"
+                data-testid="draft-again"
+                onClick={_ => navigate(ROUTES.MAKER)}
+              >
+                Make Another Draft
+              </ButtonTwo>
             </>
           )}
         </>

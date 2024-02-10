@@ -2,7 +2,10 @@
 import data from "./static_data/picks_2024.json"
 import roundData from "./static_data/picks_per_round_2024.json"
 import needsData from "./static_data/needs_2024.json"
-import positionalData from "./static_data/positional_value_common.json"
+import positionalData from "./static_data/positional_value_normal.json"
+import positionalDataSalary from "./static_data/positional_value_salary.json"
+import positionalDataOffense from "./static_data/positional_value_offense.json"
+import positionalDataDefense from "./static_data/positional_value_defense.json"
 import pickValueData from "./static_data/pick_value_rich_hill.json"
 
 const NUMBER_OF_PICKS = 256
@@ -58,6 +61,7 @@ const inititalState = {
   selected: {},
   players: [],
   needsData,
+  positionalDataType: "Normal",
   positionalData,
   pickValueData
 }
@@ -130,6 +134,26 @@ const createDraftSlice = set => ({
     set(_ => ({
       pickData: { ...newPickData }
     })),
+  setPositionalDataType: newType =>
+    set(state => ({
+      positionalDataType: newType !== undefined ? newType : state.positionalDataType
+    })),
+  setPositionalData: type => {
+    let newPositionalData;
+    if (type === "Normal") {
+      newPositionalData = positionalData;
+    } else if (type === "Avg Salary") {
+      newPositionalData = positionalDataSalary;
+    } else if (type === "Offense") {
+      newPositionalData = positionalDataOffense;
+    } else if (type === "Defense") {
+      newPositionalData = positionalDataDefense;
+    }
+
+    return set(_ => ({
+      positionalData: { ...newPositionalData }
+    }))
+  },
   resetDraftSlice: () => {
     set(inititalState)
   }

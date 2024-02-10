@@ -80,6 +80,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   ])
   const needsData = useStore(state => state.needsData)
   const positionalData = useStore(state => state.positionalData)
+  const pickValueData = useStore(state => state.pickValueData)
   const teams = useStore(state => state.teams)
   const selected = useStore(state => state.selected)
   const speed = useStore(state => state.speed)
@@ -199,7 +200,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
       const possiblePositional = []
       let i = 0
       for (const player of players) {
-        possiblePositional.push([player, positionalData[player.position]])
+        possiblePositional.push([player, positionalData[player.position] * pickValueData[total+1]])
         if (possiblePositional.length >= mapRange(randomness, 10, 100, 5, 25)) break
 
         i += 1
@@ -212,7 +213,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
       if (possibleNeeds.length > 0 && roll * 10 >= needsVsValue) {
         const needPositionValues = []
         for (const player of possibleNeeds) {
-          needPositionValues.push([player, positionalData[player.position]])
+          needPositionValues.push([player, positionalData[player.position] * pickValueData[total+1]])
         }
         needPositionValues.sort((a, b) => b[1] - a[1]) 
 

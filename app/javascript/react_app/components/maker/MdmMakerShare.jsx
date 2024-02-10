@@ -5,6 +5,7 @@ import axios from "axios"
 import { MdSaveAlt } from "react-icons/md"
 import { HiBolt, HiVariable } from "react-icons/hi2"
 import { AiFillSetting } from "react-icons/ai"
+import { GiAmericanFootballPlayer } from "react-icons/gi"
 
 // Internal
 import useStore from "../../store/store"
@@ -19,6 +20,7 @@ function MdmMakerShare() {
   const speed = useStore(state => state.speed)
   const needsVsValue = useStore(state => state.needsVsValue)
   const randomness = useStore(state => state.randomness)
+  const positionalDataType = useStore(state => state.positionalDataType)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -34,7 +36,8 @@ function MdmMakerShare() {
           speed,
           needsVsValue,
           randomness,
-          year: CURRENT_YEAR
+          year: CURRENT_YEAR,
+          valueType: positionalDataType
         },
         headers: {
           Accept: "Application/json",
@@ -130,6 +133,12 @@ function MdmMakerShare() {
                   <AiFillSetting />
                   &nbsp;NeedsVsValue:{" "}
                   {needsVsValue === null ? "N/A" : needsVsValue}
+                </span>
+
+                <span className="flex items-center justify-center">
+                  <GiAmericanFootballPlayer />
+                  &nbsp;Value Type:{" "}
+                  {positionalDataType === null ? "N/A" : positionalDataType}
                 </span>
 
                 <span className="flex items-center justify-center">
