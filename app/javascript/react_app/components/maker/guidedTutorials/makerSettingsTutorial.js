@@ -40,6 +40,16 @@ export default {
       }
     },
     {
+      element: "#settings__value-priority",
+      popover: {
+        title: "Player Value Type",
+        description:
+          "Choose the value the AI should put on players.<br/><br/>For example, the option <b>Offense</b> will result in the AI selecting offensive players over defensive players at a higher rate than normal.",
+        side: "top",
+        align: "start"
+      }
+    },
+    {
       element: "#settings__randomness",
       popover: {
         title: "Randomness",
