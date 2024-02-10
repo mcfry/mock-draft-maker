@@ -27,7 +27,7 @@ function App() {
           <Router>
             <Routes>
               <Route element={<components.AppWrapperWave />}>
-                <Route path="/" element={<components.Home />} />
+                <Route path="/" element={<components.MdmMaker />} />
               </Route>
 
               <Route element={<components.AppWrapperCircles />}>

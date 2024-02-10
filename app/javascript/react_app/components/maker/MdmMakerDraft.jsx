@@ -188,11 +188,11 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
         let i = 0
         for (const player of players) {
           if (player.position in needsHash) possibleNeeds.push(player)
-          if (possibleNeeds.length >= mapRange(randomness, 10, 100, 2, 6)) break
+          if (possibleNeeds.length >= mapRange(randomness, 10, 100, 3, 6)) break
 
           i += 1
           // autopick should go a max of 25 picks back
-          if (i >= mapRange(randomness, 10, 100, 5, 25)) break
+          if (i >= mapRange(randomness, 10, 100, 10, 25)) break
         }
       }
 
@@ -200,7 +200,7 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
       let i = 0
       for (const player of players) {
         possiblePositional.push([player, positionalData[player.position]])
-        if (possiblePositional.length >= mapRange(randomness, 10, 100, 2, 6)) break
+        if (possiblePositional.length >= mapRange(randomness, 10, 100, 5, 25)) break
 
         i += 1
         // autopick should go a max of 25 picks back

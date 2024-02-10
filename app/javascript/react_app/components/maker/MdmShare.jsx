@@ -56,11 +56,11 @@ function MdmShare() {
             <p>No draft record found.</p>
           ) : (
             <>
-              {queryParams?.has("new") && (
+              {queryParams?.has("new") && sectionRef?.current && (
                 <Confetti
                   width={window.innerWidth}
-                  height={sectionRef.current.clientHeight}
-                  numberOfPieces={800}
+                  height={sectionRef.current?.clientHeight}
+                  numberOfPieces={150}
                   recycle={false}
                   style={{ zIndex: 35 }}
                 />

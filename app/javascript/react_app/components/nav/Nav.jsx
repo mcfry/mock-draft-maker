@@ -11,17 +11,13 @@ import MdmLogo from "../../images/mdm_logo.png"
 import ThemeChanger from "../helpers/ThemeChanger"
 
 const navigation = [
-  { name: "Home", link: "" },
-  { name: "Maker", link: "maker" },
-  { name: "About", link: "about" }
+  // { name: "Home", link: "" },
+  { name: "Maker", links: ["", "maker"] },
+  { name: "About", links: ["about"] }
 ]
 
-const linkActive = (link, pathname) => {
-  if (link === "") {
-    return pathname === "/"
-  }
-
-  return pathname.slice(1).startsWith(link)
+const linkActive = (links, pathname) => {
+  return links.indexOf(pathname.slice(1)) !== -1
 }
 
 function Navbar() {
@@ -70,18 +66,18 @@ function Navbar() {
                           key={item.name}
                           type="button"
                           onClick={() => {
-                            if (!linkActive(item.link, location.pathname)) {
-                              navigateWithTransition(item.link)
+                            if (!linkActive(item.links, location.pathname)) {
+                              navigateWithTransition(item.links[0])
                             }
                           }}
                           className={clsx(
-                            linkActive(item.link, location.pathname)
+                            linkActive(item.links, location.pathname)
                               ? "text-primary-content border-b-2 border-accent"
                               : "text-gray-300 hover:bg-gray-700 hover:text-primary-content",
                             "px-3 py-2 text-sm font-medium group relative"
                           )}
                           aria-current={
-                            linkActive(item.link, location.pathname)
+                            linkActive(item.links, location.pathname)
                               ? "page"
                               : undefined
                           }
@@ -127,15 +123,15 @@ function Navbar() {
                   <Disclosure.Button
                     key={item.name}
                     as={Link}
-                    to={item.link}
+                    to={item.links[0]}
                     className={clsx(
-                      linkActive(item.link, location.pathname)
+                      linkActive(item.links, location.pathname)
                         ? "bg-gray-900 text-primary-content"
                         : "text-gray-300 hover:bg-gray-700 hover:text-primary-content",
                       "block rounded-md px-3 py-2 text-base font-medium"
                     )}
                     aria-current={
-                      linkActive(item.link, location.pathname)
+                      linkActive(item.links, location.pathname)
                         ? "page"
                         : undefined
                     }
