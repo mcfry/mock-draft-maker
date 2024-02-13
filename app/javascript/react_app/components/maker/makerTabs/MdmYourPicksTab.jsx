@@ -9,7 +9,10 @@ function MdmYourPicksTab({ yourPicks }) {
   const selected = useStore(state => state.selected);
   const teams = useStore(state => state.teams);
   const pickData = useStore(state => state.pickData);
+  const draftRounds = useStore(state => state.draftRounds);
+  const roundData = useStore(state => state.roundData);
 
+  const lastGoodPick = roundData.starting[draftRounds]
   const selectedTeams = useMemo(() => teams.filter(team => team.id in selected), [teams])
 
   console.log(yourPicks)
@@ -36,6 +39,8 @@ function MdmYourPicksTab({ yourPicks }) {
                       </tr>
                     })}
                     {pickData[team.full_name]?.map(pick => {
+                      if (pick > lastGoodPick) return null
+
                       return <tr key={`yps_${pick}`}>
                         <td>Pick: {pick}</td>
                         <td>&nbsp;</td>
