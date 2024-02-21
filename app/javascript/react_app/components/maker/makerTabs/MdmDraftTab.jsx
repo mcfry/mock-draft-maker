@@ -98,7 +98,7 @@ function MdmDraftTab({
             } else {
               addAlert({
                 type: "error",
-                message: "It's not your turn to pick!",
+                message: "It's not your turn to pick, or the draft isn't started!",
                 time: 4000
               })
             }

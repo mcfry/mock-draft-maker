@@ -1,16 +1,16 @@
 {
   "Arizona Cardinals": ["WR", "OL", "DL", "LB", "DB"],
-  "Atlanta Falcons": ["QB", "WR", "DE", "DB"],
+  "Atlanta Falcons": ["QB", "WR", "DL", "DB"],
   "Baltimore Ravens": ["WR", "DL", "DB"],
   "Buffalo Bills": ["WR", "OL", "DL", "LB", "DB"],
   "Carolina Panthers": ["WR", "TE", "DE"],
   "Chicago Bears": ["QB", "WR", "OL", "DL", "DB"],
   "Cincinnati Bengals": ["TE", "OL", "DL"],
-  "Cleveland Browns": ["WR", "DL", "S"],
+  "Cleveland Browns": ["WR", "DL", "DB"],
   "Dallas Cowboys": ["RB", "OL", "DL", "LB", "DB"],
   "Denver Broncos": ["QB", "WR", "OL", "DE", "DB"],
   "Detroit Lions": ["OL", "DL", "DB"],
-  "Green Bay Packers": ["RB", "OL", "DL", "S"],
+  "Green Bay Packers": ["RB", "OL", "DL", "DB"],
   "Houston Texans": ["WR", "TE", "DL", "LB"],
   "Indianapolis Colts": ["WR", "OL", "DL", "DB"],
   "Jacksonville Jaguars": ["OL", "DE", "DB"],
@@ -24,7 +24,7 @@
   "Las Vegas Raiders": ["QB", "RB", "OL", "DL", "LB", "DB"],
   "Philadelphia Eagles": ["WR", "LB", "DB"],
   "Pittsburgh Steelers": ["QB", "OL", "DB", "LB"],
-  "Los Angeles Chargers": ["RB", "WR", "TE", "DL", "LB", "DB"],
+  "Los Angeles Chargers": ["WR", "TE", "RB", "DL", "LB", "DB"],
   "San Francisco 49ers": ["OL", "DB"],
   "Seattle Seahawks": ["OL", "DE"],
   "Los Angeles Rams": ["QB", "OL", "DL", "LB", "DB"],
@@ -32,3 +32,4 @@
   "Tennessee Titans": ["WR", "OL", "DB"],
   "Washington Commanders": ["QB", "TE", "OL", "DE", "LB", "DB"]
 }
+

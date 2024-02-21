@@ -15,8 +15,6 @@ function MdmYourPicksTab({ yourPicks }) {
   const lastGoodPick = roundData.starting[draftRounds]
   const selectedTeams = useMemo(() => teams.filter(team => team.id in selected), [teams])
 
-  console.log(yourPicks)
-
   return (
     <>
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">

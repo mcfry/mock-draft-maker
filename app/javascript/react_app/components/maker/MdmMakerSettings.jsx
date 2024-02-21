@@ -103,11 +103,12 @@ function MdmMakerSettings({ setStage, teamToImage }) {
   // - Lifecycle -
   // -------------
   useEffect(() => {
-    if (
-      !localStorage.getItem("settingsTourCompleted") &&
-      window.innerWidth > 1310
-    )
-      guidedTutorial()
+    // disable for now
+    // if (
+    //   !localStorage.getItem("settingsTourCompleted") &&
+    //   window.innerWidth > 1310
+    // )
+      // guidedTutorial()
   }, [])
 
   return (
@@ -173,6 +174,28 @@ function MdmMakerSettings({ setStage, teamToImage }) {
         </div>
 
         <div
+          id="settings__value-priority"
+          className="join join-vertical pt-4 pb-4"
+        >
+          <div className="join-item text-sm pb-2">Player Value Priority</div>
+          <select
+            data-testid="valuePriority"
+            value={positionalDataType}
+            onChange={e => {
+              setPositionalDataType(e.currentTarget.value)
+              setPositionalData(e.currentTarget.value)
+            }}
+            className="select select-sm select-bordered dark:select-primary rounded-none w-[12rem] dark:bg-gray-500 dark:border-gray-100"
+          >
+            {["Normal", "Avg Salary", "Offense", "Defense"].map(type => (
+              <option key={`type_${type.toString()}`} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div
           id="settings__speed"
           className="join join-vertical pt-4 pb-4 w-9/12"
         >
@@ -214,28 +237,6 @@ function MdmMakerSettings({ setStage, teamToImage }) {
             onChange={e => setNeedsVsValue(parseInt(e.currentTarget.value))}
             className="range range-xs range-primary dark:range-secondary dark:[&::-webkit-slider-runnable-track]:bg-gray-200 dark:[&::-moz-range-track]:bg-gray-200 dark:[&::-ms-track]:bg-gray-200"
           />
-        </div>
-
-        <div
-          id="settings__value-priority"
-          className="join join-vertical pt-4 pb-4"
-        >
-          <div className="join-item text-sm pb-2">Player Value Priority</div>
-          <select
-            data-testid="valuePriority"
-            value={positionalDataType}
-            onChange={e => {
-              setPositionalDataType(e.currentTarget.value)
-              setPositionalData(e.currentTarget.value)
-            }}
-            className="select select-sm select-bordered dark:select-primary rounded-none w-[12rem] dark:bg-gray-500 dark:border-gray-100"
-          >
-            {["Normal", "Avg Salary", "Offense", "Defense"].map(type => (
-              <option key={`type_${type.toString()}`} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
         </div>
 
         <div

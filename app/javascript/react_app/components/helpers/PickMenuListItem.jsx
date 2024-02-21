@@ -13,6 +13,7 @@ function PickMenuListItem({
 }) {
   const selected = useStore(state => state.selected)
   const draftState = useStore(state => state.draftState)
+  const needsData = useStore(state => state.needsData)
 
   const convertToSnakeCase = inputString => {
     return inputString.toLowerCase().replace(/\s+/g, "_")
@@ -64,6 +65,9 @@ function PickMenuListItem({
               <span>{team.name}</span>
               <span>-</span>
               <span>Pick {actualIndex + 1}</span>
+            </span>
+            <span className="flex space-x-2 text-sm">
+              Needs: {needsData[team.full_name].join(", ")}
             </span>
           </div>
         )}
