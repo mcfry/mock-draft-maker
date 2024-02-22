@@ -6,7 +6,7 @@ import { TbAnalyze } from "react-icons/tb"
 import { GiAmericanFootballPlayer } from "react-icons/gi"
 import { PiUsersThree } from "react-icons/pi"
 import { GrPauseFill, GrResume, GrPlayFill } from "react-icons/gr"
-// import { driver } from "driver.js"
+import { driver } from "driver.js"
 import clsx from "clsx"
 
 // Internal
@@ -19,7 +19,7 @@ import MdmTab from "../helpers/MdmTab"
 import ButtonOne from "../helpers/ButtonOne"
 import PickMenuListItem from "../helpers/PickMenuListItem"
 import DownArrowSvg from "../helpers/svgs/DownArrowSvg"
-// import makerDraftTutorial from "./guidedTutorials/makerDraftTutorial"
+import makerDraftTutorial from "./guidedTutorials/makerDraftTutorial"
 import { binarySearch } from "../../other/bsearch"
 import { mapRange } from "../../other/mapRange"
 import useStore from "../../store/store"
@@ -290,31 +290,31 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
     }
   }
 
-  // const guidedTutorial = () => {
-  //   const driverObj = driver({
-  //     ...makerDraftTutorial,
-  //     onHighlightStarted: (_, step) => {
-  //       if (step.element === "#draft-tabs__trade") {
-  //         setOuterTab("trade")
-  //       } else if (step.element === "#draft-tabs__draft") {
-  //         setOuterTab("draft")
-  //       } else if (step.element === "#draft-tabs__your-picks") {
-  //         setOuterTab("your-picks")
-  //       } else if (step.element === "#draft-tabs__pick-stats") {
-  //         setOuterTab("pick-stats")
-  //       } else if (step.element === "#draft-tabs__analysis") {
-  //         setOuterTab("analysis")
-  //       }
-  //     },
-  //     onDestroyStarted: () => {
-  //       localStorage.setItem("draftTourCompleted", "true")
-  //       setOuterTab("draft")
-  //       driverObj.destroy()
-  //     }
-  //   })
+  const guidedTutorial = () => {
+    const driverObj = driver({
+      ...makerDraftTutorial,
+      onHighlightStarted: (_, step) => {
+        if (step.element === "#draft-tabs__trade") {
+          setOuterTab("trade")
+        } else if (step.element === "#draft-tabs__draft") {
+          setOuterTab("draft")
+        } else if (step.element === "#draft-tabs__your-picks") {
+          setOuterTab("your-picks")
+        } else if (step.element === "#draft-tabs__pick-stats") {
+          setOuterTab("pick-stats")
+        } else if (step.element === "#draft-tabs__analysis") {
+          setOuterTab("analysis")
+        }
+      },
+      onDestroyStarted: () => {
+        localStorage.setItem("draftTourCompleted", "true")
+        setOuterTab("draft")
+        driverObj.destroy()
+      }
+    })
 
-  //   driverObj.drive()
-  // }
+    driverObj.drive()
+  }
 
   const searchPlayers = () => {
     return fuse.current.search(search).map(searchItem => searchItem.item)
@@ -355,8 +355,8 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   }, [players, positionSelect])
 
   useEffect(() => {
-    // if (!localStorage.getItem("draftTourCompleted") &&
-    //   window.innerWidth > 1310) guidedTutorial()
+    if (!localStorage.getItem("draftTourCompleted") &&
+      window.innerWidth > 1310) guidedTutorial()
   }, [])
 
   return (
@@ -700,10 +700,10 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
     event.stopPropagation()
 
     if (userPicking) {
-      setPreselectedPick(player)
+      setPreselectedPick(() => player)
     }
 
-    setPlayerInAnalysis(player)
+    setPlayerInAnalysis(() => player)
     setOuterTab("analysis")
   }
 

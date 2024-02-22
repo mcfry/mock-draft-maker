@@ -20,14 +20,8 @@ import ReceivingAnalysis from "./analysis/ReceivingAnalysis"
 import DefensiveAnalysis from "./analysis/DefensiveAnalysis"
 import OtherAnalysis from "./analysis/OtherAnalysis"
 
-const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
-  if (playerInAnalysis === null || playerInAnalysis === undefined) {
-    return (
-      <div className="flex flex-col overflow-x-auto w-[62rem] h-full dark:bg-gray-300 dark:text-gray-900">
-        <NoData message="No player selected, or no meaningful data." />
-      </div>
-    )
-  }
+function MdmAnalysisTab({ playerInAnalysis }) {
+  console.log(playerInAnalysis);
 
   const positionToDefaultTab = {
     QB: "passing",
@@ -57,48 +51,40 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
 
   const ONE_DAY = 24 * 60 * 60 * 1000
   let passingStatsQuery = null
-  if (playerInAnalysis.passing) {
-    passingStatsQuery = useQuery(
-      ["passings", playerInAnalysis.position],
-      () => getTop20Statistics("passings", playerInAnalysis.position),
-      {
-        staleTime: ONE_DAY
-      }
-    )
-  }
+  passingStatsQuery = useQuery(
+    ["passings", playerInAnalysis.position],
+    () => getTop20Statistics("passings", playerInAnalysis.position),
+    {
+      staleTime: ONE_DAY
+    }
+  )
 
   let rushingStatsQuery = null
-  if (playerInAnalysis.rushing) {
-    rushingStatsQuery = useQuery(
-      ["rushings", playerInAnalysis.position],
-      () => getTop20Statistics("rushings", playerInAnalysis.position),
-      {
-        staleTime: ONE_DAY
-      }
-    )
-  }
+  rushingStatsQuery = useQuery(
+    ["rushings", playerInAnalysis.position],
+    () => getTop20Statistics("rushings", playerInAnalysis.position),
+    {
+      staleTime: ONE_DAY
+    }
+  )
 
   let receivingStatsQuery = null
-  if (playerInAnalysis.receiving) {
-    receivingStatsQuery = useQuery(
-      ["receivings", playerInAnalysis.position],
-      () => getTop20Statistics("receivings", playerInAnalysis.position),
-      {
-        staleTime: ONE_DAY
-      }
-    )
-  }
+  receivingStatsQuery = useQuery(
+    ["receivings", playerInAnalysis.position],
+    () => getTop20Statistics("receivings", playerInAnalysis.position),
+    {
+      staleTime: ONE_DAY
+    }
+  )
 
   let defenseStatsQuery = null
-  if (playerInAnalysis.defense) {
-    defenseStatsQuery = useQuery(
-      ["defenses", playerInAnalysis.position],
-      () => getTop20Statistics("defenses", playerInAnalysis.position),
-      {
-        staleTime: ONE_DAY
-      }
-    )
-  }
+  defenseStatsQuery = useQuery(
+    ["defenses", playerInAnalysis.position],
+    () => getTop20Statistics("defenses", playerInAnalysis.position),
+    {
+      staleTime: ONE_DAY
+    }
+  )
 
   const playerStatsQuery = useQuery(
     ["players", playerInAnalysis.position],
@@ -109,15 +95,18 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
   )
 
   useEffect(() => {
-    if (
-      passingStatsQuery === null &&
-      rushingStatsQuery === null &&
-      receivingStatsQuery === null &&
-      defenseStatsQuery === null
-    ) {
-      setTab("other")
+    if (positionToDefaultTab[playerInAnalysis.position] === "passing") {
+      setTab(() => "passing")
+    } else if (positionToDefaultTab[playerInAnalysis.position] === "rushing") {
+      setTab(() => "rushing")
+    } else if (positionToDefaultTab[playerInAnalysis.position] === "receiving") {
+      setTab(() => "receiving")
+    } else if (positionToDefaultTab[playerInAnalysis.position] === "defense") {
+      setTab(() => "defense")
+    } else {
+      setTab(() => "other")
     }
-  }, [])
+  }, [playerInAnalysis])
 
   useEffect(() => {
     if (passingStatsQuery?.isStale) passingStatsQuery.refetch()
@@ -126,6 +115,14 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
     if (defenseStatsQuery?.isStale) defenseStatsQuery.refetch()
     if (playerStatsQuery?.isStale) playerStatsQuery.refetch()
   }, [playerInAnalysis])
+
+  if (playerInAnalysis === null || playerInAnalysis === undefined) {
+    return (
+      <div className="flex flex-col overflow-x-auto w-[62rem] h-full dark:bg-gray-300 dark:text-gray-900">
+        <NoData message="No player selected, or no meaningful data." />
+      </div>
+    )
+  }
 
   return (
     <>
@@ -274,6 +271,6 @@ const MdmAnalysisTab = React.memo(({ playerInAnalysis }) => {
 
     setTab(type)
   }
-})
+}
 
 export default MdmAnalysisTab
