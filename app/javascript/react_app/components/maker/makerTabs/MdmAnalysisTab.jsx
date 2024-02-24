@@ -21,8 +21,6 @@ import DefensiveAnalysis from "./analysis/DefensiveAnalysis"
 import OtherAnalysis from "./analysis/OtherAnalysis"
 
 function MdmAnalysisTab({ playerInAnalysis }) {
-  console.log(playerInAnalysis);
-
   const positionToDefaultTab = {
     QB: "passing",
     OT: "other",
@@ -46,14 +44,14 @@ function MdmAnalysisTab({ playerInAnalysis }) {
   }
 
   const [tab, setTab] = useState(
-    positionToDefaultTab[playerInAnalysis.position]
+    positionToDefaultTab[playerInAnalysis?.position]
   )
 
   const ONE_DAY = 24 * 60 * 60 * 1000
   let passingStatsQuery = null
   passingStatsQuery = useQuery(
-    ["passings", playerInAnalysis.position],
-    () => getTop20Statistics("passings", playerInAnalysis.position),
+    ["passings", playerInAnalysis?.position],
+    () => getTop20Statistics("passings", playerInAnalysis?.position),
     {
       staleTime: ONE_DAY
     }
@@ -61,8 +59,8 @@ function MdmAnalysisTab({ playerInAnalysis }) {
 
   let rushingStatsQuery = null
   rushingStatsQuery = useQuery(
-    ["rushings", playerInAnalysis.position],
-    () => getTop20Statistics("rushings", playerInAnalysis.position),
+    ["rushings", playerInAnalysis?.position],
+    () => getTop20Statistics("rushings", playerInAnalysis?.position),
     {
       staleTime: ONE_DAY
     }
@@ -70,8 +68,8 @@ function MdmAnalysisTab({ playerInAnalysis }) {
 
   let receivingStatsQuery = null
   receivingStatsQuery = useQuery(
-    ["receivings", playerInAnalysis.position],
-    () => getTop20Statistics("receivings", playerInAnalysis.position),
+    ["receivings", playerInAnalysis?.position],
+    () => getTop20Statistics("receivings", playerInAnalysis?.position),
     {
       staleTime: ONE_DAY
     }
@@ -79,29 +77,29 @@ function MdmAnalysisTab({ playerInAnalysis }) {
 
   let defenseStatsQuery = null
   defenseStatsQuery = useQuery(
-    ["defenses", playerInAnalysis.position],
-    () => getTop20Statistics("defenses", playerInAnalysis.position),
+    ["defenses", playerInAnalysis?.position],
+    () => getTop20Statistics("defenses", playerInAnalysis?.position),
     {
       staleTime: ONE_DAY
     }
   )
 
   const playerStatsQuery = useQuery(
-    ["players", playerInAnalysis.position],
-    () => getTop20Statistics("players", playerInAnalysis.position),
+    ["players", playerInAnalysis?.position],
+    () => getTop20Statistics("players", playerInAnalysis?.position),
     {
       staleTime: ONE_DAY
     }
   )
 
   useEffect(() => {
-    if (positionToDefaultTab[playerInAnalysis.position] === "passing") {
+    if (positionToDefaultTab[playerInAnalysis?.position] === "passing") {
       setTab(() => "passing")
-    } else if (positionToDefaultTab[playerInAnalysis.position] === "rushing") {
+    } else if (positionToDefaultTab[playerInAnalysis?.position] === "rushing") {
       setTab(() => "rushing")
-    } else if (positionToDefaultTab[playerInAnalysis.position] === "receiving") {
+    } else if (positionToDefaultTab[playerInAnalysis?.position] === "receiving") {
       setTab(() => "receiving")
-    } else if (positionToDefaultTab[playerInAnalysis.position] === "defense") {
+    } else if (positionToDefaultTab[playerInAnalysis?.position] === "defense") {
       setTab(() => "defense")
     } else {
       setTab(() => "other")

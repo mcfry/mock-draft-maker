@@ -1,5 +1,5 @@
 // External
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useCallback } from "react"
 import Fuse from "fuse.js"
 import { IoMdSwap } from "react-icons/io"
 import { TbAnalyze } from "react-icons/tb"
@@ -319,6 +319,42 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   const searchPlayers = () => {
     return fuse.current.search(search).map(searchItem => searchItem.item)
   }
+
+  // ---------------------
+  // - Memoized Handlers -
+  // ---------------------
+  const handleClick = useCallback((event, type) => {
+    event.preventDefault()
+
+    setOuterTab(type)
+  }, [])
+
+  const handleAnalyzeClick = useCallback((event, player) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (userPicking) {
+      setPreselectedPick(() => player)
+    }
+
+    setPlayerInAnalysis(() => player)
+    setOuterTab("analysis")
+  }, [])
+
+  const handlePickStatsClick = useCallback((event, team, teamIndex) => {
+    event.preventDefault()
+    event.stopPropagation()
+
+    setPickStatsTeam(team)
+    setPickStatsTeamIndex(teamIndex)
+    setOuterTab("pick-stats")
+  }, [])
+
+  const handleResetFiltersClick = useCallback(() => {
+    setSearch("")
+    setPositionSelect("default")
+    setPlayerInAnalysis(null)
+  }, [])
 
   // -------------
   // - Lifecycle -
@@ -689,39 +725,6 @@ function MdmMakerDraft({ setStage, teamToImage, playersLoaded }) {
   // ------------
   // - Handlers -
   // ------------
-  function handleClick(event, type) {
-    event.preventDefault()
-
-    setOuterTab(type)
-  }
-
-  function handleAnalyzeClick(event, player) {
-    event.preventDefault()
-    event.stopPropagation()
-
-    if (userPicking) {
-      setPreselectedPick(() => player)
-    }
-
-    setPlayerInAnalysis(() => player)
-    setOuterTab("analysis")
-  }
-
-  function handlePickStatsClick(event, team, teamIndex) {
-    event.preventDefault()
-    event.stopPropagation()
-
-    setPickStatsTeam(team)
-    setPickStatsTeamIndex(teamIndex)
-    setOuterTab("pick-stats")
-  }
-
-  function handleResetFiltersClick() {
-    setSearch("")
-    setPositionSelect("default")
-    setPlayerInAnalysis(null)
-  }
-
   function handleChange(event) {
     const pos = event.currentTarget.value
 

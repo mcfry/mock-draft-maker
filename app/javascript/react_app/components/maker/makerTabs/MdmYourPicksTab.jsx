@@ -20,13 +20,13 @@ function MdmYourPicksTab({ yourPicks }) {
       <div className="flex flex-col dark:bg-gray-300 dark:text-gray-900">
         <div className="overflow-x-auto w-[62rem] h-[34.75rem]">
           {selectedTeams?.map(team => 
-            <div className="flex flex-col justify-center items-center">
+            <div key={`yp_${team.full_name}`} className="flex flex-col justify-center items-center">
               <div className="flex items-center justify-center text-xl font-bold py-2 w-full border-t-2 border-b-2">
                 <span>{team.full_name}</span>
               </div>
               <table className="table font-mono text-base table-auto">
                 <tbody>
-                  <Fragment key={`yp_${team.full_name}`}>
+                  <>
                     {yourPicks[team.full_name]?.map(player => {
                       return <tr key={`yps_${player.pickedAt}`}>
                         <td>Pick: {player.pickedAt}</td>
@@ -39,7 +39,7 @@ function MdmYourPicksTab({ yourPicks }) {
                     {pickData[team.full_name]?.map(pick => {
                       if (pick > lastGoodPick) return null
 
-                      return <tr key={`yps_${pick}`}>
+                      return <tr key={`ypsd_${pick}`}>
                         <td>Pick: {pick}</td>
                         <td>&nbsp;</td>
                         <td>&nbsp;</td>
@@ -47,7 +47,7 @@ function MdmYourPicksTab({ yourPicks }) {
                         <td>&nbsp;</td>
                       </tr>
                     })}
-                  </Fragment>
+                  </>
                 </tbody>
               </table>
             </div>
